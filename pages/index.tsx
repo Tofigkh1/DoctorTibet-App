@@ -6,7 +6,9 @@ const Home: NextPage = () => {
 
 
   return (
-<></>
+<>
+
+</>
   );
 };
 

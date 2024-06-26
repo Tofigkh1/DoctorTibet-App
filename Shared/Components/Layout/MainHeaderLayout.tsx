@@ -13,7 +13,7 @@ const MainLayout = ({children}) => {
         </Head>
         <div>
             <div className="md:px-8">
-               
+               <Header/>
 
             </div>
         </div>
