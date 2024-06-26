@@ -1,11 +1,13 @@
 import Head from "next/head"
 import styless from "./MainHeaderLayout.module.css"
-
+import Header from "../../Components/Client/Header/Header"
 
 
 
 const MainLayout = ({children}) => {
-    <div>
+
+    return (
+        <div>
         <Head>
             <title>Tiens App</title>
             <meta name="DoctorTibet" content="Doctor Tibet by Tiens App"/>
@@ -14,8 +16,11 @@ const MainLayout = ({children}) => {
         <div>
             <div className="md:px-8">
                <Header/>
-
             </div>
+            {children}
         </div>
     </div>
+    );
 }
+
+export default MainLayout
