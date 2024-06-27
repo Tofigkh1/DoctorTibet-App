@@ -8,8 +8,14 @@
   }
   
   .logo{
-    width: 80px;
-    height: 80px;
+    width: 200px;
+    height: 200px;
+  }
+
+  .logotext{
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
   }
 
   .header_box {
@@ -17,9 +23,21 @@
     justify-content: space-between;
     align-items: center;
     padding: 40px 35px;
-    background-color: #f3f4f6;
+    /* background-image: url('/homeBacground.svg'); */
     position: relative;
-    margin-top: 30px;
+    
+ 
+}
+
+.bgimage{
+    background-image: url('/homeBacground.svg');
+    background-size: cover;
+    /* background-size: contain;  */
+    background-repeat: no-repeat;
+    width: 100%;
+  height: 679px;
+  z-index: -999;
+  
 }
 
 .mobile_show {

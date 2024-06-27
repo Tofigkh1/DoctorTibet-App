@@ -12,7 +12,7 @@ export default function Nav() {
 
     return (
         <>
-        <nav>
+        <nav className={styless.nav_box}>
             <ul>
                 <>
                 <li onClick={()=>push('/')} className={styless[`${isActive("/")}`]}>
