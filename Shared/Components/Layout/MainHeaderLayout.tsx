@@ -13,7 +13,7 @@ const MainLayout = ({children}) => {
             <meta name="DoctorTibet" content="Doctor Tibet by Tiens App"/>
             <link rel="icon" href="/favicon" />
         </Head>
-        <div>
+        <div className={styless.main_container}>
             <div className="md:px-8">
                <Header/>
             </div>
