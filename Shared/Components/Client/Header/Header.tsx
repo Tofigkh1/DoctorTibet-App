@@ -1,4 +1,4 @@
-import styles from './navbar.module.css'; // Eğer stil dosyasını kullanıyorsanız
+import styles from './navbar.module.css';
 import Nav from '../Nav/Nav';
 import { useResize } from '../../../Hooks/useResize';
 import { useModalOpen } from '../../../Hooks/useModalOpen';
@@ -12,7 +12,7 @@ export default function Header() {
 
     return (
         <>
-            <section>
+            <section className={styles.header_box} >
                 <div>
                     <button className={styles.button}></button>
 
