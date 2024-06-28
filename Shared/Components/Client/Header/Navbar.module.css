@@ -6,6 +6,16 @@
   .cursor {
     cursor: pointer;
   }
+
+
+  .headerText{
+    color: white;
+    font-size: 43px;
+    font-weight: 900;
+    margin-left: 100px;
+    margin-top: 55px;
+    
+  }
   
   .logo{
     width: 200px;
@@ -18,12 +28,19 @@
     cursor: pointer;
   }
 
+  .headerSmallText{
+    color: white;
+    font-size: 18px;
+    margin-left: 100px;
+    margin-top: 20px;
+  }
+
   .header_box {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 40px 35px;
-    /* background-image: url('/homeBacground.svg'); */
+  
     position: relative;
     
  

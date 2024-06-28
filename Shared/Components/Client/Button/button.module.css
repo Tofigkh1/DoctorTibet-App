@@ -1,0 +1,73 @@
+.btn {
+    position: relative;
+    display: inline-block;
+    color: white;
+    width: 117px;
+    height: 42px;
+    text-decoration: none;
+    border-radius: 30px;
+    padding: 8px 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    overflow: hidden;
+    background-color: #26d6a1;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    overflow: hidden;
+    z-index: 0;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.btn_sm {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0.03em;
+}
+
+.btn-md {
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0.03em;
+}
+
+.ghost {
+    color: #828282;
+    background-color: transparent;
+    border: 1px solid #828282;
+}
+
+.btn:hover,
+.btn:active {
+    background-color: #1BC768;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    width: calc(100% - 10px);
+    height: calc(100% - 10px);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: transparent;
+    border: 2px solid #ffffff;
+    border-radius: 30px;
+    transition: width 0.3s ease, height 0.3s ease, left 0.3s ease, top 0.3s ease;
+    z-index: -1;
+}
+
+.btn:hover::before,
+.btn:active::before {
+    width: calc(100% + 20px);
+    height: calc(100% + 20px);
+    top: 50%;
+    left: 50%;
+}
+
+.btn:hover {
+    color: #fff; 
+    border-color: #1BC768; 
+}
