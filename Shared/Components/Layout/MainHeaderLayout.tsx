@@ -1,6 +1,7 @@
 import Head from "next/head"
 import styless from "./MainHeaderLayout.module.css"
 import Header from "../../Components/Client/Header/Header"
+import Footer from "../Client/Footer";
 
 
 
@@ -18,6 +19,7 @@ const MainLayout = ({children}) => {
                <Header/>
             </div>
             {children}
+            <Footer />
         </div>
     </div>
     );
