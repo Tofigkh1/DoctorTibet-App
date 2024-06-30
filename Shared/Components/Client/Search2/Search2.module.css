@@ -87,6 +87,18 @@ margin-top: 130px;
     z-index: 99;
     background-color: rgba(252, 31, 31, 0);
 }
+.icon {
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    top: 2px;
+    left: 2px;
+    gap: 0px;
+    border: 2px solid transparent; /* border tanımlanmalı */
+    opacity: 0; /* opacity 0px değil, sadece 0 */
+    position: relative; /* top ve left değerleri kullanılabilmesi için position eklenmeli */
+}
+
 /* .search_result ul{
     max-height: 400px;
     overflow: auto;
