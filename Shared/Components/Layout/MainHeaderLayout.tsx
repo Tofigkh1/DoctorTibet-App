@@ -16,7 +16,7 @@ const MainLayout = ({children}) => {
         </Head>
         <div className={styless.main_container}>
             <div className="md:px-8">
-               <Header/>
+               {/* <Header/> */}
             </div>
             {children}
             <Footer />
