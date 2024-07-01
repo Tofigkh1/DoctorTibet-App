@@ -70,16 +70,16 @@ export default function Header() {
 
       <div className={styles.bgimage}>
         <section className={`${styles.header_box} ${isOpen ? styles.shadow : ''}`}>
-          <div className={`${styles.logo_box} flex gap-3 items-center`}>
+          <div className={`${styles.logo_box}`}>
             <button className={styles.button}></button>
             <div className={styles.cursor} onClick={() => push('/')}>
-              <img style={{ width: '80px', height: '80px' }} className={styles.logo} src="/Logo.png" alt="Logo" />
+              <img style={{ width: '84px', height: '84px' }} className={styles.logo} src="/Logo.png" alt="Logo" />
             </div>
           </div>
           <div>
             <Nav />
           </div>
-          <div className="flex flex-row gap-4 items-center">
+          <div className="">
             <div className={styles.mobile_hide}>
               <Auth />
             </div>
@@ -88,11 +88,11 @@ export default function Header() {
 
         <div>
           <div className={styles.headerText}>
-            <h1>We can get your Drug</h1>
+            <h1 className=''>We can get your Drug</h1>
             <h1>Prescriptions to You</h1>
           </div>
           <div className={styles.headerSmallText}>
-            <h1>We have all the drugs your doctor prescribed for your health</h1>
+            <h1 className=''>We have all the drugs your doctor prescribed for your health</h1>
             <h1>and what’s more, we can get it to you.</h1>
           </div>
         </div>

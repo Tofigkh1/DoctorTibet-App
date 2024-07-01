@@ -15,11 +15,11 @@ const MainLayout = ({children}) => {
             <link rel="icon" href="/favicon" />
         </Head>
         <div className={styless.main_container}>
-            <div className="md:px-8">
+            <div className="">
                <Header/>
             </div>
             {children}
-            <Footer />
+            {/* <Footer /> */}
         </div>
     </div>
     );

@@ -7,7 +7,8 @@
 
 // export default MyApp
 
-
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 import { ChakraProvider } from "@chakra-ui/react";
 import type { AppProps } from "next/app";
 import theme from "../Theme/index"; // Import your custom theme if you have one

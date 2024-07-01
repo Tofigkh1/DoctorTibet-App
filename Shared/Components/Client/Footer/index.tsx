@@ -3,10 +3,12 @@ import RightIcon from "../../Svg/RightIcon";
 import Search2 from "../Search2/search2";
 
 import { Box, Button, Container, Flex, Heading, Input, Stack, Text, Link } from "@chakra-ui/react";
+import Styles from "./Footer.module.css"
+
 
 const Footer = () => {
   return (
-    <Box bg="blue.700" color="white" py={10}>
+    <Box bg="blue.700" color="white" py={10} className={Styles.Footerbox}>
       <Container maxW="container.xl">
         <Flex direction={{ base: "column", lg: "row" }} justify="space-between" align="center" mb={10}>
           <Box textAlign={{ base: "center", lg: "left" }} mb={{ base: 6, lg: 0 }}>
