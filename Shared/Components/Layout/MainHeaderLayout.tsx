@@ -5,6 +5,9 @@ import Footer from "../Client/Footer";
 
 
 
+
+
+
 const MainLayout = ({children}) => {
 
     return (
@@ -15,11 +18,13 @@ const MainLayout = ({children}) => {
             <link rel="icon" href="/favicon" />
         </Head>
         <div className={styless.main_container}>
+            <div className="">
+               <Header/>
             <div className="md:px-8">
                {/* <Header/> */}
             </div>
             {children}
-            <Footer />
+            
         </div>
     </div>
     );
