@@ -15,9 +15,17 @@ const Footer = () => {
             <Heading as="h2" size="lg" mb={2}>Sign up for our Newsletter</Heading>
             <Text fontSize="sm">Get to know updates in the field of medicine and know how often our stores are stocked</Text>
           </Box>
+          <Box
+      width="200px" 
+      height="200px" 
+     
+      marginLeft="auto" 
+      marginRight="500px" 
+    >
+      <Search2 />
+    </Box>
+      
 
-       <Search2 />
-       
         </Flex>
         <Flex direction={{ base: "column", lg: "row" }} justify="space-between" align="start" mb={10}>
           <Box textAlign={{ base: "center", lg: "left" }} mb={{ base: 6, lg: 0 }}>
