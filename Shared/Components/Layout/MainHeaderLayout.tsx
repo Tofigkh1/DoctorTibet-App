@@ -5,6 +5,9 @@ import Footer from "../Client/Footer";
 
 
 
+
+
+
 const MainLayout = ({children}) => {
 
     return (
@@ -19,7 +22,7 @@ const MainLayout = ({children}) => {
                <Header/>
             </div>
             {children}
-            {/* <Footer /> */}
+            
         </div>
     </div>
     );

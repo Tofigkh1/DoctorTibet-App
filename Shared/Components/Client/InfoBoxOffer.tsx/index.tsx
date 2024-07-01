@@ -8,6 +8,7 @@ import Exclude from '../../../../public/Exclude.svg';
 import buttonVector from '../../../../public/buttonVector.svg'
 import bcichlesIcon from '../../../../public/bcichlesIcon.svg'
 import groupHuman from '../../../../public/groupHuman.svg'
+import Testimonial from '../Testimol';
 
 interface Props{
     row:boolean,
@@ -171,6 +172,8 @@ function InfoBoxOffer (props:Props){
 
         </div>
 </div>
+
+<Testimonial/>
 
         <div data-aos="zoom-in" data-aos-delay="300" style={{display: 'none'}}>
             {/* Содержимое */}
