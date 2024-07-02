@@ -20,6 +20,8 @@ const MainLayout = ({children}) => {
         <div className={styless.main_container}>
             <div className="">
                <Header/>
+            <div className="md:px-8">
+               {/* <Header/> */}
             </div>
             {children}
             
