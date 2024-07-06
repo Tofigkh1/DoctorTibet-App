@@ -10,13 +10,14 @@ import { useModalOpen } from '../../../Hooks/useModalOpen';
 import { useRouter } from 'next/router';
 import Logo from '../../Svg/Logo';
 import Bacground from '../../../../public/homeBacground.svg';
-import Medicine from "../../../../public/Medicine.svg"
-import Medicinees from "../../../../public/medicalbanner.jpg"
-import Doctortb from "../../../../public/doctortb.jpg"
+import Medicine from "../../../../public/Medicine.svg";
+import Medicinees from "../../../../public/medicalbanner.jpg";
+import Doctortb from "../../../../public/doctortb.jpg";
 import Image from 'next/image';
 import Search from '../Search/Search';
 import Auth from '../Auth/Auth';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import Footer from '../Footer';
 
 export default function Header() {
   let { isOpen, onOpen, onClose } = useModalOpen();
@@ -51,6 +52,7 @@ export default function Header() {
         <SwiperSlide><Image src={Medicine} alt="Image 1" layout="fill" objectFit="cover" /></SwiperSlide>
         <SwiperSlide><Image src={Medicinees} alt="Image 1" layout="fill" objectFit="cover" /></SwiperSlide>
         <SwiperSlide>  <SwiperSlide><Image src={Doctortb} alt="Image 1" layout="fill" objectFit="cover" /></SwiperSlide></SwiperSlide>
+
         {/* <SwiperSlide>Slide 5</SwiperSlide>
         <SwiperSlide>Slide 6</SwiperSlide>
         <SwiperSlide>Slide 7</SwiperSlide>
@@ -98,8 +100,10 @@ export default function Header() {
         </div>
 
         <Search />
+        
       </div>
-      
+    
     </div>
+    
   );
 }
