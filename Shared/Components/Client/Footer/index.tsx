@@ -8,7 +8,7 @@ import Styles from "./Footer.module.css"
 
 const Footer = () => {
   return (
-    <Box bg="blue.700" color="white" py={10} className={Styles.Footerbox}>
+    <Box bg="#043CAA" color="white" py={10} className={Styles.Footerbox}>
       <Container maxW="container.xl">
         <Flex direction={{ base: "column", lg: "row" }} justify="space-between" align="center" mb={10}>
           <Box textAlign={{ base: "center", lg: "left" }} mb={{ base: 6, lg: 0 }}>
@@ -29,7 +29,7 @@ const Footer = () => {
         </Flex>
         <Flex direction={{ base: "column", lg: "row" }} justify="space-between" align="start" mb={10}>
           <Box textAlign={{ base: "center", lg: "left" }} mb={{ base: 6, lg: 0 }}>
-            <Heading as="h2" size="lg" mb={2}>D-Express</Heading>
+            <Heading as="h2" size="lg" mb={2}>Doctor-Tibet</Heading>
             <Text fontSize="sm">Your favourite online pharmacy store. We offer onsite delivery and your health is our priority</Text>
           </Box>
           <Stack direction={{ base: "column", lg: "row" }} spacing={10}>

@@ -4,7 +4,7 @@
     position: absolute;
     display: flex;
 margin-left: 90px;
-margin-top: 130px;
+margin-top: 118px;
 }
 
 
@@ -63,7 +63,7 @@ margin-top: 130px;
     border-color: #D63626;
 }
 
-/* .search_result {
+.search_result {
     position: absolute;
     top: 50px;
     background-color: #fff;
@@ -76,7 +76,7 @@ margin-top: 130px;
     box-shadow: 0px 4px 4px 0px #00000040;
     z-index: 100;
 
-} */
+}
 .shadow_search{
     display: block;
     position: fixed;
@@ -87,23 +87,11 @@ margin-top: 130px;
     z-index: 99;
     background-color: rgba(252, 31, 31, 0);
 }
-.icon {
-    cursor: pointer;
-    width: 20px;
-    height: 20px;
-    top: 2px;
-    left: 2px;
-    gap: 0px;
-    border: 2px solid transparent; /* border tanımlanmalı */
-    opacity: 0; /* opacity 0px değil, sadece 0 */
-    position: relative; /* top ve left değerleri kullanılabilmesi için position eklenmeli */
-}
-
-/* .search_result ul{
+.search_result ul{
     max-height: 400px;
     overflow: auto;
-} */
-/* .search_result ul li {
+}
+.search_result ul li {
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -128,9 +116,9 @@ margin-top: 130px;
     line-height: 16.41px;
     text-align: left;
     transition: all 0.5s;
-} */
+}
 
-/* .search_result ul li img {
+.search_result ul li img {
     width: 60px;
     height: 40px;
     object-fit: contain;
@@ -143,16 +131,16 @@ margin-top: 130px;
 .search_result ul li:hover span,
 .search_result ul li:hover p{
     color: #fff;
-} */
-/* 
+}
+
 .more_btn {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 17px 0 0;
-} */
+}
 
-/* .more_btn button {
+.more_btn button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -163,7 +151,7 @@ margin-top: 130px;
     text-align: left;
     color: #2B3043;
 
-} */
+}
 @media(max-width:1200px){
     .search_container{
         display: none;
