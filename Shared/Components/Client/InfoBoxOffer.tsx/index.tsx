@@ -8,6 +8,10 @@ import Exclude from '../../../../public/Exclude.svg';
 import buttonVector from '../../../../public/buttonVector.svg'
 import bcichlesIcon from '../../../../public/bcichlesIcon.svg'
 import groupHuman from '../../../../public/groupHuman.svg'
+import medicinesHomeImage from '../../../../public/medicinesHomeImage.svg'
+import patternIcon from '../../../../public/patternIcon.svg'
+import feedBackImg from '../../../../public/Feedback.jpg'
+import feedBack2 from '../../../../public/Feedback2.jpg'
 import Testimonial from '../Testimol';
 
 interface Props{
@@ -173,7 +177,35 @@ function InfoBoxOffer (props:Props){
         </div>
 </div>
 
+
+<div className=' mt-24 justify-around'>
+<div className={style.oneOfferDiv}>
+
+
+<div className='ml-24 mt-2' data-aos={mobile?'fade-up':"fade-right"}>
+
+<Image src={feedBackImg} alt="Icon" width={420} height={0}  />
+</div >
+
+
+<div className='' data-aos={mobile?'fade-up':"fade-left"}>
+
+
+
+<div className=' mr-10'>
+
 <Testimonial/>
+</div>
+
+</div>
+
+
+
+</div>
+</div>
+
+
+
 
         <div data-aos="zoom-in" data-aos-delay="300" style={{display: 'none'}}>
             {/* Содержимое */}

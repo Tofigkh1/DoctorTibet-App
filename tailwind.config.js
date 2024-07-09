@@ -25,6 +25,8 @@ module.exports = {
         cardColor: "#F3F4F6",
         textColorGreen: "#6FCF97",
         overlayColorGreen: "#A0D6B4",
+        comitColorText: "#043CAA",
+        FooterColor: "#043CAA",
     },
     extend: {},
   },

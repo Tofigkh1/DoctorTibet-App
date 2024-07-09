@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Box, Text, Stack } from "@chakra-ui/react";
+import ColorLine from '../../../../public/sectionColorLine.svg';
+import Image from "next/image";
 
 const testimonials = [
   {
@@ -14,36 +16,52 @@ const testimonials = [
     text: "Great service, friendly staff, and fast delivery. Couldn't ask for more!",
     author: "Michael Johnson",
   },
+  {
+    text: "She has the best medicines and the medicines are really effective, I have to thank the doctor for that.",
+    author: "Tommy Line",
+  },
 ];
 
 function Testimonial() {
   const [index, setIndex] = useState(0);
+  const [isSlidingOut, setIsSlidingOut] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
-    }, 3000);
+      setIsSlidingOut(true);
+      setTimeout(() => {
+        setIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
+        setIsSlidingOut(false);
+      }, 1000); 
+    }, 5000);
 
     return () => clearInterval(interval);
   }, []);
 
   return (
     <Box
-      maxW="sm"
-      borderWidth="1px"
-      borderRadius="lg"
+      width="480px"
+      height="480px"
       overflow="hidden"
       p={6}
-      boxShadow="lg"
       backgroundColor="white"
     >
-      <Text fontSize="xl" fontWeight="bold" mb={4}>
+      <Text className=" ml-28" fontSize="xl" fontWeight="bold" mb={4}>
         What Our Clients Say
       </Text>
-      <Box borderBottomWidth="2px" borderColor="blue.500" mb={4}></Box>
-      <Text mb={4}>"{testimonials[index].text}"</Text>
-      <Text fontWeight="bold">- {testimonials[index].author}</Text>
-      <Stack direction="row" mt={4}>
+
+      <div className=" ml-48 mb-5">
+        <Image src={ColorLine} alt="Icon" width={50} height={0} />
+      </div>
+
+      <Box
+        className={`testimonial-content ${isSlidingOut ? "slide-out" : "slide-in"} `}
+      >
+        <Text  mb={4}>"{testimonials[index].text}"</Text>
+        <Text fontWeight="bold" className="text-comitColorText">- {testimonials[index].author}</Text>
+      </Box>
+
+      <Stack direction="row" justify="center" mt={4}>
         {testimonials.map((_, i) => (
           <Box
             key={i}
@@ -51,6 +69,7 @@ function Testimonial() {
             w={2}
             bg={i === index ? "green.400" : "gray.400"}
             borderRadius="full"
+            className="mt-5"
           />
         ))}
       </Stack>

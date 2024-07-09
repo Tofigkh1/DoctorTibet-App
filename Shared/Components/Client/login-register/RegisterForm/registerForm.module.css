@@ -1,0 +1,17 @@
+.form{
+    padding: 46px 56px 40px 40px;
+}
+.button{
+    height: 68px;
+    width: 100%;
+    background: #26d6a1;
+    margin-top: 40px;
+    border-radius: 8px;
+    color: white;
+    transition: background-color 0.4s ease; 
+}
+
+.button:hover,
+.button:active {
+    background-color: #1BC768;
+}
