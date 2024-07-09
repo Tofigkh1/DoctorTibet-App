@@ -10,6 +10,10 @@ export default function Auth(){
     const [active,setActive]=useState(false);
     const [accessToken, setAccessToken] = useState<string | null>(null);
 
+    function goAuth() {
+        push('/login-register');
+    }
+
 
     let {isMobile} = useResize();
     
@@ -32,7 +36,7 @@ export default function Auth(){
                                 <li onClick={() => push('/user/basket')}>Your Basket</li>
                                 <li onClick={() => push('/user/orders')}>Your Orders</li>
                                 <li onClick={() => push('/user/checkout')}>Checkout</li>
-                             
+                                
                                
                             </ul>
                             <div onClick={handleClick} className={styles.shadow}/>
@@ -41,7 +45,7 @@ export default function Auth(){
                     </>
                     }
                 </div> :
-                <ButtonHeader typeButton={true} title='Sign Up' btnSize={'sm'} addButton={false}/>
+                <ButtonHeader addButtonFun={goAuth} typeButton={true} title='Sign Up' btnSize={'sm'} addButton={false}/>
             }
         </>
     )
