@@ -1,39 +1,43 @@
 import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import LoginInp from '../loginInp';
+
 import styles from './registerForm.module.css'
+import RegisterInp from '../registerInp';
+import { useDispatch, useSelector } from 'react-redux';
+
+
+import Spiner from '../../Spiner';
 import { useToast } from '@chakra-ui/react';
-import Spiner from '../../Spiner/index';
-import RegisterInp from '../registerInp/index';
+import { postSignUp } from '../../../../../Services';
+import { RootState } from '../../../../Redux/Store/store';
+import LoginInp from '../loginInp';
+
 
 interface RegisterFormValues {
-    fullname:string;
-    username: string;
-    email:string;
-    password:string;
+  fullname: string;
+  username: string;
+  email: string;
+  password: string;
 };
 
 const initialValues: RegisterFormValues = {
-    "email": '',
-    
-    "password": '',
-    "fullname": '',
-    "username": '',
-    
-    
-  };
+  "email": '',
+  "password": '',
+  "fullname": '',
+  "username": '',
+};
 
 interface Props{
-    setsingin:any
-  }
-
-  const RegisterForm = (props:Props) => {
+  setsingin:any
+}
+const RegisterForm= (props:Props) => {
   const toast = useToast()
-  let {setsingin}:any = props
-  let [loading, setLoading] = useState(false)
+
+  const user = useSelector((state: RootState) => state.user);
+  let {setsingin}:any=props
+  let [Loading,setLoading]=useState(false)
   
-    
   const validationSchema = Yup.object({
     fullname: Yup.string().required('Required'),
     username: Yup.string().required('Required'),
@@ -42,17 +46,77 @@ interface Props{
   });
 
   const handleSubmit = (values: RegisterFormValues, { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void }) => {
+
+    
+      (async()=>{
+       
+        
+        
+        try{
+          console.log("values", values);
+         setLoading(true)
+         const postSign =  await postSignUp(values)
+        //  .then(()=>{
+           
+            // toast({
+            //   title: `Register successfully!`,
+            //   status: 'success',
+            //   duration: 2000,
+            //   isClosable: true,
+            //   position:'top-right',
+            //   variant:'subtle'
+            // })
+            // toast({
+            //   title: `Now you can sing in!`,
+            //   status: 'info',
+            //   duration: 2000,
+            //   isClosable: true,
+            //   position:'top-right',
+            //   variant:'subtle'
+            // })
+            
+            setLoading(false)
+          // }).catch((err)=>{
+          //   setLoading(false)
+         
+          //   toast({
+          //     title: err.message,
+          //     status: 'info',
+          //     duration: 2000,
+          //     isClosable: true,
+          //     position:'top-right',
+          //     variant:'subtle'
+          //   })
+          // })
+
+          console.log("postSign",postSign);
+          
+        }catch(err){
+          console.log(err);
+          
+        }
+       
+
+        
+      })()
+        
+     
+    
+    
+
     setSubmitting(false);
-  }
+  };
+
 
   return (
     <div>
-        <Formik
-        initialValues={initialValues}
-        validationSchema={validationSchema}
-        onSubmit={handleSubmit}
-        >
-              {({ isSubmitting }) => (
+      <Formik
+initialValues={initialValues}
+validationSchema={validationSchema}
+onSubmit={handleSubmit}
+      
+    >
+      {({ isSubmitting }) => (
         <Form className={styles.form}>
 
           <RegisterInp
@@ -65,13 +129,7 @@ interface Props{
           icon={true}
           name='username'
           />
-          
-           {/* <LoginInp
-          title='User Name'
-          icon={true}
-          type='text'
-          name='userName'
-          /> */}
+        
           <LoginInp
           name='email'
           title="E-mail"
@@ -84,15 +142,18 @@ interface Props{
           icon={false}
           type='password'
           />
-          <button className={styles.button} type="submit" disabled={isSubmitting} style={ loading?{cursor: "not-allowed"}:{cursor: 'pointer'}}>
-            {loading?<Spiner/>: `${"Register"}`}
+          <button className={styles.button} type="submit" disabled={isSubmitting} style={ Loading?{cursor: "not-allowed"}:{cursor: 'pointer'}}>
+            {Loading?<Spiner/>: `${"Register"}`}
             
           </button>
         </Form>
       )}
-        </Formik>
+    </Formik>
     </div>
+    
+    
   );
-  }
+};
 
-  export default RegisterForm;
+export default RegisterForm;
+

@@ -13,7 +13,7 @@ import loginIcon3 from '../../public/Login3.png'
 
 function LoginRegister(){
 
-  let [singin, setSingin] = useState(true)
+  let [singin, setSingin] = useState(false)
   let [mobile, setMobile] = useState(false)
   let router = useRouter()
 
@@ -35,6 +35,7 @@ function LoginRegister(){
   //   return () => unsubscribe();
   // },[router])
 
+console.log("singin",singin);
 
 return (
   <div>
@@ -51,7 +52,7 @@ return (
                 src={loginIcon}
                 alt='Image'
                 className={style.loginIcon}
-                width={500}
+                width={700}
                 height={100}
                 />:
                 <Image
@@ -69,12 +70,12 @@ return (
                 className={mobile?style.loginbg +'  h-full mt-5 rounded-md':style.loginbg +' w-2/5 h-full mt-5 rounded-md'}
                 >
                    <div className='flex flex-row  gap-16 justify-center h-full  mt-20'>
-                    <h1 className={singin? style.headerTextActive: style.headerTextDeActive}  onClick={()=>setSingin(true)}>Login</h1>
-                    <h1 className={!singin? style.headerTextActive: style.headerTextDeActive} onClick={()=>setSingin(false)}>Register</h1>
+                    <button className={!singin? style.headerTextActive: style.headerTextDeActive }  onClick={()=>setSingin(false)}>Login</button>
+                    <button className={singin? style.headerTextActive: style.headerTextDeActive } onClick={()=>setSingin(true)}>Register</button>
                    </div>
-                   {singin?<SignInForm/>:<RegisterForm setsingin={()=>{
+                   {singin?<RegisterForm setsingin={()=>{
                     setSingin(true)
-                   }}/>}
+                   }}/>:<SignInForm/>}
                    
                 </div>
             </div>
