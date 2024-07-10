@@ -55,41 +55,41 @@ const RegisterForm= (props:Props) => {
         try{
           console.log("values", values);
          setLoading(true)
-         const postSign =  await postSignUp(values)
-        //  .then(()=>{
+        await postSignUp(values)
+         .then(()=>{
            
-            // toast({
-            //   title: `Register successfully!`,
-            //   status: 'success',
-            //   duration: 2000,
-            //   isClosable: true,
-            //   position:'top-right',
-            //   variant:'subtle'
-            // })
-            // toast({
-            //   title: `Now you can sing in!`,
-            //   status: 'info',
-            //   duration: 2000,
-            //   isClosable: true,
-            //   position:'top-right',
-            //   variant:'subtle'
-            // })
+            toast({
+              title: `Register successfully!`,
+              status: 'success',
+              duration: 2000,
+              isClosable: true,
+              position:'top-right',
+              variant:'subtle'
+            })
+            toast({
+              title: `Now you can sing in!`,
+              status: 'info',
+              duration: 2000,
+              isClosable: true,
+              position:'top-right',
+              variant:'subtle'
+            })
             
             setLoading(false)
-          // }).catch((err)=>{
-          //   setLoading(false)
+          }).catch((err)=>{
+            setLoading(false)
          
-          //   toast({
-          //     title: err.message,
-          //     status: 'info',
-          //     duration: 2000,
-          //     isClosable: true,
-          //     position:'top-right',
-          //     variant:'subtle'
-          //   })
-          // })
+            toast({
+              title: err.message,
+              status: 'info',
+              duration: 2000,
+              isClosable: true,
+              position:'top-right',
+              variant:'subtle'
+            })
+          })
 
-          console.log("postSign",postSign);
+    
           
         }catch(err){
           console.log(err);
