@@ -41,7 +41,7 @@ function InfoBoxOffer (props:Props){
     let {row,img,desc,title,w,h}=props
 
     return (
-        <div >
+        <div className={style.bodyBackground} >
 
 <div className={style.oneOfferDiv}>
 <div className='' data-aos={mobile?'fade-up':"fade-right"}>

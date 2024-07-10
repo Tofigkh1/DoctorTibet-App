@@ -21,17 +21,56 @@
     height: 200px;
     cursor: pointer;
   }
-s  
 
-.headerTextActive {
-    font-size: 36px;
+
+  .headerTextActive {
+  
+    font-size: 24px;
     font-weight: 600;
     line-height: 24px;
     letter-spacing: 0.03em;
     text-align: center;
     color: rgb(255, 255, 255);
-    color: #EB5757;
+    color: white;
     cursor: pointer;
+    background: #26d6a1;
+    width: 160px;
+    height: 32px;
+    border-radius: 25px;
+    padding-bottom: 4px;
+    transition: background-color 0.4s ease; 
+}
+
+.headerTextDeActive {
+
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0.03em;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    color: black;
+    cursor: pointer;
+    width: 100px;
+    height: 32px;
+    padding-bottom: 4px;
+    border-radius: 25px;
+}
+
+
+
+/* .headerTextActive {
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0.03em;
+    text-align: center;
+    cursor: pointer;
+    background: #ebee95;
+    width: 160px;
+    height: 32px;
+    border-radius: 25px;
   
  
 }
@@ -52,12 +91,13 @@ s
     border-radius: 25px;
     padding-top: 2px;
     transition: background-color 0.4s ease; 
-}
+} */
 
-.headerTextDeActive :hover,
+
+/* .headerTextDeActive :hover,
 .headerTextDeActive:active {
     background-color: #1BC768;
-}
+} */
 
 .loginIcon {
  

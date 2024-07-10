@@ -43,7 +43,7 @@ function InfoBox (props:Props){
     
     return (
 
-        <div>
+        <div className={style.bodyBackground}>
 
             <div className={style.sectionText} data-aos='fade-up'>
             <h1>Our Sponsors</h1>
