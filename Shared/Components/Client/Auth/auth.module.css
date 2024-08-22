@@ -18,13 +18,19 @@
     fill: #fff;
 }
 .user_btn{
-    background-color: rgb(226,126,180);
+    /* background-color: #26d6a1; */
     color: #fff;
     font-size: 20px;
     font-weight: 500;
     line-height: 24px;
     letter-spacing: 0.03em;
 }
+
+/* .user_btn:hover,
+.user_btn:active{
+    background-color: #82f0cf;
+} */
+
 .submenu{
     position: absolute;
     min-width: 175px;
@@ -35,7 +41,15 @@
     padding: 20px;
     top: 90px;
     z-index: 99;
+
 }
+
+
+.greenButton {
+    background-color: green;
+    color: white;
+}
+
 .submenu li{
     padding: 8px;
     border-bottom: 1px solid #F3F4F6;

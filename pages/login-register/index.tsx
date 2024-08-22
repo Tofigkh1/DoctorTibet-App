@@ -25,17 +25,16 @@ function LoginRegister(){
     )
   },[mobile])
 
-  // useLayoutEffect(()=>{
-  //   const unsubscribe = () =>{
-  //     const user = localStorage.getItem('user_info');
-  //     if(user) {
-  //       router.replace('/user/profile')
-  //     }
-  //   }
-  //   return () => unsubscribe();
-  // },[router])
+  useLayoutEffect(()=>{
+    const unsubscribe = () =>{
+      const user = localStorage.getItem('user_info');
+      if(user) {
+        router.replace('/')
+      }
+    }
+    return () => unsubscribe();
+  },[router])
 
-console.log("singin",singin);
 
 return (
   <div>
@@ -58,7 +57,7 @@ return (
                 <Image
                 src={registerIcon}
                 alt='Image'
-                // className={style.loginIcon}
+             
                 width={500}
                 height={728}
                 />}

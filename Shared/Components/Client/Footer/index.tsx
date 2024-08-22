@@ -4,6 +4,7 @@ import Search2 from "../Search2/search2";
 
 import { Box, Button, Container, Flex, Heading, Input, Stack, Text, Link } from "@chakra-ui/react";
 import Styles from "./Footer.module.css"
+import QRCodePage from "../../QRCodePage/qr-code";
 
 
 const Footer = () => {
@@ -58,6 +59,7 @@ const Footer = () => {
               </Stack>
             </Box>
           </Stack>
+          <QRCodePage/>
         </Flex>
         <Text textAlign="center" fontSize="sm">
           Designed by sophisticateddev. copyright©

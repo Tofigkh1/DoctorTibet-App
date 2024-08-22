@@ -57,7 +57,7 @@ function InfoBox (props:Props){
 
 
 
-<div className=" mt-7">
+<div className="  mt-14">
 <Slider {...settings}>
         <div>
           

@@ -16,7 +16,7 @@ const Home: NextPage = (props) => {
         <InfoSection />
         <InfoBoxOffer/>
         {/* <InfoBox/> */}
-        <Footer/>
+       
       </MainLayout>
     </>
   );

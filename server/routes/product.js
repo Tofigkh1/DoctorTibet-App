@@ -8,10 +8,16 @@ import { response } from "../utils/response";
 
 export async function handlerProductGET(req, res, col) {
   try {
-    const { rest_id, search } = req.query;
+    const { rest_id, search, category_id } = req.query;
 
     if (rest_id) {
       const data = await getQueryData(col, "rest_id", rest_id);
+      res.status(200).json(response(data));
+      return;
+    }
+
+    if (category_id) {
+      const data = await getQueryData(col, "category_id", category_id);
       res.status(200).json(response(data));
       return;
     }
@@ -45,14 +51,16 @@ export async function handlerProductGETID(req, res, col) {
 
 export async function handlerProductPOST(req, res, col) {
   try {
-    const { name, price, description, rest_id, img_url } = req.body;
+    const { name, price, description, rest_id, img_url, cover_url, category_id, allDescription } = req.body;
 
     // if (
     //   !name ||
     //   !img_url ||
+    //   !cover_url ||
     //   (!price && isNaN(+price)) ||
     //   !rest_id ||
-    //   !description
+    //   !description ||
+    //   !category_id
     // ) {
     //   res
     //     .status(404)
@@ -67,7 +75,10 @@ export async function handlerProductPOST(req, res, col) {
       description,
       price,
       rest_id,
-      img_url
+      img_url,
+      cover_url,
+      category_id,
+      allDescription // Yeni alanı ekledik
     ).toPlainObject();
 
     const data = await addData(col, product);
@@ -81,14 +92,16 @@ export async function handlerProductPOST(req, res, col) {
 export async function handlerProductPUT(req, res, col) {
   try {
     const { id } = req.query;
-    const { name, price, description, rest_id, img_url } = req.body;
+    const { name, price, description, rest_id, img_url, cover_url, category_id, allDescription } = req.body;
 
     // if (
     //   !name ||
     //   !img_url ||
+    //   !cover_url ||
     //   (!price && isNaN(+price)) ||
     //   !rest_id ||
-    //   !description
+    //   !description ||
+    //   !category_id
     // ) {
     //   res
     //     .status(404)
@@ -103,7 +116,10 @@ export async function handlerProductPUT(req, res, col) {
       description,
       price,
       rest_id,
-      img_url
+      img_url,
+      cover_url,
+      category_id,
+      allDescription 
     ).toPlainObject();
 
     const data = await uptData(col, id, product);

@@ -13,6 +13,9 @@ import patternIcon from '../../../../public/patternIcon.svg'
 import feedBackImg from '../../../../public/Feedback.jpg'
 import feedBack2 from '../../../../public/Feedback2.jpg'
 import Testimonial from '../Testimol';
+import { Button, Menu, MenuButton, MenuDivider, MenuGroup, MenuItem, MenuList } from '@chakra-ui/react';
+import { useRouter } from 'next/router';
+import QRCodePage from '../../QRCodePage/qr-code';
 
 interface Props{
     row:boolean,
@@ -27,6 +30,7 @@ interface Props{
 
 function InfoBoxOffer (props:Props){
     let [mobile,setMobile] = useState(false)
+    const {push} = useRouter()
 
     useEffect(() => {
         AOS.refresh();
@@ -41,7 +45,7 @@ function InfoBoxOffer (props:Props){
     let {row,img,desc,title,w,h}=props
 
     return (
-        <div className={style.bodyBackground} >
+        <div className=' mt-20' >
 
 <div className={style.oneOfferDiv}>
 <div className='' data-aos={mobile?'fade-up':"fade-right"}>
@@ -66,7 +70,7 @@ function InfoBoxOffer (props:Props){
     <Image  src={Exclude} alt="Icon" width={18} height={0}  />
     <h1>Get notified when your medicine is available</h1>
 </div> 
-<button className="bg-white text- border border-clientButtonGreen rounded-[50px] px-4 py-2 flex items-center gap-5 justify-center w-60 transition-all duration-300 hover:bg-clientButtonGreen hover:text-white  " >Get prescription<Image  src={buttonVector} alt="Icon" width={17} height={0}  /></button>
+<button onClick={()=> push('/medicines')} className="bg-white text- border border-clientButtonGreen rounded-[50px] px-4 py-2 flex items-center gap-5 justify-center w-60 transition-all duration-300 hover:bg-clientButtonGreen hover:text-white  " >Get prescription<Image  src={buttonVector} alt="Icon" width={17} height={0}  /></button>
 </div>
 
 
@@ -117,7 +121,7 @@ function InfoBoxOffer (props:Props){
     <Image  src={Exclude} alt="Icon" width={18} height={0}  />
     <h1>We guarantee speedily response</h1>
 </div> 
-<button className="bg-white text- border border-clientButtonGreen rounded-[50px] px-4 py-2 flex items-center gap-5 justify-center w-60 transition-all duration-300 hover:bg-clientButtonGreen hover:text-white  " >Get prescription<Image  src={buttonVector} alt="Icon" width={17} height={0}  /></button>
+<button onClick={()=> push('/medicines')} className="bg-white text- border border-clientButtonGreen rounded-[50px] px-4 py-2 flex items-center gap-5 justify-center w-60 transition-all duration-300 hover:bg-clientButtonGreen hover:text-white  " >Get prescription<Image  src={buttonVector} alt="Icon" width={17} height={0}  /></button>
 </div>
 
 </div>
@@ -161,7 +165,7 @@ function InfoBoxOffer (props:Props){
     <Image  src={Exclude} alt="Icon" width={18} height={0}  />
     <h1>Select a health care specialist</h1>
 </div> 
-<button className="bg-white text- border border-clientButtonGreen rounded-[50px] px-4 py-2 flex items-center gap-5 justify-center w-60 transition-all duration-300 hover:bg-clientButtonGreen hover:text-white  " >Get prescription<Image  src={buttonVector} alt="Icon" width={17} height={0}  /></button>
+<button onClick={()=> push('/contact-us')} className="bg-white text- border border-clientButtonGreen rounded-[50px] px-4 py-2 flex items-center gap-5 justify-center w-60 transition-all duration-300 hover:bg-clientButtonGreen hover:text-white  " >Get prescription<Image  src={buttonVector} alt="Icon" width={17} height={0}  /></button>
 </div>
 
 
@@ -189,7 +193,6 @@ function InfoBoxOffer (props:Props){
 
 
 <div className='' data-aos={mobile?'fade-up':"fade-left"}>
-
 
 
 <div className=' mr-10'>

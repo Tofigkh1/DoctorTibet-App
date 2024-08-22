@@ -1,5 +1,4 @@
 import admin from "../../../server/configs/firebaseAdmin";
-
 import { verifyJWT } from "../../../server/utils/jwt";
 
 export default async function handler(req, res) {
@@ -8,6 +7,7 @@ export default async function handler(req, res) {
   // Set other CORS headers as needed (e.g., methods, headers, etc.)
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+
   const authHeader = req.headers.authorization;
 
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
@@ -24,38 +24,38 @@ export default async function handler(req, res) {
       const user = {
         id: userCredentials.uid,
         email: userCredentials.email,
-        ...userCredentials.customClaims,
+        username: userCredentials.customClaims.username,
+        fullname: userCredentials.displayName,
+        phone: userCredentials.phoneNumber,
+        address: userCredentials.customClaims.address,
         creationTime: userCredentials.metadata.creationTime,
       };
-
-      // Here, you can perform actions based on the authenticated user's UID
-      // For example, fetch user data from Firestore or perform other tasks
 
       return res.status(200).json({ message: "Authenticated!", user });
     } catch (err) {
       console.log(err);
-      res.status(401).json({ error: "Could not sign in" });
+      return res.status(401).json({ error: "Could not sign in" });
     }
-    return;
   }
 
   if (req.method === "PUT") {
     try {
-      const { email, username, fullname, img_url, phone } = req.body ?? {};
+      const { email, username, fullname, phone, address } = req.body ?? {};
 
-      if (!email || !username || !fullname || !phone) {
-        res.status(404).json({ error: "Please fill to fields" });
+      if (!email || !username || !fullname || !phone || !address) {
+        return res.status(400).json({ error: "Please fill all fields" });
       }
 
       const updateUser = {
         email,
+        displayName: fullname,
       };
 
       const customClaims = {
         username,
         fullname,
-        img_url,
         phone,
+        address,
       };
 
       await admin.auth().updateUser(decodedToken.userId, updateUser);
@@ -69,13 +69,9 @@ export default async function handler(req, res) {
       });
     } catch (err) {
       console.log(err);
-      res.status(401).json({ error: "Could not sign in" });
+      return res.status(500).json({ error: "Could not update user" });
     }
-    return;
   }
-}
 
-// {
-//     "email":"r10@gmail.com",
-//     "password":"serxan1111"
-//   }
+  return res.status(405).json({ error: "Method not allowed" });
+}

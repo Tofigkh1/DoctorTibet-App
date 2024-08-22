@@ -2,14 +2,24 @@ import { configureStore } from '@reduxjs/toolkit';
 import { createWrapper } from 'next-redux-wrapper';
 import userReducer from '../Featuries/User/userSlice';
 import sidebarReducer from '../Featuries/Sidebar/sideBarSlice';
+import productsReducer from '../Featuries/products/productSlice'
+import basketReducer from '../Featuries/basketSlice/basketSlice.tsx'
+
 
 
 const makeStore = () =>
     configureStore({
         reducer: {
             user: userReducer,
-            sidebar: sidebarReducer
-        }
+            sidebar: sidebarReducer,
+            products:productsReducer,
+            basket: basketReducer,
+        },
+        middleware(getDefaultMiddleware) {
+            return getDefaultMiddleware().concat(
+               
+            )
+        },
       
     });
 

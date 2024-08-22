@@ -2,6 +2,9 @@ import Head from "next/head"
 import styless from "./MainHeaderLayout.module.css"
 import Header from "../../Components/Client/Header/Header"
 import Footer from "../Client/Footer";
+import React, {useEffect} from "react";
+import { setUser } from "../../Redux/Featuries/User/userSlice";
+import { UseSelector, useDispatch } from "react-redux";
 
 
 
@@ -9,6 +12,14 @@ import Footer from "../Client/Footer";
 
 
 const MainLayout = ({children}) => {
+    const dispatch = useDispatch();
+    useEffect(()=> {
+        let user = localStorage.getItem("user_info");
+        if(user){
+            user = JSON.parse(user);
+            if(user) dispatch(setUser(user));
+        }
+    }, [])
 
     return (
         <div>
@@ -24,7 +35,7 @@ const MainLayout = ({children}) => {
                {/* <Header/> */}
             </div>
             {children}
-            
+            <Footer/>
         </div>
     </div>
     </div>

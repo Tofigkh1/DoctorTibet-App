@@ -1,80 +1,173 @@
 import { useRouter } from "next/router";
-import styles from './restaurants.module.css';
-import styles_products from '../../shared/components/Client/Products/products.module.css';
-
-import ProductsCard from "../../Shared/Components/Client/Products/ProductCard";
+import React, { useEffect, useState } from "react";
+import styles from './medicines.module.css'
 import BasketContainer from "../../Shared/Components/Client/BasketItem/BasketContainer";
+import {getProductsById} from "../../Services/index";
+import { sortDataByCreated } from "../../Shared/Utils/sortData";
+import { GetServerSideProps } from "next";
+import { useQuery } from "@tanstack/react-query";
+import Nav from "../../Shared/Components/Client/Nav/Nav";
+import Auth from "../../Shared/Components/Client/Auth/Auth";
+import styled from "styled-components";
+import { createTheme } from "@mui/material";
+import Badge from '@mui/material/Badge';
+import Avatar from '@mui/material/Avatar';
+import { useDispatch, useSelector } from "react-redux";
+import { setUser } from "../../Shared/Redux/Featuries/User/userSlice";
+import NavMedicine from "../../Shared/Components/Client/NavMedicine";
+import { RootState } from "../../Shared/Redux/Store/store";
+import { fetchProductsById } from "../../Shared/Redux/Featuries/products/productSlice";
+import Image from "next/image";
+import ProductCard from "../../Shared/Components/Client/productsCard/products";
+import ProductsCard from "../../Shared/Components/Client/Products/ProductCard";
 
-export default function RestaurantDetail() {
-    let router = useRouter();
 
-    const { id } = router.query;
 
-    const restaurant = {
-        img_url: "https://www.shareicon.net/download/2015/08/29/92523_blog.svg",
-        name: "Restaurant Name",
-        address: "123 Main St",
-        cuisine: "Italian",
-        delivery_price: 5,
-        products: [
-            { id: 1, description: "Product 1", img_url: "https://www.shareicon.net/download/2015/08/29/92523_blog.svg", name: "Product 1", price: 10 },
-            { id: 2, description: "Product 2", img_url: "https://www.shareicon.net/download/2015/08/29/92523_blog.svg", name: "Product 2", price: 20 },
-            // Add more products as needed
-        ]
-    };
 
-    const products = restaurant ? restaurant.products : [];
 
-    return (
-        <>
-            <>
-                {restaurant ?
-                    <>
-                        <div className='lg:px-8 px-3 pt-1 pb-[100px]'>
-                            <div className={styles.restaurant_top}>
-                                <img src={restaurant.img_url || undefined} alt={restaurant.name} className={styles.cover_width} />
-                            </div>
-                            <div className={`${styles.restaurant_detail} lg:flex-nowrap flex-wrap flex justify-between items-center`}>
-                                <div className={styles.left_top}>
-                                    <h1>
-                                        {restaurant.name}
-                                    </h1>
-                                    <p>{restaurant.address}</p>
-                                </div>
-                                <div className={`flex items-center md:justify-end w-full justify-between md:flex-nowrap flex-wrap ${styles.top_right} gap-10`}>
-                                    <div className={styles.restaurant_desc}>
-                                        <p>Cuisine</p>
-                                        <span>{restaurant.cuisine}</span>
-                                    </div>
-                                    <div className={`${styles.action} flex items-center gap-10`}>
-                                        <span>{restaurant.delivery_price} &#8380; Delivery</span>
-                                        <button onClick={() => router.back()}>Go Back</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="flex lg:flex-nowrap flex-wrap max-w-screen-xl mx-auto">
-                                <div className="lg:w-4/6 w-full">
-                                    <div className={styles_products.products_container}>
-                                        <h2 className={`text-center ${styles_products.products_title}`}>Products</h2>
-                                        <div className={styles_products.products_list}>
-                                            <ul>
-                                                {products.map((product) => (
-                                                    <li key={product.id}>
-                                                        <ProductsCard {...product} id={String(product.id)} />
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="lg:w-2/6 w-full">
-                                    <BasketContainer size={'md'} />
-                                </div>
-                            </div>
-                        </div>
-                    </>
-                    : <div>Loading...</div>}
-            </>
-        </>
-    );
+
+
+export default function ProductsDetail (){
+    let router = useRouter()
+    const { push } = useRouter();
+    const {id} = router.query;
+
+    const dispatch = useDispatch();
+    const { products, status } = useSelector((state: RootState) => state.products);
+    const productList = products ? [products] : [];
+  
+ 
+   
+    
+
+    useEffect(() => {
+
+
+      let user = localStorage.getItem("user_info");
+      if(user){
+          user = JSON.parse(user);
+          if(user) dispatch(setUser(user));
+      }
+
+        // if (id) { 
+        //     getProductsById(id)
+        //         .then(apires => {
+        //             setProducts(apires.data.result.data)
+        //             console.log("apires", apires.data);
+        //         })
+        //         .catch(error => {
+        //             console.error("Error fetching product data:", error);
+        //         });
+        // }
+        if (id) {
+          dispatch(fetchProductsById(id as string));
+      }
+    }, [id, dispatch]);
+
+
+    console.log("pppxx", products);
+
+    
+    const coverImage = products?.cover_url;1
+    
+    
+
+    return  (
+      <div className="relative h-auto w-auto">
+          {coverImage && (
+              <Image
+                  src={coverImage}
+                  alt="Background"
+                  layout="fill"
+                  objectFit="cover"
+                  quality={100}
+                  priority={true}
+                  className="-z-50"
+              />
+          )}
+
+          <div className="absolute top-0 left-0 right-0 flex justify-around items-center mt-7">
+              <div className="mr-60">
+                  <img
+                      onClick={() => push('/')}
+                      style={{ width: '90px', height: '90px' }}
+                      className={styles.logo}
+                      src="/Logo.png"
+                      alt="Logo"
+                  />
+              </div>
+
+              <div>
+                  <NavMedicine />
+              </div>
+
+              <div className="ml-60">
+                  <Auth />
+              </div>
+          </div>
+
+
+          
+<div className="pt-44 flex justify-around  items-center w-full">
+
+
+
+  <div className=" text-medicineFont font-semibold text-2xl left-14  ">
+    {products?.description?.split('.').map((sentence, index) => (
+      <p key={index} className="mb-2">{sentence.trim()}.</p>
+    ))}
+  </div>
+
+  <div className=" mr-32">
+    <Image
+      src={products?.img_url}
+      width={470}
+      height={470}
+      className="rounded-3xl"
+      objectFit="cover"
+      quality={100}
+      priority={true}
+    />
+  </div>
+
+  <h1>dsjfsjlfd</h1>
+</div>
+
+
+
+<div className=" mt-10">
+
+</div>
+
+
+<div className="flex  justify-around">
+  <h1 className="mt-20">kvsdgnsdk</h1>
+ 
+
+  <h1 className=" ml-60 pt-16  text-4xl text-medicineFont font-medium">
+    ${products?.price}
+  </h1>
+
+  <div className="flex gap-10">
+  <ul className="mt-16">
+    {productList.map((product) => (
+      <li key={product.id}>
+        <ProductsCard {...product} id={String(product.id)} />
+      </li>
+    ))}
+  </ul>
+  <button onClick={()=> push("/user/checkout")} className={styles.buyButton}>Buy Now</button>
+  </div>
+
+  
+</div>
+
+
+
+<div className="mt-28">
+<h1>.</h1>
+</div>
+          
+</div>
+  );
 }

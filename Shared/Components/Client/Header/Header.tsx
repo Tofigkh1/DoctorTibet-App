@@ -18,6 +18,17 @@ import Search from '../Search/Search';
 import Auth from '../Auth/Auth';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import Footer from '../Footer';
+import styled from 'styled-components';
+
+const Curve = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: #7f00ff;
+  clip-path: ellipse(80% 50% at 50% 0%);
+`;
 
 export default function Header() {
   let { isOpen, onOpen, onClose } = useModalOpen();
@@ -53,11 +64,7 @@ export default function Header() {
         <SwiperSlide><Image src={Medicinees} alt="Image 1" layout="fill" objectFit="cover" /></SwiperSlide>
         <SwiperSlide>  <SwiperSlide><Image src={Doctortb} alt="Image 1" layout="fill" objectFit="cover" /></SwiperSlide></SwiperSlide>
 
-        {/* <SwiperSlide>Slide 5</SwiperSlide>
-        <SwiperSlide>Slide 6</SwiperSlide>
-        <SwiperSlide>Slide 7</SwiperSlide>
-        <SwiperSlide>Slide 8</SwiperSlide>
-        <SwiperSlide>Slide 9</SwiperSlide> */}
+      
         
         <div className="autoplay-progress" slot="container-end">
           <svg viewBox="0 0 48 48" ref={progressCircle}>
@@ -68,42 +75,61 @@ export default function Header() {
       </Swiper>
 
 
+<div className={styles.bgimage}>
+
+<section className={`${styles.header_box}  ${isOpen ? styles.shadow : ''}`}>
+ 
+  <div className={`${styles.logo_box} flex gap-3 items-center`}>
+
+    <button className={styles.button}></button>
+    <div className={styles.cursor}>
+      <img  onClick={() => push('/')} style={{ width: '90px', height: '90px' }} className={styles.logo} src="/Logo.png" alt="Logo" />
+    </div>
+
+  </div>
+
+  
+  <div className={`${styles.menu_box} ${isMobile ? (isOpen ? styles.show : styles.hide) : styles.show}`}>
+
+  {/* <div className={styles.mobile_show}>
+      <Auth />
+    </div> */}
+
+    <Nav />
+    
+  </div>
 
 
-      <div className={styles.bgimage}>
-        <section className={`${styles.header_box} ${isOpen ? styles.shadow : ''}`}>
-          <div className={`${styles.logo_box}`}>
-            <button className={styles.button}></button>
-            <div className={styles.cursor} onClick={() => push('/')}>
-              <img style={{ width: '84px', height: '84px' }} className={styles.logo} src="/Logo.png" alt="Logo" />
-            </div>
-          </div>
-          <div>
-            <Nav />
-          </div>
-          <div className="">
-            <div className={styles.mobile_hide}>
-              <Auth />
-            </div>
-          </div>
-        </section>
+   <div className='flex flex-row gap-4 items-center'> 
+                    
+    <div className={styles.mobile_hide}>
+          <Auth/>
+    </div>
+  </div>
+  
+</section>
 
-        <div>
-          <div className={styles.headerText}>
-            <h1 className=''>We can get your Drug</h1>
-            <h1>Prescriptions to You</h1>
-          </div>
-          <div className={styles.headerSmallText}>
-            <h1 className=''>We have all the drugs your doctor prescribed for your health</h1>
-            <h1>and what’s more, we can get it to you.</h1>
-          </div>
-        </div>
+<div>
+  <div className={styles.headerText}>
+    <h1 className=''>We can get your Drug</h1>
+    <h1>Prescriptions to You</h1>
+  </div>
+  <div className={styles.headerSmallText}>
+    <h1 className=''>We have all the drugs your doctor prescribed for your health</h1>
+    <h1>and what’s more, we can get it to you.</h1>
+  </div>
+</div>
 
-        <Search />
-        
-      </div>
+<Search />
+
+
+
+</div>
     
     </div>
     
   );
 }
+
+
+

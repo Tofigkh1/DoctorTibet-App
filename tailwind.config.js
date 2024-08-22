@@ -27,6 +27,7 @@ module.exports = {
         overlayColorGreen: "#A0D6B4",
         comitColorText: "#043CAA",
         FooterColor: "#043CAA",
+        medicineFont: "#fcfafa",
     },
     extend: {},
   },

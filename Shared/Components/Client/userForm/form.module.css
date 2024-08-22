@@ -1,0 +1,55 @@
+.div {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    
+}
+
+.inpdiv {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    width: 50%;
+    gap: 11px;
+   
+}
+
+.inpdiv input {
+    height: 54px;
+    padding: 12px 24px;
+    color: #333;
+    border: 1px solid rgb(172, 172, 172);
+    padding: 8px;
+    border-radius: 4px;
+    width: 100%;
+}
+.inpdiv input::placeholder{
+    color: #333;
+    
+}
+
+
+.button {
+    background: #9b73eb;
+    text-align: center;
+    width: 150px;
+    height: 53px;
+    color: #fff;
+    margin-top: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2000px;
+    margin-left: 100px;
+}
+
+@media only screen and (max-width: 800px) {
+    .div {
+        flex-direction: column;
+
+    }
+
+    .inpdiv {
+        width: 100%;
+    }
+}

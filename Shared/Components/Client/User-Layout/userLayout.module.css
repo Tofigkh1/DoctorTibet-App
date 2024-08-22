@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+.navbar{
+    width: 275px;
+    height: 100%;
+    /* background: #F3F4F6; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    gap: 30px;
+    /* margin-top: 15px; */
+    position: relative; /* Çizginin pozisyonunu belirlemek için relative kullanıyoruz */
+    display: flex; /* Flexbox kullanarak çocukları yatayda hizalıyoruz */
+    align-items: center; /* Çocukları dikeyde ortalıyoruz */
+   
+}
+
+.verticalLine {
+    border-left: 2px solid rgb(215, 215, 215); /* Çizginin kalınlığı ve rengi */
+    height: 100%; /* Çizginin yüksekliği */
+    position: absolute; /* Çizgiyi navbar içinde konumlandırmak için absolute kullanıyoruz */
+    right: 0; /* Çizgiyi sağ tarafa hizalıyoruz */
+    top: 0;
+}
+
+.horizontalLine2{
+    border-top: 2px solid rgb(215, 215, 215); /* Çizginin kalınlığı ve rengi */
+    width: 200px; /* Çizginin genişliği */
+    position: absolute; /* Çizgiyi navbar içinde konumlandırmak için absolute kullanıyoruz */
+    left: 0; /* Çizgiyi sol tarafa hizalıyoruz */
+   margin-left: 35px;
+   margin-top: 25px;
+}
+
+
+
+
+
+.navbar > div{
+    cursor: pointer;
+}
+.icondiv{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    gap: 13px;
+    width: 80%;
+    height: 56px;
+    padding: 15px;
+    border-radius: 6px;
+    background-color: initial; /* Başlangıçta arka plan rengi yok */
+    transition: background-color 0.3s ease
+
+}
+
+
+.icondiv:hover {
+    background-color: #9b73eb;
+   
+}
+.defaultText{
+    color: #828282;
+    font-family: Mukta;
+font-size: 20px;
+font-weight: 600;
+line-height: 24px;
+letter-spacing: 0.03em;
+text-align: left;
+transition: color 0.3s ease
+
+}
+
+.defaultText:hover {
+    color: white; /* Mouse ile üzerine gelindiğinde arka plan rengi */
+}
+
+.activeText{
+color: white;
+font-family: Mukta;
+font-size: 20px;
+font-weight: 600;
+line-height: 24px;
+letter-spacing: 0.03em;
+text-align: left;
+
+}
+.activediv{
+    background-color: #9b73eb;
+}

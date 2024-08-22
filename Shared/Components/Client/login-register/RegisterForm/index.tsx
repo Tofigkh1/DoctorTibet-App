@@ -23,6 +23,7 @@ interface RegisterFormValues {
 
 const initialValues: RegisterFormValues = {
   "email": '',
+  
   "password": '',
   "fullname": '',
   "username": '',
@@ -53,22 +54,14 @@ const RegisterForm= (props:Props) => {
         
         
         try{
-          console.log("values", values);
+         
          setLoading(true)
-        await postSignUp(values)
+         await postSignUp(values)
          .then(()=>{
            
             toast({
               title: `Register successfully!`,
               status: 'success',
-              duration: 2000,
-              isClosable: true,
-              position:'top-right',
-              variant:'subtle'
-            })
-            toast({
-              title: `Now you can sing in!`,
-              status: 'info',
               duration: 2000,
               isClosable: true,
               position:'top-right',
@@ -89,7 +82,7 @@ const RegisterForm= (props:Props) => {
             })
           })
 
-    
+       
           
         }catch(err){
           console.log(err);

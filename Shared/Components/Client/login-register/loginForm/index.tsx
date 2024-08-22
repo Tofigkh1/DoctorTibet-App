@@ -5,10 +5,16 @@ import styles from './loginForm.module.css'
 import { useRouter } from 'next/router';
 import LoginInp from '../loginInp';
 import Spiner from '../../Spiner';
+import { Post } from '../../../../../server/helper/reguests';
+import { useToast } from '@chakra-ui/react';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState, AppDispatch } from '../../../../Redux/Store/store';
+import { setUser, clearUser, updateUser } from '../../../../Redux/Featuries/User/userSlice';
+
 
 interface SignInFormValues {
-    email: string
-    password: string
+    email: string;
+    password: string;
 }
 
 const initialValues: SignInFormValues = {
@@ -20,7 +26,8 @@ const initialValues: SignInFormValues = {
 
 
 const SignInForm: React.FC  = () => {
-    let [loading, setLoading] = useState(false)
+    let [loading, setLoading] = useState(false);
+    const toast = useToast()
 
 
      const validationSchema = Yup.object({
@@ -28,11 +35,69 @@ const SignInForm: React.FC  = () => {
         password: Yup.string().required('Required'),
      });
 
-     let router = useRouter()
+     let router = useRouter();
+
+
 
      const handleSubmit = (values: SignInFormValues, {setSubmitting}: { setSubmitting: (isSubmitting:boolean) => void }) => {
+      (async()=>{
+        try{
+          setLoading(true)
+           await Post(values, `auth/signin`).then((res)=>{
+            setLoading(false)
+            console.log(res);
+       
+          localStorage.setItem("access_token",res.user.access_token)
+  
+          localStorage.setItem("user_info",JSON.stringify(res.user))
+          dispatch(setUser(res.user));
+        
+             toast({
+               title: `Signed in successfully!`,
+               status: 'success',
+               duration: 2000,
+               isClosable: true,
+               position:'top-right',
+               variant:'subtle'
+             })
+          router.push('/')
+          })
+          
+          
+    
+         
+        }catch(err){
+       
+          toast({
+            title: `Email or password is wrong`,
+            status: 'error',
+            duration: 2000,
+            isClosable: true,
+            position:'top-right',
+            variant:'subtle'
+          })
+        }
+        
+  
+        
+      })()
 
+      setSubmitting(false);
      }
+
+     const dispatch: AppDispatch = useDispatch();
+     const user = useSelector((state:RootState)=>state.user)
+
+     const handleLogout = () => {
+      dispatch(clearUser())
+     }
+
+     const handleUpdateUser = () => {
+      const updateData = {
+        email: 'newemail@example.com',
+      };
+      dispatch(updateUser(updateData));
+    };
 
      return (
         <div>
@@ -50,8 +115,7 @@ const SignInForm: React.FC  = () => {
           type='email'
           />
           <LoginInp
-                    name='password'
-
+          name='password'
           title="Password"
           icon={false}
           type='password'
