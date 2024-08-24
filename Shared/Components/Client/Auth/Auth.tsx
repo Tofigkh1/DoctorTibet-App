@@ -25,7 +25,9 @@ export default function Auth() {
 
     let user = useSelector((state: RootState) => state.user);
     console.log("user",user);
-    const nameChar = getNameFirstLetter(user.fullname);
+    const nameChar = user.fullname ? getNameFirstLetter(user.fullname) : '';
+
+    
 
     
 

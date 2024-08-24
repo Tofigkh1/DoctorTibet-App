@@ -118,6 +118,14 @@ function Profile() {
 
   const [mobile, setmobile] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const dispatch: AppDispatch = useDispatch();
+  const user = useSelector((state: RootState) => state.user);
+
+  console.log("reduxUser",user);
+  
+
+ 
+
 
   useEffect(() => {
     if (window.innerWidth < 800) {
@@ -127,6 +135,11 @@ function Profile() {
     }
 
     const token = localStorage.getItem('access_token');
+if (!token) {
+  // Eğer token yoksa, kullanıcıyı giriş sayfasına yönlendirin
+  push('/login');
+}
+
     const userInfo = localStorage.getItem('user_info');
     if (token && userInfo) {
       setIsLoggedIn(true);
@@ -156,8 +169,9 @@ function Profile() {
     }
   }, [IMG]);
 
-  const dispatch: AppDispatch = useDispatch();
-  const user = useSelector((state: RootState) => state.user);
+
+  
+
 
   return (
     <>

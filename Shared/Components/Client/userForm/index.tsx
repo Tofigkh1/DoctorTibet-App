@@ -133,7 +133,7 @@ const UserForm: React.FC<Props> = (props: Props) => {
                 <Form>
                     <div className={div}>
                         <div className={inpdiv}>
-                            <Input name='phone' type='text' placeholder={user.phone ? user.phone : '+994 XX XXX XX XX'} title="Contact Number" />
+                            <Input name='phone' type='text' placeholder={user.phoneNumber ? user.phoneNumber : '+994 XX XXX XX XX'} title="Contact Number" />
                             <Input name='username' type='text' placeholder={user.username} title="User Name" />
                             <Input name='fullname' type='text' placeholder={user.fullname} title="Full Name" />
                         </div>

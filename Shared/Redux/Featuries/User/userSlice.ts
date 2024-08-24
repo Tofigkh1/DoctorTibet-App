@@ -8,7 +8,7 @@ interface UserState {
   access_token?: string;
   refresh_token?: string;
   address?: string;
-  phone: string;
+  phoneNumber: string;
 }
 
 const initialState: UserState = {
@@ -18,7 +18,7 @@ const initialState: UserState = {
   fullname: '',
   access_token: '',
   refresh_token: '',
-  phone: '',
+  phoneNumber: '',
   address: ''
 }
 

@@ -38,6 +38,7 @@ export const uploadFile = async ({
                 console.log('Upload is ' + progress + '% done');
             },
             (error) => {
+                console.error('Upload failed: ' + error.message);  // Burada hatayı detaylı olarak loglayın
                 reject('Upload failed: ' + error.message);
             },
             async () => {
@@ -52,10 +53,12 @@ export const uploadFile = async ({
                     });
                     resolve(downloadURL);
                 } catch (error: any) {
+                    console.error('Failed to save file metadata: ' + error.message);  // Burada hatayı detaylı olarak loglayın
                     reject('Failed to save file metadata: ' + error.message);
                 }
             }
         );
+        
     });
 };
 

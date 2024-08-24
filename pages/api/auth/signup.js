@@ -8,13 +8,14 @@ async function handler(req, res) {
   // await applyCors(req, res);
 
   if (req.method === "POST") {
-    const { email, password, username, fullname } = req.body ?? {};
+    const { email, password, username, fullname, phoneNumber } = req.body ?? {};
     try {
       const hashPassword = await passwordHash(password);
 
       const userInfo = {
         email,
         password: hashPassword,
+        phoneNumber,
       };
 
       const customClaims = {

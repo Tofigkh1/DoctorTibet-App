@@ -49,6 +49,7 @@ export default async function handler(req, res) {
       const updateUser = {
         email,
         displayName: fullname,
+        phoneNumber: phone,
       };
 
       const customClaims = {
