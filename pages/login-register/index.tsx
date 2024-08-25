@@ -9,6 +9,7 @@ import { GetServerSideProps } from 'next';
 import loginIcon from '../../public/TiensAccount.png'
 import loginIcon2 from '../../public/TiensAccount2.png'
 import loginIcon3 from '../../public/Login3.png'
+import { UserAuth } from "../../Shared/Context";
 
 
 function LoginRegister(){
@@ -16,6 +17,9 @@ function LoginRegister(){
   let [singin, setSingin] = useState(false)
   let [mobile, setMobile] = useState(false)
   let router = useRouter()
+
+
+
 
   useEffect(()=>{
     if(window.innerWidth<800){
@@ -25,16 +29,25 @@ function LoginRegister(){
     )
   },[mobile])
 
-  useLayoutEffect(()=>{
-    const unsubscribe = () =>{
-      const user = localStorage.getItem('user_info');
-      if(user) {
-        router.replace('/')
-      }
-    }
-    return () => unsubscribe();
-  },[router])
 
+  useLayoutEffect(() => {
+    // Bu işlev, bileşen mount olduğunda çalışacak ve kullanıcı bilgilerini kontrol edecek
+    const checkUser = () => {
+      const user = localStorage.getItem('user_info');
+      if (user) {
+        // Kullanıcı bilgileri varsa yönlendirme yap
+        router.replace('/');
+      }
+    };
+
+    // Kullanıcıyı kontrol et
+    checkUser();
+
+    // Temizleme işlevi: Unsubscribe işlevi olarak tanımlanmış
+    return () => {
+      // Bu durumda, `unsubscribe` işlevinin içi boş; temizlik kodu eklenebilir
+    };
+  }, [router]);
 
 return (
   <div>

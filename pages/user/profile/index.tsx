@@ -22,6 +22,7 @@ import Footer from '../../../Shared/Components/Client/Footer';
 import UserForm from '../../../Shared/Components/Client/userForm';
 import Auth from '../../../Shared/Components/Client/Auth/Auth';
 
+
 // Styled Components
 const Container = styleds.div`
   font-family: Arial, sans-serif;
@@ -122,7 +123,8 @@ function Profile() {
   const user = useSelector((state: RootState) => state.user);
 
   console.log("reduxUser",user);
-  
+
+
 
  
 
@@ -168,7 +170,6 @@ if (!token) {
       setDownloadURL(IMG[0]?.data_url || '');
     }
   }, [IMG]);
-
 
   
 
@@ -270,7 +271,9 @@ if (!token) {
         </div>
            
           </div>
+
           
+         
         </div>
 
 

@@ -10,112 +10,146 @@ import { useToast } from '@chakra-ui/react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState, AppDispatch } from '../../../../Redux/Store/store';
 import { setUser, clearUser, updateUser } from '../../../../Redux/Featuries/User/userSlice';
+import { UserAuth } from '../../../../Context';
+
+const phoneRegExp = /^\+?[1-9]\d{1,14}$/;
 
 interface SignInFormValues {
-    phoneNumber: string;
-    password: string;
+  phoneNumber: string;
+  password: string;
 }
 
 const initialValues: SignInFormValues = {
-    phoneNumber: '',
-    password: '',
+  phoneNumber: '',
+  password: '',
 };
 
 const SignInForm: React.FC = () => {
-    let [loading, setLoading] = useState(false);
-    const toast = useToast();
+  const [loading, setLoading] = useState(false);
+  const toast = useToast();
+  const router = useRouter();
+  const dispatch: AppDispatch = useDispatch();
+  const { useer, googleSignIn, logOut }:any = UserAuth();
 
-    const validationSchema = Yup.object({
-        phoneNumber: Yup.string().required('Required'),
-        password: Yup.string().required('Required'),
-    });
+  
+  const validationSchema = Yup.object({
+    phoneNumber: Yup.string()
+      .matches(phoneRegExp, 'Invalid phone number format')
+      .required('Required'),
+    password: Yup.string().required('Required'),
+  });
 
-    let router = useRouter();
+  const handleSubmit = async (values: SignInFormValues, { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void }) => {
+    try {
+      setLoading(true);
+      const res = await Post(values, `auth/signin`);
+      setLoading(false);
+      console.log(res);
 
-    const handleSubmit = (values: SignInFormValues, { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void }) => {
-        (async () => {
-            try {
-                setLoading(true);
-                await Post(values, `auth/signin`).then((res) => {
-                    setLoading(false);
-                    console.log(res);
+      localStorage.setItem("access_token", res.user.access_token);
+      localStorage.setItem("user_info", JSON.stringify(res.user));
+      dispatch(setUser(res.user));
 
-                    localStorage.setItem("access_token", res.user.access_token);
+      toast({
+        title: `Signed in successfully!`,
+        status: 'success',
+        duration: 2000,
+        isClosable: true,
+        position: 'top-right',
+        variant: 'subtle'
+      });
+      router.push('/');
+    } catch (err) {
+      setLoading(false);
+      toast({
+        title: `Phone number or password is incorrect`,
+        status: 'error',
+        duration: 2000,
+        isClosable: true,
+        position: 'top-right',
+        variant: 'subtle'
+      });
+    }
+    setSubmitting(false);
+  };
 
-                    localStorage.setItem("user_info", JSON.stringify(res.user));
-                    dispatch(setUser(res.user));
+  const handleSignInWithGoogle = async () => {
 
-                    toast({
-                        title: `Signed in successfully!`,
-                        status: 'success',
-                        duration: 2000,
-                        isClosable: true,
-                        position: 'top-right',
-                        variant: 'subtle'
-                    });
-                    router.push('/');
-                });
+    try {
+      setLoading(true);
+      await googleSignIn();
+      setLoading(false);
 
-            } catch (err) {
+      if (useer) {
+        const accessToken = await useer?.getIdToken();
+        console.log("accessToken",accessToken);
+        
+        localStorage.setItem("access_token", accessToken);
+        localStorage.setItem("user_info", JSON.stringify(useer));
+        dispatch(setUser(useer));
+        console.log("useer333",useer);
 
-                toast({
-                    title: `Phone number or password is wrong`,
-                    status: 'error',
-                    duration: 2000,
-                    isClosable: true,
-                    position: 'top-right',
-                    variant: 'subtle'
-                });
-            }
+        toast({
+          title: `Signed in successfully!`,
+          status: 'success',
+          duration: 2000,
+          isClosable: true,
+          position: 'top-right',
+          variant: 'subtle'
+        });
+        router.push('/');
+      }
+    } catch (error) {
+      setLoading(false);
+      toast({
+        title: `Google sign-in failed`,
+        status: 'error',
+        duration: 2000,
+        isClosable: true,
+        position: 'top-right',
+        variant: 'subtle'
+      });
+      console.log(error);
+    }
+  };
 
-        })();
-
-        setSubmitting(false);
-    };
-
-    const dispatch: AppDispatch = useDispatch();
-    const user = useSelector((state: RootState) => state.user);
-
-    const handleLogout = () => {
-        dispatch(clearUser());
-    };
-
-    const handleUpdateUser = () => {
-        const updateData = {
-            email: 'newemail@example.com',
-        };
-        dispatch(updateUser(updateData));
-    };
-
-    return (
-        <div>
-            <Formik
-                initialValues={initialValues}
-                validationSchema={validationSchema}
-                onSubmit={handleSubmit}
+  return (
+    <div>
+      <div>
+        <button onClick={handleSignInWithGoogle}>LogIn with Google</button>
+      </div>
+      <Formik
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        onSubmit={handleSubmit}
+      >
+        {({ isSubmitting }) => (
+          <Form className={styles.form}>
+            <LoginInp
+              name='phoneNumber'
+              title="Phone Number"
+              icon={true}
+              type='text'
+            />
+            <LoginInp
+              name='password'
+              title="Password"
+              icon={false}
+              type='password'
+            />
+            <button
+              className={styles.button}
+              type="submit"
+              disabled={isSubmitting}
+              style={loading ? { cursor: "not-allowed" } : { cursor: 'pointer' }}
             >
-                {({ isSubmitting }) => (
-                    <Form className={styles.form}>
-                        <LoginInp
-                            name='phoneNumber'
-                            title="Phone Number"
-                            icon={true}
-                            type='text'
-                        />
-                        <LoginInp
-                            name='password'
-                            title="Password"
-                            icon={false}
-                            type='password'
-                        />
-                        <button className={styles.button} type="submit" disabled={isSubmitting} style={loading ? { cursor: "not-allowed" } : { cursor: 'pointer' }}>
-                            {loading ? <Spiner /> : `Login`}
-                        </button>
-                    </Form>
-                )}
-            </Formik>
-        </div>
-    );
-}
+              {loading ? <Spiner /> : `Login`}
+            </button>
+          </Form>
+        )}
+      </Formik>
+    </div>
+  );
+};
 
 export default SignInForm;

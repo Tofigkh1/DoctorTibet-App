@@ -10,6 +10,7 @@ import { useToast } from '@chakra-ui/react';
 import { postSignUp } from '../../../../../Services';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../../Redux/Store/store';
+import { UserAuth } from '../../../../Context';
 
 interface RegisterFormValues {
   fullname: string;
@@ -37,12 +38,33 @@ const RegisterForm = (props: Props) => {
   let { setsingin }: any = props;
   let [Loading, setLoading] = useState(false);
 
+
+  
+  const { useer, googleSignIn, logOut }:any = UserAuth();
+
+  console.log(useer);
+  
+
+  const handleSignIn = async () => {
+    try {
+      await googleSignIn();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  
+
+  // Regex pattern to validate a phone number (international format)
+  const phoneRegExp = /^\+?[1-9]\d{1,14}$/;
+
   const validationSchema = Yup.object({
     fullname: Yup.string().required('Required'),
     username: Yup.string().required('Required'),
     email: Yup.string().email('Invalid email address').required('Required'),
     password: Yup.string().required('Required'),
-    phoneNumber: Yup.string().required('Required'),
+    phoneNumber: Yup.string()
+      .matches(phoneRegExp, 'Invalid phone number')
+      .required('Required'),
   });
 
   const handleSubmit = (values: RegisterFormValues, { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void }) => {
@@ -82,6 +104,10 @@ const RegisterForm = (props: Props) => {
 
   return (
     <div>
+
+<div>
+          <button onClick={handleSignIn} >SignUp</button>
+          </div>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}

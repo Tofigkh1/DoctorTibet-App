@@ -9,6 +9,7 @@ import themes from "../Theme/index";
 import CssBaseline from '@mui/material/CssBaseline';
 import '../styles/globals.css';
 import { ThemeProvider } from "../@/components/my-components/theme/theme-provider/index"
+import { AuthContextProvider } from '../Shared/Context';
 
 
 
@@ -16,23 +17,20 @@ function MyApp({ Component, pageProps }: AppProps) {
   const { store, props } = wrapper.useWrappedStore({ pageProps });
   return (
     <Provider store={store}>
-
-        <CssBaseline />
-      
-        <CssBaseline />
-        <ChakraProvider theme={themes}>
+    <AuthContextProvider>
+      <CssBaseline />
+      <ChakraProvider theme={themes}>
         <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-           <Component {...props.pageProps} />
-          </ThemeProvider>
-         
-        </ChakraProvider>
-      
-    </Provider>
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Component {...props.pageProps} />
+        </ThemeProvider>
+      </ChakraProvider>
+    </AuthContextProvider>
+  </Provider>
   );
 }
 
