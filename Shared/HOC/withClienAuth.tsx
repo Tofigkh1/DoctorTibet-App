@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../../server/configs/firebase';
-import Loading from '../components/Loading/Loading';
+import Loading from '../Components/Loading/Loading';
 import { useSelector } from 'react-redux';
 import { RootState } from '../Redux/Store/store';
 
