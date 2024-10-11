@@ -2,7 +2,7 @@ import admin from "firebase-admin";
 
 if (!admin.apps.length) {
 
-    const serviceAccount = require("./tiensapp-92bab-firebase-adminsdk-gmgsg-44859d2e43.json");
+    const serviceAccount = require("./tiensapp-92bab-firebase-adminsdk-lupd3-db31b09ece.json");
     
 
 
@@ -14,4 +14,4 @@ if (!admin.apps.length) {
 export const storage = admin.storage();
 export const firestore = admin.firestore();
 
-export default admin;
+export default admin;   

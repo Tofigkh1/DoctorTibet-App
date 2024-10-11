@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { Box, Tag, VStack } from "@chakra-ui/react";
-import { useDispatch } from "react-redux";
-import { setUser } from "../../Shared/Redux/Featuries/User/userSlice";
-import loadingMedicalGif from '../../public/loadingMedical.gif'
+import { Box, Tag, VStack, SimpleGrid, Flex, Text } from "@chakra-ui/react";
+import { useDispatch, useSelector } from "react-redux";
+import { setUser, UserState } from "../../Shared/Redux/Featuries/User/userSlice";
+import loadingMedicalGif from '../../public/loadingMedical.gif';
 import styled from "styled-components";
 import { createTheme } from "@mui/material";
 import Badge from '@mui/material/Badge';
@@ -23,12 +23,15 @@ import { FreeMode, Pagination } from 'swiper/modules';
 import { useModalOpen } from "../../Shared/Hooks/useModalOpen";
 import Image from "next/image";
 import dynamic from "next/dynamic";
+import { DotLoader } from "react-spinners";
+import { motion } from "framer-motion";
+import BasketMenu from "../../Shared/Components/sliderBasket/sliderBasket";
+import { AppDispatch, RootState } from "../../Shared/Redux/Store/store";
 
 const ProductCard = dynamic(() => import('../../Shared/Components/Client/productsCard/products'), {
   loading: () => <p>Loading...</p>,
   ssr: false,
 });
-
 
 const Container = styled.div`
   font-family: Arial, sans-serif;
@@ -61,6 +64,7 @@ const Curve = styled.div`
 `;
 
 const theme = createTheme();
+
 const StyledBadge = styled(Badge)(({ theme }) => ({
   '& .MuiBadge-badge': {
     width: '16px',
@@ -83,7 +87,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
   },
   '@keyframes ripple': {
     '0%': {
-      transform: 'scale(.8)',
+      transform: 'scale(0.8)',
       opacity: 1,
     },
     '100%': {
@@ -100,11 +104,11 @@ const StyledBadge2 = styled(Badge)`
   }
   @keyframes ripple {
     0% {
-      transform: scale(.8);
+      transform: scale(0.8);
       opacity: 1;
     }
     100% {
-      transform: scale(2.4);
+      transform: scale(2.4),
       opacity: 0;
     }
   }
@@ -115,26 +119,50 @@ const LargeAvatar = styled(Avatar)({
   height: 100,
 });
 
+const StyledSwiperSlide = styled(SwiperSlide)`
+  transition: background-color 0.3s ease; /* Hover efekti için geçiş efekti */
+  
+  &:hover {
+    background-color: green; /* Hover efektinde arka plan rengi yeşil olacak */
+  }
+`;
+
+const MotionVStack = motion(VStack); 
+
 function Medicines() {
-  const [categories, setCategories] = useState<any[] | undefined>([]);
-  const [products, setProducts] = useState<any[] | undefined>([]);
+  const [categories, setCategories] = useState<any[]>([]);
+  const [products, setProducts] = useState<any[]>([]);
   const [chooseCategory, setChooseCategory] = useState<string | null>(null);
+  const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
+  const [isHovered, setIsHovered] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   let { isOpen, onClose, onOpen } = useModalOpen();
   const [isOpenn, setIsOpen] = useState(false);
   const { push } = useRouter();
   const router = useRouter();
-  const dispatch = useDispatch();
+
+  const [accessToken, setAccessToken] = useState<string | null>(null);
+  let user = useSelector((state: RootState) => state.user);
+  const dispatch: AppDispatch = useDispatch();
 
   useEffect(() => {
-    let user = localStorage.getItem("user_info");
-    if (user) {
-      user = JSON.parse(user);
-      if (user) dispatch(setUser(user));
-    }
+    const token = localStorage.getItem('user_info');
+    setAccessToken(token);
+}, [user]);
+
+  useEffect(() => {
+    let userStr = localStorage.getItem("user_info");
+    if (userStr) {
+      try {
+          const user: UserState = JSON.parse(userStr);
+          dispatch(setUser(user));
+      } catch (error) {
+          console.error("Kullanıcı bilgisi parse edilirken hata oluştu:", error);
+
+      }
+  }
   }, [dispatch]);
-  
 
   useEffect(() => {
     const fetchData = async () => {
@@ -160,29 +188,47 @@ function Medicines() {
     fetchData();
   }, []);
 
-  const filteredProducts = products?.filter((product: any) => {
-    const category_id = product.category_id;
-    return (
-      !chooseCategory || (typeof category_id === "string" && category_id.includes(chooseCategory))
-    );
-  });
+  const getProductsByCategory = (categoryId: string) => {
+    return products?.filter((product: any) => product.category_id === categoryId);
+  };
 
   const handleCategory = (categoryName: string | null) => {
     setChooseCategory(categoryName);
+    onClose(); 
   };
 
-  function onDetail(id: number) {
-    router.push('medicines/' + id);
-  }
+  const handleMouseEnter = () => {
+    setIsHovered(true);  
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);  
+    setHoveredCategory(null); 
+  };
+
+  // function onDetail(id: number) {
+  //   router.push('medicines/' + id);
+  // }
 
   const handlePrint = () => {
     window.print();
   };
 
+  function onDetail(id: number) {
+    router.push(`/medicines/${id}`);
+  }
+
+
+
+  const handleCategoryHover = (categoryId: string | null) => {
+    setHoveredCategory(categoryId);
+
+    onClose(); 
+  };
+
   return (
     <div>
-
-<Container>
+      <Container>
         <Header>
           <div className="flex">
             <img
@@ -194,9 +240,13 @@ function Medicines() {
             />
           </div>
           <Nav />
-          <div>
-            <Auth />
-          </div>
+          <div className="flex gap-10 z-50">
+          {accessToken && (
+         
+         <BasketMenu/>
+        )}
+                        <Auth/>
+                        </div>
         </Header>
 
         <MainSection>
@@ -205,92 +255,151 @@ function Medicines() {
       </Container>
 
       {isLoading ? (
-       <Image className=' ml-52' width={600} height={500} src={loadingMedicalGif}/>
-      ) : (  
-
-
-
-
-
-      <div >
-
-   
-
-      <Box
-        onMouseEnter={() => setIsOpen(true)}
-        onMouseLeave={() => setIsOpen(false)}
-        width="100%"
-        borderWidth="1px"
-      borderTopRadius="0"  
-      borderBottomRadius="md"
-        overflow="hidden"
-        
-        background = "linear-gradient(135deg, #7f00ff, #e100ff)"
-        p={4}
-        transition="all 0.3s ease"
-      >
-        <Box as="h3" fontSize="lg"  className=" text-white  cursor-pointer">
-            Categories
-        </Box>
-
-        <Box
-          maxHeight={isOpenn ? "200px" : "0"}
-          overflow="hidden"
-          transition="all 0.3s ease"
-        >
-          <VStack align="start" mt={2}>
-          <Tag colorScheme="teal">
-            
-            <li onClick={() => { handleCategory(null); onClose(); }}>
-                                                  <p className="font-bold text-xl capitalize cursor-pointer">
-                                                  all categories
-                                                  </p>
-                                              </li>
-                </Tag>
-            {categories?.map((category: any) => (
-
-              
-              <Tag
-                key={category.id}
-                colorScheme={chooseCategory === category.id ? "blue" : "teal"}
-                onClick={() => { handleCategory(category.id); }}
-                className="cursor-pointer"
-              >
-                {category.name}
-              </Tag>
-            ))}
-          </VStack>
-        </Box>
-      </Box>
-
+       <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '80vh'
+      }}>
+        <DotLoader color="#28e4c5" speedMultiplier={1.6} size={90} />
+      </div>
+      ) : (
         <div>
+          <Box
+            onMouseEnter={() => setIsOpen(true)}
+            onMouseLeave={() => setIsOpen(false)}
+            width="100%"
+            borderWidth="1px"
+            borderTopRadius="0"  
+            borderBottomRadius="3xl"
+            overflow="hidden"
+            background="linear-gradient(135deg, #7f00ff, #e100ff)"
+            p={4}
+            transition="all 0.3s ease"
+          >
+          
+
+
+          <div>
   
-  <div className=" mt-12"></div>
-    
-        <div className="flex flex-row flex-wrap">
-          <div className="bg-medicinesCardColor w-80 h-auto ml-12 rounded-2xl border border-whiteLight3">
-            <Swiper spaceBetween={50} slidesPerView={1} className="mySwiper">
-              {filteredProducts?.map((product: any) => (
-                <SwiperSlide key={product.id}>
-                  <ProductCard {...product} onReadMore={() => onDetail(product.id)} />
-                </SwiperSlide>
-              ))}
-            </Swiper>
+
+      <Flex wrap="wrap" justifyContent="start" gap={3}>
+
+
+        
+        {categories?.map((category: any) => (
+          <Text
+            key={category.id}
+            position="relative"
+            fontSize="19px"
+            letterSpacing="0.03em"
+            color="white"
+            cursor="pointer"
+            onMouseEnter={() => handleCategoryHover(category.id)}  
+            onMouseLeave={() => !isHovered && setHoveredCategory(null)}
+            onClick={() => handleCategory(category.id)} 
+            className="cursor-pointer"
+            style={{ transition: 'background-color 0.3s ease' }}
+           
+            _before={{
+              content: '""',
+              position: 'absolute',
+              width: hoveredCategory === category.id ? '100%' : '0',
+              height: '2px',
+              left: 0,
+              bottom: '-2px',
+              backgroundColor: '#26d6a1',
+              transition: 'width 0.3s ease',
+            }}
+            _hover={{
+              color: '#26d6a1',
+            }}
+          >
+            {category.name}
+          </Text>
+        ))}
+      </Flex>
+
+      {hoveredCategory && (
+        <MotionVStack
+          align="start"
+          mt={4}
+          initial={{ height: 0, opacity: 0, y: -20 }}
+          animate={{ height: 'auto', opacity: 1, y: 0  }}
+          transition={{ duration: 0.2 }}
+          onMouseEnter={handleMouseEnter} 
+          onMouseLeave={handleMouseLeave} 
+        >
+   <SimpleGrid columns={4} spacing={3} >
+          {getProductsByCategory(hoveredCategory)?.map((product: any) => (
+        
+            <Box
+         
+              key={product.id}
+              borderWidth="1px"
+              borderRadius="full"
+              p={3}
+              textAlign="center"
+              background="white"
+              width="100px"
+              height="100px"
+              onClick={() => onDetail(product.id)} 
+              cursor="pointer"
+            >
+              <Image
+              className=" ml-2 "
+                src={product?.img_url}
+                alt={product?.name}
+                width={55}
+                height={55}
+      
+              />
+              <Text fontSize="sm" >{product.name}</Text>
+            </Box>
+         
+          ))}
+    </SimpleGrid>
+        </MotionVStack>
+      )}
+    </div>
+
+            
+          </Box>
+
+          <div className="flex  justify-center">
+            {chooseCategory ? (
+                 getProductsByCategory(chooseCategory).length > 0 ? (
+                  <div className="w-full h-auto m-4 rounded-2xl ">
+                    <div className="flex flex-wrap gap-16 ">
+                      {getProductsByCategory(chooseCategory).map((product: any) => (
+                        <div key={product.id} className="border border-whiteLight3 rounded-xl ">
+                          <ProductCard {...product} onReadMore={() => onDetail(product.id)} />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+              ) : (
+                <p className="text-center mt-4">Bu kategoride ürün bulunmamaktadır.</p>
+              )
+            ) : (
+              categories?.map((category) => (
+                <div key={category.id} className="w-full h-auto m-4  ">
+          
+              
+                <div className="flex flex-wrap gap-16 ">
+                  {getProductsByCategory(category.id).map((product: any) => (
+                    <div key={product.id} className="  border border-whiteLight3 rounded-xl">
+                      <ProductCard {...product} onReadMore={() => onDetail(product.id)} />
+                    </div>
+                  ))}
+                </div>
+              </div>
+              ))
+            )}
           </div>
         </div>
-        </div>
-     
-</div>
-
-
-
-  )}
-
-  <div>
-   <button onClick={handlePrint}>click</button>
-  </div>
-</div>
-
+      )}
+    </div>
   );
 }
 

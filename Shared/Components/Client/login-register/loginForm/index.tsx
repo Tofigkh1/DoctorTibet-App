@@ -11,6 +11,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState, AppDispatch } from '../../../../Redux/Store/store';
 import { setUser, clearUser, updateUser } from '../../../../Redux/Featuries/User/userSlice';
 import { UserAuth } from '../../../../Context';
+import { FaGoogle } from 'react-icons/fa';
 
 const phoneRegExp = /^\+?[1-9]\d{1,14}$/;
 
@@ -29,7 +30,11 @@ const SignInForm: React.FC = () => {
   const toast = useToast();
   const router = useRouter();
   const dispatch: AppDispatch = useDispatch();
+
   const { useer, googleSignIn, logOut }:any = UserAuth();
+
+  console.log("useerEsas",useer);
+  
 
   
   const validationSchema = Yup.object({
@@ -73,51 +78,56 @@ const SignInForm: React.FC = () => {
     setSubmitting(false);
   };
 
-  const handleSignInWithGoogle = async () => {
 
-    try {
-      setLoading(true);
-      await googleSignIn();
-      setLoading(false);
 
-      if (useer) {
-        const accessToken = await useer?.getIdToken();
-        console.log("accessToken",accessToken);
-        
-        localStorage.setItem("access_token", accessToken);
-        localStorage.setItem("user_info", JSON.stringify(useer));
-        dispatch(setUser(useer));
-        console.log("useer333",useer);
+const handleSignInWithGoogle = async () => {
+  try {
+    setLoading(true);
+    const signInResult = await googleSignIn();
+    console.log("Google Sign-In Result:", signInResult);
+    setLoading(false);
 
-        toast({
-          title: `Signed in successfully!`,
-          status: 'success',
-          duration: 2000,
-          isClosable: true,
-          position: 'top-right',
-          variant: 'subtle'
-        });
-        router.push('/');
-      }
-    } catch (error) {
-      setLoading(false);
+    if (useer) {
+      const accessToken = await useer?.getIdToken();
+      console.log("accessToken", accessToken);
+      
+      localStorage.setItem("access_token", accessToken);
+      localStorage.setItem("user_info", JSON.stringify(useer));
+      dispatch(setUser(useer));
+      console.log("useer333", useer);
+
       toast({
-        title: `Google sign-in failed`,
-        status: 'error',
+        title: `Signed in successfully!`,
+        status: 'success',
         duration: 2000,
         isClosable: true,
         position: 'top-right',
         variant: 'subtle'
       });
-      console.log(error);
+      window.location.reload(); // Bu satırı kaldırmayı deneyin veya
+      // router.push('/'); // Bu satırı kaldırmayı deneyin
     }
-  };
+  } catch (error) {
+    setLoading(false);
+    toast({
+      title: `Google sign-in failed`,
+      status: 'error',
+      duration: 2000,
+      isClosable: true,
+      position: 'top-right',
+      variant: 'subtle'
+    });
+    console.log("Error during Google sign-in:", error); // Hata detaylarını konsolda görmek için bu satırı ekleyin
+  }
+};
+
 
   return (
     <div>
-      <div>
-        <button onClick={handleSignInWithGoogle}>LogIn with Google</button>
-      </div>
+   <button onClick={handleSignInWithGoogle} className={styles.googleSignInButton}>
+          <FaGoogle className={styles.googleIcon} />
+          Sign up with Google
+        </button>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}

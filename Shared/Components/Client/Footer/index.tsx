@@ -1,13 +1,22 @@
 // components/Footer.tsx
 import RightIcon from "../../Svg/RightIcon";
 import Search2 from "../Search2/search2";
-
 import { Box, Button, Container, Flex, Heading, Input, Stack, Text, Link } from "@chakra-ui/react";
-import Styles from "./Footer.module.css"
+import Styles from "./Footer.module.css";
 import QRCodePage from "../../QRCodePage/qr-code";
-
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../Redux/Store/store";
 
 const Footer = () => {
+  const user = useSelector((state: RootState) => state.user);
+  const [accessToken, setAccessToken] = useState<string | null>(null);
+
+  useEffect(() => {
+    const token = localStorage.getItem('user_info');
+    setAccessToken(token);
+  }, [user]);
+
   return (
     <Box bg="#043CAA" color="white" py={10} className={Styles.Footerbox}>
       <Container maxW="container.xl">
@@ -16,17 +25,17 @@ const Footer = () => {
             <Heading as="h2" size="lg" mb={2}>Sign up for our Newsletter</Heading>
             <Text fontSize="sm">Get to know updates in the field of medicine and know how often our stores are stocked</Text>
           </Box>
-          <Box
-      width="200px" 
-      height="200px" 
-     
-      marginLeft="auto" 
-      marginRight="500px" 
-    >
-      <Search2 />
-    </Box>
-      
-
+          {/* Şartlı render işlemi: accessToken varsa Search2 bileşeni gösterilecek */}
+          {!accessToken && (
+            <Box
+              width="200px" 
+              height="200px" 
+              marginLeft="auto" 
+              marginRight="500px"
+            >
+              <Search2 />
+            </Box>
+          )}
         </Flex>
         <Flex direction={{ base: "column", lg: "row" }} justify="space-between" align="start" mb={10}>
           <Box textAlign={{ base: "center", lg: "left" }} mb={{ base: 6, lg: 0 }}>
@@ -59,7 +68,7 @@ const Footer = () => {
               </Stack>
             </Box>
           </Stack>
-          <QRCodePage/>
+          <QRCodePage />
         </Flex>
         <Text textAlign="center" fontSize="sm">
           Designed by sophisticateddev. copyright©

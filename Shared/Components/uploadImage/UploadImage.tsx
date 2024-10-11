@@ -2,16 +2,22 @@ import UploadSvg from "../Svg/Upload";
 import Uploadsvg2 from '../../../public/camera.png'
 import style_form from "../Client/Form/form.module.css";
 import CustomButton from "../../Components/Client/Button2/button";
-import ImageUploading from "react-images-uploading";
+import ImageUploading, { ImageType } from "react-images-uploading";
 import { useEffect, useState } from "react"; 
 import { storage, db } from "../../../server/configs/firebase"; // Firebase depolamayı içe aktarın
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage"; // Gerekli Firebase depolama fonksiyonlarını içe aktarın
 import { collection, addDoc, query, orderBy, limit, getDocs } from "firebase/firestore"; // Firestore fonksiyonlarını içe aktarın
 import Image from "next/image";
 
-export default function UploadImage({ setImageList, IMG = undefined, uerPage = false }) {
-    const [images, setImages] = useState([]);
-    const [fileToUpload, setFileToUpload] = useState(null); // Yüklenecek dosya için state ekleyin
+interface UploadImageProps {
+    setImageList: (images: any) => void;
+    IMG?: string; // IMG prop'u artık string veya undefined olabilir
+    userPage: boolean;
+  }
+
+ const UploadImage: React.FC<UploadImageProps>=({ setImageList, IMG = undefined, userPage = false }) => {
+    const [images, setImages] = useState<ImageType[]>([]);
+    const [fileToUpload, setFileToUpload] = useState<File | null>(null); // Yüklenecek dosya için state ekleyin
     const [downloadURL, setDownloadURL] = useState(''); // İndirme URL'sini saklamak için state ekleyin
     const maxNumber = 1;
 
@@ -27,16 +33,15 @@ export default function UploadImage({ setImageList, IMG = undefined, uerPage = f
         });
     };
 
-    const onChange = (imageList, addUpdateIndex) => {
-        // Yükleme verileri
+    const onChange = (imageList: ImageType[], addUpdateIndex?: number[]) => {
         console.log(imageList, addUpdateIndex);
         setImages(imageList);
         setImageList(imageList);
-
+    
         if (imageList.length > 0) {
-            setFileToUpload(imageList[0].file); 
+          setFileToUpload(imageList[0].file || null);
         }
-    };
+      };
 
     const uploadImageToFirebase = async () => {
         if (!fileToUpload) return;
@@ -61,6 +66,7 @@ export default function UploadImage({ setImageList, IMG = undefined, uerPage = f
             onChange={onChange}
             maxNumber={maxNumber}
             dataURLKey="data_url"
+            
         >
             {({
                   imageList,
@@ -79,7 +85,7 @@ export default function UploadImage({ setImageList, IMG = undefined, uerPage = f
                     >
                         {images.length === 0 &&
                         <>
-                            <Image src={Uploadsvg2}  width={40} />
+                            <Image src={Uploadsvg2}  width={40} alt="upload" />
                           
                         </>}
 
@@ -124,3 +130,5 @@ export default function UploadImage({ setImageList, IMG = undefined, uerPage = f
         </ImageUploading>
     )
 }
+
+export default UploadImage

@@ -1,99 +1,102 @@
-import { AxiosPromise } from "axios"
-import { instanceAxios } from "../Shared/Helpers/instanceAxios"
-import { CategoryApiResponse, ApiResponse, ProductSingleApiResponse, BasketPostDataType } from "../Shared/Interface";
+import { AxiosPromise } from "axios";
+import { instanceAxios } from "../Shared/Helpers/instanceAxios";
+import {
+  CategoryApiResponse,
+  ApiResponse,
+  ProductSingleApiResponse,
+  BasketPostDataType,
+} from "../Shared/Interface";
 
-export const PutAuthUser = (body: object) => {
+// Kullanıcıyı güncelleme (PUT)
+export const PutAuthUser = (body: object): AxiosPromise => {
+  return instanceAxios({
+    method: "PUT",
+    url: "auth/user",
+    data: body,
+  });
+};
 
-    const accessToken = localStorage.getItem("access_token");
-    return instanceAxios({
-        method: "GET",
-        url: "auth/user",
-        data: body,
-        headers: {
-            Authorization: `Bearer ${accessToken}`,
-        },
-    })
-}
-
-
+// Ürünleri ID'ye göre getirme (GET)
 export const getProductsById = (
-    productsID: string | number
-): AxiosPromise<ProductSingleApiResponse> =>
-    instanceAxios({
-        method: "GET",
-        url: `products/${productsID}`,
-    });
+  productsID: string | number
+): AxiosPromise<ProductSingleApiResponse> => {
+  return instanceAxios({
+    method: "GET",
+    url: `products/${productsID}`,
+  });
+};
 
-    
+// Kullanıcı kaydı (POST)
+export const postSignUp = (body: object): AxiosPromise => {
+  return instanceAxios({
+    method: "POST",
+    url: "auth/signup",
+    data: body,
+  });
+};
 
-export const postSignUp = (body:object) => {
-
-    
-    return instanceAxios({
-        method: "POST",
-        url: "auth/signup",
-        data: body
-    })
-}
-
-
-
+// Kullanıcı bilgilerini güncelleme (PUT) - Tekrarlı kullanım kaldırıldı
 export const PutAuthUserr = (body: object): AxiosPromise => {
-    const accessToken = localStorage.getItem("access_token");
-    return instanceAxios({
-        method: "PUT",
-        url: "auth/user",
-        data: body,
-        headers: {
-            Authorization: `Bearer ${accessToken}`,
-        },
-    });
+  return instanceAxios({
+    method: "PUT",
+    url: "auth/user",
+    data: body,
+  });
 };
 
-
-
-export const AddBasket: (basketProduct: BasketPostDataType) => AxiosPromise<BasketPostDataType> = (basketProduct) => {
-    const accessToken = localStorage.getItem("access_token");
-    return instanceAxios({
-        method: "POST",
-        url: `basket/add`,
-        data: basketProduct,
-        headers: {
-            Authorization: `Bearer ${accessToken}`,
-        },
-    });
+// Sepete ürün ekleme (POST)
+export const AddBasket = (
+  basketProduct: BasketPostDataType
+): AxiosPromise<BasketPostDataType> => {
+  return instanceAxios({
+    method: "POST",
+    url: `basket/add`,
+    data: basketProduct,
+  });
 };
 
-export const deleteBasket: (
-    basketProduct: BasketPostDataType
-) => AxiosPromise<BasketPostDataType> = (basketProduct) => {
-    const accessToken = localStorage.getItem("access_token");
-    return instanceAxios({
-        method: "DELETE",
-        url: `basket/delete`,
-        data: basketProduct,
-        headers: {
-            Authorization: `Bearer ${accessToken}`,
-        },
-    });
+// Sepetten ürün silme (DELETE)
+export const deleteBasket = (
+  basketProduct: BasketPostDataType
+): AxiosPromise<BasketPostDataType> => {
+  return instanceAxios({
+    method: "DELETE",
+    url: `basket/delete`,
+    data: basketProduct,
+  });
 };
 
+// Sepeti temizleme (DELETE)
+export const clearBasket = (
+  basketId: BasketPostDataType
+): AxiosPromise<BasketPostDataType> => {
+  return instanceAxios({
+    method: "DELETE",
+    url: `basket/clear`,
+    data: basketId,
+  });
+};
 
+// Sepeti getirme (GET)
 export const GetBasket = (): AxiosPromise => {
-    const accessToken = localStorage.getItem("access_token");
-    return instanceAxios({
-        method: "GET",
-        url: "basket",
-        headers: {
-            Authorization: `Bearer ${accessToken}`,
-        },
-    });
+  return instanceAxios({
+    method: "GET",
+    url: "basket",
+  });
 };
 
+// Kategorileri getirme (GET)
+export const getCategories = (): AxiosPromise<CategoryApiResponse> => {
+  return instanceAxios({
+    method: "GET",
+    url: "category",
+  });
+};
 
-
-export const getCategories = (): AxiosPromise<CategoryApiResponse> =>
-    instanceAxios({method: "GET", url: "category"});
-
-export const GetProducts = (): AxiosPromise<ApiResponse> =>
-    instanceAxios({method: "GET", url: 'products'});
+// Ürünleri getirme (GET)
+export const GetProducts = (): AxiosPromise<ApiResponse> => {
+  return instanceAxios({
+    method: "GET",
+    url: "products",
+  });
+};

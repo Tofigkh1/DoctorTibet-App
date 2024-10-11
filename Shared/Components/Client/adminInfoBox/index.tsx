@@ -57,7 +57,7 @@ function InfoBox (props:Props){
 
 
 
-<div className="  mt-14">
+<div className=" flex gap-12 mt-14">
 <Slider {...settings}>
         <div>
           

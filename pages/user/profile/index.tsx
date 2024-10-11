@@ -21,6 +21,13 @@ import Image from 'next/image';
 import Footer from '../../../Shared/Components/Client/Footer';
 import UserForm from '../../../Shared/Components/Client/userForm';
 import Auth from '../../../Shared/Components/Client/Auth/Auth';
+import { DotLoader } from 'react-spinners';
+import BasketMenu from '../../../Shared/Components/sliderBasket/sliderBasket';
+import { Box, Tag, VStack, SimpleGrid, Flex, Text } from "@chakra-ui/react";
+import Categories from '../../../Shared/Components/Client/headerCategory';
+import Sidebar, { SidebarItem } from '../../../Shared/Components/Client/SideBarMenu';
+import { clearUser } from '../../../Shared/Redux/Featuries/User/userSlice';
+
 
 
 // Styled Components
@@ -111,9 +118,16 @@ const LargeAvatar = styled(Avatar)({
   height: 100,
 });
 
-function Profile() {
-  const { push } = useRouter();
-  const [IMG, setIMG] = useState([]);
+interface ImageType {
+  data_url: any;
+}
+
+
+const Profile: React.FC = ()=> {
+  
+  const [activeIndex, setActiveIndex] = useState<number>(4);
+ 
+  const [IMG, setIMG] = useState<ImageType[]>([]);
   const [downloadURL, setDownloadURL] = useState(''); 
   const [loading, setLoading] = useState(false); 
 
@@ -121,32 +135,33 @@ function Profile() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const dispatch: AppDispatch = useDispatch();
   const user = useSelector((state: RootState) => state.user);
-
-  console.log("reduxUser",user);
-
-
-
- 
-
+  const { pathname, push } = useRouter();
 
   useEffect(() => {
+  
+
     if (window.innerWidth < 800) {
       setmobile(true);
     } else {
       setmobile(false);
     }
-
     const token = localStorage.getItem('access_token');
-if (!token) {
-  // Eğer token yoksa, kullanıcıyı giriş sayfasına yönlendirin
-  push('/login');
-}
-
     const userInfo = localStorage.getItem('user_info');
+    if (!token) {
+  
+      push('/login-register');
+    }
+  
+
     if (token && userInfo) {
       setIsLoggedIn(true);
     }
   }, [mobile]);
+
+
+  
+  // let IMG=img[0]?.data_url
+
 
 
   
@@ -156,13 +171,13 @@ if (!token) {
   }, []);
 
   const fetchProfileImage = async () => {
-    setLoading(true); // Yüklenme durumu başlat
+    setLoading(true);
     const q = query(collection(db, "images"), orderBy("timestamp", "desc"), limit(1));
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
       setDownloadURL(doc.data().url);
     });
-    setLoading(false); // Yüklenme durumu sona erdir
+    setLoading(false); 
   };
 
   useEffect(() => {
@@ -172,8 +187,19 @@ if (!token) {
   }, [IMG]);
 
   
+  const handleSignOut = () => {
+    push('/');
+    localStorage.removeItem('user_info');
+    localStorage.removeItem('access_token');
+    dispatch(clearUser());
+  };
 
+  
+  if (!isLoggedIn) {
+    return null;
+  }
 
+;
   return (
     <>
       <Container>
@@ -189,41 +215,92 @@ if (!token) {
           </div>
           <Nav />
 
-          <div>
-           <Auth/>
-          </div>
-          
+          <div className="flex gap-10 z-50">
+                        <BasketMenu/>
+                        <Auth/>
+                        </div>
         </Header>
 
-        <MainSection>
-          <Curve />
-        </MainSection>
+
         
       </Container>
 
-      <div className="px-1 pb-[20px]">
+      <Categories/>
+
+      <div className="">
        
 
-        <div className="flex gap-10">
+        <div className="flex gap-40 ">
           
-          <div className={mobile ? 'hidden' : ' w-80'}>
+          {/* <div className={mobile ? 'hidden' : ' w-80'}>
             <Navbar active={1} />
-          </div>
+          </div> */}
 
-         
+       <div className=''>
+     
+    <Sidebar>
+      <SidebarItem
+        icon={<img src="/userProfileIcon.svg" alt="Profile" width={35} height={35} />}
+        text="Your Profile"
+        active={pathname === '/user/profile'} // Aktif sayfa kontrolü
+        onClick={() => push('/user/profile')}
+        style={pathname === '/user/profile' ? { color: 'green' } : {}} // Aktifse yeşil yap
+      />
+      <SidebarItem
+      
+        icon={<img src="/shopping-bag.png" alt="Basket" width={35} height={35} />}
+        text="Your Basket"
+        active={pathname === '/user/basket'}
+        onClick={() => push('/user/basket')}
+        style={pathname === '/user/basket' ? { color: 'green' } : {}}
+      />
+      <SidebarItem
+        icon={<img src="/fulfillment.png" alt="Orders" width={35} height={35} />}
+        text="Your Orders"
+        active={pathname === '/user/orders'}
+        onClick={() => push('/user/orders')}
+        style={pathname === '/user/orders' ? { color: 'green' } : {}}
+      />
+      <SidebarItem
+        icon={<img src="/ShoppingCheck3.png" alt="Checkout" width={35} height={35} />}
+        text="Checkout"
+        active={pathname === '/user/checkout'}
+        onClick={() => push('/user/checkout')}
+        style={pathname === '/user/checkout' ? { color: 'green' } : {}}
+      />
+      <SidebarItem
+        icon={<img src="/exit.png" alt="Logout" width={35} height={35} />}
+        text="Logout"
+        active={pathname === '/'}
+        onClick={handleSignOut}
+        style={pathname === '/' ? { color: 'green' } : {}}
+      />
+    </Sidebar>
 
+      </div>   
 
-          <div className=" w-9/12 h-60 mt-4 rounded-2xl mr-5">
+    
 
-          <div className=' flex gap-3'>
-          <h1 className=' font-bold text-2xl'>Profile ></h1>
+    
+
+          <div className=" w-9/12 h-60 mt rounded-2xl mr-5 absolute right-0">
+
+          <div className=' flex gap-3 mt-8'>
+          <h1 className=' font-bold text-2xl'>Profile &gt;</h1>
           <h1 className='  text-fontcolorhow text-2xl'>Dashboard</h1>
           </div>
          
             {loading ? (
-             <Image className=' ml-52' width={600} height={500} src={loadingMedicalGif}/>
+              <div style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                height: '80vh'
+              }}>
+                <DotLoader color="#28e4c5" speedMultiplier={1.6} size={90} />
+              </div>
             ) : downloadURL ? (
-              <div style={{ width: '100%', height: '300px', position: 'relative'}}>
+              <div style={{ width: '1080px', height: '300px', position: 'relative'}}>
 
                 <Image
                   src={downloadURL}
@@ -233,8 +310,8 @@ if (!token) {
                   className="rounded-2xl -z-40 mt-12"
                 />
           
-                <div className=" right-0 z-50 mt-72 mr-7 absolute">
-                      <UploadImage setImageList={setIMG} IMG={IMG[0]?.data_url} uerPage={true} />
+                <div className=" right-0 z-30 mt-72 mr-7 absolute">
+                      <UploadImage  setImageList={setIMG}  IMG={IMG[0]?.data_url || undefined} userPage={true} />
                 </div>
               </div>
             ) : (
@@ -266,18 +343,22 @@ if (!token) {
 
             </div>
             
-            <div className=' w-9/12 mt-12 z-50 h-auto'>
+            <div className=' w-9/12 mt-12 z-50 h-auto '>
         <UserForm img={IMG}/>
         </div>
            
           </div>
-
+         
           
          
         </div>
 
 
       
+      </div>
+
+      <div className=' mt-64'>
+
       </div>
 
       <Footer/>

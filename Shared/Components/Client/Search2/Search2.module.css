@@ -48,7 +48,7 @@ margin-top: 118px;
 }
 
 .search_container input {
-  
+    color: black;
     width: 488px;
     border-radius: 20px 0px 0px 20px;
     background-color: #fff;

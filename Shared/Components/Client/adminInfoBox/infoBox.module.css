@@ -9,8 +9,9 @@ text-align: center;
 color: #4F4F4F;
 }
 
-
-
+.bodyBackground2{
+    background-color: #121212;
+}
 .des{
     text-align: center;
     width: 60%;

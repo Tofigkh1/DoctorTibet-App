@@ -3,31 +3,35 @@ import InfoBox from '../adminInfoBox';
 import styles from "./infoSection.module.css";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { shortText } from '../../../Utils/shortText';
 
 interface Props {
     data: any,
     TITLE: string,
-    DES: string
+    DES: string,
+    ProductID: string
 }
 
+
+
 function InfoSection(props: Props) {
-    let [mobile, setMobile] = useState(false);
+    const [animationPlayed, setAnimationPlayed] = useState(false);
 
     useEffect(() => {
-        AOS.init(); 
-        AOS.refresh();
-        if (window.innerWidth < 800) {
-            setMobile(true);
-        } else {
-            setMobile(false);
+        AOS.init({
+            once: true, // Animasyonların yalnızca bir kez çalışmasını sağlamak için
+        });
+
+        if (!animationPlayed) {
+            AOS.refreshHard(); // Sayfa yüklendiğinde veya yenilendiğinde animasyonları zorla tetikler
+            setAnimationPlayed(true);
         }
-    }, []);
+    }, [animationPlayed]);
 
     let {
         data,
         TITLE,
-        DES
+        DES,
+        ProductID
     } = props;
 
     const { Title, des, div } = styles;
@@ -41,14 +45,18 @@ function InfoSection(props: Props) {
             <h2 className={Title} data-aos='fade-up'>{TITLE}</h2>
             <p className={des} data-aos='fade-up'>{DES}</p>
             <div className='' data-aos='fade-up'>
-                <InfoBox />
+            <InfoBox 
+                    img={data[0]?.img || ''} 
+                    Title={TITLE} 
+                    Desc={DES} 
+                    ProductID={ProductID} 
+                />
             </div>
 
             <div>
                 <div data-aos="zoom-in" data-aos-delay="300" style={{ display: 'none' }}>
                 </div>
             </div>
-            
         </div>
     );
 }

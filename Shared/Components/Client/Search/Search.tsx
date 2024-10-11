@@ -2,7 +2,7 @@ import RightIcon from "../../Svg/RightIcon";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { GetProducts } from "../../../../Services";
-import { ProductPostDataType } from "../../../Interface";
+import { PostDataType, ProductPostDataType } from "../../../Interface";
 import styles from "./Search.module.css";
 import searchIcon from '../../../../public/searchIcon.svg'
 import Image from "next/image";
@@ -12,6 +12,7 @@ import {
     AlertTitle,
     AlertDescription,
   } from '@chakra-ui/react'
+import { ClipLoader } from "react-spinners";
 
 export default function Search() {
     const { push } = useRouter();
@@ -21,20 +22,31 @@ export default function Search() {
     const [loading, setLoading] = useState(false);
     const [selectedProduct, setSelectedProduct] = useState<ProductPostDataType | null>(null);
     const [alert, setAlert] = useState(false);
+    
 
+    
     useEffect(() => {
         if (query.trim() === '') {
             setProducts([]);
             return;
         }
 
+
+        
+    
         const fetchData = async () => {
             setLoading(true);
             try {
                 const response = await GetProducts();
-                let products = response?.data?.result?.data.filter((product) => {
+                let products = response?.data?.result?.data.filter((product: PostDataType) => {
                     return product?.name?.toLowerCase()?.includes(query.toLowerCase());
-                });
+                }).map((product: PostDataType): ProductPostDataType => ({
+                    ...product,
+                    cover_url: product.cover_url || '',  // Varsayılan değer
+                    created: product.created || new Date().toISOString(),  // Varsayılan değer
+                    category_id: String(product.category_id) || '0',
+                    allDescription: product.allDescription || '',  // Varsayılan değer
+                }));
                 setProducts(products);
             } catch (error) {
                 console.error('Error fetching products:', error);
@@ -48,7 +60,7 @@ export default function Search() {
     }, [query]);
 
     const handleProductSelect = (product: ProductPostDataType) => {
-        setQuery(product.name);
+        setQuery(product.name ?? '');  // Provide a fallback empty string if product.name is undefined
         setFocus(false);
         setSelectedProduct(product);
         setAlert(false);  // Ürün seçildiğinde alert'i false yapıyoruz.
@@ -58,12 +70,14 @@ export default function Search() {
         if (selectedProduct) {
             push('/medicines/' + selectedProduct.id);
         } else if (products) {
-            const matchedProduct = products.find((product) => product.name.toLowerCase() === query.toLowerCase());
+            const matchedProduct = products.find(
+                (product) => product.name?.toLowerCase() === query.toLowerCase()
+              );
             if (matchedProduct) {
                 push('/medicines/' + matchedProduct.id);
-                setAlert(false);  // Ürün bulunduğunda alert'i false yapıyoruz.
+                setAlert(false); 
             } else {
-                setAlert(true);  // Ürün bulunamazsa alert'i true yapıyoruz.
+                setAlert(true);  
             }
         }
     };
@@ -85,7 +99,14 @@ export default function Search() {
                 {focus && 
                 <div className={styles.search_result}>
                     <ul>
-                        {loading ? <li>Loading...</li> :
+                        {loading ?    <div style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    height: '80vh' 
+                }}>
+                    <ClipLoader color="#28e4c5" speedMultiplier={1.5} size={60} />
+                </div> :
                             <>
                                 {products?.map((product) => (
                                     <li key={product.id} onClick={() => handleProductSelect(product)}>

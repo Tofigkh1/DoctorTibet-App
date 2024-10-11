@@ -28,6 +28,8 @@ module.exports = {
         comitColorText: "#043CAA",
         FooterColor: "#043CAA",
         medicineFont: "#fcfafa",
+        adminInfoBox: "#121212",
+        goldText: "#e5b95e"
     },
     extend: {},
   },

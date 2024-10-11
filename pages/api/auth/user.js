@@ -26,7 +26,7 @@ export default async function handler(req, res) {
         email: userCredentials.email,
         username: userCredentials.customClaims.username,
         fullname: userCredentials.displayName,
-        phone: userCredentials.phoneNumber,
+        phoneNumber: userCredentials.phoneNumber,
         address: userCredentials.customClaims.address,
         creationTime: userCredentials.metadata.creationTime,
       };
@@ -40,22 +40,22 @@ export default async function handler(req, res) {
 
   if (req.method === "PUT") {
     try {
-      const { email, username, fullname, phone, address } = req.body ?? {};
+      const { email, username, fullname, phoneNumber, address } = req.body ?? {};
 
-      if (!email || !username || !fullname || !phone || !address) {
+      if (!email || !username || !fullname || !phoneNumber || !address) {
         return res.status(400).json({ error: "Please fill all fields" });
       }
 
       const updateUser = {
         email,
         displayName: fullname,
-        phoneNumber: phone,
+        phoneNumber: phoneNumber,
       };
 
       const customClaims = {
         username,
         fullname,
-        phone,
+        phoneNumber,
         address,
       };
 

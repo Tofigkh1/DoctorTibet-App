@@ -1,27 +1,41 @@
 export class Order {
   constructor(
-    customer_id,
+    userId,
+    fullname,
+    email,
     delivery_address,
     amount,
     contact,
     payment_method,
-    products
+    products,
+    createdDate = new Date(),
+
   ) {
-    this.customer_id = customer_id;
+    this.userId = userId;
+    this.fullname = fullname;
+    this.email = email;
+    this.delivery_address = delivery_address;
     this.amount = amount;
     this.contact = contact;
-    this.delivery_address = delivery_address;
     this.payment_method = payment_method;
     this.products = products;
+    this.created = createdDate;
+  
   }
 
+  // Method to return the order object in plain form (for saving in Firestore)
   toPlainObject() {
     return {
-      customer_id: this.customer_id,
+      userId: this.userId,
+      fullname: this.fullname,
+      email: this.email,
+      delivery_address: this.delivery_address,
       amount: this.amount,
       contact: this.contact,
-      delivery_address: this.delivery_address,
       payment_method: this.payment_method,
+      products: this.products,
+      created: this.created,
+
     };
   }
 }

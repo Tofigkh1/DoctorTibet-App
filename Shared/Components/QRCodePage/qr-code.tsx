@@ -15,19 +15,21 @@ const QRCodePage = () => {
         //   light: '#FFFFFF' 
         // }
       };
-      QRCode.toCanvas(canvasRef.current, url, options, function (error) {
-        if (error) console.error(error);
-        console.log('QR Code Error');
+      QRCode.toCanvas(canvasRef.current, url, options, function (error: Error | null) {
+        if (error) {
+          console.error(error);
+        } else {
+          console.log('QR Code generated successfully');
+        }
       });
     }
   }, []);
 
   return (
-    <div className=' ml-5'>
-    
+    <div className='ml-5'>
       <canvas ref={canvasRef}></canvas>
     </div>
-  ); 
+  );
 };
 
 export default QRCodePage;

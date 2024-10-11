@@ -1,19 +1,33 @@
-import { useContext, createContext, useState, useEffect } from "react";
+import { useContext, createContext, useState, useEffect, ReactNode } from "react";
 import { signInWithPopup, signOut, onAuthStateChanged, GoogleAuthProvider } from "firebase/auth";
 import { auth } from '../../server/configs/firebase';
 
-const AuthContext = createContext(null);
+// AuthContext'in tipini tanımlayalım
+interface AuthContextType {
+    useer: any;
+    googleSignIn: () => Promise<void>;
+    logOut: () => Promise<void>;
+}
 
-export const AuthContextProvider = ({ children }) => {
-    const [useer, setUser] = useState(null);
+// AuthContext'i tanımlarken tipini belirtiyoruz
+const AuthContext = createContext<AuthContextType | null>(null);
+
+interface AuthContextProviderProps {
+    children: ReactNode;
+}
+
+export const AuthContextProvider: React.FC<AuthContextProviderProps> = ({ children }) => {
+    const [useer, setUser] = useState<any>(null);
 
     const googleSignIn = async () => {
         const provider = new GoogleAuthProvider();
         const result = await signInWithPopup(auth, provider);
         const credential = GoogleAuthProvider.credentialFromResult(result);
-        const accessToken = credential.accessToken;
+        const accessToken = credential?.accessToken;
         
-        localStorage.setItem('access_token', accessToken); // access_token'ı kaydet
+        if (accessToken) {
+            localStorage.setItem('access_token', accessToken); // access_token'ı kaydet
+        }
 
         setUser(result.user);
     };

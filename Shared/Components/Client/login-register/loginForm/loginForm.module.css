@@ -4,6 +4,31 @@
     padding: 46px 56px 40px 40px;
 }
 
+.googleSignInButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #4285F4;
+    color: white;
+    margin-top: 40px;
+    margin-left: 40px;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.googleSignInButton:hover {
+    background-color: #357ae8;
+}
+
+.googleIcon {
+    margin-right: 10px;
+}
+
+
 .button {
     height: 68px;
     width: 100%;

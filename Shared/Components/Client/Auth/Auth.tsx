@@ -8,7 +8,7 @@ import { getNameFirstLetter } from "../../../Utils/getNameFirstLetter";
 import { AppDispatch, RootState } from "../../../Redux/Store/store";
 import { useSelector, useDispatch } from "react-redux";
 import { Button, Menu, MenuButton, MenuDivider, MenuGroup, MenuItem, MenuList } from "@chakra-ui/react";
-import Profile from "../../../../public/profile.png"
+// import Profile from "../../../../public/profile.png"
 
 export default function Auth() {
     let {push} = useRouter()
@@ -43,10 +43,13 @@ export default function Auth() {
 
 
     const handleLogout = () => {
-        localStorage.removeItem("access_token");
+        window.location.reload();
         localStorage.removeItem("user_info");
-        dispatch(clearUser());
         setAccessToken(null);
+     
+        localStorage.removeItem("access_token");
+        dispatch(clearUser());
+        push('/login-register');
     };
     
     
@@ -145,7 +148,7 @@ export default function Auth() {
                     </Menu>
                     <span className={styles.user_name}>{isMobile && user.fullname}</span>
                 </div> :
-                <ButtonHeader addButtonFun={goAuth} typeButton={true} title='Sign Up' btnSize={'sm'} addButton={false} />
+                <ButtonHeader addButtonFun={goAuth} typeButton={true} title='Sign In' btnSize={'sm'} addButton={false} />
             }
         </>
     )

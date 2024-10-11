@@ -1,60 +1,34 @@
-// import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-// import { AddBasket, GetBasket } from '../../../../Services';
-// import { BasketPostDataType } from '../../../Interface';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { GetBasket } from '../../../../Services/index';
 
-// export const fetchBasket = createAsyncThunk(
-//   'basket/fetchBasket',
-//   async () => {
-//     const response = await GetBasket();
-//     return response.data.result.data.items;
-//   }
-// );
 
-// export const addToBasket = createAsyncThunk(
-//   'basket/addToBasket',
-//   async (basketProduct: BasketPostDataType, { rejectWithValue }) => {
-//     try {
-//       const response = await AddBasket(basketProduct);
-//       return response.data;
-//     } catch (error) {
-//       return rejectWithValue(error.response.data);
-//     }
-//   }
-// );
+export const fetchSimpleBasket = createAsyncThunk('simpleBasket/fetchSimpleBasket', async () => {
+    const response = await GetBasket();
+    return response.data.result.data;  
+});
 
-// interface BasketState {
-//   items: any[];
-//   status: 'idle' | 'loading' | 'succeeded' | 'failed';
-//   error: string | null;
-// }
+const simpleBasketSlice = createSlice({
+    name: 'simpleBasket',
+    initialState: {
+        data: {},
+        status: 'idle',
+        error: null as string | null, 
+    },
+    reducers: {},
+    extraReducers: (builder) => {
+        builder
+            .addCase(fetchSimpleBasket.fulfilled, (state, action) => {
+                state.data = action.payload;
+                state.status = 'succeeded';
+            })
+            .addCase(fetchSimpleBasket.pending, (state) => {
+                state.status = 'loading';
+            })
+            .addCase(fetchSimpleBasket.rejected, (state, action) => {
+                state.status = 'failed';
+                state.error = action.error.message ?? null;
+            });
+    },
+});
 
-// const initialState: BasketState = {
-//   items: [],
-//   status: 'idle',
-//   error: null,
-// };
-
-// const basketSlice = createSlice({
-//   name: 'basket',
-//   initialState,
-//   reducers: {},
-//   extraReducers: (builder) => {
-//     builder
-//       .addCase(fetchBasket.pending, (state) => {
-//         state.status = 'loading';
-//       })
-//       .addCase(fetchBasket.fulfilled, (state, action) => {
-//         state.status = 'succeeded';
-//         state.items = action.payload;
-//       })
-//       .addCase(fetchBasket.rejected, (state, action) => {
-//         state.status = 'failed';
-//         state.error = action.error.message;
-//       })
-//       .addCase(addToBasket.fulfilled, (state, action) => {
-//         state.items.push(action.payload);
-//       });
-//   },
-// });
-
-// export default basketSlice.reducer;
+export default simpleBasketSlice.reducer;

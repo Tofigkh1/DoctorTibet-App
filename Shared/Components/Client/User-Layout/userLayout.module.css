@@ -2,6 +2,7 @@
 .navbar{
     width: 275px;
     height: 100%;
+    margin-top: 16px;
     /* background: #F3F4F6; */
     display: flex;
     flex-direction: column;
@@ -57,7 +58,7 @@
 
 
 .icondiv:hover {
-    background-color: #9b73eb;
+    background-color: #26d6a1;
    
 }
 .defaultText{
@@ -87,5 +88,5 @@ text-align: left;
 
 }
 .activediv{
-    background-color: #9b73eb;
+    background-color: #26d6a1;
 }

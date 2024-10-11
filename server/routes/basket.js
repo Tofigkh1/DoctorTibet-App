@@ -6,6 +6,7 @@ import { uptData } from "../helper/uptData";
 import { verifyJWT } from "../utils/jwt";
 import { response } from "../utils/response";
 
+// GET handler
 export async function handlerAddProductCardGET(req, res, col) {
   const authHeader = req.headers.authorization;
 
@@ -17,7 +18,7 @@ export async function handlerAddProductCardGET(req, res, col) {
 
   try {
     const decodedToken = verifyJWT(idToken);
-    const [{ user_id, ...data }] = await getQueryData(
+    const [{ user_id, ageSize, ...data }] = await getQueryData( // ageSize eklendi
       col,
       "user_id",
       decodedToken.userId
@@ -30,6 +31,7 @@ export async function handlerAddProductCardGET(req, res, col) {
   }
 }
 
+// POST handler
 export async function handlerAddProductCardPOST(req, res, col) {
   const authHeader = req.headers.authorization;
 
@@ -41,7 +43,7 @@ export async function handlerAddProductCardPOST(req, res, col) {
 
   try {
     const decodedToken = verifyJWT(idToken);
-    const { product_id } = req.body;
+    const { product_id, ageSize } = req.body; // ageSize eklendi
 
     const card = await getQueryData(col, "user_id", decodedToken.userId);
     const userBasket = card?.[0];
@@ -59,6 +61,7 @@ export async function handlerAddProductCardPOST(req, res, col) {
       newItem = {
         ...product,
         count: 1,
+        ageSize, // ageSize eklendi
         amount: +product.price,
       };
 
@@ -73,6 +76,7 @@ export async function handlerAddProductCardPOST(req, res, col) {
       newItem = {
         ...findItem,
         count: newCount,
+        ageSize, // ageSize eklendi
         amount: +(+findItem.price * newCount).toFixed(2),
       };
 
@@ -91,12 +95,24 @@ export async function handlerAddProductCardPOST(req, res, col) {
 
     const data = await uptData(col, userBasket.id, newdData);
 
+    // Tüm sepet 50 dakika sonra otomatik olarak silinsin
+    setTimeout(async () => {
+      try {
+        // Sepeti boşalt
+        await uptData(col, userBasket.id, emptyBasket(decodedToken.userId, ageSize)); 
+        console.log(`Basket for user ID ${decodedToken.userId} cleared after 50 minutes.`);
+      } catch (error) {
+        console.error("Error clearing basket after 50 minutes:", error);
+      }
+    }, 3000000); // 50 dakika = 3000000 ms
+
     res.status(201).json(data);
   } catch (error) {
     res.status(500).json({ error: "Something went wrong" });
   }
 }
 
+// DELETE handler
 export async function handlerDeleteProductCard(req, res, col) {
   const authHeader = req.headers.authorization;
 
@@ -108,7 +124,7 @@ export async function handlerDeleteProductCard(req, res, col) {
 
   try {
     const decodedToken = verifyJWT(idToken);
-    const { product_id } = req.body;
+    const { product_id, ageSize } = req.body; // ageSize eklendi
 
     const card = await getQueryData(col, "user_id", decodedToken.userId);
     const userBasket = card?.[0];
@@ -133,6 +149,7 @@ export async function handlerDeleteProductCard(req, res, col) {
       const newItem = {
         ...findItem,
         count: newCount,
+        ageSize, // ageSize eklendi
         amount: +(+findItem.price * newCount).toFixed(2),
       };
 
@@ -158,6 +175,7 @@ export async function handlerDeleteProductCard(req, res, col) {
   }
 }
 
+// Clear handler
 export async function handlerClearProductCardPOST(req, res, col) {
   const authHeader = req.headers.authorization;
 
@@ -169,7 +187,7 @@ export async function handlerClearProductCardPOST(req, res, col) {
   const decodedToken = verifyJWT(idToken);
 
   try {
-    const { basket_id } = req.body;
+    const { basket_id, ageSize } = req.body; // ageSize eklendi
 
     if (!basket_id) {
       res.status(404).json({ error: "Invalid basket id" });
@@ -178,7 +196,7 @@ export async function handlerClearProductCardPOST(req, res, col) {
     const { user_id, ...data } = await uptData(
       col,
       basket_id,
-      emptyBasket(decodedToken.userId)
+      emptyBasket(decodedToken.userId, ageSize) // ageSize eklendi
     );
 
     res.status(200).json(data);

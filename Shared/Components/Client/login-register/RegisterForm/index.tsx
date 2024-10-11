@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
-
 import styles from './registerForm.module.css';
 import RegisterInp from '../registerInp';
 import LoginInp from '../loginInp';
@@ -11,6 +10,7 @@ import { postSignUp } from '../../../../../Services';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../../Redux/Store/store';
 import { UserAuth } from '../../../../Context';
+import { FaGoogle } from 'react-icons/fa';
 
 interface RegisterFormValues {
   fullname: string;
@@ -30,20 +30,18 @@ const initialValues: RegisterFormValues = {
 
 interface Props {
   setsingin: any;
+  initialEmail?: string; // Add initialEmail as a prop
 }
 
 const RegisterForm = (props: Props) => {
+  const { setsingin, initialEmail = '' }: any = props; // Get initialEmail from props
   const toast = useToast();
   const user = useSelector((state: RootState) => state.user);
-  let { setsingin }: any = props;
   let [Loading, setLoading] = useState(false);
 
-
-  
-  const { useer, googleSignIn, logOut }:any = UserAuth();
+  const { useer, googleSignIn, logOut }: any = UserAuth();
 
   console.log(useer);
-  
 
   const handleSignIn = async () => {
     try {
@@ -52,7 +50,6 @@ const RegisterForm = (props: Props) => {
       console.log(error);
     }
   };
-  
 
   // Regex pattern to validate a phone number (international format)
   const phoneRegExp = /^\+?[1-9]\d{1,14}$/;
@@ -104,12 +101,13 @@ const RegisterForm = (props: Props) => {
 
   return (
     <div>
+      <button onClick={handleSignIn} className={styles.googleSignInButton}>
+        <FaGoogle className={styles.googleIcon} />
+        Sign up with Google
+      </button>
 
-<div>
-          <button onClick={handleSignIn} >SignUp</button>
-          </div>
       <Formik
-        initialValues={initialValues}
+        initialValues={{ ...initialValues, email: initialEmail }} // Set initial email
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >

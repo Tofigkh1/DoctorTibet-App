@@ -1,3 +1,89 @@
+.getStartedButton {
+  margin-left: 310px;
+  margin-top: 40px;
+  width: 250px;
+  height: 58px;
+  background-color: #26d6a1;
+  border: none;
+  border-radius: 25px;
+  color: white;
+  font-size: 16px;
+  display: flex;
+  justify-content: flex-start; /* Yazıyı sola hizalar */
+  align-items: center;
+  padding-left: 60px; /* Yazı ve sol kenar arasında boşluk bırakır */
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  transition: background-color 0.3s ease;
+}
+
+.getStartedButton:hover {
+  background-color: #adfcef;
+}
+
+.arrowContainer {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  right: 40px;
+  transition: transform 0.3s ease;
+}
+
+.getStartedButton:hover .arrowContainer {
+  transform: translateX(50px); /* Sağ tarafa doğru kaydır */
+}
+
+.arrowImage {
+  transition: opacity 0.3s ease;
+}
+
+.getStartedButton:hover .arrowImage {
+  opacity: 0; /* Sağ tarafa kayarken sol tarafta kaybolur */
+}
+
+.getStartedButton::before {
+  content: '';
+  position: absolute;
+  left: 15px; /* Okun sol tarafta belirmesi için konum ayarlaması */
+  width: 30px;
+  height: 30px;
+  background-image: url('/right.png'); /* Sol tarafta beliren ok */
+  background-size: cover;
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.getStartedButton:hover::before {
+  opacity: 1;
+  transform: translateX(20px); /* Sol tarafta belirme hareketi */
+}
+
+.textContainer {
+  color: white;
+  font-weight:700;
+  font-size:larger;
+  transition: transform 0.4s ease; /* Animasyonlu kayma için transition ekledik */
+  transform: translateX(-40px); /* Başlangıçta yazıyı sola hizalar */
+}
+
+.getStartedButton:hover .textContainer {
+  color: black;
+  transform: translateX(30px); /* Yazıyı hover durumunda sağa kaydır */
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 .button {
   /* Buton stilleri */
