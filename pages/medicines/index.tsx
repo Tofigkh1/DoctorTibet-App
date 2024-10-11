@@ -11,7 +11,7 @@ import Avatar from '@mui/material/Avatar';
 import { getCategories, GetProducts } from "../../Services";
 import { sortDataByCreated } from "../../Shared/Utils/sortData";
 import styles from './medicines.module.css';
-import Loading from "../../Shared/components/Loading/Loading";
+
 
 import Nav from "../../Shared/Components/Client/Nav/Nav";
 import Auth from "../../Shared/Components/Client/Auth/Auth";
