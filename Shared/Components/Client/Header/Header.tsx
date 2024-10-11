@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import styles from './navbar.module.css';
+import styles from './Navbar.module.css';
 import Nav from '../Nav/Nav';
 import { useResize } from '../../../Hooks/useResize';
 import { useModalOpen } from '../../../Hooks/useModalOpen';
