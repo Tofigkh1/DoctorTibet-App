@@ -122,6 +122,24 @@ background: #D63626;
 
 }
 
+.button {
+  background-color: white; /* bg-white */
+  border: 1px solid #00a86b; /* border-clientButtonGreen */
+  border-radius: 50px; /* rounded-[50px] */
+  padding: 8px 16px; /* px-4 py-2 */
+  display: flex; /* flex */
+  align-items: center; /* items-center */
+  gap: 20px; /* gap-5 */
+  justify-content: center; /* justify-center */
+  width: 240px; /* w-60 */
+  transition: all 0.3s ease; /* transition-all duration-300 */
+}
+
+.button:hover {
+  background-color: #00a86b; /* hover:bg-clientButtonGreen */
+  color: white; /* hover:text-white */
+}
+
 
 @media screen and (max-width: 828px) {
 
