@@ -137,7 +137,7 @@ export default function Header() {
                  <h1>Sağlam gələcək.</h1>
           </div>
           <div className={styles.headerSmallText}>
-            <h1 className=''>Həkiminizin sağlamlığınız üçün təyin etdiyi bütün dərmanlar bizdə.</h1>
+            <h1 className=''>Həkiminizin sağlamlığınız üçün təyin etdiyi bütün dərmanlar bizdə</h1>
             <h1>biz bunu sizə çatdıra bilərik.</h1>
           </div>
         </div>
