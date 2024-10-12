@@ -124,6 +124,8 @@ background: #D63626;
 
 
 @media screen and (max-width: 828px) {
+
+  
     .oneOfferDiv {
       flex-direction: column;
       align-items: center;

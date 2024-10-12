@@ -76,7 +76,7 @@ function InfoBoxOffer(props: Props) {
                         <button
                             onClick={() => push('/medicines')}
                             className="bg-white text- border border-clientButtonGreen rounded-[50px] px-4 py-2 flex items-center gap-5 justify-center w-60 transition-all duration-300 hover:bg-clientButtonGreen hover:text-white"
-                            style={mobile ? { transform: 'translateX(40px)' } : {}} // Shifts the button to the right by 100px on mobile
+                      
                         >
                             Get prescription
                             <Image src={buttonVector} alt="Icon" width={17} height={0} />
@@ -107,6 +107,7 @@ function InfoBoxOffer(props: Props) {
                         </div>
                         <button
                             onClick={() => push('/medicines')}
+                            
                             className="bg-white text- border border-clientButtonGreen rounded-[50px] px-4 py-2 flex items-center gap-5 justify-center w-60 transition-all duration-300 hover:bg-clientButtonGreen hover:text-white"
                         >
                             Get prescription
@@ -155,7 +156,7 @@ function InfoBoxOffer(props: Props) {
                                 <button
                                     onClick={() => push('/medicines')}
                                     className="bg-white text- border border-clientButtonGreen rounded-[50px] px-4 py-2 flex items-center gap-5 justify-center w-60 transition-all duration-300 hover:bg-clientButtonGreen hover:text-white"
-                                    style={mobile ? { transform: 'translateX(40px)' } : {}} // Shifts the button to the right by 100px on mobile
+                                 // Shifts the button to the right by 100px on mobile
                                 >
                                     Get prescription
                                     <Image src={buttonVector} alt="Icon" width={17} height={0} />
@@ -195,7 +196,7 @@ function InfoBoxOffer(props: Props) {
                         <button
   onClick={() => push('/contact-us')}
   className="bg-white text- border border-clientButtonGreen rounded-[50px] px-4 py-2 flex items-center gap-5 justify-center w-60 transition-all duration-300 hover:bg-clientButtonGreen hover:text-white"
-  style={mobile ? { transform: 'translateX(40px)' } : {}}
+ 
 >
   Get prescription
   <Image src={buttonVector} alt="Icon" width={17} height={0} />
