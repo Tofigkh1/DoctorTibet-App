@@ -33,7 +33,7 @@
     "Shared/Components/Client/Testimol/index.jsx",
     "Shared/Components/uploadImage/UploadImage.tsx",
     ".next/types/**/*.ts"
-, "Shared/Components/Svg/arrovRight.jsx", "server/configs/firebaseAdmin.js"  ],
+, "Shared/Components/Svg/arrovRight.jsx", "server/configs/firebaseAdmin.ts"  ],
   "exclude": [
     "node_modules"
   ],
