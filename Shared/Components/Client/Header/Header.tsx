@@ -19,7 +19,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../../Redux/Store/store';
 import DoctorPhoto from '../../../../public/Doctorphoto.jpg';
 import Bacground from '../../../../public/homeBacground.svg';
-import Medicine from "../../../../public/Medicine.svg";
+import Medicine from "../../../../public/home_swiper2.jpg";
 import Medicinees from "../../../../public/medicalbanner.jpg";
 import Doctortb from "../../../../public/doctortb.jpg";
 import ArrovRight2 from '../../../../public/next.png';
@@ -78,23 +78,24 @@ export default function Header() {
         onAutoplayTimeLeft={onAutoplayTimeLeft}
         className={`${styles.mySwiper} ${styles.background}`}
       >
-        <SwiperSlide>
-          <Image 
-            src={DoctorPhoto} 
-            alt="Doctor" 
-            layout="responsive" // Responsive olmasını sağlar
-            objectFit="cover"   // Resmin kesilmesini engeller
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Image src={Bacground} alt="Image 1" layout="fill" objectFit="cover" />
+     <SwiperSlide style={{ height: isMobile ? '600px' : '500px', position: 'relative' }}>
+  <div style={{ height: '670px', width: '100%', position: 'relative' }}>
+    <Image 
+      src={DoctorPhoto} 
+      alt="Doctor" 
+      layout="fill"  // Alanı doldurması için
+      objectFit="cover"  // Görselin düzgün bir şekilde genişlemesi için
+      style={isMobile ? { transform: 'scale(1.1)', objectPosition: 'bottom' } : {}} 
+    />
+  </div>
+</SwiperSlide>
+<SwiperSlide>
+          <Image src={Medicinees} alt="Image 1" layout="fill" objectFit="cover" />
         </SwiperSlide>
         <SwiperSlide>
           <Image src={Medicine} alt="Image 1" layout="fill" objectFit="cover" />
         </SwiperSlide>
-        <SwiperSlide>
-          <Image src={Medicinees} alt="Image 1" layout="fill" objectFit="cover" />
-        </SwiperSlide>
+ 
         <SwiperSlide>
           <Image src={Doctortb} alt="Image 1" layout="fill" objectFit="cover" />
         </SwiperSlide>
@@ -108,6 +109,7 @@ export default function Header() {
       </Swiper>
 
       <div className={styles.bgimage}>
+        
         <section className={`${styles.header_box}  ${isOpen ? styles.shadow : ''}`}>
           <div className={`${styles.logo_box} flex gap-3 items-center`}>
             <button className={styles.button}></button>
@@ -141,12 +143,16 @@ export default function Header() {
         <Search />
 
         {!accessToken && (
+
+          
           <button onClick={goAuthGetStarted} className={styles.getStartedButton}>
             <div className={styles.textContainer}>Get Started</div>
             <div className={styles.arrowContainer}>
               <Image alt="Next arrow icon" src={ArrovRight2} width={30} height={30} className={styles.arrowImage} />
             </div>
           </button>
+
+
         )}
       </div>
     </div>

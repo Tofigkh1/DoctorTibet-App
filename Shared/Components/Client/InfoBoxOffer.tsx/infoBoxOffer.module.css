@@ -122,34 +122,64 @@ background: #D63626;
 
 }
 
-@media only screen and (max-width: 800px) {
 
-    .Title{
-        width: 100%;
-        align-items: center;
-        font-family: Roboto;
-        font-size: 25px;
-        font-weight: 700;
-        line-height: 31px;
-        letter-spacing: 0.03em;
-        text-align: center;
-        height: auto;
-        margin-bottom: 55px;
-        margin: 16px;
-        padding: 30px;
+@media screen and (max-width: 828px) {
+    .oneOfferDiv {
+      flex-direction: column;
+      align-items: center;
+      margin: 0 auto;
+      text-align: center;
+    ;
     }
-    .des{
-        width: 100%;
-        text-align: center;
-        padding: 0 12px;
-        height: auto;
-        padding: 30px;
+
+    .oneTitle{
+      display: flex;
+      flex-direction: column;
+      margin-top: 130px;
+      color: #043CAA;
+      font-weight:700;
+      font-size: 24px;
+      margin-left: 30px;
+      
+  }
+  
+    .oneImage2 {
+      width: 330px;
+      height: auto;
+      
     }
-    .IMG{
-         position: relative;
-         width: 100%;
-         height: auto;
-         margin-top: 12px;
-         padding: 30px;
+
+    .excludeAllText{
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      margin-top: 40px;
+      margin-left: 70px;
+  }
+  
+  
+    .oneTitle h1 {
+      font-size: 1.5rem;
+      margin-right: 90px
     }
+  
+    .excludeText h1 {
+      font-size: 1rem;
+      margin-right: 50px
     }
+  
+    .button {
+      width: 100%;
+      padding: 12px;
+    }
+  
+    .ml-24 {
+      margin-left: 0;
+        margin-right: 50px
+    }
+  
+    .mr-10 {
+      margin-right: 0;
+    }
+  }
+  

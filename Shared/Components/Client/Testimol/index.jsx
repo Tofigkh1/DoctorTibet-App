@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Box, Text, Stack } from "@chakra-ui/react";
+import { Box, Text, Stack,useBreakpointValue  } from "@chakra-ui/react";
 import ColorLine from '../../../../public/sectionColorLine.svg';
 import Image from "next/image";
 
@@ -26,6 +26,11 @@ function Testimonial() {
   const [index, setIndex] = useState(0);
   const [isSlidingOut, setIsSlidingOut] = useState(false);
 
+  const marginLeft = useBreakpointValue({ base: '30px', md: '0' }); 
+  const textMargin = useBreakpointValue({ base: '45px', md: '0' }); 
+  const indicatorMargin = useBreakpointValue({ base: '30px', md: '0' });
+  const iconMargin = useBreakpointValue({ base: '165px', md: '0' });
+
   useEffect(() => {
     const interval = setInterval(() => {
       setIsSlidingOut(true);
@@ -40,28 +45,28 @@ function Testimonial() {
 
   return (
     <Box
-      width="480px"
+      width="100%"
       height="480px"
       overflow="hidden"
       p={6}
       backgroundColor="white"
     >
-      <Text className=" ml-28" fontSize="xl" fontWeight="bold" mb={4}>
+    <Text ml={textMargin} fontSize="xl" fontWeight="bold" mb={4}>
         What Our Clients Say
       </Text>
-
-      <div className=" ml-48 mb-5">
+      <div style={{ marginLeft: iconMargin, marginBottom: '20px' }}>
         <Image src={ColorLine} alt="Icon" width={50} height={0} />
       </div>
 
       <Box
         className={`testimonial-content ${isSlidingOut ? "slide-out" : "slide-in"} `}
+        ml={marginLeft} // Shift left by 30px on mobile only
       >
         <Text  mb={4}>"{testimonials[index].text}"</Text>
         <Text fontWeight="bold" className="text-comitColorText">- {testimonials[index].author}</Text>
       </Box>
 
-      <Stack direction="row" justify="center" mt={4}>
+      <Stack direction="row" justify="center" mt={4} ml={indicatorMargin}>
         {testimonials.map((_, i) => (
           <Box
             key={i}

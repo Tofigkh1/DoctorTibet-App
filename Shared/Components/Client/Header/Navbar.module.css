@@ -1,5 +1,5 @@
 .getStartedButton {
-  margin-left: 310px;
+  margin-left: 100px;
   margin-top: 40px;
   width: 250px;
   height: 58px;
@@ -277,75 +277,48 @@ z-index: 1;
   display: none !important;
 }
 
-@media (max-width: 991px) {
-  .menu_box {
-      overflow: auto;
+
+
+
+/* Navbar.module.css */
+@media only screen and (max-width: 375px) {
+  .getStartedButton {
+    margin-left: 10px; /* Butonu sola kaydırmak için */
+    justify-content: flex-start;
   }
 
-  .mobile_svg {
-      display: block;
+  .headerSmallText{
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 18px;
+    margin-left: 50px;
+    margin-top: 20px;
+  
   }
 
-  .mobile_svg svg {
-      width: 36px;
-      height: 30px;
+  .arrowContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  .mobile_svg svg path {
-      fill: #181617;
+  .textContainer {
+    font-size: 14px; /* Daha küçük ekran için yazı boyutunu küçült */
   }
 
-  .header_box {
-      margin-top: 100px;
-      padding: 10px 18px;
-
+  .headerText h1, .headerSmallText h1 {
+    font-size: 16px; /* Başlıkları daha küçük hale getirebilirsin */
   }
 
-  .menu_box {
-      position: fixed;
-      padding: 24px;
-      top: 0;
-      left: 0;
-      max-width: 80%;
-      width: 100%;
-      height: 100vh;
-      background: #fff;
-      z-index: 100;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      padding-top: 50px;
-      gap: 100px;
+  /* Navbar.module.css */
+  .getStartedButton {
+    margin-left: 0px; /* Mobilde margin olmadan sol hizala */
+    justify-content: flex-start; /* İçeriği sola hizala */
+    width: fit-content; /* Butonun genişliği içeriğe bağlı olsun */
   }
 
-  .shadow {
-      content: '';
-      display: block;
-      background-color: rgba(0, 0, 0, 0.4);
-      width: 100%;
-      height: 100%;
-      position: fixed;
-      right: 0;
-      top: 0;
-      z-index: 99;
-  }
+.arrowContainer {
+  margin-left: 10px; /* Sağdaki ikonu metin ile aralıklı hale getirebilirsin */
+}
 
-  .menu_box svg {
-      display: block
-  }
-
-  .mobile_show {
-      display: flex;
-      width: 100%;
-      justify-content: flex-start;
-  }
-
-  .mobile_hide {
-      display: none;
-  }
-
-  .logo_box > svg {
-      height: 25px;
-      width: auto;
-  }
 }
