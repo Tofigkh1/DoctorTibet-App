@@ -5,7 +5,7 @@ const QRCodePage = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
-    const url = 'https://youtube-clone-pre.vercel.app/';
+    const url = 'https://www.doctor-tibet.com/';
     if (canvasRef.current) {
       const options = {
         width: 115,
