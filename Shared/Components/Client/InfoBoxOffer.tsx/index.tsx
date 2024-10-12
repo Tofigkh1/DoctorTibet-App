@@ -75,7 +75,7 @@ function InfoBoxOffer(props: Props) {
                         </div>
                         <button
                    
-                   className={`bg-${color}-500 hover:bg-${color}-600`}
+                        className={`bg-white border border-clientButtonGreen rounded-[50px] px-4 py-2 flex items-center gap-5 justify-center w-60 transition-all duration-300 hover:bg-clientButtonGreen hover:text-white`}
                   
                       
                             onClick={() => push('/medicines')}
