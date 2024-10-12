@@ -1,13 +1,16 @@
 // tailwind.config.js
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [  "./app/**/*.{js,ts,jsx,tsx,mdx}",
+  content: [
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./shared/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/**/*.{js,ts,jsx,tsx,mdx}",],
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
   theme: {
-    colors: {
+    extend: {
+      colors: {
         clientButtonGreen: "#1BC768",
         grayText2: "#4F4F4F",
         whiteLight1: "#F3F4F6",
@@ -31,7 +34,7 @@ module.exports = {
         adminInfoBox: "#121212",
         goldText: "#e5b95e"
     },
-    extend: {},
+  },
   },
   plugins: [],
 }
