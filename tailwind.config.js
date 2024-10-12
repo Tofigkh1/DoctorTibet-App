@@ -37,4 +37,10 @@ module.exports = {
   },
   },
   plugins: [],
+  safelist: [
+    'bg-clientButtonGreen',
+    'hover:bg-clientButtonGreen',
+    'text-white',
+    'hover:text-white',
+  ],
 }

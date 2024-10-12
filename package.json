@@ -34,7 +34,7 @@
     "jsonwebtoken": "^9.0.1",
     "lucide-react": "^0.428.0",
     "multiparty": "^4.2.3",
-    "next": "^14.2.13",
+    "next": "^14.2.15",
     "next-redux-wrapper": "^8.1.0",
     "next-swagger-doc": "^0.4.0",
     "next-themes": "^0.3.0",
@@ -68,12 +68,12 @@
     "@types/react-dom": "18.2.8",
     "@types/react-query": "^1.2.9",
     "@types/react-slick": "^0.23.13",
-    "autoprefixer": "^10.4.19",
+    "autoprefixer": "^10.4.20",
     "babel-plugin-styled-components": "^2.1.4",
     "eslint": "8.50.0",
     "eslint-config-next": "13.5.3",
-    "postcss": "^8.4.39",
-    "tailwindcss": "^3.4.4",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.13",
     "typescript": "5.2.2"
   }
 }
