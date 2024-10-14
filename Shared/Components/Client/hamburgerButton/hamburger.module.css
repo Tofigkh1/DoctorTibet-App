@@ -43,7 +43,7 @@
     align-items: flex-start;
     position: absolute;
     top: 0;
-    left: 2px;
+    left: -1px;
     background-color: #2c8dfb;
     width: 320px;
     height: 785px;
