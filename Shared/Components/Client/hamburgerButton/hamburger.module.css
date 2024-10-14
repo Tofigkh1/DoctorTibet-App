@@ -43,12 +43,12 @@
     align-items: flex-start;
     position: absolute;
     top: 0;
-    left: -6px;
-    padding-left: 10px;
+    left: -9px;
+    padding-left: 18px;
     background-color: #2c8dfb;
     width: 320px;
     height: 785px;
-    border-radius: 18px;
+    border-radius: 10px;
     z-index: 99999999999;
     transition: opacity 0.3s, transform 0.3s;
     pointer-events: none; /* Menü kapalıyken tıklanmasını engellemek için */
