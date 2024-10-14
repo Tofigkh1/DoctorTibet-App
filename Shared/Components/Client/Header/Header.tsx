@@ -23,6 +23,7 @@ import Medicine from "../../../../public/home_swiper2.jpg";
 import Medicinees from "../../../../public/medicalbanner.jpg";
 import Doctortb from "../../../../public/doctortb.jpg";
 import ArrovRight2 from '../../../../public/next.png';
+import HamburgerBtn from '../hamburgerButton';
 
 const Curve = styled.div`
   position: absolute;
@@ -40,7 +41,6 @@ export default function Header() {
   const [accessToken, setAccessToken] = useState<string | null>(null);
   let { isMobile } = useResize();
   let { push } = useRouter();
-  
 
   useEffect(() => {
     const token = localStorage.getItem('user_info');
@@ -108,15 +108,25 @@ export default function Header() {
           <span ref={progressContent}></span>
         </div>
       </Swiper>
+      <div>
 
+   
+    {isMobile && (
+  <div className={styles.hambrBtn}>
+    <HamburgerBtn />
+  </div>
+)}
       <div className={styles.bgimage}>
-        
+    
         <section className={`${styles.header_box}  ${isOpen ? styles.shadow : ''}`}>
+     
           <div className={`${styles.logo_box} flex gap-3 items-center`}>
             <button className={styles.button}></button>
             <div className={styles.cursor}>
               <img onClick={() => push('/')} style={{ width: '90px', height: '90px' }} className={styles.logo} src="/Logo.png" alt="Logo" />
             </div>
+
+         
           </div>
 
           <div className={`${styles.menu_box} ${isMobile ? (isOpen ? styles.show : styles.hide) : styles.show}`}>
@@ -131,17 +141,12 @@ export default function Header() {
         </section>
 
         <div>
-
-          
           <div className={styles.headerText}>
             {/* <h1 className=''>We can get your Drug</h1>
             <h1>Prescriptions to You</h1> */}
                  <h1 className=''>Doctor Tibet ilə</h1>
                  <h1>Sağlam gələcək.</h1>
           </div>
-
-
-
           <div className={styles.headerSmallText}>
             <h1 className=''>Həkiminizin sağlamlığınız üçün təyin etdiyi bütün dərmanlar bizdə</h1>
             <h1>biz bunu sizə çatdıra bilərik.</h1>
@@ -162,6 +167,7 @@ export default function Header() {
 
 
         )}
+      </div>
       </div>
     </div>
   );

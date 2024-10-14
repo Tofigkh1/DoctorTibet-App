@@ -133,9 +133,9 @@ export default function Search() {
                 <button className={styles.searchButton} onClick={handleSearchClick}>Find drug</button>
             </div>
 
-            <div className="w-5/12">
+            <div className="w-5/12 md:w-96">
                 {alert && (
-                    <Alert className="mt-48 ml-16 rounded-2xl" status='error'>
+                    <Alert className="mt-52 ml-16 rounded-2xl" status='error'>
                         <AlertIcon />
                         <AlertTitle>The product you are looking for could not be found!</AlertTitle>
                         <AlertDescription>try again.</AlertDescription>
