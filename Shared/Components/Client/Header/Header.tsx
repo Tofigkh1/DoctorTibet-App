@@ -24,7 +24,6 @@ import Medicinees from "../../../../public/medicalbanner.jpg";
 import Doctortb from "../../../../public/doctortb.jpg";
 import ArrovRight2 from '../../../../public/next.png';
 import HamburgerBtn from '../hamburgerButton';
-import NavRes from '../navResponsive';
 
 const Curve = styled.div`
   position: absolute;
@@ -131,7 +130,7 @@ export default function Header() {
           </div>
 
           <div className={`${styles.menu_box} ${isMobile ? (isOpen ? styles.show : styles.hide) : styles.show}`}>
-            <NavRes />
+            <Nav />
           </div>
 
           <div className='flex flex-row gap-4 items-center'>
