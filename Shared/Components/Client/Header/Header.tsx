@@ -40,6 +40,7 @@ export default function Header() {
   const [accessToken, setAccessToken] = useState<string | null>(null);
   let { isMobile } = useResize();
   let { push } = useRouter();
+  
 
   useEffect(() => {
     const token = localStorage.getItem('user_info');
@@ -130,12 +131,17 @@ export default function Header() {
         </section>
 
         <div>
+
+          
           <div className={styles.headerText}>
             {/* <h1 className=''>We can get your Drug</h1>
             <h1>Prescriptions to You</h1> */}
                  <h1 className=''>Doctor Tibet ilə</h1>
                  <h1>Sağlam gələcək.</h1>
           </div>
+
+
+
           <div className={styles.headerSmallText}>
             <h1 className=''>Həkiminizin sağlamlığınız üçün təyin etdiyi bütün dərmanlar bizdə</h1>
             <h1>biz bunu sizə çatdıra bilərik.</h1>

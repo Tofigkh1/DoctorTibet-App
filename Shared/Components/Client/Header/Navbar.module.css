@@ -85,10 +85,6 @@
 
 
 
-.button {
-  /* Buton stilleri */
-}
-
 .cursor {
   cursor: pointer;
 }
@@ -127,7 +123,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 40px 35px;
+  padding: 40px 18px;
 
   position: relative;
   
@@ -281,20 +277,32 @@ z-index: 1;
 
 
 /* Navbar.module.css */
-@media only screen and (max-width: 375px) {
+@media screen and (max-width: 828px) {
+
+
   .getStartedButton {
-    margin-left: 10px; /* Butonu sola kaydırmak için */
-    justify-content: flex-start;
+    margin-left: 35px; /* Butonu sola kaydırmak için */
+    margin-top: 80px;
+
   }
 
   .headerSmallText{
     color: #FFFFFF;
     font-weight: 700;
-    font-size: 18px;
-    margin-left: 50px;
+    font-size: 20px;
+    margin-left: 40px;
     margin-top: 20px;
   
   }
+
+  .container {
+    display: flex;
+width: 100%;
+  }
+  
+
+  
+
 
   .arrowContainer {
     display: flex;
@@ -307,15 +315,19 @@ z-index: 1;
   }
 
   .headerText h1, .headerSmallText h1 {
-    font-size: 16px; /* Başlıkları daha küçük hale getirebilirsin */
+ 
+  }
+
+  .headerText h1{
+    margin-left: -65px;
+  }
+
+  .headerSmallText h1 {
+    
   }
 
   /* Navbar.module.css */
-  .getStartedButton {
-    margin-left: 0px; /* Mobilde margin olmadan sol hizala */
-    justify-content: flex-start; /* İçeriği sola hizala */
-    width: fit-content; /* Butonun genişliği içeriğe bağlı olsun */
-  }
+
 
 .arrowContainer {
   margin-left: 10px; /* Sağdaki ikonu metin ile aralıklı hale getirebilirsin */

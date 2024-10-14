@@ -140,7 +140,7 @@ function InfoBoxOffer(props: Props) {
         height={0} 
     />
 </div>
-                    <div className='' data-aos={mobile ? 'fade-up' : "fade-left"}>
+                    <div className='' >
                         <div className=' mr-10'>
                             <div className={style.oneTitle}>
                                 <h1>Get your drugs at</h1>
@@ -178,10 +178,10 @@ function InfoBoxOffer(props: Props) {
             {mobile ? (
             // Mobil görünüm
             <div className={style.oneOfferDiv}>
-                  <div className='' data-aos='fade-up'>
+                  <div className='' >
                     <Image className={style.oneImage} src={groupHuman} alt="Icon" width={511} height={0} />
                 </div>
-                <div className='' data-aos='fade-up'>
+                <div className='' >
                     <div className={style.oneTitle}>
                         <h1>Set up your profile</h1>
                         <h1>and get refill easily</h1>
@@ -216,7 +216,7 @@ function InfoBoxOffer(props: Props) {
         ) : (
             // Desktop görünüm
             <div className={style.oneOfferDiv}>
-                <div className='' data-aos='fade-right'>
+                <div className=''>
                     <div className={style.oneTitle}>
                         <h1>Set up your profile</h1>
                         <h1>and get refill easily</h1>
@@ -245,7 +245,7 @@ function InfoBoxOffer(props: Props) {
                     </div>
                 </div>
 
-                <div className='' data-aos='fade-left'>
+                <div className='' >
                     <Image className={style.oneImage} src={groupHuman} alt="Icon" width={511} height={0} />
                 </div>
             </div>
@@ -260,7 +260,7 @@ function InfoBoxOffer(props: Props) {
                         <Image src={feedBackImg} alt="Icon" width={420} height={0} />
                     </div>
 
-                    <div className='' data-aos={mobile ? 'fade-up' : "fade-left"}>
+                    <div className=''>
                         <div className=' mr-10'>
                             <Testimonial />
                         </div>
