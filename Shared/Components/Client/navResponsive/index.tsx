@@ -28,15 +28,10 @@ export default function NavRes() {
                     {(isMobile && accessToken) ? (
                         <>
                             <li className={styless[`${isActive("/user/profile")}`]} onClick={() => push('/user/profile')}>Your Profile</li>
-                            <li className={styless[`${isActive("/user/basket")}`]} onClick={() => push('/user/basket')}>Your Basket</li>
+                            {/* <li className={styless[`${isActive("/user/basket")}`]} onClick={() => push('/user/basket')}>Your Basket</li>
                             <li className={styless[`${isActive("/user/orders")}`]} onClick={() => push('/user/orders')}>Your Orders</li>
-                            <li className={styless[`${isActive("/user/checkout")}`]} onClick={() => push('/user/checkout')}>Checkout</li>
-                            <li className={styless[`${isActive("/user/checkout")}`]} onClick={() => {
-                                push('/user/checkout');
-                                localStorage.removeItem("user_info");
-                                localStorage.removeItem("access_token");
-                                dispatch(clearUser());
-                            }}>Logout</li>
+                            <li className={styless[`${isActive("/user/checkout")}`]} onClick={() => push('/user/checkout')}>Checkout</li> */}
+                   
                         </>
                     ) : ''}
 
@@ -45,6 +40,12 @@ export default function NavRes() {
                     <li onClick={() => push('/contact-us')} className={styless[`${isActive("/contact-us")}`]}>Contact a Doctor</li>
                     <li onClick={() => push('/about-us')} className={styless[`${isActive("/about-us")}`]}>About</li>
                     <li onClick={() => push('/faq')} className={styless[`${isActive("/faq")}`]}>F.A.Q</li>
+                    <li className={styless[`${isActive("/user/checkout")}`]} onClick={() => {
+                                push('/user/checkout');
+                                localStorage.removeItem("user_info");
+                                localStorage.removeItem("access_token");
+                                dispatch(clearUser());
+                            }}>Logout</li>
                 </ul>
             </nav>
         </>

@@ -9,7 +9,7 @@ const refreshSecretKey = "foody_app_user_refresh_token";
 // JWT (access token) oluşturma fonksiyonu
 export function generateJWT(userId) {
   const payload = { userId };
-  const options = { expiresIn: "1h" }; // Access token 1 saat geçerli olacak
+  const options = { expiresIn: "14d" }; // Access token 14 gün geçerli olacak
 
   const token = jwt.sign(payload, secretKey, options); // 1 saat geçerli olacak access token oluştur
   return token;

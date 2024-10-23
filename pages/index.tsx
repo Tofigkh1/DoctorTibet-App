@@ -1,6 +1,6 @@
 import axios from "axios";
 import dynamic from "next/dynamic";
-import { NextPage } from "next";
+import { GetStaticPropsContext, NextPage } from "next";
 import InfoSection from "../Shared/Components/Client/infoSection";
 import InfoBoxOffer from "../Shared/Components/Client/InfoBoxOffer.tsx";
 import Footer from "../Shared/Components/Client/Footer";
@@ -47,4 +47,11 @@ const Home: NextPage = (props) => {
   );
 };
 
+
+
+
+
 export default Home;
+
+
+

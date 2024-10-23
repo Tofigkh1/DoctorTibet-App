@@ -25,6 +25,10 @@ import Doctortb from "../../../../public/doctortb.jpg";
 import ArrovRight2 from '../../../../public/next.png';
 import HamburgerBtn from '../hamburgerButton';
 
+import { useTranslation } from 'next-i18next';
+
+
+
 const Curve = styled.div`
   position: absolute;
   top: 0;
@@ -36,6 +40,10 @@ const Curve = styled.div`
 `;
 
 export default function Header() {
+
+  const { t} = useTranslation('common');
+
+
   let user = useSelector((state: RootState) => state.user);
   let { isOpen, onOpen, onClose } = useModalOpen();
   const [accessToken, setAccessToken] = useState<string | null>(null);
@@ -79,24 +87,23 @@ export default function Header() {
         onAutoplayTimeLeft={onAutoplayTimeLeft}
         className={`${styles.mySwiper} ${styles.background}`}
       >
-     <SwiperSlide style={{  height: isMobile ? '600px' : '500px', position: 'relative' }}>
-  <div style={{ height: '670px', width: '100%', position: 'relative' }}>
-    <Image 
-      src={DoctorPhoto} 
-      alt="Doctor" 
-      layout="fill"  // Alanı doldurması için
-      objectFit="cover"  // Görselin düzgün bir şekilde genişlemesi için
-      style={isMobile ? { transform: 'scale(1.1)', objectPosition: 'bottom' } : {}} 
-    />
-  </div>
-</SwiperSlide>
-<SwiperSlide>
+        <SwiperSlide style={{ height: isMobile ? '600px' : '500px', position: 'relative' }}>
+          <div style={{ height: '670px', width: '100%', position: 'relative' }}>
+            <Image 
+              src={DoctorPhoto} 
+              alt="Doctor" 
+              layout="fill"  
+              objectFit="cover"  
+              style={isMobile ? { transform: 'scale(1.1)', objectPosition: 'bottom' } : {}} 
+            />
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
           <Image src={Medicinees} alt="Image 1" layout="fill" objectFit="cover" />
         </SwiperSlide>
         <SwiperSlide>
           <Image src={Medicine} alt="Image 1" layout="fill" objectFit="cover" />
         </SwiperSlide>
- 
         <SwiperSlide>
           <Image src={Doctortb} alt="Image 1" layout="fill" objectFit="cover" />
         </SwiperSlide>
@@ -108,67 +115,62 @@ export default function Header() {
           <span ref={progressContent}></span>
         </div>
       </Swiper>
+
       <div>
+  
 
    
-    {isMobile && (
-  <div className={styles.hambrBtn}>
-    <HamburgerBtn />
-  </div>
-)}
-      <div className={styles.bgimage}>
-    
-        <section className={`${styles.header_box}  ${isOpen ? styles.shadow : ''}`}>
-     
-          <div className={`${styles.logo_box} flex gap-3 items-center`}>
-            <button className={styles.button}></button>
-            <div className={styles.cursor}>
-              <img onClick={() => push('/')} style={{ width: '90px', height: '90px' }} className={styles.logo} src="/Logo.png" alt="Logo" />
-            </div>
-
-         
+        {isMobile && (
+          <div className={styles.hambrBtn}>
+            <HamburgerBtn />
           </div>
-
-          <div className={`${styles.menu_box} ${isMobile ? (isOpen ? styles.show : styles.hide) : styles.show}`}>
-            <Nav />
-          </div>
-
-          <div className='flex flex-row gap-4 items-center'>
-            <div className={styles.mobile_hide}>
-              <Auth />
-            </div>
-          </div>
-        </section>
-
-        <div>
-          <div className={styles.headerText}>
-            {/* <h1 className=''>We can get your Drug</h1>
-            <h1>Prescriptions to You</h1> */}
-                 <h1 className=''>Doctor Tibet ilə</h1>
-                 <h1>Sağlam gələcək.</h1>
-          </div>
-          <div className={styles.headerSmallText}>
-            <h1 className=''>Həkiminizin sağlamlığınız üçün təyin etdiyi bütün dərmanlar bizdə</h1>
-            <h1>biz bunu sizə çatdıra bilərik.</h1>
-          </div>
-        </div>
-
-        <Search />
-
-        {!accessToken && (
-
-          
-          <button onClick={goAuthGetStarted} className={styles.getStartedButton}>
-            <div className={styles.textContainer}>Get Started</div>
-            <div className={styles.arrowContainer}>
-              <Image alt="Next arrow icon" src={ArrovRight2} width={30} height={30} className={styles.arrowImage} />
-            </div>
-          </button>
-
-
         )}
-      </div>
+
+        <div className={styles.bgimage}>
+          <section className={`${styles.header_box}  ${isOpen ? styles.shadow : ''}`}>
+            <div className={`${styles.logo_box} flex gap-3 items-center`}>
+              <button className={styles.button}></button>
+              <div className={styles.cursor}>
+                <img onClick={() => push('/')} style={{ width: '90px', height: '90px' }} className={styles.logo} src="/Logo.png" alt="Logo" />
+              </div>
+            </div>
+
+            <div className={`${styles.menu_box} ${isMobile ? (isOpen ? styles.show : styles.hide) : styles.show}`}>
+              <Nav />
+            </div>
+
+            <div className='flex flex-row gap-4 items-center'>
+              <div className={styles.mobile_hide}>
+                <Auth />
+              </div>
+            </div>
+          </section>
+
+          <div>
+            <div className={styles.headerText}>
+              <h1 className=''>Doctor Tibet ilə</h1>
+              <h1>Sağlam gələcək.</h1>
+            </div>
+            <div className={styles.headerSmallText}>
+              <h1 className=''>Həkiminizin sağlamlığınız üçün təyin etdiyi bütün dərmanlar bizdə</h1>
+              <h1>biz bunu sizə çatdıra bilərik.</h1>
+            </div>
+          </div>
+
+          <Search />
+
+          {!accessToken && (
+            <button onClick={goAuthGetStarted} className={styles.getStartedButton}>
+              <div className={styles.textContainer}>{t("Get Started")}</div>
+              <div className={styles.arrowContainer}>
+                <Image alt="Next arrow icon" src={ArrovRight2} width={30} height={30} className={styles.arrowImage} />
+              </div>
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );
 }
+
+

@@ -27,6 +27,8 @@ import { DotLoader } from "react-spinners";
 import { motion } from "framer-motion";
 import BasketMenu from "../../Shared/Components/sliderBasket/sliderBasket";
 import { AppDispatch, RootState } from "../../Shared/Redux/Store/store";
+import HamburgerBtn from "../../Shared/Components/Client/hamburgerButton";
+import { useResize } from "../../Shared/Hooks/useResize";
 
 const ProductCard = dynamic(() => import('../../Shared/Components/Client/productsCard/products'), {
   loading: () => <p>Loading...</p>,
@@ -34,6 +36,7 @@ const ProductCard = dynamic(() => import('../../Shared/Components/Client/product
 });
 
 const Container = styled.div`
+  background: linear-gradient(135deg, #7f00ff, #e100ff);
   font-family: Arial, sans-serif;
 `;
 
@@ -141,6 +144,7 @@ function Medicines() {
   const [isOpenn, setIsOpen] = useState(false);
   const { push } = useRouter();
   const router = useRouter();
+  let { isMobile } = useResize();
 
   const [accessToken, setAccessToken] = useState<string | null>(null);
   let user = useSelector((state: RootState) => state.user);
@@ -229,6 +233,13 @@ function Medicines() {
   return (
     <div>
       <Container>
+      <div>
+          {isMobile && (
+          <div className={styles.hambrBtn}>
+            <HamburgerBtn />
+          </div>
+        )}
+          </div>
         <Header>
           <div className="flex">
             <img
@@ -239,7 +250,17 @@ function Medicines() {
               alt="Logo"
             />
           </div>
-          <Nav />
+
+          <div>
+          {!isMobile && (
+          <div className={styles.hambrBtn}>
+            <Nav />
+          </div>
+        )}
+          </div>
+         
+        
+          
           <div className="flex gap-10 z-50">
           {accessToken && (
          

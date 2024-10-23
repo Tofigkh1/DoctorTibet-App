@@ -75,10 +75,14 @@ export default function Auth() {
                             {nameChar}
                             
                         </MenuButton>
-                        <span className={styles.user_name}>{isMobile && user.fullname}</span>
+                        <h1 className={styles.user_name}>
+  {isMobile && user.fullname.split(' ').map((word, index) => (
+    <span key={index}>{word}</span>
+  ))}
+</h1>
                         
                         <MenuList style={{ backgroundColor: '#26d6a1', color: 'white' }}>
-                            {!isMobile &&
+                            {
                               <ul>
                                     <MenuGroup>
                                         <MenuItem 
@@ -146,7 +150,7 @@ export default function Auth() {
                         </MenuList>
                         
                     </Menu>
-                    <span className={styles.user_name}>{isMobile && user.fullname}</span>
+                   
                 </div> :
                 <ButtonHeader addButtonFun={goAuth} typeButton={true} title='Sign In' btnSize={'sm'} addButton={false} />
             }

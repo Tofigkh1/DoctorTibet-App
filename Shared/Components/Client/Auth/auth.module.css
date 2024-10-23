@@ -79,6 +79,18 @@
 
 }
 @media(max-width: 991px){
+
+    .user_name{
+        color: #333;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 30px;
+        letter-spacing: 0.15px;
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+    
+    }
     .basket_btn{
         display: none;
     }
