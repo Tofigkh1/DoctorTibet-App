@@ -35,7 +35,7 @@ interface RedCardContainerProps {
     position: fixed;
     bottom: 0;
     width: 100%;
-    background-color: white;
+    background-color: #28e4c5;
  position: fixed;
       border-radius:40px 40px 0px 0px;
     color: white;
@@ -305,18 +305,18 @@ export default function ProductsDetail() {
 <div className={styles.medicineSize}>
 
 
-<div>
+<div className="">
                             <NavMedicine />
 </div>
 
-<div className=" flex gap-5  ">
+<div className=" flex gap-5">
 
-<div className=" flex flex-col gap-7">
+<div className=" flex flex-col gap-7 ">
 <h1 className=" flex  text-goldText">ⓘ Select age dimensions</h1>
     <div className=" flex gap-4 ml-11">
         
         
-        <div className=" flex flex-col">
+        <div className=" flex flex-col ">
 
         <button 
     onClick={() => dispatch(toggleRectVisible())}
@@ -355,7 +355,7 @@ export default function ProductsDetail() {
 
 
                         
-                     <div className=" pt-40 -z-50">
+                     <div className=" pt-52 -z-50">
     {products?.img_url ? (
         <Image
             src={products.img_url}  // Burada artık string olduğundan emin olduk
@@ -418,7 +418,7 @@ export default function ProductsDetail() {
                         </div> */}
                       
 
-                        <h1 className="mr-28  text-5xl text-black font-medium ">
+                        <h1 className="mr-28  text-5xl text-black font-medium  ">
                         {products?.price}₼
                         </h1>
 
