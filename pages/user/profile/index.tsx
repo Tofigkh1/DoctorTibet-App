@@ -151,7 +151,7 @@ const Profile: React.FC = ()=> {
   
       push('/login-register');
     }
-  
+    
 
     if (token && userInfo) {
       setIsLoggedIn(true);

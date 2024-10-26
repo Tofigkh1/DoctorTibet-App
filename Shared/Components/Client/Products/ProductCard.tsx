@@ -190,14 +190,28 @@ const basketItems = basket?.items || [];
 
     return (
         <div className={`flex justify-between sm:flex-nowrap flex-wrap gap-[12px] ${styles.product_box}`}>
-            <div className={`flex justify-end items-center md:gap-[30px] gap-2 ${styles.product_right}`}>
-                <button onClick={handleAddToBasket} className={buttonClicked ? styles.active : ''}>
-                    <Image src={PlusSvg} alt="Add to basket" />
-                </button>
-                <h1 className='text-clientButtonGreen text-2xl'>{productCount > 0 ? `${productCount}` : 0}</h1>
-                <button onClick={handleDeleteFromBasket}>
-                    <Image src={DeleteSvg} alt="Remove from basket" />
-                </button>
+            <div className={`flex justify-end items-center  gap-7 ${styles.product_right}`}>
+            <button onClick={handleAddToBasket} className={buttonClicked ? styles.active : ''}>
+    <Image 
+        src={PlusSvg} 
+        alt="Add to basket" 
+        width={200} 
+        height={200} 
+        className={styles.zoom}  // Apply zoom class to Plus image
+    /> 
+</button>
+
+<h1 className='text-clientButtonGreen text-2xl'>{productCount > 0 ? `${productCount}` : 0}</h1>
+
+<button onClick={handleDeleteFromBasket}>
+    <Image 
+        src={DeleteSvg} 
+        alt="Remove from basket" 
+        width={100} 
+        height={100} 
+        className={styles.zoom}  // Apply zoom class to Delete image
+    />
+</button>
             </div>
         </div>
     );

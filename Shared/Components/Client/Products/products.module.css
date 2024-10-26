@@ -53,7 +53,7 @@ object-fit: contain;
 
 }
 .product_right{
-    min-width: 200px;
+    width: 200px;
 }
 .product_right p {
     font-size: 12px;
@@ -78,13 +78,14 @@ object-fit: contain;
     border: 2px solid #BDBDBD;
     transition: all 0.5s;
 }
-.product_right button svg path{
-    fill: #BDBDBD;
-}
+
 .product_right button.active{
     background-color: #6FCF97;
     border-color: #6FCF97;
 }
+
+
+
 
 .product_right button.active svg path{
     fill: #fff;

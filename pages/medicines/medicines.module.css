@@ -9,12 +9,13 @@
 }
 
 .buyButton{
+    width: 380px;
     margin-top: 7px;
     color: black;
-    width: 110px;
+    border-radius: 100px;
     height: 45px;
     background-color: white;
-    border-radius: 25px;
+ 
     right: 0;
     transition:0.3s ease;
 }
@@ -40,10 +41,11 @@
 .buyButton {
     background-color: #28e4c5;
     border: none;
-    color: white;
+    color: black;
     padding: 10px 20px;
     font-size: 16px;
-    border-radius: 5px;
+    font-weight: bold;
+    border-radius: 30px;
     cursor: pointer;
   }
   
@@ -217,17 +219,23 @@
   .nav_box ul li:hover::before {
     width: 100%;
   }
-  
-  
-  
-  @media(max-width:991px){
-    .nav_box ul{
-        flex-direction: column;
-        gap: 16px;
-        align-items: flex-start;
-    }
+
+
+  .headers{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 99999999999999999;
+    right: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 1.75rem; 
   }
   
+
+
+
   
   
   /* ----------------- */
@@ -491,6 +499,72 @@ border-radius: 30px;
 .hide{
     display: none!important;
 }
+
+.containerPoint{
+    padding-top: 11rem;           /* pt-44, yaklaşık olarak 44 * 0.25rem */
+    display: flex;                 /* flex */
+    justify-content: space-around; /* justify-around */
+    align-items: center;           /* items-center */
+    width: 100%;  
+}
+
+.descData{
+    font-family: 'medicineFont', sans-serif; /* medicineFont font ailesini kullanır */
+    font-weight: 600; /* font-semibold */
+    font-size: 2rem; /* text-2xl */
+color: black;
+ 
+}
+
+
+@media screen and (max-width: 828px) {
+    .nav_box ul{
+        flex-direction: column;
+        gap: 16px;
+        align-items: flex-start;
+    }
+
+    .headers{
+        position: absolute;
+
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-top: 1.75rem; 
+      }
+      
+.containerPointMob{
+         /* pt-44, yaklaşık olarak 44 * 0.25rem */
+    display: flex;                 /* flex */
+    justify-content: space-around; /* justify-around */
+    align-items: center;           /* items-center */
+    width: 100%; 
+
+
+}
+
+.medicineSize{
+padding-top: 140px;
+display: flex;
+gap: 60px;
+z-index: 9;
+position: absolute;
+
+}
+
+.madicineContainer{
+
+
+
+}
+
+  }
+
+
+
+
+
+
 @media(max-width: 1200px){
     .category_list{
         padding: 10px;
