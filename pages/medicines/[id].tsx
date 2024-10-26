@@ -134,7 +134,15 @@ export default function ProductsDetail() {
               </div>
             ) : (
                 <>
-                    {coverImage && (
+             
+
+                 
+               
+                   
+                    
+                    {!isMobile &&
+                    <div>
+       {coverImage && (
                         <Image
                             src={coverImage}
                             alt="Background"
@@ -168,14 +176,6 @@ export default function ProductsDetail() {
                         </div>
                         
                     </div>
-
-
-                 
-               
-                   
-                    
-                    {!isMobile &&
-                    <div>
 
 
                 
@@ -294,7 +294,7 @@ export default function ProductsDetail() {
 
           
 
-                        <div className="flex gap-10">
+                        <div className="flex gap-5 mr-4">
                         <BasketMenu/>
                         <Auth/>
                         </div>
@@ -316,7 +316,7 @@ export default function ProductsDetail() {
     <div className=" flex gap-4 ml-11">
         
         
-        <div className=" flex flex-col ">
+        <div className=" flex flex-col  gap-6">
 
         <button 
     onClick={() => dispatch(toggleRectVisible())}
@@ -418,7 +418,7 @@ export default function ProductsDetail() {
                         </div> */}
                       
 
-                        <h1 className="mr-28  text-5xl text-black font-medium  ">
+                        <h1 className="mr-20  text-5xl text-black font-medium  ">
                         {products?.price}₼
                         </h1>
 
