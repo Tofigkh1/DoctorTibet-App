@@ -299,7 +299,7 @@ export default function ProductsDetail() {
     <div className=" flex gap-4 ml-11">
         
         
-        <div className=" flex flex-col  gap-6">
+        <div className=" flex flex-col  gap-5">
 
         <button 
     onClick={() => dispatch(toggleRectVisible())}
@@ -338,7 +338,7 @@ export default function ProductsDetail() {
 
 
                         
-                     <div className=" pt-52 -z-50">
+                     <div className=" pt-48 -z-50">
     {products?.img_url ? (
         <Image
             src={products.img_url}  // Burada artık string olduğundan emin olduk
