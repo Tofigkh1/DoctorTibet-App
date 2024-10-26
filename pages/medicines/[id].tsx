@@ -142,40 +142,7 @@ export default function ProductsDetail() {
                     
                     {!isMobile &&
                     <div>
-       {coverImage && (
-                        <Image
-                            src={coverImage}
-                            alt="Background"
-                            layout="fill"
-                            objectFit="cover"
-                            quality={100}
-                            priority={true}
-                            className="-z-50"
-                            
-                        />
-                    )}
 
-                    <div className={styles.headers}>
-                        <div className="mr-10">
-                            <img
-                                onClick={() => push('/')}
-                                style={{ width: '90px', height: '90px' }}
-                                className={styles.logo}
-                                src="/Logo.png"
-                                alt="Logo"
-                            />
-                        </div>
-
-                      
-
-          
-
-                        <div className="flex gap-10">
-                        <BasketMenu/>
-                        <Auth/>
-                        </div>
-                        
-                    </div>
 
 
                 
@@ -277,7 +244,23 @@ export default function ProductsDetail() {
 {isMobile &&
 
 
+
                     <div className={styles.madicineContainer}>
+
+{coverImage && (
+                        <Image
+                            src={coverImage}
+                            alt="Background"
+                            layout="fill"
+                            objectFit="cover"
+                            quality={100}
+                            priority={true}
+                            className="-z-50"
+                            
+                        />
+                    )}
+
+                
 
 <div className={styles.headers}>
                         <div className="mr-10">
