@@ -222,7 +222,7 @@ useEffect(() => {
   
 
     
-      <div className=' mt-6 ml-6'>
+      <div className=' mt-6 ml-6 flex flex-col'>
      
           <label className='text-grayText2 font-bold' htmlFor="phoneNumber">Phone Number</label>
           <Field

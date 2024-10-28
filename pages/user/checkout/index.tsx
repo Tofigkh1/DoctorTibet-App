@@ -235,7 +235,8 @@ type Basket = {
 
 
 export default function index() {
-    // const { loading, success, error } = useSelector((state) => state.order);
+  
+
 
     const dispatchh: AppDispatch = useDispatch();
 
@@ -484,6 +485,10 @@ const handleSignout = async () => {
 
     return (
    <>
+
+
+   {!isMobile &&
+   <div>
      <Container>
         <Header>
           <div className={styles.cursor}>
@@ -561,7 +566,7 @@ const handleSignout = async () => {
 
            <div className=" bg-cardColor w-5/12  mr-5 absolute ml-96 mt-20">
 
-{/*<WhatsAppButton/>*/}
+
 
 
 <SimpleForm/>
@@ -633,6 +638,132 @@ const handleSignout = async () => {
             {paymentScreen?<OverlayPayment/>:'' }
            </div>
 
+           </div>
+    }
+
+
+
+
+           {isMobile &&
+<div>
+<Container>
+        <Header>
+          <div className={styles.cursor}>
+            <img
+              onClick={() => push('/')}
+              style={{ width: '90px', height: '90px' }}
+              className={styles.logo}
+              src="/Logo.png"
+              alt="Logo"
+            />
+          </div>
+    
+
+          <div className="flex gap-10 z-50">
+                        <BasketMenu/>
+                        <Auth/>
+                        </div>
+        </Header>
+
+
+        
+      </Container>
+
+      <Categories/>
+
+ 
+      <div>
+       <ProductPageCount/>
+       </div>
+
+       <div className='flex gap-11 justify-between'>
+
+
+     
+
+
+           <div className=" bg-cardColor w-11/12  ml-4 mt-12">
+
+
+
+
+<SimpleForm/>
+
+
+
+               <h1 className='ml-6 font-bold text-grayText2 '></h1>
+
+               <div className="flex ml-6 ">
+                
+                   <button onClick={handleToggle}>
+                       <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                           <rect x="0.5" y="0.5" width="29" height="29" rx="14.5"
+                                 fill="white" stroke="#6FCF97"/>
+                           {isRectVisiblee2 &&
+                               <rect x="8" y="8" width="15" height="15" rx="7.5"
+                                     fill="#6FCF97"/>}
+                       </svg>
+                   </button>
+                   <h1 className={`ml-2 ${isRectVisiblee2 ? 'text-textColorGreen' : ''}`}> Payment by card </h1>
+
+
+                   <button className=' ml-16' onClick={handleToggle2}>
+                       <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                           <rect x="0.5" y="0.5" width="29" height="29" rx="14.5"
+                                 fill="white" stroke="#6FCF97"/>
+                           {isRectVisiblee &&
+                               <rect x="8" y="8" width="15" height="15" rx="7.5"
+                                     fill="#6FCF97"/>}
+                       </svg>
+                   </button>
+                   <h1 className={`ml-2 ${isRectVisiblee ? 'text-textColorGreen' : ''}`}>Payment via terminal</h1>
+               </div>
+
+
+
+
+
+
+               <div className='flex items-center justify-center mt-16'>
+
+
+
+
+                   <button
+                      className={`w-11/12 h-11 ${(isRectVisiblee || isRectVisiblee2) && basketId?.items?.length > 0  ? 'bg-textColorGreen' : 'bg-overlayColorGreen'} text-white rounded-sm`}
+                      onClick={handleCheckout}
+                      disabled={!((isRectVisiblee || isRectVisiblee2) && basketId?.items?.length  > 0)}
+                   >
+                      Checkout
+                   </button>
+
+               </div>
+
+
+
+
+           </div>
+
+
+   
+
+     
+
+
+       </div>
+
+         
+       <div className='mt-14'>
+</div>
+
+
+          <div>
+            {paymentScreen?<OverlayPayment/>:'' }
+           </div>
+    </div>
+}
 
    </>
     )

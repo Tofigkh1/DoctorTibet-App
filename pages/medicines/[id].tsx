@@ -273,7 +273,9 @@ export default function ProductsDetail() {
                         <p>{products?.allDescription}</p>
                     </div>
                     </div>
-}
+                    }
+
+                    
 
 
 {isMobile &&
