@@ -235,7 +235,7 @@ useEffect(() => {
     setFieldValue('phoneNumber', formattedPhone);
   }}
   placeholder="+994"
-  className='w-11/12 h-14 p-5 rounded-md'
+  className={style.customInput}
 />
 
 
@@ -251,7 +251,7 @@ useEffect(() => {
             value={values.address}
             onChange={handleChange} 
             placeholder="Enter your address"
-         className='w-11/12 h-14 p-5 rounded-md'
+         className={style.customInput}
           />
           <ErrorMessage name="address" component="div" className="text-mainRed" />
       

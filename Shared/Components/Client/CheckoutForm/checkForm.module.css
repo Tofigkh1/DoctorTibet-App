@@ -15,6 +15,14 @@
    
 }
 
+
+.customInput {
+    width: 91.6667%; /* 11/12 genişlik */
+    height: 3.5rem; /* 14 birim yüksekliği */
+    padding: 1.25rem; /* 5 birim padding */
+    border-radius: 0.375rem; /* yuvarlatılmış kenarlar */
+  }
+
 .inpdiv input {
     height: 54px;
     padding: 12px 24px;

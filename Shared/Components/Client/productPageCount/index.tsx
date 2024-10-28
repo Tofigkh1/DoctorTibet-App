@@ -168,7 +168,7 @@ const productPageCount = () => {
                         <div className="flex items-center mt-4"> {/* Adjusted flex settings */}
                             <button
                                onClick={() => handleDeleteFromBasket(String(items.id))}
-                                className="bg-red-500 p-2 rounded-full mr-4"
+                                className="p-2 rounded-full mr-4"
                             >
                                 <Image src={minus} alt="Delete product" width={35} height={35} />
                             </button>
@@ -177,7 +177,7 @@ const productPageCount = () => {
 
                             <button
                               onClick={() => handleAddFromBasket(String(items.id))}
-                                className="bg-red-500 p-2 rounded-full ml-4"
+                                className=" p-2 rounded-full ml-4"
                             >
                                 <Image src={plus} alt="Add product" width={35} height={35} />
                             </button>
