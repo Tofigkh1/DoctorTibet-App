@@ -47,7 +47,7 @@ const OverlayPayment = () => {
                             ref={menuRef}
                         >
                             <h1 className='text-center text-3xl font-semibold mt-7'>
-                                Mehsulun almaq ucun zehmet olmasa bizimle elaqeye kecerek odenis edin!
+                                Məhsulu almaq ucun zehmet olmasa bizimle əlaqəyə kecərək ödeniş edin!
                             </h1>
                             <div className='flex gap-10 ml-20 mt-14'>
                                 <div>
@@ -83,9 +83,9 @@ const OverlayPayment = () => {
                             ref={menuRef}
                         >
                             <h1 className={styles.centeredText}>
-                                Mehsulun almaq ucun zehmet olmasa bizimle elaqeye kecerek odenis edin!
+                            Məhsulu almaq ucun zehmet olmasa bizimle əlaqəyə kecərək ödeniş edin!
                             </h1>
-                            <div className='flex gap-7 ml-4 mt-14'>
+                            <div className='flex gap-7 ml-3 mt-14'>
                                 <div>
                                     <WhatsAppButton />
                                 </div>

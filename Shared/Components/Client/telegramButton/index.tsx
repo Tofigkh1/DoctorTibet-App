@@ -24,7 +24,7 @@ const TelegramButton = () => {
 
 <div>
 {isMobile &&
-   <button  className='flex gap-1' onClick={handleTelegramClick}>
+   <button  className='flex gap-2' onClick={handleTelegramClick}>
    <Image src={TelegramIcon} width={60} height={60} alt='icon'/>
 <h1 className='  text-lg font-medium'>Telegram ile Mesaj Gönder</h1>
 </button>

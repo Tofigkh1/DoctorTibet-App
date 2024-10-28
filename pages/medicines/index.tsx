@@ -261,13 +261,13 @@ function Medicines() {
          
         
           
-          <div className="flex gap-10 z-50">
+          <div className="flex gap-4 z-50">
           {accessToken && (
          
          <BasketMenu/>
         )}
                         <Auth/>
-                        </div>
+      </div>
         </Header>
 
         <MainSection>
@@ -407,7 +407,7 @@ function Medicines() {
                 <div key={category.id} className="w-full h-auto m-4  ">
           
               
-                <div className="flex flex-wrap gap-16 ">
+                <div className="flex ml-8 flex-wrap gap-16 ">
                   {getProductsByCategory(category.id).map((product: any) => (
                     <div key={product.id} className="  border border-whiteLight3 rounded-xl">
                       <ProductCard {...product} onReadMore={() => onDetail(product.id)} />

@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState, AppDispatch } from '../../../Redux/Store/store';
 import { fetchBasket, addToBasket, deleteFromBasket } from '../../../Redux/Featuries/basketSlice/basketSlice';
-import PlusSvg from "../../../../public/plus.png";
-import DeleteSvg from '../../../../public/delete.png';
+import PlusSvg from "../../../../public/plus (5).png";
+import DeleteSvg from '../../../../public/minus (2).png';
 import { useToast } from "@chakra-ui/react";
 import Image from 'next/image';
 import { resetButtonVisibility } from '../../../Redux/Featuries/ageSize/ageSize';
@@ -201,7 +201,7 @@ const basketItems = basket?.items || [];
     /> 
 </button>
 
-<h1 className='text-clientButtonGreen text-2xl'>{productCount > 0 ? `${productCount}` : 0}</h1>
+<h1 className='text-black text-2xl'>{productCount > 0 ? `${productCount}` : 0}</h1>
 
 <button onClick={handleDeleteFromBasket}>
     <Image 

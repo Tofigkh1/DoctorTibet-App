@@ -26,6 +26,7 @@ import ArrovRight2 from '../../../../public/next.png';
 import HamburgerBtn from '../hamburgerButton';
 
 import { useTranslation } from 'next-i18next';
+import BasketMenu from '../../sliderBasket/sliderBasket';
 
 
 
@@ -139,10 +140,17 @@ export default function Header() {
               <Nav />
             </div>
 
+           
+
             <div className='flex flex-row gap-4 items-center'>
+            <div>
+            <BasketMenu/>
+            </div>
+            
               <div className={styles.mobile_hide}>
                 <Auth />
               </div>
+              
             </div>
           </section>
 

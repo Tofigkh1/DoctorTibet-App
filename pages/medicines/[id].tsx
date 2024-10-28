@@ -281,188 +281,193 @@ export default function ProductsDetail() {
 {isMobile &&
 
 
+    <div className={styles.madicineContainer}>
 
-                    <div className={styles.madicineContainer}>
-
-{coverImage && (
-                        <Image
-                            src={coverImage}
-                            alt="Background"
-                            layout="fill"
-                            objectFit="cover"
-                            quality={100}
-                            priority={true}
-                            className="-z-50"
-                            
-                        />
-                    )}
-
-                
-
-<div className={styles.headers}>
-                        <div className="mr-10">
-                            <img
-                                onClick={() => push('/')}
-                                style={{ width: '90px', height: '90px' }}
-                                className={styles.logo}
-                                src="/Logo.png"
-                                alt="Logo"
+    {coverImage && (
+                            <Image
+                                src={coverImage}
+                                alt="Background"
+                                layout="fill"
+                                objectFit="cover"
+                                quality={100}
+                                priority={true}
+                                className="-z-50"
+                                
                             />
-                        </div>
-
-                      
-
-          
-
-                        <div className="flex gap-5 mr-4">
-                        <BasketMenu/>
-                        <Auth/>
-                        </div>
-                        
-                    </div>
-
+                        )}
+    
                     
-<div className={styles.medicineSize}>
-
-
-<div className="">
-                            <NavMedicine />
-</div>
-
-<div className=" flex gap-5">
-
-<div className=" flex flex-col gap-7 ">
-<h1 className=" flex  text-goldText">ⓘ Select age dimensions</h1>
-    <div className=" flex gap-4 ml-11">
-        
-        
-        <div className=" flex flex-col  gap-5">
-
-        <button 
-    onClick={() => dispatch(toggleRectVisible())}
-    className={`relative rounded-full w-10 h-10 overflow-hidden transition-all duration-300`}
->
-    <span
-        className={`absolute inset-0 bg-textColorGreen transition-transform duration-300 ease-in-out ${isRectVisible ? 'scale-100' : 'scale-0'}`}
-        style={{ borderRadius: "50%" }}
-    ></span>
-    <span className="relative z-10">30+</span>
-</button>
-
-<button 
-    onClick={() => dispatch(toggleRectVisible2())}
-    className={`relative rounded-full w-10 h-10 overflow-hidden transition-all duration-300`}
->
-    <span
-        className={`absolute inset-0 bg-textColorGreen transition-transform duration-300 ease-in-out ${isRectVisible2 ? 'scale-100' : 'scale-0'}`}
-        style={{ borderRadius: "50%" }}
-    ></span>
-    <span className="relative z-10">60+</span>
-</button>
-        </div>
-
-
-
-    </div>
-
-
-</div>
-
-</div>
-
-</div>
-
-
-
-                        
-                     <div className=" pt-48 -z-50">
-    {products?.img_url ? (
-        <Image
-            src={products.img_url}  // Burada artık string olduğundan emin olduk
-            width={400}
-            alt="coverimage"
-            height={470}
-            className="rounded-3xl"
-            objectFit="cover"
-            quality={100}
-            priority={true}
-        />
-    ) : (
-        <DotLoader color="#28e4c5" speedMultiplier={1.6} size={90} />  // Eğer img_url boşsa kullanıcıya bu mesajı gösterebilirsiniz
-    )}
-</div>
-
-
-
-
-
-<div className="text-black mt-28 font-bold text-2xl">
-                        <p>{products?.allDescription}</p>
-                    </div>
-
-                
-
-                    <RedCardContainer
-                    isExpanded={isExpanded}
-                onTouchStart={handleTouchStart}
-                onTouchEnd={handleTouchEnd}
-             >
-
-                
-                      <div className=" text-2xl font-bold text-black">
-                        {products?.name}
-                        </div>  
-                    <div className={styles.containerPointMob}>
-
-                 
-                        <div className={styles.descData}>
-                            {products?.description?.split('.').map((sentence, index) => (
-                                <p key={index} className="mb-2">{sentence.trim()}</p>
-                            ))}
-                        </div>
-
-   
-
-
-
-                    </div>
-
-
-
-
-                    <div className="flex ">
-                        
-                    {/* <div className=" flex flex-col text-goldText font-bold">
-                        <h1 >We work in close partnership with our alente - inalteine the NHS.</h1>
-                        <h1> the military, majer private healtheare providers and GP practices.</h1>
-                        </div> */}
-                      
-
-                        <h1 className="mr-20  text-5xl text-black font-medium  ">
-                        {products?.price}₼
-                        </h1>
-
-                        <div className="">
-                            <ul className="">
-                                {productList.map((product) => (
-                                    <ProductsCard 
-                                    {...product} 
-                                    id={String(product.id)} 
-                                    img_url={product.img_url || ''} // img_url null ise varsayılan bir resim kullanılır
+    
+    <div className={styles.headers}>
+                            <div className="mr-10">
+                                <img
+                                    onClick={() => push('/')}
+                                    style={{ width: '90px', height: '90px' }}
+                                    className={styles.logo}
+                                    src="/Logo.png"
+                                    alt="Logo"
                                 />
-                                ))}
-                            </ul>
-                         
+                            </div>
+    
+                          
+    
+              
+    
+                            <div className="flex gap-4 mr-4">
+                            <BasketMenu/>
+                            <Auth/>
+                            </div>
+                            
                         </div>
+    
                         
-                    </div>
+    <div className={styles.medicineSize}>
+    
+    
+    <div className="">
+                                <NavMedicine />
+    </div>
+    
+    <div className=" flex gap-5">
+    
+    <div className=" flex flex-col gap-7 ">
+    <h1 className=" flex  text-goldText">ⓘ Select age dimensions</h1>
+        <div className=" flex gap-4 ml-11">
+            
+            
+            <div className=" flex flex-col  gap-5">
+    
+            <button 
+        onClick={() => dispatch(toggleRectVisible())}
+        className={`relative rounded-full w-10 h-10 overflow-hidden transition-all duration-300`}
+    >
+        <span
+            className={`absolute inset-0 bg-textColorGreen transition-transform duration-300 ease-in-out ${isRectVisible ? 'scale-100' : 'scale-0'}`}
+            style={{ borderRadius: "50%" }}
+        ></span>
+        <span className="relative z-10">30+</span>
+    </button>
+    
+    <button 
+        onClick={() => dispatch(toggleRectVisible2())}
+        className={`relative rounded-full w-10 h-10 overflow-hidden transition-all duration-300`}
+    >
+        <span
+            className={`absolute inset-0 bg-textColorGreen transition-transform duration-300 ease-in-out ${isRectVisible2 ? 'scale-100' : 'scale-0'}`}
+            style={{ borderRadius: "50%" }}
+        ></span>
+        <span className="relative z-10">60+</span>
+    </button>
+            </div>
+    
+    
+    
+        </div>
+    
+    
+    </div>
+    
+    </div>
+    
+    </div>
+    
+    
+    
+                            
+                         <div className=" pt-48 -z-50">
+        {products?.img_url ? (
+            <Image
+                src={products.img_url}  // Burada artık string olduğundan emin olduk
+                width={400}
+                alt="coverimage"
+                height={470}
+                className="rounded-3xl"
+                objectFit="cover"
+                quality={100}
+                priority={true}
+            />
+        ) : (
+            <DotLoader color="#28e4c5" speedMultiplier={1.6} size={90} />  // Eğer img_url boşsa kullanıcıya bu mesajı gösterebilirsiniz
+        )}
+    </div>
+    
+    
+    
+    
+    
+    <div className="text-black mt-28 font-bold text-2xl p-6">
+                            <p>{products?.allDescription}</p>
+                        </div>
+    
+                    
+    
+                        <RedCardContainer
+                        isExpanded={isExpanded}
+                    onTouchStart={handleTouchStart}
+                    onTouchEnd={handleTouchEnd}
+                 >
 
-                    <button onClick={()=>push('/user/checkout')} className={styles.buyButton}>Buy</button>
-                    </RedCardContainer>
-                 
-
-
-                    </div>
+    {isExpanded &&
+                        <div>
+                          <div className=" text-3xl font-bold text-white">
+                            {products?.name}
+                            </div>  
+                        <div className={styles.containerPointMob}>
+    
+                     
+                            <div className={styles.descData}>
+                                {products?.description?.split('.').map((sentence, index) => (
+                                    <p key={index} className="mb-2">{sentence.trim()}</p>
+                                ))}
+                            </div>
+    
+       
+    
+    
+    
+                        </div>
+    
+    
+    
+    
+                        <div className="flex ">
+                            
+                        {/* <div className=" flex flex-col text-goldText font-bold">
+                            <h1 >We work in close partnership with our alente - inalteine the NHS.</h1>
+                            <h1> the military, majer private healtheare providers and GP practices.</h1>
+                            </div> */}
+                          
+    
+                            <h1 className="mr-20  text-5xl text-black font-bold  ">
+                            {products?.price}₼
+                            </h1>
+    
+                            <div className="">
+                                <ul className="">
+                                    {productList.map((product) => (
+                                        <ProductsCard 
+                                        {...product} 
+                                        id={String(product.id)} 
+                                        img_url={product.img_url || ''} // img_url null ise varsayılan bir resim kullanılır
+                                    />
+                                    ))}
+                                </ul>
+                             
+                            </div>
+                            
+                        </div>
+    
+                        <button onClick={()=>push('/user/checkout')} className={styles.buyButton}>Buy</button>
+                        </div>
+                    }
+  
+                        </RedCardContainer>
+                     
+    
+    
+                        </div>
+}
+         
 }
   
 

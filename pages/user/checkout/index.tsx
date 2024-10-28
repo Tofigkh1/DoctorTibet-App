@@ -659,7 +659,7 @@ const handleSignout = async () => {
           </div>
     
 
-          <div className="flex gap-10 z-50">
+          <div className="flex gap-4 z-50">
                         <BasketMenu/>
                         <Auth/>
                         </div>
