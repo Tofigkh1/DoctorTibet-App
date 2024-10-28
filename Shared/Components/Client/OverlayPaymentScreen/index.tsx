@@ -82,7 +82,7 @@ const OverlayPayment = () => {
                             }}
                             ref={menuRef}
                         >
-                            <h1 className='text-center text-3xl font-semibold mt-7'>
+                            <h1 className={styles.centeredText}>
                                 Mehsulun almaq ucun zehmet olmasa bizimle elaqeye kecerek odenis edin!
                             </h1>
                             <div className='flex gap-7 ml-4 mt-14'>

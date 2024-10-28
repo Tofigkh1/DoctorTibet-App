@@ -7,6 +7,13 @@
   z-index: 50; /* z-50 */
 }
 
+.centeredText {
+  text-align: center;          /* text-center */
+  font-size: 1.875rem;         /* text-3xl (30px) */
+  font-weight: 600;            /* font-semibold */
+  margin-top: 1.75rem;         /* mt-7 */
+}
+
 .overlay {
     position: fixed;
     top: 0;
