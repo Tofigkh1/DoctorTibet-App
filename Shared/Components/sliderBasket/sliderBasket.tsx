@@ -516,11 +516,11 @@ const BasketMenu = () => {
                     
                     </div>
 
-                      <div className=' right-0 bg-clientButtonGreen rounded-full w-24 h-20 text-center text-black'>
+                      <div className={styles.priceButton}>
 
                       
 
-                        <div className='ml-2 flex gap-1 mt-7 font-semibold text-xl text-center'>
+                        <div className='ml-1 flex gap-1 mt-1 font-semibold text-xl text-center'>
                           <h1>{items.amount}</h1>
                           <h1>₼</h1>
                         </div>
@@ -562,7 +562,7 @@ const BasketMenu = () => {
                 </div>
               </div>
               <div className='flex justify-end mr-5 mt-4'>
-                <button onClick={()=>push('/user/checkout')} className=' bg-clientButtonGreen w-64 h-12 rounded-lg font-semibold text-xl'>Checkout</button>
+                <button onClick={()=>push('/user/checkout')} className={styles.chcekoutButton}>Checkout</button>
               </div>
             </div>
           ) : (

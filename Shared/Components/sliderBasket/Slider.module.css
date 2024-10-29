@@ -38,9 +38,31 @@
     z-index: 1000; /* Menü her şeyin üstünde */
   }
   
+  .chcekoutButton{
+    background-color: #1BC768; /* bg-clientButtonGreen */
+    width: 16rem; /* w-64 */
+    height: 3rem; /* h-12 */
+    border-radius: 0.5rem; /* rounded-lg */
+    font-weight: 600; /* font-semibold */
+    font-size: 1.25rem; /* text-xl */
+    color: #fff; /* varsayılan olarak beyaz yazı rengi */
+  }
 
-
+  .priceButton {
   
+   
+    background-color: #1BC768; /* ClientButtonGreen yerine geçecek renk kodunu buraya ekleyin */
+    border-radius: 9999px; /* Yuvarlak kenarlar */
+    width: 6rem; /* w-24 yerine 6rem kullanılıyor */
+    height: 5rem; /* h-20 yerine 5rem kullanılıyor */
+    text-align: center;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+
   .menuOpen {
     right: 0; /* Açıldığında ekranın yarısına kadar çıksın */
   }
@@ -96,7 +118,7 @@
 }
 
 .progressContainerMob {
-  width: 290px;
+  width: 320px;
   margin-left: 20px;
   height: 10px;
   background-color: #ddd;
@@ -145,7 +167,7 @@
 }
 
 .scrollContainerMob {
-  max-height: 375px; /* Yüksekliği ayarlayabilirsin */
+  max-height: 385px; /* Yüksekliği ayarlayabilirsin */
   overflow-y: scroll; /* Dikey kaydırma */
   scrollbar-width: thin; /* Kaydırma çubuğu genişliği (Opsiyonel) */
   scrollbar-color: #888 #fff; /* Kaydırma çubuğu rengi (Opsiyonel) */
