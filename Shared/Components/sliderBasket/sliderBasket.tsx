@@ -459,7 +459,7 @@ const BasketMenu = () => {
                 </div>
                 
               </div> 
-              <div className=' flex ml-14 mt-3 text-black'>
+              <div className={styles.totalHeader}>
                 
                 <div>
                   <Image src={miniBasket} width={30} height={30} alt='minibasket'/>

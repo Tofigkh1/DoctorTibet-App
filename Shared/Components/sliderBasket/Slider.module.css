@@ -104,6 +104,13 @@
   
 
 
+  .totalHeader{
+    display: flex;
+    margin-left: 3.5rem; /* ml-14 yerine 3.5rem */
+    margin-top: 0.75rem; /* mt-3 yerine 0.75rem */
+    color: black;
+}
+
 
 /* ------------------- */
 
