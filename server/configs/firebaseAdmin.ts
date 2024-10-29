@@ -1,17 +1,17 @@
-// import admin from "firebase-admin";
+import admin from "firebase-admin";
 
-// if (!admin.apps.length) {
-//     const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT as string);
+if (!admin.apps.length) {
+    const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT as string);
 
-//     admin.initializeApp({
-//         credential: admin.credential.cert(serviceAccount),
-//     });
-// }
+    admin.initializeApp({
+        credential: admin.credential.cert(serviceAccount),
+    });
+}
 
-// export const storage = admin.storage();
-// export const firestore = admin.firestore();
+export const storage = admin.storage();
+export const firestore = admin.firestore();
 
-// export default admin;
+export default admin;
 
 
 
@@ -23,20 +23,20 @@
 
 
 
-import admin from "firebase-admin";
+// import admin from "firebase-admin";
 
-if (!admin.apps.length) {
+// if (!admin.apps.length) {
 
-    const serviceAccount = require("./tiensapp-92bab-firebase-adminsdk-lupd3-073fcd1ebe.json");
+//     const serviceAccount = require("./tiensapp-92bab-firebase-adminsdk-lupd3-073fcd1ebe.json");
     
 
 
-    admin.initializeApp({
-        credential: admin.credential.cert(serviceAccount),
-    });
-}
+//     admin.initializeApp({
+//         credential: admin.credential.cert(serviceAccount),
+//     });
+// }
 
-export const storage = admin.storage();
-export const firestore = admin.firestore();
+// export const storage = admin.storage();
+// export const firestore = admin.firestore();
 
-export default admin;   
+// export default admin;   
