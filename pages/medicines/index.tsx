@@ -231,196 +231,590 @@ function Medicines() {
   };
 
   return (
-    <div>
-      <Container>
-      <div>
-          {isMobile && (
-          <div className={styles.hambrBtn}>
-            <HamburgerBtn />
-          </div>
-        )}
-          </div>
-        <Header>
-          <div className="flex">
-            <img
-              onClick={() => push('/')}
-              style={{ width: '90px', height: '90px' }}
-              className={styles.logo}
-              src="/Logo.png"
-              alt="Logo"
-            />
-          </div>
+  //   <div>
+  //     <Container>
+  //     <div>
+  //         {isMobile && (
+  //         <div className={styles.hambrBtn}>
+  //           <HamburgerBtn />
+  //         </div>
+  //       )}
+  //         </div>
+  //       <Header>
+  //         <div className="flex">
+  //           <img
+  //             onClick={() => push('/')}
+  //             style={{ width: '90px', height: '90px' }}
+  //             className={styles.logo}
+  //             src="/Logo.png"
+  //             alt="Logo"
+  //           />
+  //         </div>
 
-          <div>
-          {!isMobile && (
-          <div className={styles.hambrBtn}>
-            <Nav />
-          </div>
-        )}
-          </div>
+  //         <div>
+  //         {!isMobile && (
+  //         <div className={styles.hambrBtn}>
+  //           <Nav />
+  //         </div>
+  //       )}
+  //         </div>
          
         
           
-          <div className="flex gap-4 z-50">
-          {accessToken && (
+  //         <div className="flex gap-4 z-50">
+  //         {accessToken && (
          
-         <BasketMenu/>
-        )}
-                        <Auth/>
-      </div>
-        </Header>
+  //        <BasketMenu/>
+  //       )}
+  //                       <Auth/>
+  //     </div>
+  //       </Header>
 
-        <MainSection>
-          <Curve />
-        </MainSection>
-      </Container>
+  //       <MainSection>
+  //         <Curve />
+  //       </MainSection>
+  //     </Container>
 
-      {isLoading ? (
-       <div style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '80vh'
-      }}>
-        <DotLoader color="#28e4c5" speedMultiplier={1.6} size={90} />
-      </div>
-      ) : (
-        <div>
-          <Box
-            onMouseEnter={() => setIsOpen(true)}
-            onMouseLeave={() => setIsOpen(false)}
-            width="100%"
-            borderWidth="1px"
-            borderTopRadius="0"  
-            borderBottomRadius="3xl"
-            overflow="hidden"
-            background="linear-gradient(135deg, #7f00ff, #e100ff)"
-            p={4}
-            transition="all 0.3s ease"
-          >
+  //     {isLoading ? (
+  //      <div style={{
+  //       display: 'flex',
+  //       justifyContent: 'center',
+  //       alignItems: 'center',
+  //       height: '80vh'
+  //     }}>
+  //       <DotLoader color="#28e4c5" speedMultiplier={1.6} size={90} />
+  //     </div>
+  //     ) : (
+  //       <div>
+  //         <Box
+  //           onMouseEnter={() => setIsOpen(true)}
+  //           onMouseLeave={() => setIsOpen(false)}
+  //           width="100%"
+  //           borderWidth="1px"
+  //           borderTopRadius="0"  
+  //           borderBottomRadius="3xl"
+  //           overflow="hidden"
+  //           background="linear-gradient(135deg, #7f00ff, #e100ff)"
+  //           p={4}
+  //           transition="all 0.3s ease"
+  //         >
           
 
 
-          <div>
+  //         <div>
   
 
-      <Flex wrap="wrap" justifyContent="start" gap={3}>
+  //     <Flex wrap="wrap" justifyContent="start" gap={3}>
 
 
         
-        {categories?.map((category: any) => (
-          <Text
-            key={category.id}
-            position="relative"
-            fontSize="19px"
-            letterSpacing="0.03em"
-            color="white"
-            cursor="pointer"
-            onMouseEnter={() => handleCategoryHover(category.id)}  
-            onMouseLeave={() => !isHovered && setHoveredCategory(null)}
-            onClick={() => handleCategory(category.id)} 
-            className="cursor-pointer"
-            style={{ transition: 'background-color 0.3s ease' }}
+  //       {categories?.map((category: any) => (
+  //         <Text
+  //           key={category.id}
+  //           position="relative"
+  //           fontSize="19px"
+  //           letterSpacing="0.03em"
+  //           color="white"
+  //           cursor="pointer"
+  //           onMouseEnter={() => handleCategoryHover(category.id)}  
+  //           onMouseLeave={() => !isHovered && setHoveredCategory(null)}
+  //           onClick={() => handleCategory(category.id)} 
+  //           className="cursor-pointer"
+  //           style={{ transition: 'background-color 0.3s ease' }}
            
-            _before={{
-              content: '""',
-              position: 'absolute',
-              width: hoveredCategory === category.id ? '100%' : '0',
-              height: '2px',
-              left: 0,
-              bottom: '-2px',
-              backgroundColor: '#26d6a1',
-              transition: 'width 0.3s ease',
-            }}
-            _hover={{
-              color: '#26d6a1',
-            }}
-          >
-            {category.name}
-          </Text>
-        ))}
-      </Flex>
+  //           _before={{
+  //             content: '""',
+  //             position: 'absolute',
+  //             width: hoveredCategory === category.id ? '100%' : '0',
+  //             height: '2px',
+  //             left: 0,
+  //             bottom: '-2px',
+  //             backgroundColor: '#26d6a1',
+  //             transition: 'width 0.3s ease',
+  //           }}
+  //           _hover={{
+  //             color: '#26d6a1',
+  //           }}
+  //         >
+  //           {category.name}
+  //         </Text>
+  //       ))}
+  //     </Flex>
 
-      {hoveredCategory && (
-        <MotionVStack
-          align="start"
-          mt={4}
-          initial={{ height: 0, opacity: 0, y: -20 }}
-          animate={{ height: 'auto', opacity: 1, y: 0  }}
-          transition={{ duration: 0.2 }}
-          onMouseEnter={handleMouseEnter} 
-          onMouseLeave={handleMouseLeave} 
-        >
-   <SimpleGrid columns={4} spacing={3} >
-          {getProductsByCategory(hoveredCategory)?.map((product: any) => (
+  //     {hoveredCategory && (
+  //       <MotionVStack
+  //         align="start"
+  //         mt={4}
+  //         initial={{ height: 0, opacity: 0, y: -20 }}
+  //         animate={{ height: 'auto', opacity: 1, y: 0  }}
+  //         transition={{ duration: 0.2 }}
+  //         onMouseEnter={handleMouseEnter} 
+  //         onMouseLeave={handleMouseLeave} 
+  //       >
+  //  <SimpleGrid columns={4} spacing={3} >
+  //         {getProductsByCategory(hoveredCategory)?.map((product: any) => (
         
-            <Box
+  //           <Box
          
-              key={product.id}
-              borderWidth="1px"
-              borderRadius="full"
-              p={3}
-              textAlign="center"
-              background="white"
-              width="100px"
-              height="100px"
-              onClick={() => onDetail(product.id)} 
-              cursor="pointer"
-            >
-              <Image
-              className=" ml-2 "
-                src={product?.img_url}
-                alt={product?.name}
-                width={55}
-                height={55}
+  //             key={product.id}
+  //             borderWidth="1px"
+  //             borderRadius="full"
+  //             p={3}
+  //             textAlign="center"
+  //             background="white"
+  //             width="100px"
+  //             height="100px"
+  //             onClick={() => onDetail(product.id)} 
+  //             cursor="pointer"
+  //           >
+  //             <Image
+  //             className=" ml-2 "
+  //               src={product?.img_url}
+  //               alt={product?.name}
+  //               width={55}
+  //               height={55}
       
-              />
-              <Text fontSize="sm" >{product.name}</Text>
-            </Box>
+  //             />
+  //             <Text fontSize="sm" >{product.name}</Text>
+  //           </Box>
          
-          ))}
-    </SimpleGrid>
-        </MotionVStack>
-      )}
-    </div>
+  //         ))}
+  //   </SimpleGrid>
+  //       </MotionVStack>
+  //     )}
+  //   </div>
 
             
-          </Box>
+  //         </Box>
 
-          <div className="flex  justify-center">
-            {chooseCategory ? (
-                 getProductsByCategory(chooseCategory).length > 0 ? (
-                  <div className="w-full h-auto m-4 rounded-2xl ">
-                    <div className="flex flex-wrap gap-16 ">
-                      {getProductsByCategory(chooseCategory).map((product: any) => (
-                        <div key={product.id} className="border border-whiteLight3 rounded-xl ">
-                          <ProductCard {...product} onReadMore={() => onDetail(product.id)} />
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-              ) : (
-                <p className="text-center mt-4">Bu kategoride ürün bulunmamaktadır.</p>
-              )
-            ) : (
-              categories?.map((category) => (
-                <div key={category.id} className="w-full h-auto m-4  ">
+  //         <div className="flex  justify-center">
+  //           {chooseCategory ? (
+  //                getProductsByCategory(chooseCategory).length > 0 ? (
+  //                 <div className="w-full h-auto m-4 rounded-2xl ">
+  //                   <div className="flex flex-wrap gap-16 ">
+  //                     {getProductsByCategory(chooseCategory).map((product: any) => (
+  //                       <div key={product.id} className="border border-whiteLight3 rounded-xl ">
+  //                         <ProductCard {...product} onReadMore={() => onDetail(product.id)} />
+  //                       </div>
+  //                     ))}
+  //                   </div>
+  //                 </div>
+  //             ) : (
+  //               <p className="text-center mt-4">Bu kategoride ürün bulunmamaktadır.</p>
+  //             )
+  //           ) : (
+  //             categories?.map((category) => (
+  //               <div key={category.id} className="w-full h-auto m-4  ">
           
               
-                <div className="flex ml-8 flex-wrap gap-16 ">
-                  {getProductsByCategory(category.id).map((product: any) => (
-                    <div key={product.id} className="  border border-whiteLight3 rounded-xl">
+  //               <div className="flex ml-8 flex-wrap gap-16 ">
+  //                 {getProductsByCategory(category.id).map((product: any) => (
+  //                   <div key={product.id} className="  border border-whiteLight3 rounded-xl">
+  //                     <ProductCard {...product} onReadMore={() => onDetail(product.id)} />
+  //                   </div>
+  //                 ))}
+  //               </div>
+  //             </div>
+  //             ))
+  //           )}
+  //         </div>
+  //       </div>
+  //     )}
+  //   </div>
+
+
+
+  <div>
+     {!isMobile &&
+    <div>
+  <Container>
+  <div>
+      {isMobile && (
+      <div className={styles.hambrBtn}>
+        <HamburgerBtn />
+      </div>
+    )}
+      </div>
+    <Header>
+      <div className="flex">
+        <img
+          onClick={() => push('/')}
+          style={{ width: '90px', height: '90px' }}
+          className={styles.logo}
+          src="/Logo.png"
+          alt="Logo"
+        />
+      </div>
+
+      <div>
+      {!isMobile && (
+      <div className={styles.hambrBtn}>
+        <Nav />
+      </div>
+    )}
+      </div>
+     
+    
+      
+      <div className="flex gap-4 z-50">
+      {accessToken && (
+     
+     <BasketMenu/>
+    )}
+                    <Auth/>
+  </div>
+    </Header>
+
+    <MainSection>
+      <Curve />
+    </MainSection>
+  </Container>
+
+  {isLoading ? (
+   <div style={{
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '80vh'
+  }}>
+    <DotLoader color="#28e4c5" speedMultiplier={1.6} size={90} />
+  </div>
+  ) : (
+    <div>
+      <Box
+        onMouseEnter={() => setIsOpen(true)}
+        onMouseLeave={() => setIsOpen(false)}
+        width="100%"
+        borderWidth="1px"
+        borderTopRadius="0"  
+        borderBottomRadius="3xl"
+        overflow="hidden"
+        background="linear-gradient(135deg, #7f00ff, #e100ff)"
+        p={4}
+        transition="all 0.3s ease"
+      >
+      
+
+
+      <div>
+
+
+  <Flex wrap="wrap" justifyContent="start" gap={3}>
+
+
+    
+    {categories?.map((category: any) => (
+      <Text
+        key={category.id}
+        position="relative"
+        fontSize="19px"
+        letterSpacing="0.03em"
+        color="white"
+        cursor="pointer"
+        onMouseEnter={() => handleCategoryHover(category.id)}  
+        onMouseLeave={() => !isHovered && setHoveredCategory(null)}
+        onClick={() => handleCategory(category.id)} 
+        className="cursor-pointer"
+        style={{ transition: 'background-color 0.3s ease' }}
+       
+        _before={{
+          content: '""',
+          position: 'absolute',
+          width: hoveredCategory === category.id ? '100%' : '0',
+          height: '2px',
+          left: 0,
+          bottom: '-2px',
+          backgroundColor: '#26d6a1',
+          transition: 'width 0.3s ease',
+        }}
+        _hover={{
+          color: '#26d6a1',
+        }}
+      >
+        {category.name}
+      </Text>
+    ))}
+  </Flex>
+
+  {hoveredCategory && (
+    <MotionVStack
+      align="start"
+      mt={4}
+      initial={{ height: 0, opacity: 0, y: -20 }}
+      animate={{ height: 'auto', opacity: 1, y: 0  }}
+      transition={{ duration: 0.2 }}
+      onMouseEnter={handleMouseEnter} 
+      onMouseLeave={handleMouseLeave} 
+    >
+<SimpleGrid columns={4} spacing={3} >
+      {getProductsByCategory(hoveredCategory)?.map((product: any) => (
+    
+        <Box
+     
+          key={product.id}
+          borderWidth="1px"
+          borderRadius="full"
+          p={3}
+          textAlign="center"
+          background="white"
+          width="100px"
+          height="100px"
+          onClick={() => onDetail(product.id)} 
+          cursor="pointer"
+        >
+          <Image
+          className=" ml-2 "
+            src={product?.img_url}
+            alt={product?.name}
+            width={55}
+            height={55}
+  
+          />
+          <Text fontSize="sm" >{product.name}</Text>
+        </Box>
+     
+      ))}
+</SimpleGrid>
+    </MotionVStack>
+  )}
+</div>
+
+        
+      </Box>
+
+      <div className="flex  justify-center flex-col">
+        {chooseCategory ? (
+             getProductsByCategory(chooseCategory).length > 0 ? (
+              <div className="w-full h-auto m-4 rounded-2xl ">
+                <div className="flex flex-wrap gap-16 ">
+                  {getProductsByCategory(chooseCategory).map((product: any) => (
+                    <div key={product.id} className="border border-whiteLight3 rounded-xl ">
                       <ProductCard {...product} onReadMore={() => onDetail(product.id)} />
                     </div>
                   ))}
                 </div>
               </div>
-              ))
-            )}
+          ) : (
+            <p className="text-center mt-4">Bu kategoride ürün bulunmamaktadır.</p>
+          )
+        ) : (
+          categories?.map((category) => (
+            <div key={category.id} className="w-full h-auto m-4  ">
+      
+          
+            <div className="flex ml-8 flex-wrap gap-16 ">
+              {getProductsByCategory(category.id).map((product: any) => (
+                <div key={product.id} className="  border border-whiteLight3 rounded-xl">
+                  <ProductCard {...product} onReadMore={() => onDetail(product.id)} />
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      )}
+          ))
+        )}
+      </div>
     </div>
+  )}
+
+  </div>
+}
+
+{isMobile &&
+  <div>
+  <Container>
+  <div>
+      {isMobile && (
+      <div className={styles.hambrBtn}>
+        <HamburgerBtn />
+      </div>
+    )}
+      </div>
+    <Header>
+      <div className="flex">
+        <img
+          onClick={() => push('/')}
+          style={{ width: '90px', height: '90px' }}
+          className={styles.logo}
+          src="/Logo.png"
+          alt="Logo"
+        />
+      </div>
+
+      <div>
+      {!isMobile && (
+      <div className={styles.hambrBtn}>
+        <Nav />
+      </div>
+    )}
+      </div>
+     
+    
+      
+      <div className="flex gap-4 z-50">
+      {accessToken && (
+     
+     <BasketMenu/>
+    )}
+                    <Auth/>
+  </div>
+    </Header>
+
+    <MainSection>
+      <Curve />
+    </MainSection>
+  </Container>
+
+  {isLoading ? (
+   <div style={{
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '80vh'
+  }}>
+    <DotLoader color="#28e4c5" speedMultiplier={1.6} size={90} />
+  </div>
+  ) : (
+    <div>
+      <Box
+        onMouseEnter={() => setIsOpen(true)}
+        onMouseLeave={() => setIsOpen(false)}
+        width="100%"
+        borderWidth="1px"
+        borderTopRadius="0"  
+        borderBottomRadius="3xl"
+        overflow="hidden"
+        background="linear-gradient(135deg, #7f00ff, #e100ff)"
+        p={4}
+        transition="all 0.3s ease"
+      >
+      
+
+
+      <div>
+
+
+  <Flex wrap="wrap" justifyContent="start" gap={3}>
+
+
+    
+    {categories?.map((category: any) => (
+      <Text
+        key={category.id}
+        position="relative"
+        fontSize="19px"
+        letterSpacing="0.03em"
+        color="white"
+        cursor="pointer"
+        onMouseEnter={() => handleCategoryHover(category.id)}  
+        onMouseLeave={() => !isHovered && setHoveredCategory(null)}
+        onClick={() => handleCategory(category.id)} 
+        className="cursor-pointer"
+        style={{ transition: 'background-color 0.3s ease' }}
+       
+        _before={{
+          content: '""',
+          position: 'absolute',
+          width: hoveredCategory === category.id ? '100%' : '0',
+          height: '2px',
+          left: 0,
+          bottom: '-2px',
+          backgroundColor: '#26d6a1',
+          transition: 'width 0.3s ease',
+        }}
+        _hover={{
+          color: '#26d6a1',
+        }}
+      >
+        {category.name}
+      </Text>
+    ))}
+  </Flex>
+
+  {hoveredCategory && (
+    <MotionVStack
+      align="start"
+      mt={4}
+      initial={{ height: 0, opacity: 0, y: -20 }}
+      animate={{ height: 'auto', opacity: 1, y: 0  }}
+      transition={{ duration: 0.2 }}
+      onMouseEnter={handleMouseEnter} 
+      onMouseLeave={handleMouseLeave} 
+    >
+<SimpleGrid columns={4} spacing={3} >
+      {getProductsByCategory(hoveredCategory)?.map((product: any) => (
+    
+        <Box
+     
+          key={product.id}
+          borderWidth="1px"
+          borderRadius="full"
+          p={3}
+          textAlign="center"
+          background="white"
+          width="100px"
+          height="100px"
+          onClick={() => onDetail(product.id)} 
+          cursor="pointer"
+        >
+          <Image
+          className=" ml-2 "
+            src={product?.img_url}
+            alt={product?.name}
+            width={55}
+            height={55}
+  
+          />
+          <Text fontSize="sm" >{product.name}</Text>
+        </Box>
+     
+      ))}
+</SimpleGrid>
+    </MotionVStack>
+  )}
+</div>
+
+        
+      </Box>
+
+      <div className="flex  justify-center flex-col">
+        {chooseCategory ? (
+             getProductsByCategory(chooseCategory).length > 0 ? (
+              <div className="w-full h-auto m-4 rounded-2xl ">
+                <div className="flex flex-wrap gap-16 ">
+                  {getProductsByCategory(chooseCategory).map((product: any) => (
+                    <div key={product.id} className="border border-whiteLight3 rounded-xl ">
+                      <ProductCard {...product} onReadMore={() => onDetail(product.id)} />
+                    </div>
+                  ))}
+                </div>
+              </div>
+          ) : (
+            <p className="text-center mt-4">Bu kategoride ürün bulunmamaktadır.</p>
+          )
+        ) : (
+          categories?.map((category) => (
+            <div key={category.id} className="w-full h-auto m-4  ">
+      
+          
+            <div className="flex ml-8 flex-wrap gap-16 ">
+              {getProductsByCategory(category.id).map((product: any) => (
+                <div key={product.id} className="  border border-whiteLight3 rounded-xl">
+                  <ProductCard {...product} onReadMore={() => onDetail(product.id)} />
+                </div>
+              ))}
+            </div>
+          </div>
+          ))
+        )}
+      </div>
+    </div>
+  )}
+
+  </div>
+}
+</div>
+
+
   );
 }
 

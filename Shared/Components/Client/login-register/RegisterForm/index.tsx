@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
+import PhoneInput from 'react-phone-input-2';
+import 'react-phone-input-2/lib/style.css';
 import styles from './registerForm.module.css';
 import RegisterInp from '../registerInp';
 import LoginInp from '../loginInp';
@@ -30,18 +32,18 @@ const initialValues: RegisterFormValues = {
 
 interface Props {
   setsingin: any;
-  initialEmail?: string; // Add initialEmail as a prop
+  initialEmail?: string;
 }
 
 const RegisterForm = (props: Props) => {
-  const { setsingin, initialEmail = '' }: any = props; // Get initialEmail from props
+  const { setsingin, initialEmail = '' } = props;
   const toast = useToast();
   const user = useSelector((state: RootState) => state.user);
   let [Loading, setLoading] = useState(false);
+  const [phoneNumberr, setPhoneNumber] = useState('+994'); // +994 örnek olarak seçildi
 
-  const { useer, googleSignIn, logOut }: any = UserAuth();
-
-  console.log(useer);
+  const auth = UserAuth();
+  const { useer, googleSignIn } = auth || { useer: null, googleSignIn: () => {} };
 
   const handleSignIn = async () => {
     try {
@@ -51,53 +53,53 @@ const RegisterForm = (props: Props) => {
     }
   };
 
-  // Regex pattern to validate a phone number (international format)
-  const phoneRegExp = /^\+?[1-9]\d{1,14}$/;
-
   const validationSchema = Yup.object({
     fullname: Yup.string().required('Required'),
     username: Yup.string().required('Required'),
     email: Yup.string().email('Invalid email address').required('Required'),
     password: Yup.string().required('Required'),
-    phoneNumber: Yup.string()
-      .matches(phoneRegExp, 'Invalid phone number')
-      .required('Required'),
+    phoneNumber: Yup.string().required('Required'), // Telefon numarasını zorunlu kılmak
   });
 
-  const handleSubmit = (values: RegisterFormValues, { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void }) => {
-    (async () => {
-      try {
-        setLoading(true);
-        await postSignUp(values)
-          .then(() => {
-            toast({
-              title: `Register successfully!`,
-              status: 'success',
-              duration: 2000,
-              isClosable: true,
-              position: 'top-right',
-              variant: 'subtle',
-            });
-            setLoading(false);
-          })
-          .catch((err) => {
-            setLoading(false);
-            toast({
-              title: err.message,
-              status: 'info',
-              duration: 2000,
-              isClosable: true,
-              position: 'top-right',
-              variant: 'subtle',
-            });
-          });
-      } catch (err) {
-        console.log(err);
-      }
-    })();
-
-    setSubmitting(false);
+  const handleSubmit = async (values: RegisterFormValues, { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void }) => {
+    try {
+      setLoading(true);
+      // Telefon numarasını "values" içerisine dahil et
+      const formValues = { ...values, phoneNumberr };
+      await postSignUp(formValues); // Güncellenmiş form verilerini gönder
+      console.log("formValues",formValues);
+      
+      toast({
+        title: `Register successfully!`,
+        status: 'success',
+        duration: 2000,
+        isClosable: true,
+        position: 'top-right',
+        variant: 'subtle',
+      });
+    } catch (err) {
+      console.log(err);
+      
+      // Hata nesnesini `Error` olarak kontrol et ve güvenli erişim sağla
+      const errorMessage = err instanceof Error ? err.message : 'An unexpected error occurred';
+    
+      toast({
+        title: errorMessage,
+        status: 'info',
+        duration: 2000,
+        isClosable: true,
+        position: 'top-right',
+        variant: 'subtle',
+      });
+    } finally {
+      setLoading(false);
+      setSubmitting(false);
+    }
   };
+
+
+  console.log("phoneNumber",phoneNumberr);
+  
 
   return (
     <div>
@@ -107,41 +109,66 @@ const RegisterForm = (props: Props) => {
       </button>
 
       <Formik
-        initialValues={{ ...initialValues, email: initialEmail }} // Set initial email
+        initialValues={{ ...initialValues, email: initialEmail }}
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
-        {({ isSubmitting }) => (
+        {({ isSubmitting, setFieldValue }) => (
           <Form className={styles.form}>
-            <RegisterInp
-              title="Full Name"
-              icon={true}
-              name='fullname'
-            />
-            <RegisterInp
-              title="User Name"
-              icon={true}
-              name='username'
-            />
-            <LoginInp
-              name='email'
-              title="E-mail"
-              icon={true}
-              type='email'
-            />
-            <LoginInp
-              name='password'
-              title="Password"
-              icon={false}
-              type='password'
-            />
-            <LoginInp
-              name='phoneNumber'
-              title="Phone Number"
-              icon={true}
-              type='text'
-            />
-            <button className={styles.button} type="submit" disabled={isSubmitting} style={Loading ? { cursor: "not-allowed" } : { cursor: 'pointer' }}>
+            <RegisterInp title="Full Name" icon={true} name='fullname' />
+            <RegisterInp title="User Name" icon={true} name='username' />
+            <LoginInp name='email' title="E-mail" icon={true} type='email' />
+            <div className={styles.phoneInputContainer}>
+              <h1 className=' text-xl font-semibold text-inpColor'>Phone Number</h1>
+            <PhoneInput
+  country={'az'}
+  value={phoneNumberr}
+  onChange={(phone) => {
+    const formattedPhone = `+${phone}`;
+    setPhoneNumber(formattedPhone);
+    setFieldValue('phoneNumber', formattedPhone);
+  }}
+  inputProps={{
+    name: 'phoneNumber',
+    required: true,
+    autoFocus: true
+  }}
+  containerStyle={{
+    width: '100%',
+    backgroundColor: '#f0f4f8', // Arka plan rengi
+  }}
+  inputStyle={{
+    width: '100%',
+    height: '69px',
+    color: '#333', // Yazı rengi
+    backgroundColor: '#FFE7E7', // Giriş kutusu arka plan rengi
+    borderRadius: '8px', // Köşeleri yuvarlat
+    border: '1px solid #ddd', // Kenarlık rengi
+  }}
+  buttonStyle={{
+    backgroundColor: '#FFE7E7',
+    color: '#fff', // Buton yazı rengi
+    border: 'none',
+  }}
+  dropdownStyle={{
+    backgroundColor: '#fff', // Açılır menü arka plan rengi
+    color: '#333', // Açılır menü yazı rengi
+    position: 'absolute',
+
+  }}
+/>
+
+            </div>
+            <LoginInp name='password' title="Password" icon={false} type='password' />
+
+         
+
+            <button
+              className={styles.button}
+              type="submit"
+              disabled={isSubmitting}
+              style={Loading ? { cursor: "not-allowed" } : { cursor: 'pointer' }}
+            >
               {Loading ? <Spiner /> : `Register`}
             </button>
           </Form>

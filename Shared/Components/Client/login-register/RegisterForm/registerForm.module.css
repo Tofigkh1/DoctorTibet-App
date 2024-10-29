@@ -19,6 +19,10 @@
     transition: background-color 0.3s ease;
 }
 
+.phoneInputContainer{
+    margin-top: 30px;
+}
+
 .googleSignInButton:hover {
     background-color: #357ae8;
 }
