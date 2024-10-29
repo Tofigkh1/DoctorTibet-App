@@ -409,7 +409,7 @@ export default function ProductsDetail() {
 
     {isExpanded &&
                         <div>
-                          <div className=" text-3xl font-bold text-white">
+                          <div className=" ml-5 text-2xl font-bold text-white">
                             {products?.name}
                             </div>  
                         <div className={styles.containerPointMob}>
@@ -417,7 +417,7 @@ export default function ProductsDetail() {
                      
                             <div className={styles.descData}>
                                 {products?.description?.split('.').map((sentence, index) => (
-                                    <p key={index} className="mb-2">{sentence.trim()}</p>
+                                    <p key={index} className="">{sentence.trim()}</p>
                                 ))}
                             </div>
     
@@ -438,12 +438,12 @@ export default function ProductsDetail() {
                             </div> */}
                           
     
-                            <h1 className="mr-20  text-5xl text-black font-bold  ">
+                            <h1 className="ml-4  text-5xl text-black font-bold  ">
                             {products?.price}₼
                             </h1>
     
                             <div className="">
-                                <ul className="">
+                                <ul className=" mt-2">
                                     {productList.map((product) => (
                                         <ProductsCard 
                                         {...product} 
