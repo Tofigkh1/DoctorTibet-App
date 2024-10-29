@@ -12,7 +12,9 @@
   }
   
   /* Menü ayarları */
-  .menu {
+
+
+.menu {
     position: fixed;
     right: -50%; /* Menü başlangıçta ekranın dışında, sağdan sola kayacak */
     top: 0;
@@ -23,6 +25,21 @@
     z-index: 1000; /* Menü her şeyin üstünde */
   }
   
+
+
+  .menuMob {
+    position: fixed;
+    right: -50%; /* Menü başlangıçta ekranın dışında, sağdan sola kayacak */
+    top: 0;
+    width: 87%; /* Sayfanın yarısına kadar genişlik */
+    height: 100%; /* Tam yükseklik */
+    background-color:white;
+    transition: right 0.2s ease-in-out;
+    z-index: 1000; /* Menü her şeyin üstünde */
+  }
+  
+
+
   
   .menuOpen {
     right: 0; /* Açıldığında ekranın yarısına kadar çıksın */
@@ -68,10 +85,18 @@
 
 /* ------------------- */
 
-
-
 .progressContainer {
   width: 550px;
+  margin-left: 20px;
+  height: 10px;
+  background-color: #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.progressContainerMob {
+  width: 290px;
   margin-left: 20px;
   height: 10px;
   background-color: #ddd;
@@ -118,6 +143,14 @@
   scrollbar-width: thin; /* Kaydırma çubuğu genişliği (Opsiyonel) */
   scrollbar-color: #888 #fff; /* Kaydırma çubuğu rengi (Opsiyonel) */
 }
+
+.scrollContainerMob {
+  max-height: 375px; /* Yüksekliği ayarlayabilirsin */
+  overflow-y: scroll; /* Dikey kaydırma */
+  scrollbar-width: thin; /* Kaydırma çubuğu genişliği (Opsiyonel) */
+  scrollbar-color: #888 #fff; /* Kaydırma çubuğu rengi (Opsiyonel) */
+}
+
 
 /* Kaydırma çubuğunun görünümünü değiştirmek istersen: */
 .scrollContainer::-webkit-scrollbar {

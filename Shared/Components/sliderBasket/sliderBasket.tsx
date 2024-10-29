@@ -438,10 +438,10 @@ const BasketMenu = () => {
 
       <div className={`${styles.overlay} ${isMenuOpen ? styles.overlayVisible : styles.overlayHidden}`}></div>
 
-      <div className={`${styles.menu} ${isMenuOpen ? styles.menuOpen : styles.menuClosed}`}>
-        <div ref={menuRef} className={`${styles.menu} ${isMenuOpen ? styles.menuOpen : styles.menuClosed}`}>
+      <div className={`${styles.menuMob} ${isMenuOpen ? styles.menuOpen : styles.menuClosed}`}>
+        <div ref={menuRef} className={`${styles.menuMob} ${isMenuOpen ? styles.menuOpen : styles.menuClosed}`}>
           {basketItems.length > 0 ? (
-            <div>
+            <div>+
             
 
               <div className=' flex'>
@@ -459,7 +459,7 @@ const BasketMenu = () => {
                 </div>
                 
               </div> 
-              <div className=' flex ml-28 mt-3 text-black'>
+              <div className=' flex ml-14 mt-3 text-black'>
                 
                 <div>
                   <Image src={miniBasket} width={30} height={30} alt='minibasket'/>
@@ -473,15 +473,15 @@ const BasketMenu = () => {
 
 
              
-                 <div>
-                 <h1>Time left: {formatTime(remainingTime)}</h1> {/* Dijital geri sayım */}
-            <div className={styles.progressContainer}>
+                 <div className=' mt-6'>
+                 <h1 className=' ml-5'>Time left: {formatTime(remainingTime)}</h1> {/* Dijital geri sayım */}
+            <div className={styles.progressContainerMob}>
               <div className={styles.progressBar} style={{ width: `${progress}%` }}></div>
             </div>
             </div>
 
 
-              <div className={`${styles.scrollContainer}`}>
+              <div className={`${styles.scrollContainerMob}`}>
 
 
                 {basketItems.map((items, index) => (
@@ -492,35 +492,35 @@ const BasketMenu = () => {
                           <Image src={items.img_url} alt={`Product Image ${index + 1}`} width={130} height={130} />
                         </div>
                       </div>
-                      <h1 className=' font-bold text-xl mr-20 text-black'>{items.name}</h1>
+                      <h1 className=' font-bold text-xl mr-5 mt-4 text-black'>{items.name}</h1>
 
                    
 
-                    <div className=' flex flex-col'>
+                    <div className=' flex '>
 
                       <div>
-                      <h1 className='text-black'>{items.count}</h1>
+                      <h1 className='text-black mt-8 text-2xl font-bold'>{items.count}</h1>
                       </div>
 
                       <div className=' mt-5'>
-                      <button key={index} onClick={() => handleDeleteFromBasket(String(items.id))} className="bg-red-500 p-2 rounded-full">
-                        <Image src={minus} alt="Delete product" width={35} height={35} />
+                      <button key={index} onClick={() => handleDeleteFromBasket(String(items.id))} className=" p-2 rounded-full">
+                        <Image src={minus} alt="Delete product" width={70} height={70} />
                       </button>
                       </div>
 
                       <div className=' mt-5'>
-                      <button key={index} onClick={() => handleAddFromBasket(String(items.id))} className="bg-red-500 p-2 rounded-full">
-                        <Image src={plus} alt="Delete product" width={35} height={35} />
+                      <button key={index} onClick={() => handleAddFromBasket(String(items.id))} className=" p-2 rounded-full">
+                        <Image src={plus} alt="Delete product" width={70} height={70} />
                       </button>
                       </div>
                     
                     </div>
 
-                      <div className=' right-0 bg-clientButtonGreen rounded-xl w-24 h-auto text-center text-black'>
+                      <div className=' right-0 bg-clientButtonGreen rounded-full w-24 h-20 text-center text-black'>
 
                       
 
-                        <div className='ml-3 flex gap-2 mt-7 font-semibold text-xl text-center'>
+                        <div className='ml-2 flex gap-1 mt-7 font-semibold text-xl text-center'>
                           <h1>{items.amount}</h1>
                           <h1>₼</h1>
                         </div>
@@ -535,7 +535,7 @@ const BasketMenu = () => {
 
               </div>
 
-              <div className='flex justify-end gap-32 mt-3 mr-6 text-black'>
+              <div className='flex justify-end gap-14 mt-3 mr-6 text-black'>
 
               <div>
     
@@ -543,7 +543,7 @@ const BasketMenu = () => {
     {basketId && (
 
       <div>
-<button  className=' flex gap-5' onClick={() => handleDeleteAllBasket(basketId)}>
+<button  className=' flex ' onClick={() => handleDeleteAllBasket(basketId)}>
         <Image width={30} height={30} src={trash} alt='trash'/>
         Clear Cart
       </button>
