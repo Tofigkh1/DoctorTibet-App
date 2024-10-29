@@ -4,12 +4,13 @@ import { useRouter } from "next/router";
 import styles from "./Search2.module.css";
 import searchIcon from '../../../../public/searchIcon.svg';
 import Image from "next/image";
+import { useResize } from "../../../Hooks/useResize";
 
 export default function Search() {
   const { push } = useRouter();
   const [query, setQuery] = useState('');
   const [focus, setFocus] = useState(false);
-
+  let { isMobile } = useResize();
   // Regex pattern for validating email addresses
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -25,6 +26,7 @@ export default function Search() {
 
   return (
     <>
+     {!isMobile &&
       <div className={styles.search_container}>
         {/* <div className={styles.icon}>
           <Image src={searchIcon} width={25} height={20} />
@@ -53,6 +55,39 @@ export default function Search() {
         {focus && <div className={styles.shadow_search} onClick={() => setFocus(false)} />}
         <button className={styles.searchButton} onClick={handleSubscribeClick}>Subscribe</button>
       </div>
+}
+
+
+{isMobile &&
+  <div className={styles.search_container_mob}>
+  {/* <div className={styles.icon}>
+    <Image src={searchIcon} width={25} height={20} />
+  </div> */}
+
+  <input
+    type="text"
+    placeholder="example@email.com"
+    value={query}
+    onChange={(e) => {
+      setQuery(e.target.value);
+      setFocus(true);
+    }}
+  />
+
+  {/* {focus && (
+    <div className={styles.search_result}>
+      <div className={styles.more_btn}>
+        <button>
+          <span>Show More</span> <RightIcon />
+        </button>
+      </div>
+    </div>
+  )} */}
+
+  {focus && <div className={styles.shadow_search} onClick={() => setFocus(false)} />}
+  <button className={styles.searchButton} onClick={handleSubscribeClick}>Subscribe</button>
+</div>
+}
     </>
   );
 }

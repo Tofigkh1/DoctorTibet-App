@@ -7,7 +7,14 @@ margin-left: 90px;
 margin-top: 118px;
 }
 
+.search_container_mob {
+    max-width: 388px;
+    width: 588px;
+    position: absolute;
+    display: flex;
 
+margin-top: 118px;
+}
 
 .input_wrapper {
     display: flex;
@@ -58,6 +65,19 @@ margin-top: 118px;
     border: 1px solid transparent;
    
 }
+
+.search_container_mob input {
+    color: black;
+    width: 488px;
+    border-radius: 20px 0px 0px 20px;
+    background-color: #fff;
+    padding: 9px 20px;
+    position: relative;
+    z-index: 200;
+    border: 1px solid transparent;
+   
+}
+
 
 .search_container input:focus {
     border-color: #D63626;
@@ -153,7 +173,5 @@ margin-top: 118px;
 
 }
 @media(max-width:1200px){
-    .search_container{
-        display: none;
-    }
+
 }

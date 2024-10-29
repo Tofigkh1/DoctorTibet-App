@@ -779,7 +779,7 @@ function Medicines() {
       <div className="flex  justify-center flex-col">
         {chooseCategory ? (
              getProductsByCategory(chooseCategory).length > 0 ? (
-              <div className="w-full h-auto m-4 rounded-2xl ">
+              <div className="w-full ml-12 pt-5 h-auto m-4 rounded-2xl ">
                 <div className="flex flex-wrap gap-16 ">
                   {getProductsByCategory(chooseCategory).map((product: any) => (
                     <div key={product.id} className="border border-whiteLight3 rounded-xl ">
@@ -793,10 +793,10 @@ function Medicines() {
           )
         ) : (
           categories?.map((category) => (
-            <div key={category.id} className="w-full h-auto m-4  ">
+            <div key={category.id} className="w-full h-auto pt-7 ">
       
           
-            <div className="flex ml-8 flex-wrap gap-16 ">
+            <div className="flex ml-12 flex-wrap gap-16 ">
               {getProductsByCategory(category.id).map((product: any) => (
                 <div key={product.id} className="  border border-whiteLight3 rounded-xl">
                   <ProductCard {...product} onReadMore={() => onDetail(product.id)} />

@@ -313,9 +313,12 @@ export default function ProductsDetail() {
     
               
     
-                            <div className="flex gap-4 mr-4">
+                            <div className="flex gap-6 mr-2">
                             <BasketMenu/>
+                            <div className=" mt-4">
                             <Auth/>
+                            </div>
+                      
                             </div>
                             
                         </div>
