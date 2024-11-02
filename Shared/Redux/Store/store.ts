@@ -4,7 +4,8 @@ import userReducer from '../Featuries/User/userSlice';
 import sidebarReducer from '../Featuries/Sidebar/sideBarSlice';
 import productsReducer from '../Featuries/products/productSlice'
 import basketReducer from '../Featuries/basketSlice/basketSlice'
-import simpleBasketReducer from '../Featuries/basket/basketSlice'
+import simpleBasketReducer from '../Featuries/basket/basketSlice';
+import recordsReducer from '../Featuries/recordSlice/recordSlice';
 import buttonVisibilityReducer from '../Featuries/ageSize/ageSize';
 // import orderReducer from '../Featuries/orderSlice/orderSlice';
 
@@ -17,6 +18,7 @@ const makeStore = () =>
             products:productsReducer,
             basket: basketReducer,
             simpleBasket:simpleBasketReducer,
+            records:recordsReducer,
             buttonVisibility: buttonVisibilityReducer,
             // order: orderReducer,
         },

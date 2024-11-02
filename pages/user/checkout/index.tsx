@@ -47,6 +47,8 @@ import SimpleForm from '../../../Shared/Components/Client/CheckoutForm';
 import OverlayPayment from '../../../Shared/Components/Client/OverlayPaymentScreen';
 import { OrderPostDataType } from '../../../Shared/Interface';
 import { UserAuth } from '../../../Shared/Context';
+import { addRecord, fetchRecords, RecordsPostDataType } from '../../../Shared/Redux/Featuries/recordSlice/recordSlice';
+import { AddRecords } from '../../../Services';
 
 
 
@@ -245,6 +247,8 @@ export default function index() {
   const user = useSelector((state: RootState) => state.user);
 console.log("basket",basket);
 
+console.log("user",user);
+
 
 
     const basketItems = basket?.data?.items || [];
@@ -304,77 +308,12 @@ console.log("basket",basket);
 
   const basketId = basket?.data;
 
-console.log("basketId",basketId);
+  const basketIdData = (basketId as any)?.id ?? ""; 
+
+console.log("basketIdData",basketIdData);
 
 
 
-    // const handleAddFromBasket = (productId: string) => {
-
-    //     const basketProduct = {
-    //         user_id: user?.id,
-    //         product_id: productId,
-    //         ageSize: isRectVisible ? "1" : isRectVisible2 ? "2" : null,
-    //     };
-
-
-    //     dispatch(addToBasket(basketProduct)).then((action) => {
-    //         if (action.type === deleteFromBasket.rejected.type) {
-
-    //             toast({
-    //                 title: "Failed to remove product from the basket",
-    //                 status: 'error',
-    //                 duration: 2000,
-    //                 isClosable: true,
-    //                 position: 'top-right',
-    //                 variant: 'subtle'
-    //             });
-
-    //         } else {
-    //             dispatch(fetchBasket());
-    //             toast({
-    //                 title: "Product added to the basket successfully!",
-    //                 status: 'success',
-    //                 duration: 2000,
-    //                 isClosable: true,
-    //                 position: 'top-right',
-    //                 variant: 'subtle'
-    //             });
-    //         }
-    //     });
-    // };
-
-
-    // const handleDeleteFromBasket = (productId: string) => {
-
-    //     const basketProduct = {
-    //         user_id: user?.id,
-    //         product_id: productId,
-    //         ageSize: isRectVisible ? "1" : isRectVisible2 ? "2" : null,
-    //     };
-
-    //     dispatch(deleteFromBasket(basketProduct)).then((action) => {
-    //         if (action.type === deleteFromBasket.rejected.type) {
-    //             toast({
-    //                 title: "Failed to remove product from the basket",
-    //                 status: 'error',
-    //                 duration: 2000,
-    //                 isClosable: true,
-    //                 position: 'top-right',
-    //                 variant: 'subtle'
-    //             });
-    //         } else {
-    //             dispatch(fetchBasket());
-    //             toast({
-    //                 title: "Product removed from the basket successfully!",
-    //                 status: 'success',
-    //                 duration: 2000,
-    //                 isClosable: true,
-    //                 position: 'top-right',
-    //                 variant: 'subtle'
-    //             });
-    //         }
-    //     });
-    // };
 
 
     useEffect(() => {
@@ -469,17 +408,64 @@ const handleSignout = async () => {
 
 
 
-  const handleCheckout = () => {{
-    // user_id: user?.id,
-    // basket_id: basketList.id,
-    // delivery_address: state.address,
-    // contact: state.phoneNumber,
-    // payment_method: isRectVisible ? "2" : "1",
-    // created: Date.now() 
-    setPaymentScreen(true)
+  const handleCheckout = async () => {
+    if (!user) {
+        toast({
+            title: "Please log in to add products to the basket",
+            status: 'error',
+            duration: 2000,
+            isClosable: true,
+            position: 'top-right',
+            variant: 'subtle'
+        });
+        return;
+    }
 
-}
+const RecordsData: RecordsPostDataType = {
+    user_id: user.id ?? "",
+    basket_id: basketIdData,
+    contact: user.phoneNumber,
+    delivery_address: user.address ?? '',
+    fullname: user.fullname,
+    payment_method: isRectVisiblee2 ? 'Bank Kartlı ilə ödəmə' : "Qapida ödəmə",
+    email: user.email,
+    id: "", // veya uygun bir değer
+    date: new Date().toISOString(), // Tarih bilgisi, örneğin şu anki zaman
+    amount: basketAmount ?? 0, // veya sepet miktarı
+    created: new Date().toISOString(), // Oluşturulma tarihi
+    price: 0 // veya uygun bir fiyat değeri
 };
+
+    setPaymentScreen(true);
+
+
+
+    dispatchw(addRecord(RecordsData)).then((action) => {
+      if (action.type === addRecord.rejected.type) {
+       
+          toast({
+              title: "Failed to add product to the basket",
+              status: 'error',
+              duration: 2000,
+              isClosable: true,
+              position: 'top-right',
+              variant: 'subtle'
+          });
+      } else {
+          dispatch(fetchRecords());  // Sepeti güncellemek için
+          toast({
+              title: "Product added to the basket successfully!",
+              status: 'success',
+              duration: 2000,
+              isClosable: true,
+              position: 'top-right',
+              variant: 'subtle'
+          });
+      }
+  });
+};
+
+
 
 
 
@@ -587,7 +573,7 @@ const handleSignout = async () => {
                                      fill="#6FCF97"/>}
                        </svg>
                    </button>
-                   <h1 className={`ml-2 ${isRectVisiblee2 ? 'text-textColorGreen' : ''}`}> Payment by card </h1>
+                   <h1 className={`ml-2 ${isRectVisiblee2 ? 'text-textColorGreen' : ''}`}>Bank Kartlı ilə ödəmə</h1>
 
 
                    <button className=' ml-16' onClick={handleToggle2}>
@@ -600,7 +586,7 @@ const handleSignout = async () => {
                                      fill="#6FCF97"/>}
                        </svg>
                    </button>
-                   <h1 className={`ml-2 ${isRectVisiblee ? 'text-textColorGreen' : ''}`}>Payment via terminal</h1>
+                   <h1 className={`ml-2 ${isRectVisiblee ? 'text-textColorGreen' : ''}`}>Qapida ödəmə</h1>
                </div>
 
 

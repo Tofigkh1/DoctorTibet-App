@@ -88,6 +88,8 @@ const basketItems = basket?.items || [];
         }
 
         setButtonClicked(true);
+
+        
         dispatch(addToBasket(basketProduct)).then((action) => {
             if (action.type === addToBasket.rejected.type) {
                 setButtonClicked(false);
@@ -112,6 +114,10 @@ const basketItems = basket?.items || [];
             }
         });
     };
+
+
+
+
 
     const handleDeleteFromBasket = () => {
         if (!user) {

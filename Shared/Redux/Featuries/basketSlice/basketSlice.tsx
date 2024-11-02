@@ -43,7 +43,7 @@ type BasketPostDataType = {
     ageSize: string | null;
     name?: string | null;
     allDescription: string;
-    id?: string | null; 
+    id?: string | null ; 
     product_id?: string;
 };
 

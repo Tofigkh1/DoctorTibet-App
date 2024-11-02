@@ -176,7 +176,10 @@ export default function ProductsDetail() {
 
                         <div className="flex gap-5 mr-4">
                         <BasketMenu/>
+                        <div className=" mt-4">
                         <Auth/>
+                        </div>
+                      
                         </div>
                         
                     </div>
@@ -298,7 +301,7 @@ export default function ProductsDetail() {
     
                     
     
-    <div className={styles.headers}>
+    <div className={styles.headersMob}>
                             <div className="mr-10">
                                 <img
                                     onClick={() => push('/')}

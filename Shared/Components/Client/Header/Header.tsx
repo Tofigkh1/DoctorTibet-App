@@ -27,6 +27,7 @@ import HamburgerBtn from '../hamburgerButton';
 
 import { useTranslation } from 'next-i18next';
 import BasketMenu from '../../sliderBasket/sliderBasket';
+import { NextSeo } from 'next-seo';
 
 
 
@@ -74,6 +75,18 @@ export default function Header() {
 
   return (
     <div className={styles.container}>
+             <NextSeo
+        title="doctor-tibet.com"
+        description="Həkiminizin sağlamlığınız üçün təyin etdiyi bütün Tibet məhsulları bizdə."
+        canonical="https://www.doctor-tibet.com"
+        openGraph={{
+          url: 'https://www.doctor-tibet.com',
+          title: 'doctor-tibet.com',
+          description: 'Həkiminizin sağlamlığınız üçün təyin etdiyi bütün Tibet məhsulları bizdə.',
+          images: [{ url: 'https://www.doctor-tibet.com' }],
+          site_name: 'doctor-tibet.com',
+        }}
+      />
       <Swiper
         spaceBetween={30}
         centeredSlides={true}

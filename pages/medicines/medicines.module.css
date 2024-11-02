@@ -10,7 +10,7 @@
 
 .buyButton{
     width: 380px;
-    margin-top: 19px;
+    margin-top: 5px;
     color: black;
     border-radius: 100px;
     height: 45px;
@@ -224,6 +224,9 @@
   .headers{
     position: absolute;
     top: 0;
+    gap: 1100px;
+  
+    padding-top: 15px;
     left: 0;
     z-index: 99999999999999999;
     right: 0;
@@ -235,7 +238,18 @@
   
 
 
-
+  .headersMob{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 99999999999999999;
+    right: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 1.75rem; 
+  }
+  
   
   
   /* ----------------- */
@@ -501,7 +515,7 @@ border-radius: 30px;
 }
 
 .containerPoint{
-    padding-top: 11rem;           /* pt-44, yaklaşık olarak 44 * 0.25rem */
+    padding-top: 8rem;           /* pt-44, yaklaşık olarak 44 * 0.25rem */
     display: flex;                 /* flex */
     justify-content: space-around; /* justify-around */
     align-items: center;           /* items-center */

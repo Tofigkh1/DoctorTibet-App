@@ -14,10 +14,14 @@ const firebaseConfig = {
 };
 
 // Firebase Uygulamasını Başlatma (Tekrarlardan Kaçınma)
-const app = !getApps().length ? initializeApp(firebaseConfig) : getApps()[0];
+export const app = !getApps().length ? initializeApp(firebaseConfig) : getApps()[0];
+export const app2 = getApps().length >0 ? getApps() : initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const storage = getStorage(app);
 export const db = getFirestore(app);
+
+
+
 
 // Koleksiyonları ve Dökümanları Getirme
 export async function getAllCollections() {

@@ -74,6 +74,26 @@ export interface OrderPostDataType{
     basket_id: string | number;
 }
 
+
+export interface RecordsPostDataType{
+    id: string | number;
+    date: string | number;
+    user_id: string | undefined;
+    delivery_address: string | number;
+    amount: number;
+    created: string | number;
+    contact: string | number;
+    fullname: string;
+    count?: number;
+    payment_method: number | string;
+    total_count?: number;
+    total_item?: number;
+    total_amount?: number;
+    email: string;
+    price: number;
+    basket_id: string | number;
+}
+
 export interface CategoryApiResponse {
     result: {
         data: CategoryPostDataType[];

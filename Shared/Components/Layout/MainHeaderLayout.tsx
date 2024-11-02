@@ -6,6 +6,7 @@ import React, { useEffect } from "react";
 import { setUser, UserState } from "../../Redux/Featuries/User/userSlice";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../Redux/Store/store";
+import { NextSeo } from "next-seo";
 
 interface MainLayoutProps {
   children: React.ReactNode;
@@ -30,11 +31,24 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
 
   return (
     <div>
+  
       <Head>
-        <title>Tiens App</title>
-        <meta name="DoctorTibet" content="Doctor Tibet by Tiens App" />
+        <title>doctor-tibet.com</title>
+        <meta name="Həkiminizin sağlamlığınız üçün təyin etdiyi bütün Tibet məhsulları bizdə" content="Həkiminizin sağlamlığınız üçün təyin etdiyi bütün Tibet məhsulları bizdə." />
         <link rel="icon" href="/favicon" />
       </Head>
+      <NextSeo
+        title="doctor-tibet.com"
+        description="Həkiminizin sağlamlığınız üçün təyin etdiyi bütün Tibet məhsulları bizdə."
+        canonical="https://www.doctor-tibet.com"
+        openGraph={{
+          url: 'https://www.doctor-tibet.com',
+          title: 'doctor-tibet.com',
+          description: 'Həkiminizin sağlamlığınız üçün təyin etdiyi bütün Tibet məhsulları bizdə.',
+          images: [{ url: 'https://www.doctor-tibet.com' }],
+          site_name: 'doctor-tibet.com',
+        }}
+      />
       <div className={styless.main_container}>
         <div className="">
           <Header />

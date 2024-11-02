@@ -11,7 +11,7 @@ const SidebarContext = React.createContext<SidebarContextType | undefined>(undef
 
 // Sidebar component
 export default function Sidebar({ children }: { children: ReactNode }) {
-  const [expanded, setExpanded] = useState(false); // State to track whether sidebar is expanded or not
+  const [expanded, setExpanded] = useState(true); // State to track whether sidebar is expanded or not
 
   return (
     <aside className="h-screen " >

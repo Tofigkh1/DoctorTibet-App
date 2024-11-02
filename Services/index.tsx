@@ -5,6 +5,7 @@ import {
   ApiResponse,
   ProductSingleApiResponse,
   BasketPostDataType,
+  RecordsPostDataType,
 } from "../Shared/Interface";
 
 // Kullanıcıyı güncelleme (PUT)
@@ -98,5 +99,25 @@ export const GetProducts = (): AxiosPromise<ApiResponse> => {
   return instanceAxios({
     method: "GET",
     url: "products",
+  });
+};
+
+
+
+export const AddRecords = (
+  basketProduct: RecordsPostDataType
+): AxiosPromise<RecordsPostDataType> => {
+  return instanceAxios({
+    method: "POST",
+    url: `records`,
+    data: basketProduct,
+  });
+};
+
+
+export const GetRecords = (): AxiosPromise => {
+  return instanceAxios({
+    method: "GET",
+    url: "records",
   });
 };

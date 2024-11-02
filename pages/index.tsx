@@ -6,6 +6,7 @@ import InfoBoxOffer from "../Shared/Components/Client/InfoBoxOffer.tsx";
 import Footer from "../Shared/Components/Client/Footer";
 import { useEffect, useState } from 'react';
 import MedicinesIcon from '../public/MedicinesIcon.svg';
+import { NextSeo } from "next-seo";
 
 const MainLayout = dynamic(() => import("../Shared/Components/Layout/MainHeaderLayout"), { ssr: false });
 
@@ -26,6 +27,18 @@ const Home: NextPage = (props) => {
 
   return (
     <div>
+       <NextSeo
+        title="doctor-tibet.com"
+        description="Həkiminizin sağlamlığınız üçün təyin etdiyi bütün Tibet məhsulları bizdə."
+        canonical="https://www.doctor-tibet.com"
+        openGraph={{
+          url: 'https://www.doctor-tibet.com',
+          title: 'doctor-tibet.com',
+          description: 'Həkiminizin sağlamlığınız üçün təyin etdiyi bütün Tibet məhsulları bizdə.',
+          images: [{ url: 'https://www.doctor-tibet.com' }],
+          site_name: 'doctor-tibet.com',
+        }}
+      />
       <MainLayout>
       <InfoSection 
   data={data} 

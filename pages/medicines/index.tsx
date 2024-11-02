@@ -582,7 +582,7 @@ function Medicines() {
         
       </Box>
 
-      <div className="flex  justify-center flex-col">
+      <div className="flex  justify-center flex-col-reverse">
         {chooseCategory ? (
              getProductsByCategory(chooseCategory).length > 0 ? (
               <div className="w-full h-auto m-4 rounded-2xl ">
@@ -599,12 +599,12 @@ function Medicines() {
           )
         ) : (
           categories?.map((category) => (
-            <div key={category.id} className="w-full h-auto m-4  ">
+            <div key={category.id} className="w-full h-auto m-4 ">
       
           
-            <div className="flex ml-8 flex-wrap gap-16 ">
+            <div className="flex ml-8 gap-16 ">
               {getProductsByCategory(category.id).map((product: any) => (
-                <div key={product.id} className="  border border-whiteLight3 rounded-xl">
+                <div key={product.id} className=" flex flex-col  border border-whiteLight3 rounded-xl">
                   <ProductCard {...product} onReadMore={() => onDetail(product.id)} />
                 </div>
               ))}

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import styles from './Slider.module.css';
 import Image from 'next/image';
 import shoppingBag from '../../../public/shopping-basket (2).png';
@@ -108,6 +108,8 @@ const BasketMenu = () => {
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
+
+
 
   useEffect(() => {
     const imgUrls = basketItems.map((item: any) => item.img_url);
@@ -349,13 +351,13 @@ const BasketMenu = () => {
                       </div>
 
                       <div className=' mt-5'>
-                      <button key={index} onClick={() => handleDeleteFromBasket(String(items.id))} className="bg-red-500 p-2 rounded-full">
+                      <button key={index} onClick={() => handleDeleteFromBasket(String(items.id))} className=" p-2 rounded-full">
                         <Image src={minus} alt="Delete product" width={35} height={35} />
                       </button>
                       </div>
 
                       <div className=' mt-5'>
-                      <button key={index} onClick={() => handleAddFromBasket(String(items.id))} className="bg-red-500 p-2 rounded-full">
+                      <button key={index} onClick={() => handleAddFromBasket(String(items.id))} className=" p-2 rounded-full">
                         <Image src={plus} alt="Delete product" width={35} height={35} />
                       </button>
                       </div>

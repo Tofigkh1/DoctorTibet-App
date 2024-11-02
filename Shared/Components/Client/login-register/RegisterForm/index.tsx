@@ -12,7 +12,8 @@ import { postSignUp } from '../../../../../Services';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../../Redux/Store/store';
 import { UserAuth } from '../../../../Context';
-import { FaGoogle } from 'react-icons/fa';
+import {FcGoogle} from 'react-icons/fc'
+import {signIn, signOut} from 'next-auth/react'
 
 interface RegisterFormValues {
   fullname: string;
@@ -103,10 +104,23 @@ const RegisterForm = (props: Props) => {
 
   return (
     <div>
-      <button onClick={handleSignIn} className={styles.googleSignInButton}>
-        <FaGoogle className={styles.googleIcon} />
-        Sign up with Google
-      </button>
+  <button onClick={handleSignIn} className={styles.googleSignInButton}>
+  <FcGoogle className={styles.googleIcon} />
+  Sign up with Google
+</button>
+
+{/* 
+<div className="flex  items-center  ml-8 bg-slate-50 mt-14">
+      <div
+        className="flex h-auto w-64 cursor-pointer items-center rounded-md border "
+        onClick={signIn}
+        >
+            <FcGoogle fontSize={30} className="mr-2" />
+            <span>Sign in with Google</span>
+     </div>
+    </div> */}
+
+
 
       <Formik
         initialValues={{ ...initialValues, email: initialEmail }}
