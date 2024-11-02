@@ -421,6 +421,9 @@ const handleSignout = async () => {
         return;
     }
 
+
+    // records data add
+
 const RecordsData: RecordsPostDataType = {
     user_id: user.id ?? "",
     basket_id: basketIdData,
