@@ -24,6 +24,7 @@ import basketDef from '../../../public/basketDef.png'
 import profileSettings from '../../../public/profileSettings.png'
 import orderSvg from '../../../public/order.png'
 import userProfileDef from '../../../public/user.png'
+import emptyBag from '../../../public/Emptybasket (1).png';
 
 import shoppingBag from '../../../public/shopping-bag.png'
 import ShoppingCheck from '../../../public/ShoppingCheck3.png'
@@ -503,10 +504,6 @@ const RecordsData: RecordsPostDataType = {
 
       <Categories/>
 
-      {/* <div className={mobile ? 'hidden' : ' w-80'}>
-            <Navbar active={4} />
-          </div> */}
-
 
        <div className='flex gap-11 justify-between'>
 
@@ -553,6 +550,9 @@ const RecordsData: RecordsPostDataType = {
            </Sidebar>
 
 
+
+           {basketItems.length > 0 ? (
+
            <div className=" bg-cardColor w-5/12  mr-5 absolute ml-96 mt-20">
 
 
@@ -592,15 +592,7 @@ const RecordsData: RecordsPostDataType = {
                    <h1 className={`ml-2 ${isRectVisiblee ? 'text-textColorGreen' : ''}`}>Qapida ödəmə</h1>
                </div>
 
-
-
-
-
-
                <div className='flex items-center justify-center mt-16'>
-
-
-
 
                    <button
                       className={`w-11/12 h-11 ${(isRectVisiblee || isRectVisiblee2) && basketId?.items?.length > 0  ? 'bg-textColorGreen' : 'bg-overlayColorGreen'} text-white rounded-sm`}
@@ -612,10 +604,15 @@ const RecordsData: RecordsPostDataType = {
 
                </div>
 
+           </div>):(
+     <div>
+     <div className='ml-10 mt-6'>
+       <Image src={emptyBag} width={290} height={300} alt="Empty Basket"/>
+     </div>
+     <h1 className='text-center font-bold text-6xl  mt-6 text-categorycolor'>Səbət Boşdur!</h1>
+   </div>
 
-           </div>
-
-
+)}
            <ProductPageCount/>
 
 
@@ -633,8 +630,8 @@ const RecordsData: RecordsPostDataType = {
 
 
 
-           {isMobile &&
-<div>
+  {isMobile &&
+    <div>
 <Container>
         <Header>
           <div className={styles.cursor}>
@@ -669,7 +666,7 @@ const RecordsData: RecordsPostDataType = {
 
 
      
-
+       {basketItems.length > 0 ? (
 
            <div className=" bg-cardColor w-11/12  ml-4 mt-12">
 
@@ -733,9 +730,14 @@ const RecordsData: RecordsPostDataType = {
 
 
 
-           </div>
-
-
+           </div>):(
+<div>
+<div className='ml-16 mt-6'>
+  <Image src={emptyBag} width={290} height={300} alt="Empty Basket"/>
+</div>
+<h1 className='text-center font-bold text-5xl ml-14 mt-6 text-categorycolor'>Səbət Boşdur!</h1>
+</div>
+)}
    
 
      

@@ -272,7 +272,7 @@ export default function ProductsDetail() {
                         </div>
                     </div>
 
-                    <div className="text-white mt-28 font-bold text-2xl">
+                    <div className="text-orange-400 mt-28 font-bold text-2xl">
                         <p>{products?.allDescription}</p>
                     </div>
                     </div>
@@ -401,7 +401,7 @@ export default function ProductsDetail() {
     
     
     
-    <div className="text-black mt-28 font-bold text-2xl p-4">
+    <div className="text-orange-400 mt-28 font-bold text-2xl p-4">
                             <p>{products?.allDescription}</p>
                         </div>
     

@@ -415,10 +415,10 @@ const BasketMenu = () => {
             </div>
           ) : (
             <div>
-              <div className='ml-32'>
+              <div className='ml-40 mt-20'>
                 <Image src={emptyBag} width={300} height={300} alt="Empty Basket"/>
               </div>
-              <h1 className='text-center font-bold text-6xl ml-8 text-categorycolor'>Empty Basket</h1>
+              <h1 className='text-center font-bold text-6xl ml-8 mt-6 text-categorycolor'>Səbət Boşdur!</h1>
             </div>
           )}
         </div>
@@ -443,7 +443,7 @@ const BasketMenu = () => {
       <div className={`${styles.menuMob} ${isMenuOpen ? styles.menuOpen : styles.menuClosed}`}>
         <div ref={menuRef} className={`${styles.menuMob} ${isMenuOpen ? styles.menuOpen : styles.menuClosed}`}>
           {basketItems.length > 0 ? (
-            <div>+
+            <div>
             
 
               <div className=' flex'>
@@ -569,10 +569,10 @@ const BasketMenu = () => {
             </div>
           ) : (
             <div>
-              <div className='ml-32'>
-                <Image src={emptyBag} width={300} height={300} alt="Empty Basket"/>
+              <div className='ml-10 mt-6'>
+                <Image src={emptyBag} width={290} height={300} alt="Empty Basket"/>
               </div>
-              <h1 className='text-center font-bold text-6xl ml-8 text-categorycolor'>Empty Basket</h1>
+              <h1 className='text-center font-bold text-6xl  mt-6 text-categorycolor'>Səbət Boşdur!</h1>
             </div>
           )}
         </div>
