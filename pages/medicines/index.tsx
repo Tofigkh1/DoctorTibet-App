@@ -633,7 +633,7 @@ function Medicines() {
 {isMobile &&
   <div>
   <Container>
-  <div className=' pt-1 -ml-1'>
+  <div className=' pt-1 -ml-3'>
           <TryInfoUser/>
           </div>
   <div>

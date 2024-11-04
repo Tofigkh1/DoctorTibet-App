@@ -189,7 +189,7 @@ export default function Header() {
             
           </section>
 
-          <div className=' mt-5'>
+          <div className=' mt-5 -ml-3'>
           <TryInfoUser/>
           </div>
 

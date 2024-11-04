@@ -330,7 +330,7 @@ export default function ProductsDetail() {
                             
                         </div>
     
-                        <div className=' pt-1 -ml-1'>
+                        <div className=' pt-1 -ml-3'>
           <TryInfoUser/>
           </div>
     <div className={styles.medicineSize}>
