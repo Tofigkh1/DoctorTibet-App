@@ -100,7 +100,7 @@ className="bg-sky-300 pl-2 rounded-e-2xl w-12 h-8 font-bold transition-all hover
   <div className='flex'>
 
 <div >
-<Alert fontWeight='bold' fontSize={11} gap={2} roundedLeft={20} marginLeft={5} width={350} height={8} status="info" title="Invalid Fields">
+<Alert fontWeight='bold' fontSize={9} gap={2} roundedLeft={20} marginLeft={5} width={350} height={8} status="info" title="Invalid Fields">
 <Image alt="Info icon" src={InforIcon} width={23}/>
 Məlumatlarınız tam doldurulmayıb xaiş olunur profile səhifəsine keçərək məlumatlarinizi doldurun!
 </Alert>
