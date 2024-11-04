@@ -13,6 +13,7 @@ import {
     AlertDescription,
   } from '@chakra-ui/react'
 import { ClipLoader } from "react-spinners";
+import { useResize } from "../../../Hooks/useResize";
 
 export default function Search() {
     const { push } = useRouter();
@@ -22,7 +23,7 @@ export default function Search() {
     const [loading, setLoading] = useState(false);
     const [selectedProduct, setSelectedProduct] = useState<ProductPostDataType | null>(null);
     const [alert, setAlert] = useState(false);
-    
+    let { isMobile } = useResize();
 
     
     useEffect(() => {
@@ -84,6 +85,11 @@ export default function Search() {
 
     return (
         <>
+          {!isMobile &&
+
+        <div>
+      
+
             <div className={styles.search_container}>
                 <input
                     type="text"
@@ -142,6 +148,79 @@ export default function Search() {
                     </Alert>
                 )}
             </div>
+
+
+</div>
+}
+
+
+{isMobile &&
+
+<div>
+
+
+    <div className={styles.search_containerMob }>
+        <input
+            type="text"
+            placeholder="İstədiyiniz Tibet məhsullarını axtar"
+            value={query}
+            onChange={(e) => {
+                setQuery(e.target.value);
+                setFocus(true);
+                setSelectedProduct(null);
+            }}
+        />
+
+        {focus && 
+        <div className={styles.search_result}>
+            <ul>
+                {loading ?    <div style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            height: '80vh' 
+        }}>
+            <ClipLoader color="#28e4c5" speedMultiplier={1.5} size={60} />
+        </div> :
+                    <>
+                        {products?.map((product) => (
+                            <li key={product.id} onClick={() => handleProductSelect(product)}>
+                                <img src={product?.img_url ?? '/imgs/no-photo.avif'} alt={product.name}/>
+                                <div>
+                                    <p>{product.name}</p>
+                                </div>
+                            </li>
+                        ))}
+                    </>
+                }
+            </ul>
+
+            <div className={styles.more_btn}>
+                <button onClick={() => {push('/medicines'); setFocus(false);}}>
+                    <span>Show More</span> <RightIcon />
+                </button>
+            </div>
+        </div>
+        }
+    
+        
+        {focus && <div className={styles.shadow_search} onClick={() => setFocus(false)}/>}
+        <button className={styles.searchButtonMob} onClick={handleSearchClick}>Axtarış et</button>
+    </div>
+
+    <div className="w-5/12 md:w-96">
+        {alert && (
+            <Alert className="mt-52 ml-16 rounded-2xl" status='error'>
+                <AlertIcon />
+                <AlertTitle>The product you are looking for could not be found!</AlertTitle>
+                <AlertDescription>try again.</AlertDescription>
+            </Alert>
+        )}
+    </div>
+
+
+</div>
+}
         </>
     );
 }
