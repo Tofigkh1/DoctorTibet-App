@@ -24,10 +24,11 @@ import Medicinees from "../../../../public/medicalbanner.jpg";
 import Doctortb from "../../../../public/doctortb.jpg";
 import ArrovRight2 from '../../../../public/next.png';
 import HamburgerBtn from '../hamburgerButton';
-
+import TryInfoUser from '../tryInfoUserComponent';
 import { useTranslation } from 'next-i18next';
 import BasketMenu from '../../sliderBasket/sliderBasket';
 import { NextSeo } from 'next-seo';
+import { Alert } from '@chakra-ui/react';
 
 
 
@@ -47,6 +48,7 @@ export default function Header() {
 
 
   let user = useSelector((state: RootState) => state.user);
+  const [infoUser, setInfoUser] = useState(false)
   let { isOpen, onOpen, onClose } = useModalOpen();
   const [accessToken, setAccessToken] = useState<string | null>(null);
   let { isMobile } = useResize();
@@ -72,6 +74,25 @@ export default function Header() {
       progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
     }
   };
+
+
+  useEffect(() => {
+    if (
+      user.id && // Kullanıcının giriş yaptığını kontrol etmek için
+      (
+        !user.phoneNumber || user.phoneNumber.length <= 0 || 
+        !user.email || user.email.length <= 0 || 
+        !user.username || user.username.length <= 0 || 
+        !user.fullname || user.fullname.length <= 0 || 
+        !user.address || user.address.length <= 0
+      )
+    ) {
+      setInfoUser(true);
+    } else {
+      setInfoUser(false);
+    }
+  }, [user]);
+  
 
   return (
     <div className={styles.container}>
@@ -165,13 +186,38 @@ export default function Header() {
               </div>
               
             </div>
+            
           </section>
 
+          <div className=' mt-5'>
+          <TryInfoUser/>
+          </div>
+
+
+
+
+          {/* {infoUser && 
+  <div className='flex'>
+  <Alert fontWeight='bold' roundedLeft={20} marginLeft={20} width={800} height={10} status="info" title="Invalid Fields">
+Məlumatlarınız tam doldurulmayıb xaiş olunur profile səhifəsine keçərək məlumatlarinizi doldurun!
+</Alert>
+<button 
+ onClick={() => push('/user/profile')}
+className="bg-slate-500 rounded-e-2xl w-20 h-10 font-bold transition-all hover:bg-emerald-300 ">
+  kecid
+</button>
+  </div>
+
+} */}
           <div>
+
+
+        
             <div className={styles.headerText}>
               <h1 className=''>Doctor Tibet ilə</h1>
               <h1>Sağlam gələcək.</h1>
             </div>
+
             <div className={styles.headerSmallText}>
               <h1 className=''>Həkiminizin sağlamlığınız üçün təyin etdiyi bütün Tibet məhsulları bizdə</h1>
               <h1>biz bunu sizə çatdıra bilərik.</h1>

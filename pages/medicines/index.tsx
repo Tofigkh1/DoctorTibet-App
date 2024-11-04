@@ -29,6 +29,7 @@ import BasketMenu from "../../Shared/Components/sliderBasket/sliderBasket";
 import { AppDispatch, RootState } from "../../Shared/Redux/Store/store";
 import HamburgerBtn from "../../Shared/Components/Client/hamburgerButton";
 import { useResize } from "../../Shared/Hooks/useResize";
+import TryInfoUser from "../../Shared/Components/Client/tryInfoUserComponent";
 
 const ProductCard = dynamic(() => import('../../Shared/Components/Client/productsCard/products'), {
   loading: () => <p>Loading...</p>,
@@ -427,7 +428,11 @@ function Medicines() {
   <div>
      {!isMobile &&
     <div>
+   
   <Container>
+  <div className="  ml-72">
+        <TryInfoUser/>
+        </div>
   <div>
       {isMobile && (
       <div className={styles.hambrBtn}>
@@ -464,7 +469,7 @@ function Medicines() {
                     <Auth/>
   </div>
     </Header>
-
+  
     <MainSection>
       <Curve />
     </MainSection>
@@ -583,6 +588,7 @@ function Medicines() {
       </Box>
 
       <div className="flex  justify-center flex-col-reverse">
+        
         {chooseCategory ? (
              getProductsByCategory(chooseCategory).length > 0 ? (
               <div className="w-full h-auto m-4 rounded-2xl ">
@@ -598,6 +604,7 @@ function Medicines() {
             <p className="text-center mt-4">Bu kategoride ürün bulunmamaktadır.</p>
           )
         ) : (
+          
           categories?.map((category) => (
             <div key={category.id} className="w-full h-auto m-4 ">
       
@@ -612,6 +619,10 @@ function Medicines() {
           </div>
           ))
         )}
+
+
+
+
       </div>
     </div>
   )}
@@ -622,6 +633,9 @@ function Medicines() {
 {isMobile &&
   <div>
   <Container>
+  <div className=' pt-1 -ml-1'>
+          <TryInfoUser/>
+          </div>
   <div>
       {isMobile && (
       <div className={styles.hambrBtn}>
@@ -630,7 +644,7 @@ function Medicines() {
     )}
       </div>
     <Header>
-      <div className="flex">
+      <div className="flex ">
         <img
           onClick={() => push('/')}
           style={{ width: '90px', height: '90px' }}

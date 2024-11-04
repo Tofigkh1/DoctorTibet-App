@@ -7,6 +7,15 @@
   z-index: 50; /* z-50 */
 }
 
+.containerMenu {
+  position: absolute;
+  width: 115%; /* Tailwind'de w-11/12 */
+  height: 26rem; /* Tailwind'de h-96 = 384px */
+  background-color: white; /* Tailwind'de bg-white */
+  border-radius: 0.5rem; /* Tailwind'de rounded-lg = 8px */
+  z-index: 50; /* Tailwind'de z-50 */
+}
+
 .centeredText {
   text-align: center;          /* text-center */
   font-size: 1.875rem;         /* text-3xl (30px) */

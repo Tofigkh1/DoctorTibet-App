@@ -12,6 +12,7 @@ import { RootState, AppDispatch } from '../../../../Redux/Store/store';
 import { setUser } from '../../../../Redux/Featuries/User/userSlice';
 import { UserAuth } from '../../../../Context';
 import { FaGoogle } from 'react-icons/fa';
+import {FcGoogle} from 'react-icons/fc'
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 
@@ -76,6 +77,14 @@ const SignInForm: React.FC = () => {
     setSubmitting(false);
   };
 
+  const handleSignIn = async () => {
+    try {
+      await googleSignIn();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const handleSignInWithGoogle = async () => {
     try {
       setLoading(true);
@@ -113,10 +122,15 @@ const SignInForm: React.FC = () => {
 
   return (
     <div>
-      <button onClick={handleSignInWithGoogle} className={styles.googleSignInButton}>
+
+<button onClick={handleSignIn} className={styles.googleSignInButton}>
+  <FcGoogle className={styles.googleIcon} />
+  Sign up with Google
+</button>
+      {/* <button onClick={handleSignInWithGoogle} className={styles.googleSignInButton}>
         <FaGoogle className={styles.googleIcon} />
         Sign up with Google
-      </button>
+      </button> */}
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}

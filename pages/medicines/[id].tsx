@@ -26,6 +26,7 @@ import SliderBasket from "../../Shared/Components/sliderBasket/sliderBasket";
 import BasketMenu from "../../Shared/Components/sliderBasket/sliderBasket";
 import { UserState } from "../../Shared/Redux/Featuries/User/userSlice";
 import { useResize } from "../../Shared/Hooks/useResize";
+import TryInfoUser from "../../Shared/Components/Client/tryInfoUserComponent";
 
 interface RedCardContainerProps {
     isExpanded: boolean;
@@ -183,10 +184,13 @@ export default function ProductsDetail() {
                         </div>
                         
                     </div>
-                
+                    <div className="  ml-72">
+        <TryInfoUser/>
+        </div>
                     <div className={styles.containerPoint}>
                         
                         <div className={styles.descData}>
+                            
                             {products?.description?.split('.').map((sentence, index) => (
                                 <p key={index} className="mb-2">{sentence.trim()}</p>
                             ))}
@@ -302,7 +306,7 @@ export default function ProductsDetail() {
                     
     
     <div className={styles.headersMob}>
-                            <div className="mr-10">
+                            <div className="mr-10 mt-2">
                                 <img
                                     onClick={() => push('/')}
                                     style={{ width: '90px', height: '90px' }}
@@ -318,15 +322,17 @@ export default function ProductsDetail() {
     
                             <div className="flex gap-6 mr-2">
                             <BasketMenu/>
-                            <div className=" mt-4">
+                            <div className=" mt-2">
                             <Auth/>
                             </div>
-                      
+          
                             </div>
                             
                         </div>
     
-                        
+                        <div className=' pt-1 -ml-1'>
+          <TryInfoUser/>
+          </div>
     <div className={styles.medicineSize}>
     
     

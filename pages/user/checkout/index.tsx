@@ -409,65 +409,65 @@ const handleSignout = async () => {
 
 
 
-  const handleCheckout = async () => {
-    if (!user) {
-        toast({
-            title: "Please log in to add products to the basket",
-            status: 'error',
-            duration: 2000,
-            isClosable: true,
-            position: 'top-right',
-            variant: 'subtle'
-        });
-        return;
-    }
+//   const handleCheckout = async () => {
+//     if (!user) {
+//         toast({
+//             title: "Please log in to add products to the basket",
+//             status: 'error',
+//             duration: 2000,
+//             isClosable: true,
+//             position: 'top-right',
+//             variant: 'subtle'
+//         });
+//         return;
+//     }
 
 
-    // records data add
+//     // records data add
 
-const RecordsData: RecordsPostDataType = {
-    user_id: user.id ?? "",
-    basket_id: basketIdData,
-    contact: user.phoneNumber,
-    delivery_address: user.address ?? '',
-    fullname: user.fullname,
-    payment_method: isRectVisiblee2 ? 'Bank Kartlı ilə ödəmə' : "Qapida ödəmə",
-    email: user.email,
-    id: "", // veya uygun bir değer
-    date: new Date().toISOString(), // Tarih bilgisi, örneğin şu anki zaman
-    amount: basketAmount ?? 0, // veya sepet miktarı
-    created: new Date().toISOString(), // Oluşturulma tarihi
-    price: 0 // veya uygun bir fiyat değeri
-};
+// const RecordsData: RecordsPostDataType = {
+//     user_id: user.id ?? "",
+//     basket_id: basketIdData,
+//     contact: user.phoneNumber,
+//     delivery_address: user.address ?? '',
+//     fullname: user.fullname,
+//     payment_method: isRectVisiblee2 ? 'Bank Kartlı ilə ödəmə' : "Qapida ödəmə",
+//     email: user.email,
+//     id: "", // veya uygun bir değer
+//     date: new Date().toISOString(), // Tarih bilgisi, örneğin şu anki zaman
+//     amount: basketAmount ?? 0, // veya sepet miktarı
+//     created: new Date().toISOString(), // Oluşturulma tarihi
+//     price: 0 // veya uygun bir fiyat değeri
+// };
 
-    setPaymentScreen(true);
+//     setPaymentScreen(true);
 
 
 
-    dispatchw(addRecord(RecordsData)).then((action) => {
-      if (action.type === addRecord.rejected.type) {
+//     dispatchw(addRecord(RecordsData)).then((action) => {
+//       if (action.type === addRecord.rejected.type) {
        
-          toast({
-              title: "Failed to add product to the basket",
-              status: 'error',
-              duration: 2000,
-              isClosable: true,
-              position: 'top-right',
-              variant: 'subtle'
-          });
-      } else {
-          dispatch(fetchRecords());  // Sepeti güncellemek için
-          toast({
-              title: "Product added to the basket successfully!",
-              status: 'success',
-              duration: 2000,
-              isClosable: true,
-              position: 'top-right',
-              variant: 'subtle'
-          });
-      }
-  });
-};
+//           toast({
+//               title: "Failed to add product to the basket",
+//               status: 'error',
+//               duration: 2000,
+//               isClosable: true,
+//               position: 'top-right',
+//               variant: 'subtle'
+//           });
+//       } else {
+//           dispatch(fetchRecords());  // Sepeti güncellemek için
+//           toast({
+//               title: "Product added to the basket successfully!",
+//               status: 'success',
+//               duration: 2000,
+//               isClosable: true,
+//               position: 'top-right',
+//               variant: 'subtle'
+//           });
+//       }
+//   });
+// };
 
 
 
@@ -553,18 +553,24 @@ const RecordsData: RecordsPostDataType = {
 
            {basketItems.length > 0 ? (
 
-           <div className=" bg-cardColor w-5/12  mr-5 absolute ml-96 mt-20">
+           <div className=" bg-cardColor w-5/12  mr-5 absolute ml-96 mt-16 rounded-xl">
 
 
 
 
-<SimpleForm/>
+
 
 
 
                <h1 className='ml-6 font-bold text-grayText2 '></h1>
 
-               <div className="flex ml-6 ">
+
+               
+               <SimpleForm/>
+
+
+
+               {/* <div className="flex ml-6 ">
                 
                    <button onClick={handleToggle}>
                        <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
@@ -590,17 +596,19 @@ const RecordsData: RecordsPostDataType = {
                        </svg>
                    </button>
                    <h1 className={`ml-2 ${isRectVisiblee ? 'text-textColorGreen' : ''}`}>Qapida ödəmə</h1>
-               </div>
+               </div> */}
 
-               <div className='flex items-center justify-center mt-16'>
+               <div className='flex items-center justify-center mt-10'>
 
-                   <button
+                   {/* <button
                       className={`w-11/12 h-11 ${(isRectVisiblee || isRectVisiblee2) && basketId?.items?.length > 0  ? 'bg-textColorGreen' : 'bg-overlayColorGreen'} text-white rounded-sm`}
                       onClick={handleCheckout}
                       disabled={!((isRectVisiblee || isRectVisiblee2) && basketId?.items?.length  > 0)}
                    >
                       Checkout
-                   </button>
+                   </button> */}
+
+
 
                </div>
 
@@ -620,9 +628,12 @@ const RecordsData: RecordsPostDataType = {
 
 
        </div>
-       <div>
+
+
+       
+       {/* <div>
             {paymentScreen?<OverlayPayment/>:'' }
-           </div>
+           </div> */}
 
            </div>
     }
@@ -673,13 +684,9 @@ const RecordsData: RecordsPostDataType = {
 
 
 
-<SimpleForm/>
-
-
-
                <h1 className='ml-6 font-bold text-grayText2 '></h1>
 
-               <div className="flex ml-6 ">
+               {/* <div className="flex ml-6 ">
                 
                    <button onClick={handleToggle}>
                        <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
@@ -705,9 +712,9 @@ const RecordsData: RecordsPostDataType = {
                        </svg>
                    </button>
                    <h1 className={`ml-2 ${isRectVisiblee ? 'text-textColorGreen' : ''}`}>Payment via terminal</h1>
-               </div>
+               </div> */}
 
-
+                    <SimpleForm/>
 
 
 
@@ -717,13 +724,13 @@ const RecordsData: RecordsPostDataType = {
 
 
 
-                   <button
+                   {/* <button
                       className={`w-11/12 h-11 ${(isRectVisiblee || isRectVisiblee2) && basketId?.items?.length > 0  ? 'bg-textColorGreen' : 'bg-overlayColorGreen'} text-white rounded-sm`}
                       onClick={handleCheckout}
                       disabled={!((isRectVisiblee || isRectVisiblee2) && basketId?.items?.length  > 0)}
                    >
                       Checkout
-                   </button>
+                   </button> */}
 
                </div>
 
@@ -749,10 +756,10 @@ const RecordsData: RecordsPostDataType = {
        <div className='mt-14'>
 </div>
 
-
+{/* 
           <div>
             {paymentScreen?<OverlayPayment/>:'' }
-           </div>
+           </div> */}
     </div>
 }
 

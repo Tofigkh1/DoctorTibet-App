@@ -38,18 +38,18 @@ const OverlayPayment = () => {
                 <div>
                     {isMenuOpen && (
                         <div
-                            className='rounded-lg w-7/12 h-80 bg-white absolute z-50'
+                            className={styles.containerMenu}
                             style={{
-                                left: '50%',
-                                top: '50%',
+                                left: '65%',
+                                top: '35%',
                                 transform: 'translate(-50%, -50%)',
                             }}
                             ref={menuRef}
                         >
-                            <h1 className='text-center text-3xl font-semibold mt-7'>
+                            <h1 className='text-center text-3xl font-semibold mt-12 ml-2'>
                                 Məhsulu almaq ucun zehmet olmasa bizimle əlaqəyə kecərək ödeniş edin!
                             </h1>
-                            <div className='flex gap-10 ml-20 mt-14'>
+                            <div className='flex gap-10 ml-12 mt-20'>
                                 <div>
                                     <WhatsAppButton />
                                 </div>

@@ -97,16 +97,10 @@ const validationSchema = Yup.object().shape({
   address: Yup.string().required('Address is required'),
 });
 
-
-// const initialValues: FormValues = {
-//   phoneNumber: '',
-//   address: '',
-// };
-
-interface FormValues {
-  phoneNumber: string;
-  address: string;
-}
+const initialValues: FormValues = {
+  phoneNumber: '',
+  address: '',
+};
 
 const SimpleForm: React.FC = () => {
   const dispatchh: AppDispatch = useDispatch();
@@ -115,9 +109,6 @@ const SimpleForm: React.FC = () => {
     phoneNumber: '',
     address: ''
 });
-
-
-
 
   const basket = useSelector((state: RootState) => state.basket);
 
@@ -138,12 +129,6 @@ const SimpleForm: React.FC = () => {
 
 
   const dispatchw: AppDispatch = useDispatch();
-
-
-  const initialValuess: FormValues = {
-    phoneNumber: user.phoneNumber || '',
-    address: user.address || ''
-  };
 
   useEffect(() => {
     const storedUser = localStorage.getItem("user_info");
@@ -245,104 +230,138 @@ useEffect(() => {
 
 
   
-  const handleCheckout = async (values: FormValues) => {
-    const RecordsData = {
-      id: "",
-      user_id: user.id ?? "",
-      basket_id: basketIdData,
-      contact: values.phoneNumber, // User's input value
-      delivery_address: values.address, // User's input value
-      fullname: user.fullname,
-      payment_method: 'Bank Kartlı ilə ödəmə', // Replace with actual method
-      email: user.email,
-      date: new Date().toISOString(),
-      amount: basketAmount ?? 0,
-      created: new Date().toISOString(),
-      price: 0 // or suitable price value
-    };
+  const handleCheckout = async () => {
+    if (!user) {
+        toast({
+            title: "Please log in to add products to the basket",
+            status: 'error',
+            duration: 2000,
+            isClosable: true,
+            position: 'top-right',
+            variant: 'subtle'
+        });
+        return;
+    }
+
+
+    // records data add
+
+const RecordsData: RecordsPostDataType = {
+    user_id: user.id ?? "",
+    basket_id: basketIdData,
+    contact: user.phoneNumber,
+    delivery_address: user.address ?? '',
+    fullname: user.fullname,
+    payment_method: isRectVisiblee2 ? 'Bank Kartlı ilə ödəmə' : "Qapida ödəmə",
+    email: user.email,
+    id: "", // veya uygun bir değer
+    date: new Date().toISOString(), // Tarih bilgisi, örneğin şu anki zaman
+    amount: basketAmount ?? 0, // veya sepet miktarı
+    created: new Date().toISOString(), // Oluşturulma tarihi
+    price: 0 // veya uygun bir fiyat değeri
+};
 
     setPaymentScreen(true);
-    
-    const action = await dispatchw(addRecord(RecordsData));
-    if (action.type === addRecord.rejected.type) {
-      toast({
-        title: "Failed to add product to the basket",
-        status: 'error',
-        duration: 2000,
-        isClosable: true,
-        position: 'top-right',
-      });
-    } else {
-      dispatchw(fetchRecords());
-      toast({
-        title: "Product added to the basket successfully!",
-        status: 'success',
-        duration: 2000,
-        isClosable: true,
-        position: 'top-right',
-      });
-    }
-  };
+
+
+
+    dispatchw(addRecord(RecordsData)).then((action) => {
+      if (action.type === addRecord.rejected.type) {
+       
+          toast({
+              title: "Failed to add product to the basket",
+              status: 'error',
+              duration: 2000,
+              isClosable: true,
+              position: 'top-right',
+              variant: 'subtle'
+          });
+      } else {
+          dispatchw(fetchRecords());  // Sepeti güncellemek için
+          toast({
+              title: "Product added to the basket successfully!",
+              status: 'success',
+              duration: 2000,
+              isClosable: true,
+              position: 'top-right',
+              variant: 'subtle'
+          });
+      }
+  });
+};
 
 
   return (
     <div>
             <div className=' flex flex-col'>
 
-           <Formik
-          initialValues={initialValuess}
-          validationSchema={validationSchema}
-          onSubmit={handleCheckout}
-        >
-          {({ handleChange, values }) => (
-            <Form>
-              <div className='mt-12 ml-6 flex flex-col'>
-                <label className='text-grayText2 font-bold' htmlFor="phoneNumber">Phone Number</label>
-                <Field
-                  type="text"
-                  id="phoneNumber"
-                  name="phoneNumber"
-                  value={values.phoneNumber}
-                  onChange={handleChange}
-                  placeholder="+994"
-                  className={style.customInput} // style.customInput yerine doğrudan className
-                />
-                <ErrorMessage name="phoneNumber" component="div" className="text-mainRed" />
+  <Formik
+  initialValues={{
+    phoneNumber: user.phoneNumber || '',
+    address: user.address || '',
+  }}
+  validationSchema={validationSchema}
+  onSubmit={onSubmit}
+>
+  {({ handleChange, values, setFieldValue }) => (
+      
+    <Form>
+  
 
-                <label className='mt-10 text-grayText2 font-bold' htmlFor="address">Address</label>
-                <Field
-                  type="text"
-                  id="address"
-                  name="address"
-                  value={values.address}
-                  onChange={handleChange}
-                  placeholder="Enter your address"
-                  className={style.customInput}
-                />
-                <ErrorMessage name="address" component="div" className="text-mainRed" />
-              </div>
+    
+      <div className=' mt-12 ml-6 flex flex-col'>
+     
+          <label className='text-grayText2 font-bold' htmlFor="phoneNumber">Phone Number</label>
+          <Field
+           type="text"
+           id="phoneNumber"
+           name="phoneNumber"
+           value={values.phoneNumber} 
+           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+          const formattedPhone = formatPhoneNumber(e.target.value);
+          setFieldValue('phoneNumber', formattedPhone);
+          }}
+          placeholder="+994"
+          className={style.customInput}
+          />
 
-             <button
-                      className={`w-11/12 h-11 ml-5 mt-14 ${(isRectVisiblee || isRectVisiblee2) && basketId?.items?.length > 0  ? 'bg-textColorGreen' : 'bg-overlayColorGreen'} text-white rounded-sm`}
-                     type="submit"
-                      disabled={!((isRectVisiblee || isRectVisiblee2) && basketId?.items?.length  > 0)}
-                   >
-                      Checkout
-                   </button>
-            </Form>
-          )}
-        </Formik>
 
+          <ErrorMessage name="phoneNumber" component="div" className="text-mainRed" />
+    
+
+ 
+          <label className=' mt-10 text-grayText2 font-bold' htmlFor="address">Address</label>
+          <Field
+            type="text"
+            id="address"
+            name="address"
+            value={values.address}
+            onChange={handleChange} 
+            placeholder="Enter your address"
+            className={style.customInput}
+          />
+
+
+
+          <ErrorMessage name="address" component="div" className="text-mainRed" />
+      
+
+      </div>
+
+    </Form>
+    
+  )}
+</Formik>
 
 
                    <h1 className='ml-6  font-bold text-grayText2 '></h1>
-                   {/* <button
+                   <button
                       className={`w-11/12 h-11 ml-5 mt-14 ${(isRectVisiblee || isRectVisiblee2) && basketId?.items?.length > 0  ? 'bg-textColorGreen' : 'bg-overlayColorGreen'} text-white rounded-sm`}
                       onClick={handleCheckout}
                       disabled={!((isRectVisiblee || isRectVisiblee2) && basketId?.items?.length  > 0)}
                    >
                       Checkout
-                   </button> */}
+                   </button>
 
 
                    <div className="flex ml-6 mt-12 ">
