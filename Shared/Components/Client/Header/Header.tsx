@@ -224,7 +224,8 @@ className="bg-slate-500 rounded-e-2xl w-20 h-10 font-bold transition-all hover:b
             </div>
           </div>
 
-          <Search />
+
+         
 
           {!accessToken && (
             <button onClick={goAuthGetStarted} className={styles.getStartedButton}>
@@ -234,6 +235,11 @@ className="bg-slate-500 rounded-e-2xl w-20 h-10 font-bold transition-all hover:b
               </div>
             </button>
           )}
+
+
+<div className=''>
+<Search />
+</div>
         </div>
       </div>
     </div>
