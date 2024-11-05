@@ -433,7 +433,7 @@ const Profile: React.FC = ()=> {
            <DotLoader color="#28e4c5" speedMultiplier={1.6} size={90} />
          </div>
        ) : downloadURL ? (
-         <div style={{ width: '410px', height: '100px', marginLeft:'4px' }}>
+         <div style={{ width: '410px', height: '100px', marginLeft:'1px' }}>
 
            <Image
         width={500}
