@@ -449,7 +449,10 @@ const Profile: React.FC = ()=> {
                  <UploadImage  setImageList={setIMG}  IMG={IMG[0]?.data_url || undefined} userPage={true} />
            </div>
       
-           <div className=" ml-40 mt-5 bg-white rounded-full w-28 h-28 pl-1.5 pt-2">
+
+      <div className=' mt-36 '>
+
+           <div className="  mt-[450px] top-0 bg-white absolute rounded-full w-28 h-28 pl-1.5 pt-1.5">
          <ThemeProvider theme={theme}>
            <Stack direction="row" spacing={2}>
              {isLoggedIn ? (
@@ -471,10 +474,11 @@ const Profile: React.FC = ()=> {
              )}
            </Stack>
          </ThemeProvider>
-
+       </div>
        </div>
 
-           <div className=' z-50 '>
+
+           <div className=' z-50 mt-10 '>
    <UserForm img={IMG}/>
    </div>
 

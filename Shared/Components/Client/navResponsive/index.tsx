@@ -27,6 +27,7 @@ export default function NavRes() {
                 <ul>
                     {(isMobile && accessToken) ? (
                         <>
+                        <li onClick={() => push('/')} className={styless[`${isActive("/")}`]}>Home</li>
                             <li className={styless[`${isActive("/user/profile")}`]} onClick={() => push('/user/profile')}>Your Profile</li>
                             {/* <li className={styless[`${isActive("/user/basket")}`]} onClick={() => push('/user/basket')}>Your Basket</li>
                             <li className={styless[`${isActive("/user/orders")}`]} onClick={() => push('/user/orders')}>Your Orders</li>
@@ -35,7 +36,7 @@ export default function NavRes() {
                         </>
                     ) : ''}
 
-                    <li onClick={() => push('/')} className={styless[`${isActive("/")}`]}>Home</li>
+                    
                     <li onClick={() => push('/medicines')} className={styless[`${isActive("/medicines")}`]}>Buy Medicine</li>
                     <li onClick={() => push('/contact-us')} className={styless[`${isActive("/contact-us")}`]}>Contact a Doctor</li>
                     <li onClick={() => push('/about-us')} className={styless[`${isActive("/about-us")}`]}>About</li>

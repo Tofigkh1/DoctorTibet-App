@@ -84,11 +84,11 @@ export default function HamburgerBtn() {
         {/* Menü İçeriği */}
         <div className={`${styles.menu} ${isMenuOpen ? styles.show : ''}`}>
             <div className='flex'>
-                <div className=' mt-5 ml-5'>
+                <div className=' mt-5 ml-3'>
                 <NavRes />
                 </div>
      
-<div className=' mt-5'>
+<div className=' mt-5 -ml-9'>
 <div className={`${styles.hamburger} ${isMenuOpen ? styles.open : ''}`} onClick={toggleMenu}>
             <span className={styles.bar}></span>
             <span className={styles.bar}></span>
