@@ -296,7 +296,7 @@ console.log("values", values);
                                 <button
                                     type="submit"
                                     className={button}
-                                    style={logoding ? { cursor: "not-allowed" } : { cursor: 'pointer', marginLeft:'140px' }}
+                                    style={logoding ? { cursor: "not-allowed", marginLeft:'140px' } : { cursor: 'pointer', marginLeft:'140px' }}
                                     disabled={logoding}
                                 >
                                     {logoding ? <Spiner /> : "Save"}

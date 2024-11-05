@@ -46,7 +46,7 @@
 
 
 .button {
-    background: #9b73eb;
+    background: #26d6a1;
     text-align: center;
     width: 150px;
     height: 53px;
@@ -57,6 +57,12 @@
     justify-content: center;
     border-radius: 2000px;
     margin-left: 100px;
+    transition: background-color 0.3s ease; 
+}
+
+.button:hover,
+.button:active {
+    background-color: #1BC768;
 }
 
 @media only screen and (max-width: 800px) {

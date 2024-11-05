@@ -418,7 +418,7 @@ const Profile: React.FC = ()=> {
 
      <div className=" w-9/12 h-60  rounded-2xl mr-5  right-0">
 
-     <div className=' flex gap-3 mt-8'>
+     <div className=' flex gap-3 mt-8 ml-5'>
      <h1 className=' font-bold text-2xl'>Profile &gt;</h1>
      <h1 className='  text-fontcolorhow text-2xl'>Dashboard</h1>
      </div>
@@ -433,7 +433,7 @@ const Profile: React.FC = ()=> {
            <DotLoader color="#28e4c5" speedMultiplier={1.6} size={90} />
          </div>
        ) : downloadURL ? (
-         <div style={{ width: '420px', height: '100px', }}>
+         <div style={{ width: '410px', height: '100px', marginLeft:'9px' }}>
 
            <Image
         width={500}
