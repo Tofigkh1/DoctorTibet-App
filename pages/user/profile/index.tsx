@@ -27,6 +27,7 @@ import { Box, Tag, VStack, SimpleGrid, Flex, Text } from "@chakra-ui/react";
 import Categories from '../../../Shared/Components/Client/headerCategory';
 import Sidebar, { SidebarItem } from '../../../Shared/Components/Client/SideBarMenu';
 import { clearUser } from '../../../Shared/Redux/Featuries/User/userSlice';
+import { useResize } from '../../../Shared/Hooks/useResize';
 
 
 
@@ -130,7 +131,7 @@ const Profile: React.FC = ()=> {
   const [IMG, setIMG] = useState<ImageType[]>([]);
   const [downloadURL, setDownloadURL] = useState(''); 
   const [loading, setLoading] = useState(false); 
-
+  let { isMobile } = useResize();
   const [mobile, setmobile] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const dispatch: AppDispatch = useDispatch();
@@ -202,6 +203,11 @@ const Profile: React.FC = ()=> {
 ;
   return (
     <>
+    {!isMobile &&
+
+    <div>
+
+   
       <Container>
         <Header>
           <div className={styles.cursor}>
@@ -362,6 +368,156 @@ const Profile: React.FC = ()=> {
       </div>
 
       <Footer/>
+      </div>
+}
+
+
+{isMobile &&
+ <div className={styles.mainContent}>
+
+   
+ <Container>
+   <Header>
+     <div className={styles.cursor}>
+       <img
+         onClick={() => push('/')}
+         style={{ width: '90px', height: '90px' }}
+         className={styles.logo}
+         src="/Logo.png"
+         alt="Logo"
+       />
+     </div>
+ 
+
+     <div className="flex gap-10 z-50">
+                   <BasketMenu/>
+                   <Auth/>
+                   </div>
+   </Header>
+
+
+   
+ </Container>
+
+ <Categories/>
+
+ <div className="">
+  
+
+   <div className="flex gap-40 ">
+     
+     {/* <div className={mobile ? 'hidden' : ' w-80'}>
+       <Navbar active={1} />
+     </div> */}
+
+ 
+
+
+
+
+
+     <div className=" w-9/12 h-60  rounded-2xl mr-5  right-0">
+
+     <div className=' flex gap-3 mt-8'>
+     <h1 className=' font-bold text-2xl'>Profile &gt;</h1>
+     <h1 className='  text-fontcolorhow text-2xl'>Dashboard</h1>
+     </div>
+    
+       {loading ? (
+         <div style={{
+           display: 'flex',
+           justifyContent: 'center',
+           alignItems: 'center',
+           height: '80vh'
+         }}>
+           <DotLoader color="#28e4c5" speedMultiplier={1.6} size={90} />
+         </div>
+       ) : downloadURL ? (
+         <div style={{ width: '420px', height: '100px', }}>
+
+           <Image
+        width={500}
+        height={100}
+             src={downloadURL}
+             alt="Uploaded Image"
+            
+             objectFit="cover"
+             className="rounded-2xl -z-40 mt-12"
+           />
+     
+           <div className=" right-0  absolute  mr-5">
+                 <UploadImage  setImageList={setIMG}  IMG={IMG[0]?.data_url || undefined} userPage={true} />
+           </div>
+      
+           <div className=" ml-40 mt-5 bg-white rounded-full w-28 h-28 pl-1.5 pt-2">
+         <ThemeProvider theme={theme}>
+           <Stack direction="row" spacing={2}>
+             {isLoggedIn ? (
+               <StyledBadge
+                 overlap="circular"
+                 anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+                 variant="dot"
+               >
+                 <LargeAvatar alt="Remy Sharp" src="" />
+               </StyledBadge>
+             ) : (
+               <StyledBadge2
+                 overlap="circular"
+                 anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+                 variant="dot"
+               >
+                 <LargeAvatar alt="Travis Howard" src="" />
+               </StyledBadge2>
+             )}
+           </Stack>
+         </ThemeProvider>
+
+       </div>
+
+           <div className=' z-50 '>
+   <UserForm img={IMG}/>
+   </div>
+
+
+   
+         </div>
+       ) : (
+         <div className="w-9/12 h-60 mt-4 rounded-2xl mr-5" />
+       )}
+
+     
+       
+ 
+      
+     </div>
+    
+     
+    
+   </div>
+
+
+ 
+ </div>
+
+ <div className='mt-96'>
+
+</div>
+
+
+<div className='mt-96'>
+
+</div>
+
+
+<div className='mt-36'>
+
+</div>
+
+
+
+ <Footer/>
+ </div>
+}
     </>
   );
 }

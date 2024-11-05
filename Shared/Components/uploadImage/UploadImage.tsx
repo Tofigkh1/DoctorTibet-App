@@ -92,7 +92,7 @@ interface UploadImageProps {
                     </button>
 
 
-                    <div className=" flex mt-12 gap-9">
+                    <div className=" flex  gap-9">
 
                   
                     {imageList.map((image, index) => (

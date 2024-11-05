@@ -80,6 +80,9 @@ const Footer = () => {
     </Box>
      }
 
+
+     
+
 {isMobile &&
     <Box bg="#043CAA" color="white" py={10} className={Styles.Footerbox}>
       <Container maxW="container.xl">

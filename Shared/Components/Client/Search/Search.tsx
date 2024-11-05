@@ -93,7 +93,7 @@ export default function Search() {
             <div className={styles.search_container}>
                 <input
                     type="text"
-                    placeholder="Search for drugs in our store"
+                    placeholder="İstədiyin Tibet məhsullarını axtar"
                     value={query}
                     onChange={(e) => {
                         setQuery(e.target.value);
@@ -136,7 +136,7 @@ export default function Search() {
             
                 
                 {focus && <div className={styles.shadow_search} onClick={() => setFocus(false)}/>}
-                <button className={styles.searchButton} onClick={handleSearchClick}>Find drug</button>
+                <button className={styles.searchButton} onClick={handleSearchClick}>Axtarış et</button>
             </div>
 
             <div className="w-5/12 md:w-96">
@@ -162,7 +162,7 @@ export default function Search() {
     <div className={styles.search_containerMob }>
         <input
             type="text"
-            placeholder="İstədiyiniz Tibet məhsullarını axtar"
+            placeholder="İstədiyin Tibet məhsullarını axtar"
             value={query}
             onChange={(e) => {
                 setQuery(e.target.value);

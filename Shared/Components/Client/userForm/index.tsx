@@ -10,6 +10,7 @@ import Spiner from '../../../Components/Client/Spiner/index';
 import { useToast } from '@chakra-ui/react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setUser, UserState } from "../../../Redux/Featuries/User/userSlice";
+import { useResize } from '../../../Hooks/useResize';
 
 interface FormValues {
     phoneNumber: string;
@@ -47,6 +48,7 @@ const UserForm: React.FC<Props> = (props: Props) => {
     const toast = useToast();
     let { img } = props;
     let [logoding, setlogoding] = useState(false);
+    let { isMobile } = useResize();
 
     const [initialValues, setInitialValues] = useState<FormValues>({
         phoneNumber: '',
@@ -156,7 +158,13 @@ console.log("values", values);
     };
 
     let { div, inpdiv, button } = style;
+    let { divMob, inpdivMob, buttonMob } = style;
     return (
+
+        <div>
+
+
+        {!isMobile &&
         <div>
             <Formik
               initialValues={initialValues}
@@ -224,6 +232,83 @@ console.log("values", values);
                     </Form>
                 )}
             </Formik>
+        </div>
+        }
+
+
+
+
+{isMobile &&
+        <div>
+            <Formik
+              initialValues={initialValues}
+              enableReinitialize={true}    
+              validationSchema={validationSchema}
+              onSubmit={onSubmit}
+            >
+                {({ handleChange, values }) => (
+
+
+                    <Form>
+                        <div className={div}>
+                            <div className={inpdivMob}>
+                            <Input
+    name='phoneNumber'
+    type='text'
+    value={values.phoneNumber}
+    onChange={handleChange}
+    placeholder='+994 XX XXX XX XX'
+    title="Contact Number"
+/>
+                                <Input
+                                    name='username'
+                                    type='text'
+                                    value={values.username}
+                                    onChange={handleChange}
+                                    placeholder='User Name'
+                                    title="User Name"
+                                />
+                                <Input
+                                    name='fullname'
+                                    type='text'
+                                    value={values.fullname}
+                                    onChange={handleChange}
+                                    placeholder='Full Name'
+                                    title="Full Name"
+                                />
+                            </div>
+                            <div className={inpdivMob}>
+                                <Input
+                                    name='email'
+                                    type='email'
+                                    value={values.email}
+                                    onChange={handleChange}
+                                    title='Email'
+                                />
+                                <Input
+                                    name='address'
+                                    type='text'
+                                    value={values.address}
+                                    onChange={handleChange}
+                                    placeholder='Address'
+                                    title="Address"
+                                />
+                                <button
+                                    type="submit"
+                                    className={button}
+                                    style={logoding ? { cursor: "not-allowed" } : { cursor: 'pointer', marginLeft:'140px' }}
+                                    disabled={logoding}
+                                >
+                                    {logoding ? <Spiner /> : "Save"}
+                                </button>
+                            </div>
+                        </div>
+                    </Form>
+                )}
+            </Formik>
+        </div>
+        }
+
         </div>
     );
 };
