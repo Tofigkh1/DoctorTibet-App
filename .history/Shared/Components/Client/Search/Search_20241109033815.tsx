@@ -183,64 +183,46 @@ export default function Search() {
 
 
     <div className={styles.search_containerMob }>
-    <input
-                        type="text"
-                        placeholder="İstədiyin Tibet məhsullarını axtar"
-                        value={query}
-                        onChange={(e) => {
-                            setQuery(e.target.value);
-                            setFocus(true);
-                            setSelectedProduct(null);
-                        }}
-                        onFocus={() => setFocus(true)}
-                    />
-
+        <input
+            type="text"
+            placeholder="İstədiyin Tibet məhsullarını axtar"
+            value={query}
+            onChange={(e) => {
+                setQuery(e.target.value);
+                setFocus(true);
+                setSelectedProduct(null);
+            }}
+        />
 
         {focus && 
         <div className={styles.search_result}>
-               <ul>
-                            {loading ? <ClipLoader color="#28e4c5" speedMultiplier={1.5} size={60} /> :
-                                products?.map((product) => (
-                                    <li key={product.id} onClick={() => handleProductSelect(product)}>
-                                        <img src={product?.img_url ?? '/imgs/no-photo.avif'} alt={product.name} />
-                                        <div>
-                                            <p>{product.name}</p>
-                                        </div>
-                                    </li>
-                                ))
-                            }
-                        </ul>
+            <ul>
+                {loading ?    <div style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            height: '80vh' 
+        }}>
+            <ClipLoader color="#28e4c5" speedMultiplier={1.5} size={60} />
+        </div> :
+                    <>
+                        {products?.map((product) => (
+                            <li key={product.id} onClick={() => handleProductSelect(product)}>
+                                <img src={product?.img_url ?? '/imgs/no-photo.avif'} alt={product.name}/>
+                                <div>
+                                    <p>{product.name}</p>
+                                </div>
+                            </li>
+                        ))}
+                    </>
+                }
+            </ul>
 
-        
-                        <div className={styles.more_btn}>
-                            <button onClick={() => { push('/medicines'); setFocus(false); }}>
-                                {/* <span>Show More</span> */}
-
-              
-                            </button>
-                        </div>
-
-
-                        <div>
-{focus && searchHistory.length > 0 && (
-                        <div className={styles.search_history}>
-                            <ul>
-                      
-                                {searchHistory.map((historyItem, index) => (
-                                    <li className=" w-96" key={index} onClick={() => {
-                                        setQuery(historyItem); // Geçmiş öğesini input'a yaz
-                                        setFocus(false);       // Fokus geçmiş listesi kapansın
-                                    }}>
-                                    <Image alt="searchIcon" src={SearchMini} width={20} height={5}/>
-                                    {historyItem}
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    )}
-</div>
-
-
+            <div className={styles.more_btn}>
+                <button onClick={() => {push('/medicines'); setFocus(false);}}>
+                    <span>Show More</span> <RightIcon />
+                </button>
+            </div>
         </div>
         }
     

@@ -38,6 +38,10 @@ margin-top: 80px;
 }
 
 
+.search_history{
+
+    z-index: 999999999999999999999999999;
+}
 
 .searchButton:hover,
 .searchButton:active {

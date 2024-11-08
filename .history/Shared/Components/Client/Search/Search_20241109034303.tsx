@@ -221,7 +221,7 @@ export default function Search() {
                         </div>
 
 
-                        <div>
+            <div>
 {focus && searchHistory.length > 0 && (
                         <div className={styles.search_history}>
                             <ul>
@@ -239,8 +239,6 @@ export default function Search() {
                         </div>
                     )}
 </div>
-
-
         </div>
         }
     

@@ -198,30 +198,35 @@ export default function Search() {
 
         {focus && 
         <div className={styles.search_result}>
-               <ul>
-                            {loading ? <ClipLoader color="#28e4c5" speedMultiplier={1.5} size={60} /> :
-                                products?.map((product) => (
-                                    <li key={product.id} onClick={() => handleProductSelect(product)}>
-                                        <img src={product?.img_url ?? '/imgs/no-photo.avif'} alt={product.name} />
-                                        <div>
-                                            <p>{product.name}</p>
-                                        </div>
-                                    </li>
-                                ))
-                            }
-                        </ul>
+            <ul>
+                {loading ?    <div style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            height: '80vh' 
+        }}>
+            <ClipLoader color="#28e4c5" speedMultiplier={1.5} size={60} />
+        </div> :
+                    <>
+                        {products?.map((product) => (
+                            <li key={product.id} onClick={() => handleProductSelect(product)}>
+                                <img src={product?.img_url ?? '/imgs/no-photo.avif'} alt={product.name}/>
+                                <div>
+                                    <p>{product.name}</p>
+                                </div>
+                            </li>
+                        ))}
+                    </>
+                }
+            </ul>
 
-        
-                        <div className={styles.more_btn}>
-                            <button onClick={() => { push('/medicines'); setFocus(false); }}>
-                                {/* <span>Show More</span> */}
+            <div className={styles.more_btn}>
+                <button onClick={() => {push('/medicines'); setFocus(false);}}>
+                    {/* <span>Show More</span> <RightIcon /> */}
+                </button>
+            </div>
 
-              
-                            </button>
-                        </div>
-
-
-                        <div>
+            <div>
 {focus && searchHistory.length > 0 && (
                         <div className={styles.search_history}>
                             <ul>
@@ -239,8 +244,6 @@ export default function Search() {
                         </div>
                     )}
 </div>
-
-
         </div>
         }
     

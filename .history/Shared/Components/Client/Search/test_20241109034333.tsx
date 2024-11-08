@@ -1,45 +1,52 @@
+import RightIcon from "../../Svg/RightIcon";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { GetProducts } from "../../../../Services";
 import { PostDataType, ProductPostDataType } from "../../../Interface";
 import styles from "./Search.module.css";
-import searchIcon from '../../../../public/searchIcon.svg';
+import searchIcon from '../../../../public/searchIcon.svg'
 import Image from "next/image";
-import { Alert, AlertIcon, AlertTitle, AlertDescription } from '@chakra-ui/react';
+import {
+    Alert,
+    AlertIcon,
+    AlertTitle,
+    AlertDescription,
+  } from '@chakra-ui/react'
 import { ClipLoader } from "react-spinners";
 import { useResize } from "../../../Hooks/useResize";
 
-import SearchMini from "../../../../public/search.png"
- 
 export default function Search() {
     const { push } = useRouter();
     const [query, setQuery] = useState('');
     const [focus, setFocus] = useState(false);
-    const [products, setProducts] = useState<ProductPostDataType[]>([]);
+    const [products, setProducts] = useState<ProductPostDataType[]>();
     const [loading, setLoading] = useState(false);
     const [selectedProduct, setSelectedProduct] = useState<ProductPostDataType | null>(null);
     const [alert, setAlert] = useState(false);
-    const [searchHistory, setSearchHistory] = useState<string[]>([]);
-    const { isMobile } = useResize();
+    let { isMobile } = useResize();
 
+    
     useEffect(() => {
         if (query.trim() === '') {
             setProducts([]);
             return;
         }
 
+
+        
+    
         const fetchData = async () => {
             setLoading(true);
             try {
                 const response = await GetProducts();
-                const products = response?.data?.result?.data.filter((product: PostDataType) => 
-                    product?.name?.toLowerCase()?.includes(query.toLowerCase())
-                ).map((product: PostDataType): ProductPostDataType => ({
+                let products = response?.data?.result?.data.filter((product: PostDataType) => {
+                    return product?.name?.toLowerCase()?.includes(query.toLowerCase());
+                }).map((product: PostDataType): ProductPostDataType => ({
                     ...product,
-                    cover_url: product.cover_url || '',
-                    created: product.created || new Date().toISOString(),
+                    cover_url: product.cover_url || '',  // Varsayılan değer
+                    created: product.created || new Date().toISOString(),  // Varsayılan değer
                     category_id: String(product.category_id) || '0',
-                    allDescription: product.allDescription || '',
+                    allDescription: product.allDescription || '',  // Varsayılan değer
                 }));
                 setProducts(products);
             } catch (error) {
@@ -54,10 +61,10 @@ export default function Search() {
     }, [query]);
 
     const handleProductSelect = (product: ProductPostDataType) => {
-        setQuery(product.name ?? '');
+        setQuery(product.name ?? '');  // Provide a fallback empty string if product.name is undefined
         setFocus(false);
         setSelectedProduct(product);
-        setAlert(false);
+        setAlert(false);  // Ürün seçildiğinde alert'i false yapıyoruz.
     };
 
     const handleSearchClick = () => {
@@ -66,35 +73,19 @@ export default function Search() {
         } else if (products) {
             const matchedProduct = products.find(
                 (product) => product.name?.toLowerCase() === query.toLowerCase()
-            );
+              );
             if (matchedProduct) {
                 push('/medicines/' + matchedProduct.id);
-                setAlert(false);
+                setAlert(false); 
             } else {
-                setAlert(true);
+                setAlert(true);  
             }
-        }
-    
-        if (query) {
-            let updatedHistory = searchHistory.filter(item => item.toLowerCase() !== query.toLowerCase()); // Remove if already exists
-            updatedHistory = [query, ...updatedHistory.slice(0, 4)]; // Add to top and limit to 5 items
-    
-            setSearchHistory(updatedHistory);
-            localStorage.setItem('searchHistory', JSON.stringify(updatedHistory));
         }
     };
 
-
-    useEffect(() => {
-        const storedHistory = localStorage.getItem('searchHistory');
-        if (storedHistory) {
-            setSearchHistory(JSON.parse(storedHistory));
-        }
-    }, []);
-
     return (
         <>
-            {!isMobile &&
+         {!isMobile &&
             <div>
                 <div className={styles.search_container}>
                     <input
@@ -183,64 +174,46 @@ export default function Search() {
 
 
     <div className={styles.search_containerMob }>
-    <input
-                        type="text"
-                        placeholder="İstədiyin Tibet məhsullarını axtar"
-                        value={query}
-                        onChange={(e) => {
-                            setQuery(e.target.value);
-                            setFocus(true);
-                            setSelectedProduct(null);
-                        }}
-                        onFocus={() => setFocus(true)}
-                    />
-
+        <input
+            type="text"
+            placeholder="İstədiyin Tibet məhsullarını axtar"
+            value={query}
+            onChange={(e) => {
+                setQuery(e.target.value);
+                setFocus(true);
+                setSelectedProduct(null);
+            }}
+        />
 
         {focus && 
         <div className={styles.search_result}>
-               <ul>
-                            {loading ? <ClipLoader color="#28e4c5" speedMultiplier={1.5} size={60} /> :
-                                products?.map((product) => (
-                                    <li key={product.id} onClick={() => handleProductSelect(product)}>
-                                        <img src={product?.img_url ?? '/imgs/no-photo.avif'} alt={product.name} />
-                                        <div>
-                                            <p>{product.name}</p>
-                                        </div>
-                                    </li>
-                                ))
-                            }
-                        </ul>
+            <ul>
+                {loading ?    <div style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            height: '80vh' 
+        }}>
+            <ClipLoader color="#28e4c5" speedMultiplier={1.5} size={60} />
+        </div> :
+                    <>
+                        {products?.map((product) => (
+                            <li key={product.id} onClick={() => handleProductSelect(product)}>
+                                <img src={product?.img_url ?? '/imgs/no-photo.avif'} alt={product.name}/>
+                                <div>
+                                    <p>{product.name}</p>
+                                </div>
+                            </li>
+                        ))}
+                    </>
+                }
+            </ul>
 
-        
-                        <div className={styles.more_btn}>
-                            <button onClick={() => { push('/medicines'); setFocus(false); }}>
-                                {/* <span>Show More</span> */}
-
-              
-                            </button>
-                        </div>
-
-
-                        <div>
-{focus && searchHistory.length > 0 && (
-                        <div className={styles.search_history}>
-                            <ul>
-                      
-                                {searchHistory.map((historyItem, index) => (
-                                    <li className=" w-96" key={index} onClick={() => {
-                                        setQuery(historyItem); // Geçmiş öğesini input'a yaz
-                                        setFocus(false);       // Fokus geçmiş listesi kapansın
-                                    }}>
-                                    <Image alt="searchIcon" src={SearchMini} width={20} height={5}/>
-                                    {historyItem}
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    )}
-</div>
-
-
+            <div className={styles.more_btn}>
+                <button onClick={() => {push('/medicines'); setFocus(false);}}>
+                    <span>Show More</span> <RightIcon />
+                </button>
+            </div>
         </div>
         }
     
@@ -262,7 +235,6 @@ export default function Search() {
 
 </div>
 }
-
         </>
     );
 }

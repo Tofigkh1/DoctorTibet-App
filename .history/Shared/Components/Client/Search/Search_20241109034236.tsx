@@ -211,17 +211,13 @@ export default function Search() {
                             }
                         </ul>
 
-        
-                        <div className={styles.more_btn}>
-                            <button onClick={() => { push('/medicines'); setFocus(false); }}>
-                                {/* <span>Show More</span> */}
+            <div className={styles.more_btn}>
+                <button onClick={() => {push('/medicines'); setFocus(false);}}>
+                    {/* <span>Show More</span> <RightIcon /> */}
+                </button>
+            </div>
 
-              
-                            </button>
-                        </div>
-
-
-                        <div>
+            <div>
 {focus && searchHistory.length > 0 && (
                         <div className={styles.search_history}>
                             <ul>
@@ -239,8 +235,6 @@ export default function Search() {
                         </div>
                     )}
 </div>
-
-
         </div>
         }
     

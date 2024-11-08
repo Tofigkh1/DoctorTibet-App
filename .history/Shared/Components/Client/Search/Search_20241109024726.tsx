@@ -9,8 +9,6 @@ import { Alert, AlertIcon, AlertTitle, AlertDescription } from '@chakra-ui/react
 import { ClipLoader } from "react-spinners";
 import { useResize } from "../../../Hooks/useResize";
 
-import SearchMini from "../../../../public/search.png"
- 
 export default function Search() {
     const { push } = useRouter();
     const [query, setQuery] = useState('');
@@ -23,6 +21,7 @@ export default function Search() {
     const { isMobile } = useResize();
 
     useEffect(() => {
+        // `query` boşsa ürünleri temizle
         if (query.trim() === '') {
             setProducts([]);
             return;
@@ -74,17 +73,15 @@ export default function Search() {
                 setAlert(true);
             }
         }
-    
-        if (query) {
-            let updatedHistory = searchHistory.filter(item => item.toLowerCase() !== query.toLowerCase()); // Remove if already exists
-            updatedHistory = [query, ...updatedHistory.slice(0, 4)]; // Add to top and limit to 5 items
-    
+        // Arama geçmişini güncelle
+        if (query && !searchHistory.includes(query)) {
+            const updatedHistory = [query, ...searchHistory];
             setSearchHistory(updatedHistory);
             localStorage.setItem('searchHistory', JSON.stringify(updatedHistory));
         }
     };
 
-
+    // Sayfa yüklendiğinde geçmişi yükleme
     useEffect(() => {
         const storedHistory = localStorage.getItem('searchHistory');
         if (storedHistory) {
@@ -106,11 +103,21 @@ export default function Search() {
                             setFocus(true);
                             setSelectedProduct(null);
                         }}
-                        onFocus={() => setFocus(true)}
+                        onFocus={() => setFocus(true)} // Input'a tıklanınca geçmişi göster
                     />
 
                     {/* Arama Geçmişi */}
-            
+                    {focus && searchHistory.length > 0 && (
+                        <div className={styles.search_history}>
+                            <ul>
+                                {searchHistory.map((historyItem, index) => (
+                                    <li key={index} onClick={() => setQuery(historyItem)}>
+                                        {historyItem}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
 
                     {focus && 
                     <div className={styles.search_result}>
@@ -129,39 +136,15 @@ export default function Search() {
 
                         <div className={styles.more_btn}>
                             <button onClick={() => { push('/medicines'); setFocus(false); }}>
-                                {/* <span>Show More</span> */}
-
-              
+                                <span>Show More</span>
                             </button>
                         </div>
-
-<div>
-{focus && searchHistory.length > 0 && (
-                        <div className={styles.search_history}>
-                            <ul>
-                      
-                                {searchHistory.map((historyItem, index) => (
-                                    <li className=" w-96" key={index} onClick={() => {
-                                        setQuery(historyItem); // Geçmiş öğesini input'a yaz
-                                        setFocus(false);       // Fokus geçmiş listesi kapansın
-                                    }}>
-                                    <Image alt="searchIcon" src={SearchMini} width={20} height={5}/>
-                                    {historyItem}
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    )}
-</div>
-                        
                     </div>
                     }
 
                     {focus && <div className={styles.shadow_search} onClick={() => setFocus(false)} />}
                     <button className={styles.searchButton} onClick={handleSearchClick}>Axtarış et</button>
                 </div>
-
-            
 
                 <div className="w-5/12 md:w-96">
                     {alert && (
@@ -174,95 +157,6 @@ export default function Search() {
                 </div>
             </div>
             }
-
-
-
-{isMobile &&
-
-<div>
-
-
-    <div className={styles.search_containerMob }>
-    <input
-                        type="text"
-                        placeholder="İstədiyin Tibet məhsullarını axtar"
-                        value={query}
-                        onChange={(e) => {
-                            setQuery(e.target.value);
-                            setFocus(true);
-                            setSelectedProduct(null);
-                        }}
-                        onFocus={() => setFocus(true)}
-                    />
-
-
-        {focus && 
-        <div className={styles.search_result}>
-               <ul>
-                            {loading ? <ClipLoader color="#28e4c5" speedMultiplier={1.5} size={60} /> :
-                                products?.map((product) => (
-                                    <li key={product.id} onClick={() => handleProductSelect(product)}>
-                                        <img src={product?.img_url ?? '/imgs/no-photo.avif'} alt={product.name} />
-                                        <div>
-                                            <p>{product.name}</p>
-                                        </div>
-                                    </li>
-                                ))
-                            }
-                        </ul>
-
-        
-                        <div className={styles.more_btn}>
-                            <button onClick={() => { push('/medicines'); setFocus(false); }}>
-                                {/* <span>Show More</span> */}
-
-              
-                            </button>
-                        </div>
-
-
-                        <div>
-{focus && searchHistory.length > 0 && (
-                        <div className={styles.search_history}>
-                            <ul>
-                      
-                                {searchHistory.map((historyItem, index) => (
-                                    <li className=" w-96" key={index} onClick={() => {
-                                        setQuery(historyItem); // Geçmiş öğesini input'a yaz
-                                        setFocus(false);       // Fokus geçmiş listesi kapansın
-                                    }}>
-                                    <Image alt="searchIcon" src={SearchMini} width={20} height={5}/>
-                                    {historyItem}
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    )}
-</div>
-
-
-        </div>
-        }
-    
-        
-        {focus && <div className={styles.shadow_search} onClick={() => setFocus(false)}/>}
-        <button className={styles.searchButtonMob} onClick={handleSearchClick}>Axtarış et</button>
-    </div>
-
-    <div className="w-5/12 md:w-96">
-        {alert && (
-            <Alert className="mt-52 ml-16 rounded-2xl" status='error'>
-                <AlertIcon />
-                <AlertTitle>The product you are looking for could not be found!</AlertTitle>
-                <AlertDescription>try again.</AlertDescription>
-            </Alert>
-        )}
-    </div>
-
-
-</div>
-}
-
         </>
     );
 }
