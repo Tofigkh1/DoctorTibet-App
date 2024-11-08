@@ -63,7 +63,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             )}
                  <Head>
               <title>Doctor-Tibet.com</title>
-              <link rel="icon" href="../public/favicon.ico" />
+              <link rel="icont" href="../public/favicon.ico" />
             </Head>
             {loading && (
               <div className="spinner-overlay">

@@ -42,3 +42,7 @@ export class Order {
   }
 }
 
+
+class product extends Order {
+
+}

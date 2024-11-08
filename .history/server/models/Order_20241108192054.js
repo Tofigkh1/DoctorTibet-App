@@ -1,4 +1,4 @@
-export class Order {
+export clas Order {
   constructor(
     userId,
     fullname,
@@ -23,7 +23,9 @@ export class Order {
   
   }
 
+clas product extends Order {
 
+  }
 
   // Method to return the order object in plain form (for saving in Firestore)
   toPlainObject() {
@@ -41,4 +43,3 @@ export class Order {
     };
   }
 }
-

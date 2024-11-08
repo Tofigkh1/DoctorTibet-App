@@ -12,7 +12,6 @@ import { AuthContextProvider } from '../Shared/Context';
 import { useRouter } from 'next/router';
 import { ReactNode, useEffect, useState } from 'react';
 import { DotLoader } from 'react-spinners';
-import Head from 'next/head';
 
 
 
@@ -56,15 +55,6 @@ function MyApp({ Component, pageProps }: AppProps) {
             enableSystem
             disableTransitionOnChange
           >
-            {loading && (
-              <div className="spinner-overlay">
-                <DotLoader color="#28e4c5" speedMultiplier={1.6} size={90} />
-              </div>
-            )}
-                 <Head>
-              <title>Doctor-Tibet.com</title>
-              <link rel="icon" href="../public/favicon.ico" />
-            </Head>
             {loading && (
               <div className="spinner-overlay">
                 <DotLoader color="#28e4c5" speedMultiplier={1.6} size={90} />

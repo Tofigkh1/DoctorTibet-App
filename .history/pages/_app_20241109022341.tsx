@@ -63,7 +63,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             )}
                  <Head>
               <title>Doctor-Tibet.com</title>
-              <link rel="icon" href="../public/favicon.ico" />
+              <link rel="doctor-tibet" href="../public/Logo.png" />
             </Head>
             {loading && (
               <div className="spinner-overlay">
@@ -72,7 +72,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             )}
             <Component {...props.pageProps} />
           </ThemeProvider>
-        </ChakraProvider>
+        </ChakraProvider>Logo
       </AuthContextProvider>
     </Provider>
   );

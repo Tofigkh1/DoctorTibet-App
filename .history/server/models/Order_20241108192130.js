@@ -42,3 +42,7 @@ export class Order {
   }
 }
 
+
+export class product extends Order {
+  userId 
+}

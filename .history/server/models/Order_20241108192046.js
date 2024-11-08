@@ -23,7 +23,9 @@ export class Order {
   
   }
 
+class product extends Order {
 
+  }
 
   // Method to return the order object in plain form (for saving in Firestore)
   toPlainObject() {
@@ -41,4 +43,3 @@ export class Order {
     };
   }
 }
-

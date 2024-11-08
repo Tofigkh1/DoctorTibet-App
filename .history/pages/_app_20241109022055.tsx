@@ -12,7 +12,6 @@ import { AuthContextProvider } from '../Shared/Context';
 import { useRouter } from 'next/router';
 import { ReactNode, useEffect, useState } from 'react';
 import { DotLoader } from 'react-spinners';
-import Head from 'next/head';
 
 
 
@@ -62,8 +61,8 @@ function MyApp({ Component, pageProps }: AppProps) {
               </div>
             )}
                  <Head>
-              <title>Doctor-Tibet.com</title>
-              <link rel="icon" href="../public/favicon.ico" />
+              <title>My Custom Title</title> {/* Tarayıcıda görünen başlık */}
+              <link rel="icon" href="/favicon.ico" />
             </Head>
             {loading && (
               <div className="spinner-overlay">

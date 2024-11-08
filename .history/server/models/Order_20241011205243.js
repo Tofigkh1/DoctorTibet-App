@@ -23,8 +23,6 @@ export class Order {
   
   }
 
-
-
   // Method to return the order object in plain form (for saving in Firestore)
   toPlainObject() {
     return {
@@ -41,4 +39,3 @@ export class Order {
     };
   }
 }
-
