@@ -50,6 +50,9 @@ import { OrderPostDataType } from '../../../Shared/Interface';
 import { UserAuth } from '../../../Shared/Context';
 import { addRecord, fetchRecords, RecordsPostDataType } from '../../../Shared/Redux/Featuries/recordSlice/recordSlice';
 import { AddRecords } from '../../../Services';
+import TryInfoUser from '../../../Shared/Components/Client/tryInfoUserComponent';
+import HamburgerBtn from '../../../Shared/Components/Client/hamburgerButton';
+import Footer from '../../../Shared/Components/Client/Footer';
 
 
 
@@ -58,6 +61,7 @@ const SidebarContext = createContext(null);
 
 // Styled Components
 const Container = styleds.div`
+  background: linear-gradient(135deg, #7f00ff, #e100ff);
   font-family: Arial, sans-serif;
 `;
 
@@ -644,6 +648,21 @@ const handleSignout = async () => {
   {isMobile &&
     <div>
 <Container>
+
+<div className='  absolute '>
+          <TryInfoUser/>
+          </div>
+
+
+  <div className="  ">
+      {isMobile && (
+      <div className={styles.hambrBtn}>
+        <HamburgerBtn />
+      </div>
+    )}
+    </div>
+
+    
         <Header>
           <div className={styles.cursor}>
             <img
@@ -762,7 +781,7 @@ const handleSignout = async () => {
            </div> */}
     </div>
 }
-
+<Footer/>
    </>
     )
 }

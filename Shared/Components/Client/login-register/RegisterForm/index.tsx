@@ -129,11 +129,11 @@ const RegisterForm = (props: Props) => {
       >
         {({ isSubmitting, setFieldValue }) => (
           <Form className={styles.form}>
-            <RegisterInp title="Full Name" icon={true} name='fullname' />
-            <RegisterInp title="User Name" icon={true} name='username' />
+            <RegisterInp title="Ad soyad" icon={true} name='fullname' />
+            <RegisterInp title="istifadəçi adı" icon={true} name='username' />
             <LoginInp name='email' title="E-mail" icon={true} type='email' />
             <div className={styles.phoneInputContainer}>
-              <h1 className=' text-xl font-semibold text-inpColor'>Phone Number</h1>
+              <h1 className=' text-xl font-semibold text-inpColor'>Telefon nömrəsi</h1>
             <PhoneInput
   country={'az'}
   value={phoneNumberr}
@@ -173,7 +173,7 @@ const RegisterForm = (props: Props) => {
 />
 
             </div>
-            <LoginInp name='password' title="Password" icon={false} type='password' />
+            <LoginInp name='password' title="Şifrə" icon={false} type='password' />
 
          
 

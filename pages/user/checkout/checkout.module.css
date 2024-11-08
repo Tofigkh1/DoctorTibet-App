@@ -24,6 +24,11 @@ color: #4F4F4F;
 margin: 40px 20px 20px;
 }
 
+.hambrBtn{
+    z-index: 9999999999999999999999999999999999;
+
+  }
+
 .addPhoto{
     display: flex;
     flex-direction: column;

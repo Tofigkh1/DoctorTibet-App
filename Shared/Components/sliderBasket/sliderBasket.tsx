@@ -475,7 +475,7 @@ const BasketMenu = () => {
 
 
              
-                 <div className=' mt-6'>
+                 <div className=' mt-1'>
                  <h1 className=' ml-5'>Time left: {formatTime(remainingTime)}</h1> {/* Dijital geri sayım */}
             <div className={styles.progressContainerMob}>
               <div className={styles.progressBar} style={{ width: `${progress}%` }}></div>
@@ -494,23 +494,23 @@ const BasketMenu = () => {
                           <Image src={items.img_url} alt={`Product Image ${index + 1}`} width={130} height={130} />
                         </div>
                       </div>
-                      <h1 className=' font-bold text-xl mr-5 mt-4 text-black'>{items.name}</h1>
+                      <h1 className=' font-bold text-xl mr-5 mt-7 text-black'>{items.name}</h1>
 
                    
 
                     <div className=' flex '>
 
                       <div>
-                      <h1 className='text-black mt-8 text-2xl font-bold'>{items.count}</h1>
+                      <h1 className='text-black mt-7 text-2xl font-bold'>{items.count}</h1>
                       </div>
 
-                      <div className=' mt-5'>
+                      <div className=' mt-4'>
                       <button key={index} onClick={() => handleDeleteFromBasket(String(items.id))} className=" p-2 rounded-full">
                         <Image src={minus} alt="Delete product" width={70} height={70} />
                       </button>
                       </div>
 
-                      <div className=' mt-5'>
+                      <div className='mt-4'>
                       <button key={index} onClick={() => handleAddFromBasket(String(items.id))} className=" p-2 rounded-full">
                         <Image src={plus} alt="Delete product" width={70} height={70} />
                       </button>
@@ -537,7 +537,7 @@ const BasketMenu = () => {
 
               </div>
 
-              <div className='flex justify-end gap-14 mt-3 mr-6 text-black'>
+              <div className='flex justify-end gap-14 mt-8 mr-6 text-black'>
 
               <div>
     
@@ -569,10 +569,15 @@ const BasketMenu = () => {
             </div>
           ) : (
             <div>
-              <div className='ml-10 mt-6'>
-                <Image src={emptyBag} width={290} height={300} alt="Empty Basket"/>
+                   <button onClick={handleToggleMenu} className={styles.buyButton}>
+                    <div className='flex right-0'>
+                      <Image src={closedBag} width={50} height={50} alt="Close Icon"/>
+                    </div>
+                  </button>
+              <div className='ml-14 mt-6'>
+                <Image src={emptyBag} width={250} height={250} alt="Empty Basket"/>
               </div>
-              <h1 className='text-center font-bold text-6xl  mt-6 text-categorycolor'>Səbət Boşdur!</h1>
+              <h1 className='text-center font-bold text-5xl  mt-6 text-categorycolor'>Səbət Boşdur!</h1>
             </div>
           )}
         </div>

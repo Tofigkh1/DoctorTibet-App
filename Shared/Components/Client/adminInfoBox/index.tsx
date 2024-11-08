@@ -46,7 +46,7 @@ function InfoBox (props:Props){
         <div className={style.bodyBackground}>
 
             <div className={style.sectionText} data-aos='fade-up'>
-            <h1>Our Sponsors</h1>
+            <h1>Qızıl Sponsorlar</h1>
             <Image src={ColorLine} alt="Icon" width={170} height={0}  />
             </div>
 
@@ -145,7 +145,7 @@ function InfoBox (props:Props){
 </div>
 
         <div className={style.sectionText} data-aos='fade-up'>
-            <h1 >Key Benefits</h1>
+            <h1 >Əsas üstünlüklər</h1>
             <Image src={ColorLine} alt="Icon" width={170} height={0}  />
         </div>
 

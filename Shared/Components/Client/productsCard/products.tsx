@@ -50,11 +50,11 @@ export default function ProductCard(products: ProductsCardProps) {
     </div>
 
     <div className={styles.card_body}>
-        <h4>{shortText(products.name, 12)}</h4>
+        <h4 className=' text-xl'>{shortText(products.name, 12)}</h4>
         <p>{shortText(products.description, 20)}</p>
         <div className={styles.restaurant_bottom}>
-            <div className=' font-semibold text-xl'>{`${products.price}₼ `}</div>
-            <p>{timeAgo}</p>
+            <div className=' font-semibold text-2xl ml-28'>{`${products.price}₼ `}</div>
+            {/* <p>{timeAgo}</p> */}
         </div>
     </div>
 </div>

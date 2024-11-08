@@ -37,7 +37,7 @@ const QRCodePage = () => {
 
 
       {isMobile &&
-       <div className=' mt-3'>
+       <div className=' mt-3 z-50'>
        <canvas ref={canvasRef}></canvas>
      </div>
       }

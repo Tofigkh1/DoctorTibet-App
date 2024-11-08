@@ -9,7 +9,10 @@
     padding: 0 20px;
 }
 
+.hambrBtn{
+    z-index: 9999999999999999999999999999999999;
 
+  }
 
 .mainContent {
     flex: 1;

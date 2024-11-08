@@ -27,6 +27,7 @@ import BasketMenu from "../../Shared/Components/sliderBasket/sliderBasket";
 import { UserState } from "../../Shared/Redux/Featuries/User/userSlice";
 import { useResize } from "../../Shared/Hooks/useResize";
 import TryInfoUser from "../../Shared/Components/Client/tryInfoUserComponent";
+import Footer from "../../Shared/Components/Client/Footer";
 
 interface RedCardContainerProps {
     isExpanded: boolean;
@@ -276,8 +277,11 @@ export default function ProductsDetail() {
                         </div>
                     </div>
 
-                    <div className="text-orange-400 mt-28 font-bold text-2xl">
+                    <div className="text-orange-400 mt-20 p-4 font-bold text-2xl">
                         <p>{products?.allDescription}</p>
+                    </div>
+                    <div className=" mt-4">
+
                     </div>
                     </div>
                     }
@@ -407,10 +411,13 @@ export default function ProductsDetail() {
     
     
     
-    <div className="text-orange-400 mt-28 font-bold text-2xl p-4">
+    <div className="text-orange-400 mt-20 font-bold text-2xl p-4">
                             <p>{products?.allDescription}</p>
                         </div>
     
+    <div className=" mt-4">
+
+    </div>
                     
     
                         <RedCardContainer
@@ -487,6 +494,7 @@ export default function ProductsDetail() {
 
                 </>
             )}
+            <Footer/>
         </div>
     );
 }

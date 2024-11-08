@@ -138,7 +138,7 @@ const SignInForm: React.FC = () => {
       >
         {({ isSubmitting, setFieldValue }) => (
           <Form className={styles.form}>
-            <h1 className=' text-xl font-semibold text-inpColor'>Phone Number</h1>
+            <h1 className=' text-xl font-semibold text-inpColor'>Telefon nömrəsi</h1>
             <PhoneInput
               country={'az'}
               onChange={(phone) => {
@@ -175,7 +175,7 @@ const SignInForm: React.FC = () => {
             />
             <LoginInp
               name='password'
-              title="Password"
+              title="Şifrə"
               icon={false}
               type='password'
             />

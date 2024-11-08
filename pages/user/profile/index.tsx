@@ -28,11 +28,14 @@ import Categories from '../../../Shared/Components/Client/headerCategory';
 import Sidebar, { SidebarItem } from '../../../Shared/Components/Client/SideBarMenu';
 import { clearUser } from '../../../Shared/Redux/Featuries/User/userSlice';
 import { useResize } from '../../../Shared/Hooks/useResize';
+import TryInfoUser from '../../../Shared/Components/Client/tryInfoUserComponent';
+import HamburgerBtn from '../../../Shared/Components/Client/hamburgerButton';
 
 
 
 // Styled Components
 const Container = styleds.div`
+  background: linear-gradient(135deg, #7f00ff, #e100ff);
   font-family: Arial, sans-serif;
 `;
 
@@ -377,6 +380,22 @@ const Profile: React.FC = ()=> {
 
    
  <Container>
+
+{/* 
+ <div className='  absolute '>
+          <TryInfoUser/>
+          </div>
+
+
+  <div className="  ">
+      {isMobile && (
+      <div className={styles.hambrBtn}>
+        <HamburgerBtn />
+      </div>
+    )}
+    </div> */}
+
+
    <Header>
      <div className={styles.cursor}>
        <img
@@ -419,8 +438,8 @@ const Profile: React.FC = ()=> {
      <div className=" w-9/12 h-60  rounded-2xl mr-5  right-0">
 
      <div className=' flex gap-3 mt-8 ml-5'>
-     <h1 className=' font-bold text-2xl'>Profile &gt;</h1>
-     <h1 className='  text-fontcolorhow text-2xl'>Dashboard</h1>
+     <h1 className=' font-bold text-2xl'>Profilin &gt;</h1>
+     <h1 className='  text-fontcolorhow text-2xl'>İdarə paneli</h1>
      </div>
     
        {loading ? (
@@ -428,7 +447,8 @@ const Profile: React.FC = ()=> {
            display: 'flex',
            justifyContent: 'center',
            alignItems: 'center',
-           height: '80vh'
+           height: '80vh',
+           marginLeft: '100px',
          }}>
            <DotLoader color="#28e4c5" speedMultiplier={1.6} size={90} />
          </div>
@@ -452,7 +472,7 @@ const Profile: React.FC = ()=> {
 
       <div className=' mt-36 '>
 
-           <div className="  mt-[450px] top-0 bg-white absolute rounded-full w-28 h-28 pl-1.5 pt-1.5">
+           <div className="   mt-[470px] top-0 bg-white absolute rounded-full w-28 h-28 pl-1.5 pt-1.5">
          <ThemeProvider theme={theme}>
            <Stack direction="row" spacing={2}>
              {isLoggedIn ? (

@@ -13,7 +13,7 @@ margin-top: 90px;
     position: absolute;
     display: flex;
 margin-left: 10px;
-margin-top: 70px;
+margin-top: 80px;
 }
 
 .input_wrapper {
@@ -67,7 +67,7 @@ margin-top: 70px;
 }
 
 .search_containerMob input {
-  
+
     width: 488px;
     border-radius: 20px 0px 0px 20px;
     background-color: #fff;

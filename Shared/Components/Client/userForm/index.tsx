@@ -179,28 +179,28 @@ console.log("values", values);
                         <div className={div}>
                             <div className={inpdiv}>
                             <Input
-    name='phoneNumber'
+    name='Telefon nömrəsi'
     type='text'
     value={values.phoneNumber}
     onChange={handleChange}
     placeholder='+994 XX XXX XX XX'
-    title="Contact Number"
+    title="Telefon nömrəsi"
 />
                                 <Input
-                                    name='username'
+                                    name='istifadəçi adı'
                                     type='text'
                                     value={values.username}
                                     onChange={handleChange}
                                     placeholder='User Name'
-                                    title="User Name"
+                                    title="istifadəçi adı"
                                 />
                                 <Input
-                                    name='fullname'
+                                    name='Ad soyad'
                                     type='text'
                                     value={values.fullname}
                                     onChange={handleChange}
                                     placeholder='Full Name'
-                                    title="Full Name"
+                                    title="Ad soyad"
                                 />
                             </div>
                             <div className={inpdiv}>
@@ -212,12 +212,12 @@ console.log("values", values);
                                     title='Email'
                                 />
                                 <Input
-                                    name='address'
+                                    name='Ünvan'
                                     type='text'
                                     value={values.address}
                                     onChange={handleChange}
-                                    placeholder='Address'
-                                    title="Address"
+                                    placeholder='Ünvan'
+                                    title="Ünvan"
                                 />
                                 <button
                                     type="submit"
@@ -225,7 +225,7 @@ console.log("values", values);
                                     style={logoding ? { cursor: "not-allowed" } : { cursor: 'pointer' }}
                                     disabled={logoding}
                                 >
-                                    {logoding ? <Spiner /> : "Save"}
+                                    {logoding ? <Spiner /> : "Yadda saxla"}
                                 </button>
                             </div>
                         </div>
@@ -253,28 +253,28 @@ console.log("values", values);
                         <div className={div}>
                             <div className={inpdivMob}>
                             <Input
-    name='phoneNumber'
+    name='Telefon nömrəsi'
     type='text'
     value={values.phoneNumber}
     onChange={handleChange}
     placeholder='+994 XX XXX XX XX'
-    title="Contact Number"
+    title="Telefon nömrəsi"
 />
                                 <Input
-                                    name='username'
+                                    name='istifadəçi adı'
                                     type='text'
                                     value={values.username}
                                     onChange={handleChange}
-                                    placeholder='User Name'
-                                    title="User Name"
+                                    placeholder='istifadəçi adı'
+                                    title="istifadəçi adı"
                                 />
                                 <Input
-                                    name='fullname'
+                                    name='Ad soyad'
                                     type='text'
                                     value={values.fullname}
                                     onChange={handleChange}
-                                    placeholder='Full Name'
-                                    title="Full Name"
+                                    placeholder='Ad soyad'
+                                    title="Ad soyad"
                                 />
                             </div>
                             <div className={inpdivMob}>
@@ -286,12 +286,12 @@ console.log("values", values);
                                     title='Email'
                                 />
                                 <Input
-                                    name='address'
+                                    name='Ünvan'
                                     type='text'
                                     value={values.address}
                                     onChange={handleChange}
-                                    placeholder='Address'
-                                    title="Address"
+                                    placeholder='Ünvan'
+                                    title="Ünvan"
                                 />
                                 <button
                                     type="submit"
@@ -299,7 +299,7 @@ console.log("values", values);
                                     style={logoding ? { cursor: "not-allowed", marginLeft:'140px' } : { cursor: 'pointer', marginLeft:'140px' }}
                                     disabled={logoding}
                                 >
-                                    {logoding ? <Spiner /> : "Save"}
+                                    {logoding ? <Spiner /> : "Yadda saxla"}
                                 </button>
                             </div>
                         </div>

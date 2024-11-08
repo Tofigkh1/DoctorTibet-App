@@ -56,8 +56,8 @@ function LoginRegister() {
 
           <div className={mobile ? style.loginbg + '  h-full mt-5 rounded-md' : style.loginbg + ' w-2/5 h-full mt-5 rounded-md'}>
             <div className='flex flex-row gap-16 justify-center h-full mt-20'>
-              <button className={!singin ? style.headerTextActive : style.headerTextDeActive} onClick={() => setSingin(false)}>Login</button>
-              <button className={singin ? style.headerTextActive : style.headerTextDeActive} onClick={() => setSingin(true)}>Register</button>
+              <button className={!singin ? style.headerTextActive : style.headerTextDeActive} onClick={() => setSingin(false)}>Daxil ol</button>
+              <button className={singin ? style.headerTextActive : style.headerTextDeActive} onClick={() => setSingin(true)}>Qeydiyyat</button>
             </div>
             {singin ? <RegisterForm setsingin={() => setSingin(true)} initialEmail={initialEmail} /> : <SignInForm />}
           </div>

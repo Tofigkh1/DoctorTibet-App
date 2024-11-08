@@ -27,8 +27,8 @@ export default function NavRes() {
                 <ul>
                     {(isMobile && accessToken) ? (
                         <>
-                        <li onClick={() => push('/')} className={styless[`${isActive("/")}`]}>Home</li>
-                            <li className={styless[`${isActive("/user/profile")}`]} onClick={() => push('/user/profile')}>Your Profile</li>
+                        <li onClick={() => push('/')} className={styless[`${isActive("/")}`]}>Əsas səhifə</li>
+                            <li className={styless[`${isActive("/user/profile")}`]} onClick={() => push('/user/profile')}>Profilin</li>
                             {/* <li className={styless[`${isActive("/user/basket")}`]} onClick={() => push('/user/basket')}>Your Basket</li>
                             <li className={styless[`${isActive("/user/orders")}`]} onClick={() => push('/user/orders')}>Your Orders</li>
                             <li className={styless[`${isActive("/user/checkout")}`]} onClick={() => push('/user/checkout')}>Checkout</li> */}
@@ -37,16 +37,16 @@ export default function NavRes() {
                     ) : ''}
 
                     
-                    <li onClick={() => push('/medicines')} className={styless[`${isActive("/medicines")}`]}>Buy Medicine</li>
-                    <li onClick={() => push('/contact-us')} className={styless[`${isActive("/contact-us")}`]}>Contact a Doctor</li>
-                    <li onClick={() => push('/about-us')} className={styless[`${isActive("/about-us")}`]}>About</li>
+                    <li onClick={() => push('/medicines')} className={styless[`${isActive("/medicines")}`]}>Tibet məhsulları</li>
+                    <li onClick={() => push('/contact-us')} className={styless[`${isActive("/contact-us")}`]}>Həkim ilə əlaqə</li>
+                    <li onClick={() => push('/about-us')} className={styless[`${isActive("/about-us")}`]}>Haqqında</li>
                     <li onClick={() => push('/faq')} className={styless[`${isActive("/faq")}`]}>F.A.Q</li>
                     <li className={styless[`${isActive("/user/checkout")}`]} onClick={() => {
                                 push('/user/checkout');
                                 localStorage.removeItem("user_info");
                                 localStorage.removeItem("access_token");
                                 dispatch(clearUser());
-                            }}>Logout</li>
+                            }}>Çıxış et</li>
                 </ul>
             </nav>
         </>

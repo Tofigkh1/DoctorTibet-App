@@ -94,7 +94,7 @@ export default function Auth() {
                                             }} 
                                             onClick={() => push('/user/profile')}
                                         >
-                                            Your Profile
+                                            Profilin
                                         </MenuItem>
                                         <MenuItem 
                                             sx={{ 
@@ -103,9 +103,9 @@ export default function Auth() {
                                                 _hover: { backgroundColor: '#b0f4de' }, 
                                                 transition: 'background-color 0.6s' 
                                             }} 
-                                            onClick={() => push('/user/basket')}
+                                            onClick={() => push('/medicines')}
                                         >
-                                            Your Basket
+                                            Tibet məhsulları
                                         </MenuItem>
                                         <MenuItem 
                                             sx={{ 
@@ -116,7 +116,7 @@ export default function Auth() {
                                             }} 
                                             onClick={() => push('/user/orders')}
                                         >
-                                            Your Orders
+                                            Sifarişləriniz
                                         </MenuItem>
                                         <MenuItem 
                                             sx={{ 
@@ -127,7 +127,7 @@ export default function Auth() {
                                             }} 
                                             onClick={() => push('/user/checkout')}
                                         >
-                                            Checkout
+                                            Ödəniş
                                         </MenuItem>
                                     </MenuGroup>
                                     <MenuDivider />
@@ -141,7 +141,7 @@ export default function Auth() {
                                         }} 
                                         onClick={handleLogout}
                                     >
-                                        Logout
+                                        Çıxış et
                                     </MenuItem>
       
                                     </ul>
@@ -152,7 +152,7 @@ export default function Auth() {
                     </Menu>
                    
                 </div> :
-                <ButtonHeader addButtonFun={goAuth} typeButton={true} title='Sign In' btnSize={'sm'} addButton={false} />
+                <ButtonHeader addButtonFun={goAuth} typeButton={true} title='Daxil ol' btnSize={'sm'} addButton={false} />
             }
         </>
     )

@@ -189,7 +189,7 @@ export default function Header() {
             
           </section>
 
-          <div className=' mt-5 -ml-3'>
+          <div className=' mt-5 -ml-3 '>
           <TryInfoUser/>
           </div>
 
@@ -229,7 +229,7 @@ className="bg-slate-500 rounded-e-2xl w-20 h-10 font-bold transition-all hover:b
 
           {!accessToken && (
             <button onClick={goAuthGetStarted} className={styles.getStartedButton}>
-              <div className={styles.textContainer}>{t("Get Started")}</div>
+              <div className={styles.textContainer}>{t("Sağlam həyata Başla")}</div>
               <div className={styles.arrowContainer}>
                 <Image alt="Next arrow icon" src={ArrovRight2} width={30} height={30} className={styles.arrowImage} />
               </div>
