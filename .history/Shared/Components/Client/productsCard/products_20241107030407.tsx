@@ -46,7 +46,7 @@ export default function ProductCard(products: ProductsCardProps) {
         <img src={products?.img_url ?? '/imgs/no-photo.avif'} alt={products.name}
        
              className={`${styles.productImage} w-[190px] h-[190px] object-cover`}/>
-        {isNew && <span className={styles.new_restaurant}>Yeni</span>}
+        {isNew && <span className={styles.new_restaurant}>New</span>}
     </div>
 
     <div className={styles.card_body}>

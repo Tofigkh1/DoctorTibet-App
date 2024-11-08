@@ -25,8 +25,8 @@ const Footer = () => {
       <Container maxW="container.xl">
         <Flex direction={{ base: "column", lg: "row" }} justify="space-between" align="center" mb={10}>
           <Box textAlign={{ base: "center", lg: "left" }} mb={{ base: 6, lg: 0 }}>
-          <Heading as="h2" size="lg" mb={2}>Sağlam gələcək üçün qeydiyyatdan keçin.</Heading>
-          <Text fontSize="sm">Tibb sahəsindəki yeniliklərlə tanış olun və doctor tibet qəbuluna daha tez sıra alın.</Text>
+            <Heading as="h2" size="lg" mb={2}>Sign up for our Newsletter</Heading>
+            <Text fontSize="sm">Get to know updates in the field of medicine and know how often our stores are stocked</Text>
           </Box>
           {/* Şartlı render işlemi: accessToken varsa Search2 bileşeni gösterilecek */}
           {!accessToken && (
@@ -42,8 +42,8 @@ const Footer = () => {
         </Flex>
         <Flex direction={{ base: "column", lg: "row" }} justify="space-between" align="start" mb={10}>
           <Box textAlign={{ base: "center", lg: "left" }} mb={{ base: 6, lg: 0 }}>
-          <Heading as="h2" size="lg" mb={2}>Doctor-Tibet</Heading>
-          <Text fontSize="sm">Sevimli onlayn aptek mağazanız. Yerində çatdırılma təklif edirik və sağlamlığınız bizim öncəliyimizdir.</Text>
+            <Heading as="h2" size="lg" mb={2}>Doctor-Tibet</Heading>
+            <Text fontSize="sm">Your favourite online pharmacy store. We offer onsite delivery and your health is our priority</Text>
           </Box>
           <Stack direction={{ base: "column", lg: "row" }} spacing={10}>
             <Box>
@@ -89,7 +89,7 @@ const Footer = () => {
         <Flex direction={{ base: "column", lg: "row" }} justify="space-between" align="center" mb={10}>
           <Box textAlign={{ base: "center", lg: "left" }} mb={{ base: 6, lg: 0 }}>
             <Heading as="h2" size="lg" mb={2}>Sağlam gələcək üçün qeydiyyatdan keçin.</Heading>
-            <Text fontSize="sm">Tibb sahəsindəki yeniliklərlə tanış olun və doctor tibet qəbuluna daha tez sıra alın.</Text>
+            <Text fontSize="sm">Tibb sahəsindəki yeniliklərlə tanış olun və doctor tibet qəbuluna daha tez sira alın.</Text>
           </Box>
           {/* Şartlı render işlemi: accessToken varsa Search2 bileşeni gösterilecek */}
           {!accessToken && (
@@ -106,7 +106,7 @@ const Footer = () => {
         <Flex direction={{ base: "column", lg: "row" }} justify="space-between" align="start" mb={10}>
           <Box textAlign={{ base: "center", lg: "left" }} mb={{ base: 6, lg: 0 }}>
             <Heading as="h2" size="lg" mb={2}>Doctor-Tibet</Heading>
-            <Text fontSize="sm">Sevimli onlayn aptek mağazanız. Yerində çatdırılma təklif edirik və sağlamlığınız bizim öncəliyimizdir.</Text>
+            <Text fontSize="sm">Sevimli onlayn aptek mağazanız. Yerində çatdırılma təklif edirik və sağlamlığınız bizim öncəliyimizdir</Text>
           </Box>
           <Stack direction={{ base: "column", lg: "row" }} spacing={10}>
             <Box>

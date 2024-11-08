@@ -42,8 +42,8 @@ const Footer = () => {
         </Flex>
         <Flex direction={{ base: "column", lg: "row" }} justify="space-between" align="start" mb={10}>
           <Box textAlign={{ base: "center", lg: "left" }} mb={{ base: 6, lg: 0 }}>
-          <Heading as="h2" size="lg" mb={2}>Doctor-Tibet</Heading>
-          <Text fontSize="sm">Sevimli onlayn aptek mağazanız. Yerində çatdırılma təklif edirik və sağlamlığınız bizim öncəliyimizdir.</Text>
+            <Heading as="h2" size="lg" mb={2}>Doctor-Tibet</Heading>
+            <Text fontSize="sm">Your favourite online pharmacy store. We offer onsite delivery and your health is our priority</Text>
           </Box>
           <Stack direction={{ base: "column", lg: "row" }} spacing={10}>
             <Box>
