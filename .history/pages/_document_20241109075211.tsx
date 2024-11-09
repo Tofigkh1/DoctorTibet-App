@@ -12,6 +12,7 @@ class MyDocument extends Document {
           <link rel="apple-touch-startup-image" href="/Logo.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" />
           <link rel="apple-touch-startup-image" href="/Logo.png" media="(device-width: 834px) and (device-height: 1112px)"/>
           <link rel="apple-touch-startup-image" href="/Logo.png" media="(device-width: 1024px) and (device-height: 1366px)"/>
+      
           <link rel="icon" href="/favicon.ico" />
           <meta name="apple-mobile-web-app-capable" content="yes"/>
           <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />

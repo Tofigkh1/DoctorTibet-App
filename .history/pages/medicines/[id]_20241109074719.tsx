@@ -41,7 +41,7 @@ interface RedCardContainerProps {
  position: fixed;
       border-radius:40px 40px 0px 0px;
     color: white;
-    height: ${(props) => (props.isExpanded ? "260px" : "65px")};
+    height: ${(props) => (props.isExpanded ? "260px" : "35px")};
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -69,7 +69,7 @@ export default function ProductsDetail() {
     const [isLoading, setIsLoading] = useState(true);
     const dispatch: AppDispatch = useDispatch();
 
-    const [isExpanded, setIsExpanded] = useState(false);
+    const [isExpanded, setIsExpanded] = useState(fa);
 
 
     const startY = useRef<number | null>(null);

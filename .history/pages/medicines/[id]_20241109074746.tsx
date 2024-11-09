@@ -41,7 +41,7 @@ interface RedCardContainerProps {
  position: fixed;
       border-radius:40px 40px 0px 0px;
     color: white;
-    height: ${(props) => (props.isExpanded ? "260px" : "65px")};
+    height: ${(props) => (props.isExpanded ? "260px" : "100px")};
     overflow: hidden;
     display: flex;
     flex-direction: column;
