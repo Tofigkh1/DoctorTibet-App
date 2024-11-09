@@ -59,9 +59,6 @@
     transition: opacity 0.3s, transform 0.3s;
     pointer-events: none; /* Menü kapalıyken tıklanmasını engellemek için */
   }
-
-
-  /* //---------------------------------- */
   
   .menu.show {
     opacity: 1;
