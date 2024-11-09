@@ -3,7 +3,7 @@
     "short_name": "doctor-tibet",
     "start_url": "/",
     "display": "standalone",
-    "background_color": "/Logo.png",
+    "background_color": "#ffffff",
     "icons": [
         {
           "src": "/Logo.png",
