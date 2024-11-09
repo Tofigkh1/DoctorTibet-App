@@ -447,7 +447,7 @@ const BasketMenu = () => {
             
 
               <div className=' flex'>
-                <div className='mt-10'>
+                <div className='mt-8'>
                   <button onClick={handleToggleMenu} className={styles.buyButton}>
                     <div className='flex right-0 '>
                       <Image src={closedBag} width={50} height={50} alt="Close Icon"/>
@@ -455,7 +455,7 @@ const BasketMenu = () => {
                   </button>
                 </div>
                 <div>
-                  <h1 className=' font-bold text-3xl ml-10 text-black mt-14'>
+                  <h1 className=' font-bold text-3xl ml-10 text-black mt-1'>
                   Səbət
                   </h1>
                 </div>

@@ -447,15 +447,15 @@ const BasketMenu = () => {
             
 
               <div className=' flex'>
-                <div className='mt-10'>
+                <div>
                   <button onClick={handleToggleMenu} className={styles.buyButton}>
-                    <div className='flex right-0 '>
+                    <div className='flex right-0 mt-11'>
                       <Image src={closedBag} width={50} height={50} alt="Close Icon"/>
                     </div>
                   </button>
                 </div>
                 <div>
-                  <h1 className=' font-bold text-3xl ml-10 text-black mt-14'>
+                  <h1 className=' font-bold text-3xl ml-10 text-black mt-12'>
                   Səbət
                   </h1>
                 </div>
@@ -475,8 +475,8 @@ const BasketMenu = () => {
 
 
              
-                 <div className=' '>
-                 <h1 className=' '>Səbətin təmizlənməsinə vaxt: {formatTime(remainingTime)}</h1> {/* Dijital geri sayım */}
+                 <div className=' mt-3'>
+                 <h1 className=' ml-5'>Səbətin təmizlənməsinə vaxt: {formatTime(remainingTime)}</h1> {/* Dijital geri sayım */}
             <div className={styles.progressContainerMob}>
               <div className={styles.progressBar} style={{ width: `${progress}%` }}></div>
             </div>

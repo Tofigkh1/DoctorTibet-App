@@ -190,7 +190,7 @@
 }
 
 .scrollContainerMob {
-  max-height: 420px; /* Yüksekliği ayarlayabilirsin */
+  max-height: 430px; /* Yüksekliği ayarlayabilirsin */
   
   overflow-y: scroll; /* Dikey kaydırma */
   scrollbar-width: thin; /* Kaydırma çubuğu genişliği (Opsiyonel) */

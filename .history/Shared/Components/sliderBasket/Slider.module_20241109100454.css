@@ -123,7 +123,7 @@
   .totalHeader{
     display: flex;
     margin-left: 2rem; /* ml-14 yerine 3.5rem */
-
+    margin-top: 0.75rem; /* mt-3 yerine 0.75rem */
     color: black;
 }
 
@@ -190,7 +190,7 @@
 }
 
 .scrollContainerMob {
-  max-height: 420px; /* Yüksekliği ayarlayabilirsin */
+  max-height: 490px; /* Yüksekliği ayarlayabilirsin */
   
   overflow-y: scroll; /* Dikey kaydırma */
   scrollbar-width: thin; /* Kaydırma çubuğu genişliği (Opsiyonel) */

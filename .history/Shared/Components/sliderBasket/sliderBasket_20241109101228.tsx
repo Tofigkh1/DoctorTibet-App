@@ -455,7 +455,7 @@ const BasketMenu = () => {
                   </button>
                 </div>
                 <div>
-                  <h1 className=' font-bold text-3xl ml-10 text-black mt-14'>
+                  <h1 className=' font-bold text-3xl ml-10 text-black mt-12'>
                   Səbət
                   </h1>
                 </div>

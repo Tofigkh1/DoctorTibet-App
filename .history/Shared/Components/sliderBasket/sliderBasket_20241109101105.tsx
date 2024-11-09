@@ -447,7 +447,7 @@ const BasketMenu = () => {
             
 
               <div className=' flex'>
-                <div className='mt-10'>
+                <div className='mt10'>
                   <button onClick={handleToggleMenu} className={styles.buyButton}>
                     <div className='flex right-0 '>
                       <Image src={closedBag} width={50} height={50} alt="Close Icon"/>
