@@ -59,7 +59,7 @@
     padding-left: 37px;
     background-color: #26d6a1;
     width: 330px;
-    height: 785px;
+    height: 100vh;
     border-radius: 10px;
     z-index: 99999999999999999999999999999999999999999;
     transition: opacity 0.3s, transform 0.3s;
