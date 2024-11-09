@@ -1,0 +1,198 @@
+/* ------------------ */
+
+.buyButton {
+
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+
+  }
+  
+  /* Menü ayarları */
+
+
+.menu {
+    position: fixed;
+    right: -50%; /* Menü başlangıçta ekranın dışında, sağdan sola kayacak */
+    top: 0;
+    width: 39%; /* Sayfanın yarısına kadar genişlik */
+    height: 100%; /* Tam yükseklik */
+    background-color:white;
+    transition: right 0.2s ease-in-out;
+    /* border-radius: 20px 0px 0px 20px; */
+    z-index: 1000; /* Menü her şeyin üstünde */
+  }
+  
+
+
+  .menuMob {
+    position: fixed;
+    right: -50%; /* Menü başlangıçta ekranın dışında, sağdan sola kayacak */
+    top: 0;
+    width: 87%; /* Sayfanın yarısına kadar genişlik */
+    height: 100%; /* Tam yükseklik */
+    background-color:white;
+    transition: right 0.2s ease-in-out;
+    z-index: 1000; /* Menü her şeyin üstünde */
+  }
+  
+  .chcekoutButton{
+    background-color: #1BC768; /* bg-clientButtonGreen */
+    width: 16rem; /* w-64 */
+    height: 3rem; /* h-12 */
+    border-radius: 0.5rem; /* rounded-lg */
+    font-weight: 600; /* font-semibold */
+    font-size: 1.25rem; /* text-xl */
+    color: #fff; /* varsayılan olarak beyaz yazı rengi */
+  }
+
+  .priceButton {
+  
+   
+    background-color: #1BC768; /* ClientButtonGreen yerine geçecek renk kodunu buraya ekleyin */
+    border-radius: 9999px; /* Yuvarlak kenarlar */
+    width: 6rem; /* w-24 yerine 6rem kullanılıyor */
+    height: 5rem; /* h-20 yerine 5rem kullanılıyor */
+    text-align: center;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+
+  .menuOpen {
+    right: 0; /* Açıldığında ekranın yarısına kadar çıksın */
+  }
+  
+  .menuClosed {
+    right: -50%; /* Kapanırken ekranın sağına geri insin */
+  }
+  
+  .line {
+    width: 93%;  /* Genişliği istediğin şekilde ayarlayabilirsin */
+    height: 1px;  /* Çizginin kalınlığı */
+    background-color: rgb(149, 149, 149);  /* Çizginin rengi */
+    margin-top: 40px;
+   margin-left: 25px;
+
+  }
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.323); /* Şeffaf arka plan rengi */
+    transition: opacity 0.3s ease-in-out;
+    opacity: 0; /* Başlangıçta görünmez */
+    z-index: 1000; /* Menüden önce */
+    pointer-events: none; /* Overlay'e tıklanamaz */
+  }
+  
+  .overlayVisible {
+    opacity: 1; /* Görünür hale gelir */
+    pointer-events: auto; /* Overlay'e tıklanabilir */
+  }
+  
+  .overlayHidden {
+    opacity: 0; /* Gizlenir */
+  }
+  
+
+
+  .totalHeader{
+    display: flex;
+    margin-left: 2rem; /* ml-14 yerine 3.5rem */
+    margin-top: 0.75rem; /* mt-3 yerine 0.75rem */
+    color: black;
+}
+
+
+/* ------------------- */
+
+.progressContainer {
+  width: 550px;
+  margin-left: 20px;
+  height: 10px;
+  background-color: #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.progressContainerMob {
+  width: 320px;
+  margin-left: 20px;
+  height: 10px;
+  background-color: #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.progressBar {
+  height: 100%;
+  background-color: red;
+  transition: width 1s linear;
+}
+
+.overlayVisible {
+  display: block;
+}
+
+.overlayHidden {
+  display: none;
+}
+
+.menuOpen {
+  right: 0;
+}
+
+.menuClosed {
+  right: -100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+.scrollContainer {
+  max-height: 470px; /* Yüksekliği ayarlayabilirsin */
+  overflow-y: scroll; /* Dikey kaydırma */
+  scrollbar-width: thin; /* Kaydırma çubuğu genişliği (Opsiyonel) */
+  scrollbar-color: #888 #fff; /* Kaydırma çubuğu rengi (Opsiyonel) */
+}
+
+.scrollContainerMob {
+  max-height: 400px; /* Yüksekliği ayarlayabilirsin */
+  
+  overflow-y: scroll; /* Dikey kaydırma */
+  scrollbar-width: thin; /* Kaydırma çubuğu genişliği (Opsiyonel) */
+  scrollbar-color: #888 #fff; /* Kaydırma çubuğu rengi (Opsiyonel) */
+}
+
+
+/* Kaydırma çubuğunun görünümünü değiştirmek istersen: */
+.scrollContainer::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollContainer::-webkit-scrollbar-thumb {
+  background-color: #888;  /* Kaydırma çubuğu rengi */
+  border-radius: 10px;
+}
+
+.scrollContainer::-webkit-scrollbar-track {
+  background-color: #fff;  /* Arka plan */
+}

@@ -1,0 +1,78 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    position: relative;
+  }
+  
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 25px;
+    cursor: pointer;
+    margin-left: 6px;
+    padding-top: 3px;
+ margin-top: 3px;
+  }
+  
+  .hamburger .bar {
+    width: 100%;
+    height: 3px;
+  
+    background-color: #44f287;
+    transition: opacity 0.3s, transform 0.3s;
+  }
+
+  .hamburger.open{
+    padding-top: 20
+    px;
+
+  }
+
+
+
+  
+  .hamburger.open .bar:nth-child(1) {
+    
+    transform: rotate(45deg) translate(5px, 5px);
+    background-color: white;
+  }
+  
+  .hamburger.open .bar:nth-child(2) {
+    opacity: 0;
+    background-color: white;
+  }
+  
+  .hamburger.open .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+    background-color: white;
+  }
+  
+  .menu {
+    opacity: 0;
+    transform: translateX(-100%);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: absolute;
+    top: 0;
+    left: -9px;
+    padding-left: 37px;
+    background-color: #26d6a1;
+    width: 330px;
+    height: 785px;
+    border-radius: 10px;
+    z-index: 99999999999;
+    transition: opacity 0.3s, transform 0.3s;
+    pointer-events: none; /* Menü kapalıyken tıklanmasını engellemek için */
+  }
+  
+  .menu.show {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto; /* Menü açıldığında tıklanabilir hale getirmek için */
+  }
+  
