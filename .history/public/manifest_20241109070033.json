@@ -1,0 +1,8 @@
+{
+    "name": "doctor-tibet.com",
+    "short_name": "doctor-tibet",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+  }
+  

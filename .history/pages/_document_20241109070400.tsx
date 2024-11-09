@@ -10,7 +10,7 @@ class MyDocument extends Document {
           <meta name="apple-mobile-web-app-capable" content="yes" />
           <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
           <meta property="og:image" content="/Logo.png" />
-          <meta name="description" content="doctor-tibet.com" />
+          <meta name="description" content="doctor-tibet.com - Sağlık hizmetleri için en iyi uygulama." />
         </Head>
         <body>
           <Main />
