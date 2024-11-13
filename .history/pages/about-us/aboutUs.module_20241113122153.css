@@ -1,0 +1,63 @@
+.hambrBtn{
+    z-index: 9999999999999999999999999999999999;
+
+  }
+
+  .swiper {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+  
+  /* border: solid black; */
+    /* Center slide text vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+  }
+  
+  .product-card {
+    transition: background-color 0.3s ease;
+  }
+  
+  .product-card:hover {
+    background-color: #26d6a1;
+  }
+  
+  .spinner-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white; /* Hafif şeffaf arka plan */
+    z-index: 9999; /* Üstte görünmesi için yüksek z-index */
+  }
+  .mySwiper .swiper-slide  {
+    transition: background-color 0.3s ease;
+  }
+  
+  .mySwiper .swiper-slide:hover {
+    background-color: #26d6a1;
+  }
+  
+  .swiper-slide img {
+  
+  margin-left: 1px;
+  
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+   margin-top: 5px;
+    border-radius: 20px;
+  }
+
+}
