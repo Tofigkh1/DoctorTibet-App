@@ -42,7 +42,6 @@ const basketItems = basket?.items || [];
     }, [basket?.items, id]);
 
     const handleAddToBasket = () => {
-        
         if (!user) {
             toast({
                 title: "Xəta baş verdi! Xaiş olunur hesabinizla daxil olun",
@@ -125,7 +124,6 @@ const basketItems = basket?.items || [];
 
 
     const handleDeleteFromBasket = () => {
-
         if (!user) {
             toast({
                 title: "Xəta baş verdi! Xaiş olunur hesabinizla daxil olun",
@@ -158,19 +156,17 @@ const basketItems = basket?.items || [];
             total_amount: basket?.total_amount // Sepetteki toplam miktar
           };
 
-          if (!isRectVisible && !isRectVisible2) {
+        if (!isRectVisible && !isRectVisible2) {
             toast({
                 title: "Zəhmət olmasa ölçü seçin",
                 status: 'error',
                 duration: 2000,
                 isClosable: true,
                 position: 'top-right',
-                variant: 'subtle'
+              
             });
             return;
         }
-
-        setButtonClicked(true);
 
         dispatch(deleteFromBasket(basketProduct)).then((action) => {
             if (action.type === deleteFromBasket.rejected.type) {
@@ -184,6 +180,7 @@ const basketItems = basket?.items || [];
                 });
             
             } else {
+                
               
                 dispatch(fetchBasket());
                 setButtonClicked(false);

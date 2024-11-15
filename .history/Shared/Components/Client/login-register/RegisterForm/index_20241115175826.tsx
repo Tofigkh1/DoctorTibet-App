@@ -71,7 +71,7 @@ const RegisterForm = (props: Props) => {
       console.log("formValues",formValues);
       
       toast({
-        title: `Uğurla qeydiyyatdan keçdiniz!`,
+        title: `Uğurla qeydiyyatdan keç!`,
         status: 'success',
         duration: 2000,
         isClosable: true,

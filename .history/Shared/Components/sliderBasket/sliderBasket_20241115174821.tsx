@@ -151,12 +151,12 @@ const BasketMenu = () => {
     dispatch(addToBasket(basketProduct)).then((action) => {
       if (action.type === deleteFromBasket.rejected.type) {
         toast({
-          title: "Xəta baş verdi! Xaiş olunur hesabinizla daxil olun!",
+          title: "Xəta baş verdi! Xaiş olunur hesabinizla daxil olun",
           status: 'error',
           duration: 2000,
           isClosable: true,
           position: 'top-right',
-          
+          variant: 'subtle'
         });
       } else {
         dispatch(fetchBasket());
@@ -166,7 +166,7 @@ const BasketMenu = () => {
           duration: 2000,
           isClosable: true,
           position: 'top-right',
-        
+          variant: 'subtle'
         });
       }
     });
@@ -202,7 +202,7 @@ const BasketMenu = () => {
           duration: 2000,
           isClosable: true,
           position: 'top-right',
-         
+          variant: 'subtle'
         });
       } else {
         dispatch(fetchBasket());
@@ -212,7 +212,7 @@ const BasketMenu = () => {
           duration: 2000,
           isClosable: true,
           position: 'top-right',
-       
+          variant: 'subtle'
         });
       }
     });

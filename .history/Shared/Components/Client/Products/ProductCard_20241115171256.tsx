@@ -42,10 +42,9 @@ const basketItems = basket?.items || [];
     }, [basket?.items, id]);
 
     const handleAddToBasket = () => {
-        
         if (!user) {
             toast({
-                title: "Xəta baş verdi! Xaiş olunur hesabinizla daxil olun",
+                title: "Please log in to add products to the basket",
                 status: 'error',
                 duration: 2000,
                 isClosable: true,
@@ -78,7 +77,7 @@ const basketItems = basket?.items || [];
 
         if (!isRectVisible && !isRectVisible2) {
             toast({
-                title: "Zəhmət olmasa ölçü seçin",
+                title: "Please select a size",
                 status: 'error',
                 duration: 2000,
                 isClosable: true,
@@ -99,10 +98,10 @@ const basketItems = basket?.items || [];
                     status: 'error',
                     duration: 2000,
                     isClosable: true,
-                    position: 'top-right',
-                 
+                    position: ',
+                    variant: 'subtle',
                     containerStyle: {
-                        zIndex: 9999999999999999999999999999999999, // Set a very high z-index
+                        zIndex: 9999999999999999999999999999999999999999999999999999999999999, // Set a very high z-index
                     
                     },
                 })
@@ -114,7 +113,7 @@ const basketItems = basket?.items || [];
                     duration: 2000,
                     isClosable: true,
                     position: 'top-right',
-                  
+                    variant: 'subtle'
                 });
             }
         });
@@ -125,10 +124,9 @@ const basketItems = basket?.items || [];
 
 
     const handleDeleteFromBasket = () => {
-
         if (!user) {
             toast({
-                title: "Xəta baş verdi! Xaiş olunur hesabinizla daxil olun",
+                title: "Please log in to remove products from the basket",
                 status: 'error',
                 duration: 2000,
                 isClosable: true,
@@ -158,9 +156,9 @@ const basketItems = basket?.items || [];
             total_amount: basket?.total_amount // Sepetteki toplam miktar
           };
 
-          if (!isRectVisible && !isRectVisible2) {
+        if (!isRectVisible && !isRectVisible2) {
             toast({
-                title: "Zəhmət olmasa ölçü seçin",
+                title: "Please select a size",
                 status: 'error',
                 duration: 2000,
                 isClosable: true,
@@ -170,30 +168,28 @@ const basketItems = basket?.items || [];
             return;
         }
 
-        setButtonClicked(true);
-
         dispatch(deleteFromBasket(basketProduct)).then((action) => {
             if (action.type === deleteFromBasket.rejected.type) {
                 toast({
-                    title: "Məhsulu səbətdən çıxarılarkən xəta baş verdi!",
+                    title: "Failed to remove product from the basket",
                     status: 'error',
                     duration: 2000,
                     isClosable: true,
                     position: 'top-right',
-                   
+                    variant: 'subtle'
                 });
-            
             } else {
+                
               
                 dispatch(fetchBasket());
                 setButtonClicked(false);
                 toast({
-                    title: "Məhsul səbətdən çıxarıldı!",
-                    status: 'info',
+                    title: "Product removed from the basket successfully!",
+                    status: 'success',
                     duration: 2000,
                     isClosable: true,
                     position: 'top-right',
-                 
+                    variant: 'subtle'
                 });
             }
         });

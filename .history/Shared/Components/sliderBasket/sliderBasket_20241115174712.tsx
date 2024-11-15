@@ -151,22 +151,22 @@ const BasketMenu = () => {
     dispatch(addToBasket(basketProduct)).then((action) => {
       if (action.type === deleteFromBasket.rejected.type) {
         toast({
-          title: "Xəta baş verdi! Xaiş olunur hesabinizla daxil olun!",
+          title: "Failed to remove product from the basket",
           status: 'error',
           duration: 2000,
           isClosable: true,
           position: 'top-right',
-          
+          variant: 'subtle'
         });
       } else {
         dispatch(fetchBasket());
         toast({
-          title: "Məhsul səbətə əlavə edildi!",
+          title: "Product added to the basket successfully!",
           status: 'success',
           duration: 2000,
           isClosable: true,
           position: 'top-right',
-        
+          variant: 'subtle'
         });
       }
     });
@@ -202,7 +202,7 @@ const BasketMenu = () => {
           duration: 2000,
           isClosable: true,
           position: 'top-right',
-         
+          variant: 'subtle'
         });
       } else {
         dispatch(fetchBasket());
@@ -212,7 +212,7 @@ const BasketMenu = () => {
           duration: 2000,
           isClosable: true,
           position: 'top-right',
-       
+          variant: 'subtle'
         });
       }
     });

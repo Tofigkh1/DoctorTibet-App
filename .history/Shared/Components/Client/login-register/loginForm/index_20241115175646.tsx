@@ -55,18 +55,18 @@ const SignInForm: React.FC = () => {
       dispatch(setUser(res.user));
 
       toast({
-        title: `Uğurla daxil oldunuz!`,
+        title: `Signed in successfully!`,
         status: 'success',
         duration: 2000,
         isClosable: true,
         position: 'top-right',
-       
+        variant: 'subtle'
       });
       router.push('/');
     } catch (err) {
       setLoading(false);
       toast({
-        title: `Telefon nömrəsi və ya parol səhvdir!`,
+        title: `Telefon nömrəsi və ya parol səhvdir`,
         status: 'error',
         duration: 2000,
         isClosable: true,
@@ -98,12 +98,12 @@ const SignInForm: React.FC = () => {
         dispatch(setUser(useer));
 
         toast({
-          title: `Uğurla daxil oldunuz!`,
+          title: `Signed in successfully!`,
           status: 'success',
           duration: 2000,
           isClosable: true,
           position: 'top-right',
-       
+          variant: 'subtle'
         });
         window.location.reload();
       }

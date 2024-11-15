@@ -156,7 +156,7 @@ const BasketMenu = () => {
           duration: 2000,
           isClosable: true,
           position: 'top-right',
-          
+          variant: 'subtle'
         });
       } else {
         dispatch(fetchBasket());
@@ -166,7 +166,7 @@ const BasketMenu = () => {
           duration: 2000,
           isClosable: true,
           position: 'top-right',
-        
+          variant: 'subtle'
         });
       }
     });
@@ -202,7 +202,7 @@ const BasketMenu = () => {
           duration: 2000,
           isClosable: true,
           position: 'top-right',
-         
+          variant: 'subtle'
         });
       } else {
         dispatch(fetchBasket());
@@ -212,7 +212,7 @@ const BasketMenu = () => {
           duration: 2000,
           isClosable: true,
           position: 'top-right',
-       
+          variant: 'subtle'
         });
       }
     });

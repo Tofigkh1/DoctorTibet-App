@@ -151,22 +151,22 @@ const BasketMenu = () => {
     dispatch(addToBasket(basketProduct)).then((action) => {
       if (action.type === deleteFromBasket.rejected.type) {
         toast({
-          title: "Xəta baş verdi! Xaiş olunur hesabinizla daxil olun!",
+          title: "Failed to remove product from the basket",
           status: 'error',
           duration: 2000,
           isClosable: true,
           position: 'top-right',
-          
+          variant: 'subtle'
         });
       } else {
         dispatch(fetchBasket());
         toast({
-          title: "Məhsul səbətə əlavə edildi!",
+          title: "Product added to the basket successfully!",
           status: 'success',
           duration: 2000,
           isClosable: true,
           position: 'top-right',
-        
+          variant: 'subtle'
         });
       }
     });
@@ -197,22 +197,22 @@ const BasketMenu = () => {
     dispatch(deleteFromBasket(basketProduct)).then((action) => {
       if (action.type === deleteFromBasket.rejected.type) {
         toast({
-          title: "Məhsulu səbətdən çıxarılarkən xəta baş verdi!",
+          title: "Failed to remove product from the basket",
           status: 'error',
           duration: 2000,
           isClosable: true,
           position: 'top-right',
-         
+          variant: 'subtle'
         });
       } else {
         dispatch(fetchBasket());
         toast({
           title: "Məhsul səbətdən çıxarıldı!",
-          status: 'info',
+          status: 'success',
           duration: 2000,
           isClosable: true,
           position: 'top-right',
-       
+          variant: 'subtle'
         });
       }
     });
@@ -245,7 +245,7 @@ const BasketMenu = () => {
     dispatch(deleteAllBasket(basketAll)).then((action) => {
       if (action.type === deleteAllBasket.rejected.type) {
         toast({
-          title: "Səbət silinərkən xəta baş verdi!",
+          title: "S çıxarılarkən xəta baş verdi!",
           status: 'error',
           duration: 2000,
           isClosable: true,

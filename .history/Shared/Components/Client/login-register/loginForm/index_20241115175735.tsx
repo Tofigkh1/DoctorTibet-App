@@ -60,7 +60,7 @@ const SignInForm: React.FC = () => {
         duration: 2000,
         isClosable: true,
         position: 'top-right',
-       
+        variant: 'subtle'
       });
       router.push('/');
     } catch (err) {

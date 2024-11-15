@@ -212,7 +212,7 @@ const BasketMenu = () => {
           duration: 2000,
           isClosable: true,
           position: 'top-right',
-       
+          variant: 'subtle'
         });
       }
     });

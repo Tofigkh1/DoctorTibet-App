@@ -55,12 +55,12 @@ const SignInForm: React.FC = () => {
       dispatch(setUser(res.user));
 
       toast({
-        title: `Uğurla daxil oldunuz!`,
+        title: `Signed in successfully!`,
         status: 'success',
         duration: 2000,
         isClosable: true,
         position: 'top-right',
-       
+        variant: 'subtle'
       });
       router.push('/');
     } catch (err) {
@@ -103,7 +103,7 @@ const SignInForm: React.FC = () => {
           duration: 2000,
           isClosable: true,
           position: 'top-right',
-       
+          variant: 'subtle'
         });
         window.location.reload();
       }
