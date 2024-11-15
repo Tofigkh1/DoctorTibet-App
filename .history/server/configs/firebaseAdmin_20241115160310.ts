@@ -23,20 +23,20 @@
 
 
 
-import admin from "firebase-admin";
+// import admin from "firebase-admin";
 
-if (!admin.apps.length) {
+// if (!admin.apps.length) {
 
-    const serviceAccount = require("./tiensapp-92bab-firebase-adminsdk-lupd3-e002f4f767.json");
+//     const serviceAccount = require("./tiensapp-92bab-firebase-adminsdk-lupd3-e002f4f767.json");
     
 
 
-    admin.initializeApp({
-        credential: admin.credential.cert(serviceAccount),
-    });
-}
+//     admin.initializeApp({
+//         credential: admin.credential.cert(serviceAccount),
+//     });
+// }
 
-export const storage = admin.storage();
-export const firestore = admin.firestore();
+// export const storage = admin.storage();
+// export const firestore = admin.firestore();
 
-export default admin;   
+// export default admin;   
