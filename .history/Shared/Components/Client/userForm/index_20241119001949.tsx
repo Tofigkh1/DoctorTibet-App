@@ -286,11 +286,11 @@ console.log("values", values);
                                     title='Email'
                                 />
                                 <Input
-                                    name='address'
+                                    name='Ünvan'
                                     type='text'
                                     value={values.address}
                                     onChange={handleChange}
-                                    placeholder='Address'
+                                    placeholder='Ünvan'
                                     title="Ünvan"
                                 />
                                 <button

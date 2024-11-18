@@ -251,7 +251,7 @@ console.log("values", values);
 
                     <Form>
                         <div className={div}>
-                            <div className={inpdivMob}>
+                            <div className={inpdiv}>
                             <Input
     name='phoneNumber'
     type='text'
@@ -260,7 +260,7 @@ console.log("values", values);
     placeholder='+994 XX XXX XX XX'
     title="Telefon nömrəsi"
 />
-<Input
+                                <Input
                                     name='username'
                                     type='text'
                                     value={values.username}
@@ -277,7 +277,7 @@ console.log("values", values);
                                     title="Ad soyad"
                                 />
                             </div>
-                            <div className={inpdivMob}>
+                            <div className={inpdiv}>
                                 <Input
                                     name='email'
                                     type='email'
@@ -296,7 +296,7 @@ console.log("values", values);
                                 <button
                                     type="submit"
                                     className={button}
-                                    style={logoding ? { cursor: "not-allowed", marginLeft:'140px' } : { cursor: 'pointer', marginLeft:'140px' }}
+                                    style={logoding ? { cursor: "not-allowed" } : { cursor: 'pointer' }}
                                     disabled={logoding}
                                 >
                                     {logoding ? <Spiner /> : "Yadda saxla"}

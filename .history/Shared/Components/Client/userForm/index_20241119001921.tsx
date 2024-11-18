@@ -260,20 +260,20 @@ console.log("values", values);
     placeholder='+994 XX XXX XX XX'
     title="Telefon nömrəsi"
 />
-<Input
-                                    name='username'
+                                <Input
+                                    name='istifadəçi adı'
                                     type='text'
                                     value={values.username}
                                     onChange={handleChange}
-                                    placeholder='User Name'
-                                    title="istifadəci adi"
+                                    placeholder='istifadəçi adı'
+                                    title="istifadəçi adı"
                                 />
                                 <Input
-                                    name='fullname'
+                                    name='Ad soyad'
                                     type='text'
                                     value={values.fullname}
                                     onChange={handleChange}
-                                    placeholder='Full Name'
+                                    placeholder='Ad soyad'
                                     title="Ad soyad"
                                 />
                             </div>
@@ -286,11 +286,11 @@ console.log("values", values);
                                     title='Email'
                                 />
                                 <Input
-                                    name='address'
+                                    name='Ünvan'
                                     type='text'
                                     value={values.address}
                                     onChange={handleChange}
-                                    placeholder='Address'
+                                    placeholder='Ünvan'
                                     title="Ünvan"
                                 />
                                 <button

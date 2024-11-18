@@ -269,11 +269,11 @@ console.log("values", values);
                                     title="istifadəci adi"
                                 />
                                 <Input
-                                    name='fullname'
+                                    name='Ad soyad'
                                     type='text'
                                     value={values.fullname}
                                     onChange={handleChange}
-                                    placeholder='Full Name'
+                                    placeholder='Ad soyad'
                                     title="Ad soyad"
                                 />
                             </div>
@@ -286,11 +286,11 @@ console.log("values", values);
                                     title='Email'
                                 />
                                 <Input
-                                    name='address'
+                                    name='Ünvan'
                                     type='text'
                                     value={values.address}
                                     onChange={handleChange}
-                                    placeholder='Address'
+                                    placeholder='Ünvan'
                                     title="Ünvan"
                                 />
                                 <button

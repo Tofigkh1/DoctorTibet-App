@@ -133,12 +133,12 @@ console.log("values", values);
             dispatch(setUser(userInfo));
 
             toast({
-                title: `Profil məlumatları yeniləndi.`,
-                status: 'success',
+                title: `User info is updated`,
+                status: 'info',
                 duration: 2000,
                 isClosable: true,
                 position: 'top-right',
-            
+                variant: 'subtle',
             });
 
             setlogoding(false);
@@ -166,72 +166,95 @@ console.log("values", values);
 
         {!isMobile &&
         <div>
-            <Formik
-              initialValues={initialValues}
-              enableReinitialize={true}    
-              validationSchema={validationSchema}
-              onSubmit={onSubmit}
-            >
-                {({ handleChange, values }) => (
+           <Formik
+    initialValues={initialValues}
+    enableReinitialize={true}
+    validationSchema={validationSchema}
+    onSubmit={onSubmit}
+>
+    {({ handleChange, handleBlur, values, errors, touched }) => (
+        <Form>
+            <div className={div}>
+                <div className={inpdiv}>
+                    <Input
+                        name="phoneNumber"
+                        type="text"
+                        value={values.phoneNumber}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        placeholder="+994 XX XXX XX XX"
+                        title="Telefon nömrəsi"
+                    />
+                    {errors.phoneNumber && touched.phoneNumber && (
+                        <div className="error">{errors.phoneNumber}</div>
+                    )}
 
+                    <Input
+                        name="username"
+                        type="text"
+                        value={values.username}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        placeholder="User Name"
+                        title="istifadəçi adı"
+                    />
+                    {errors.username && touched.username && (
+                        <div className="error">{errors.username}</div>
+                    )}
 
-                    <Form>
-                        <div className={div}>
-                            <div className={inpdiv}>
-                            <Input
-    name='phoneNumber'
-    type='text'
-    value={values.phoneNumber}
-    onChange={handleChange}
-    placeholder='+994 XX XXX XX XX'
-    title="Telefon nömrəsi"
-/>
-                                <Input
-                                    name='username'
-                                    type='text'
-                                    value={values.username}
-                                    onChange={handleChange}
-                                    placeholder='User Name'
-                                    title="istifadəci adi"
-                                />
-                                <Input
-                                    name='fullname'
-                                    type='text'
-                                    value={values.fullname}
-                                    onChange={handleChange}
-                                    placeholder='Full Name'
-                                    title="Ad soyad"
-                                />
-                            </div>
-                            <div className={inpdiv}>
-                                <Input
-                                    name='email'
-                                    type='email'
-                                    value={values.email}
-                                    onChange={handleChange}
-                                    title='Email'
-                                />
-                                <Input
-                                    name='address'
-                                    type='text'
-                                    value={values.address}
-                                    onChange={handleChange}
-                                    placeholder='Address'
-                                    title="Ünvan"
-                                />
-                                <button
-                                    type="submit"
-                                    className={button}
-                                    style={logoding ? { cursor: "not-allowed" } : { cursor: 'pointer' }}
-                                    disabled={logoding}
-                                >
-                                    {logoding ? <Spiner /> : "Yadda saxla"}
-                                </button>
-                            </div>
-                        </div>
-                    </Form>
-                )}
-            </Formik>
+                    <Input
+                        name="fullname"
+                        type="text"
+                        value={values.fullname}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        placeholder="Full Name"
+                        title="Ad soyad"
+                    />
+                    {errors.fullname && touched.fullname && (
+                        <div className="error">{errors.fullname}</div>
+                    )}
+                </div>
+                <div className={inpdiv}>
+                    <Input
+                        name="email"
+                        type="email"
+                        value={values.email}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        title="Email"
+                    />
+                    {errors.email && touched.email && (
+                        <div className="error">{errors.email}</div>
+                    )}
+
+                    <Input
+                        name="address"
+                        type="text"
+                        value={values.address}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        placeholder="Ünvan"
+                        title="Ünvan"
+                    />
+                    {errors.address && touched.address && (
+                        <div className="error">{errors.address}</div>
+                    )}
+
+                    <button
+                        type="submit"
+                        className={button}
+                        style={logoding ? { cursor: "not-allowed" } : { cursor: "pointer" }}
+                        disabled={logoding}
+                    >
+                        {logoding ? <Spiner /> : "Yadda saxla"}
+                    </button>
+                </div>
+            </div>
+        </Form>
+    )}
+</Formik>
+
         </div>
         }
 
@@ -253,27 +276,27 @@ console.log("values", values);
                         <div className={div}>
                             <div className={inpdivMob}>
                             <Input
-    name='phoneNumber'
+    name='Telefon nömrəsi'
     type='text'
     value={values.phoneNumber}
     onChange={handleChange}
     placeholder='+994 XX XXX XX XX'
     title="Telefon nömrəsi"
 />
-<Input
-                                    name='username'
+                                <Input
+                                    name='istifadəçi adı'
                                     type='text'
                                     value={values.username}
                                     onChange={handleChange}
-                                    placeholder='User Name'
-                                    title="istifadəci adi"
+                                    placeholder='istifadəçi adı'
+                                    title="istifadəçi adı"
                                 />
                                 <Input
-                                    name='fullname'
+                                    name='Ad soyad'
                                     type='text'
                                     value={values.fullname}
                                     onChange={handleChange}
-                                    placeholder='Full Name'
+                                    placeholder='Ad soyad'
                                     title="Ad soyad"
                                 />
                             </div>
@@ -286,11 +309,11 @@ console.log("values", values);
                                     title='Email'
                                 />
                                 <Input
-                                    name='address'
+                                    name='Ünvan'
                                     type='text'
                                     value={values.address}
                                     onChange={handleChange}
-                                    placeholder='Address'
+                                    placeholder='Ünvan'
                                     title="Ünvan"
                                 />
                                 <button
