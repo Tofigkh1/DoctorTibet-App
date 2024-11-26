@@ -12,7 +12,7 @@ import { getCategories, GetProducts } from "../../Services";
 import { sortDataByCreated } from "../../Shared/Utils/sortData";
 import styles from './medicines.module.css';
 
-import recordButton from '../../public/circle.png';
+import recordButton from '../../public/buttongreendot.png';
 import Nav from "../../Shared/Components/Client/Nav/Nav";
 import Auth from "../../Shared/Components/Client/Auth/Auth";
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -334,7 +334,7 @@ function Medicines() {
     {categories?.map((category: any) => (
 
       <div className=" ">
-            <Image alt="circle" src={recordButton} width={15} height={15}/>
+            <Image alt="circle" src={recordButton} width={10} height={10}/>
          <Text
         key={category.id}
         position="relative"
@@ -551,36 +551,7 @@ function Medicines() {
     
     {categories?.map((category: any) => (
       <div>
-         <Image alt="circle" src={recordButton} width={15} height={15}/>
-         <Text
-        key={category.id}
-        position="relative"
-        fontSize="19px"
-        letterSpacing="0.03em"
-        color="white"
-        cursor="pointer"
-        onMouseEnter={() => handleCategoryHover(category.id)}  
-        onMouseLeave={() => !isHovered && setHoveredCategory(null)}
-        onClick={() => handleCategory(category.id)} 
-        className="cursor-pointer"
-        style={{ transition: 'background-color 0.3s ease' }}
-       
-        _before={{
-          content: '""',
-          position: 'absolute',
-          width: hoveredCategory === category.id ? '100%' : '0',
-          height: '2px',
-          left: 0,
-          bottom: '-2px',
-          backgroundColor: '#26d6a1',
-          transition: 'width 0.3s ease',
-        }}
-        _hover={{
-          color: '#26d6a1',
-        }}
-      >
-        {category.name}
-      </Text>
+         <Image alt="circle" src={recordButton} width={10} height={10}/>
       </div>
     
     ))}

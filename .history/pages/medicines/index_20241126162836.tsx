@@ -334,7 +334,7 @@ function Medicines() {
     {categories?.map((category: any) => (
 
       <div className=" ">
-            <Image alt="circle" src={recordButton} width={15} height={15}/>
+            <Image alt="circle" src={recordButton} width={10} height={10}/>
          <Text
         key={category.id}
         position="relative"
@@ -551,7 +551,7 @@ function Medicines() {
     
     {categories?.map((category: any) => (
       <div>
-         <Image alt="circle" src={recordButton} width={15} height={15}/>
+         <Image alt="circle" src={recordButton} width={10} height={10}/>
          <Text
         key={category.id}
         position="relative"

@@ -12,7 +12,7 @@ import { getCategories, GetProducts } from "../../Services";
 import { sortDataByCreated } from "../../Shared/Utils/sortData";
 import styles from './medicines.module.css';
 
-import recordButton from '../../public/circle.png';
+import recordButton from '../../public/recordbutton.png';
 import Nav from "../../Shared/Components/Client/Nav/Nav";
 import Auth from "../../Shared/Components/Client/Auth/Auth";
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -334,7 +334,7 @@ function Medicines() {
     {categories?.map((category: any) => (
 
       <div className=" ">
-            <Image alt="circle" src={recordButton} width={15} height={15}/>
+            <Image alt="circle" src={recordButton} width={10} height={10}/>
          <Text
         key={category.id}
         position="relative"
@@ -551,7 +551,7 @@ function Medicines() {
     
     {categories?.map((category: any) => (
       <div>
-         <Image alt="circle" src={recordButton} width={15} height={15}/>
+         <Image alt="circle" src={recordButton} width={10} height={10}/>
          <Text
         key={category.id}
         position="relative"

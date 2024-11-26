@@ -332,10 +332,7 @@ function Medicines() {
 
     
     {categories?.map((category: any) => (
-
-      <div className=" ">
-            <Image alt="circle" src={recordButton} width={15} height={15}/>
-         <Text
+      <Text
         key={category.id}
         position="relative"
         fontSize="19px"
@@ -345,7 +342,7 @@ function Medicines() {
         onMouseEnter={() => handleCategoryHover(category.id)}  
         onMouseLeave={() => !isHovered && setHoveredCategory(null)}
         onClick={() => handleCategory(category.id)} 
-        className="cursor-pointer flex gap-3"
+        className="cursor-pointer flex"
         style={{ transition: 'background-color 0.3s ease' }}
        
         _before={{
@@ -354,7 +351,7 @@ function Medicines() {
           width: hoveredCategory === category.id ? '100%' : '0',
           height: '2px',
           left: 0,
-          bottom: '-2px',
+         
           backgroundColor: '#26d6a1',
           transition: 'width 0.3s ease',
         }}
@@ -363,14 +360,11 @@ function Medicines() {
         }}
       >
     
-    
+        <Image alt="circle" src={recordButton} width={20} height={10}/>
         {category.name}
     
-        
+      
       </Text>
-    
-      </div>
-     
     ))}
   </Flex>
 
@@ -550,9 +544,7 @@ function Medicines() {
 
     
     {categories?.map((category: any) => (
-      <div>
-         <Image alt="circle" src={recordButton} width={15} height={15}/>
-         <Text
+      <Text
         key={category.id}
         position="relative"
         fontSize="19px"
@@ -581,8 +573,6 @@ function Medicines() {
       >
         {category.name}
       </Text>
-      </div>
-    
     ))}
   </Flex>
 
