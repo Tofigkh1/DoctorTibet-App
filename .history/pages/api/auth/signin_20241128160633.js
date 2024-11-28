@@ -12,45 +12,36 @@ async function handler(req, res) {
   }
 
   if (req.method === "POST") {
-    const { email, phoneNumber, password } = req.body;
+    const { phoneNumber, password } = req.body;
 
-    if (!password) {
-      return res.status(400).json({ error: "Password is required" });
-    }
-
-    if (!email && !phoneNumber) {
-      return res.status(400).json({ error: "Either email or phoneNumber is required" });
+    if (!phoneNumber || !password) {
+      return res
+        .status(400)
+        .json({ error: "Phone number and password are required" });
     }
 
     try {
-      let userCredentials;
-
-      if (email) {
-        // Kullanıcı email ile giriş yapıyorsa
-        userCredentials = await admin.auth().getUserByEmail(email);
-      } else if (phoneNumber) {
-        // Kullanıcı phoneNumber ile giriş yapıyorsa
-        userCredentials = await admin.auth().getUserByPhoneNumber(phoneNumber);
-      }
+      // Telefon numarasına göre kullanıcıyı al
+      const userCredentials = await admin.auth().getUserByPhoneNumber(
+        phoneNumber
+      );
 
       if (!userCredentials) {
         return res.status(404).json({ error: "User not found" });
       }
 
-      // Kullanıcının email adresi ile veritabanında bilgilerini al
-      const queryField = email ? "email" : "phoneNumber";
-      const queryValue = email || phoneNumber;
-
+      // Kullanıcıya ait hashed şifreyi Firestore'dan al
       const userInfo = await getQueryData(
         ROUTER.USERS_HASH_PASSWORD,
-        queryField,
-        queryValue
+        "phoneNumber",
+        phoneNumber
       );
 
       if (!userInfo || userInfo.length === 0) {
         return res.status(404).json({ error: "User password not found" });
       }
 
+      // Şifreyi doğrula
       const isPasswordCorrect = await comparePasswords(
         password,
         userInfo[0].password
@@ -59,12 +50,14 @@ async function handler(req, res) {
       if (!isPasswordCorrect) {
         return res
           .status(404)
-          .json({ error: "Password or email/phone is not correct" });
+          .json({ error: "Phone number or password is incorrect" });
       }
 
+      // JWT ve refresh token oluştur
       const access_token = generateJWT(userCredentials.uid);
       const refresh_token = generateRefreshToken(userCredentials.uid);
 
+      // Kullanıcıya ait sepet bilgilerini al (yoksa oluştur)
       const card = await getQueryData(
         ROUTER.CARD,
         "user_id",
@@ -82,10 +75,10 @@ async function handler(req, res) {
         });
       }
 
+      // Kullanıcı bilgilerini döndür
       const user = {
         id: userCredentials.uid,
-        email: userCredentials.email || null,
-        phoneNumber: userCredentials.phoneNumber || null,
+        phoneNumber: userCredentials.phoneNumber,
         ...userCredentials.customClaims,
         access_token,
         refresh_token,

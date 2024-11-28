@@ -57,28 +57,19 @@ const RegisterForm = (props: Props) => {
   const validationSchema = Yup.object({
     fullname: Yup.string().required('Required'),
     username: Yup.string().required('Required'),
-    email: Yup.string().email('Invalid email address'), // Email artık zorunlu değil
+    email: Yup.string().email('Invalid email address'), // E-posta zorunlu değil
     password: Yup.string().required('Required'),
     phoneNumber: Yup.string().required('Required'), // Telefon numarası zorunlu
   });
 
-  const handleSubmit = async (
-    values: RegisterFormValues,
-    { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void }
-  ) => {
+  const handleSubmit = async (values: RegisterFormValues, { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void }) => {
     try {
       setLoading(true);
-  
-      // Email alanını opsiyonel olarak backend'e gönder
-      const formValues = {
-        ...values,
-        email: values.email ? values.email : undefined, // Email boşsa backend'e göndermiyoruz
-        phoneNumber: phoneNumberr, // Telefon numarasını manuel olarak dahil et
-      };
-  
+      // Telefon numarasını "values" içerisine dahil et
+      const formValues = { ...values, phoneNumberr };
       await postSignUp(formValues); // Güncellenmiş form verilerini gönder
-      console.log('formValues', formValues);
-  
+      console.log("formValues",formValues);
+      
       toast({
         title: `Uğurla qeydiyyatdan keçdiniz!`,
         status: 'success',
@@ -89,9 +80,10 @@ const RegisterForm = (props: Props) => {
       });
     } catch (err) {
       console.log(err);
-  
+      
+      // Hata nesnesini `Error` olarak kontrol et ve güvenli erişim sağla
       const errorMessage = err instanceof Error ? err.message : 'An unexpected error occurred';
-  
+    
       toast({
         title: errorMessage,
         status: 'info',
@@ -105,6 +97,7 @@ const RegisterForm = (props: Props) => {
       setSubmitting(false);
     }
   };
+
 
   console.log("phoneNumber",phoneNumberr);
   

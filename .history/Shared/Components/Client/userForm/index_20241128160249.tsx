@@ -209,7 +209,6 @@ console.log("values", values);
                                     type='email'
                                     value={values.email}
                                     onChange={handleChange}
-                                    placeholder='Email'
                                     title='Email'
                                 />
                                 <Input

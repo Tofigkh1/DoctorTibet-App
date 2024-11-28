@@ -209,7 +209,6 @@ console.log("values", values);
                                     type='email'
                                     value={values.email}
                                     onChange={handleChange}
-                                    placeholder='Email'
                                     title='Email'
                                 />
                                 <Input
@@ -284,7 +283,7 @@ console.log("values", values);
                                     type='email'
                                     value={values.email}
                                     onChange={handleChange}
-                                    placeholder='Email'
+                                    placeholder='Address'
                                     title='Email'
                                 />
                                 <Input

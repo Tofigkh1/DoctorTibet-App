@@ -57,7 +57,7 @@ const RegisterForm = (props: Props) => {
   const validationSchema = Yup.object({
     fullname: Yup.string().required('Required'),
     username: Yup.string().required('Required'),
-    email: Yup.string().email('Invalid email address'), // Email artık zorunlu değil
+    email: Yup.string().email('Invalid email address'), // E-posta zorunlu değil
     password: Yup.string().required('Required'),
     phoneNumber: Yup.string().required('Required'), // Telefon numarası zorunlu
   });
@@ -69,14 +69,14 @@ const RegisterForm = (props: Props) => {
     try {
       setLoading(true);
   
-      // Email alanını opsiyonel olarak backend'e gönder
+      // E-posta alanı opsiyonel
       const formValues = {
         ...values,
-        email: values.email ? values.email : undefined, // Email boşsa backend'e göndermiyoruz
-        phoneNumber: phoneNumberr, // Telefon numarasını manuel olarak dahil et
+        phoneNumberr,
+        ...(values.email ? { email: values.email } : {}), // E-posta varsa ekle
       };
   
-      await postSignUp(formValues); // Güncellenmiş form verilerini gönder
+      await postSignUp(formValues); // Form verilerini gönder
       console.log('formValues', formValues);
   
       toast({
@@ -90,7 +90,8 @@ const RegisterForm = (props: Props) => {
     } catch (err) {
       console.log(err);
   
-      const errorMessage = err instanceof Error ? err.message : 'An unexpected error occurred';
+      const errorMessage =
+        err instanceof Error ? err.message : 'An unexpected error occurred';
   
       toast({
         title: errorMessage,
@@ -105,6 +106,7 @@ const RegisterForm = (props: Props) => {
       setSubmitting(false);
     }
   };
+
 
   console.log("phoneNumber",phoneNumberr);
   
