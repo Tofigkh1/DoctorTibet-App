@@ -1,0 +1,296 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+
+
+
+
+
+
+
+
+/* ----------------------- */
+
+
+
+
+
+
+#app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper {
+  width: 240px;
+  height: 320px;
+}
+
+.swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.swiper-slide:nth-child(1n) {
+  background-color: rgb(206, 17, 17);
+}
+
+.swiper-slide:nth-child(2n) {
+  background-color: rgb(0, 140, 255);
+}
+
+.swiper-slide:nth-child(3n) {
+  background-color: rgb(10, 184, 111);
+}
+
+.swiper-slide:nth-child(4n) {
+  background-color: rgb(211, 122, 7);
+}
+
+.swiper-slide:nth-child(5n) {
+  background-color: rgb(118, 163, 12);
+}
+
+.swiper-slide:nth-child(6n) {
+  background-color: rgb(180, 10, 47);
+}
+
+.swiper-slide:nth-child(7n) {
+  background-color: rgb(35, 99, 19);
+}
+
+.swiper-slide:nth-child(8n) {
+  background-color: rgb(0, 68, 255);
+}
+
+.swiper-slide:nth-child(9n) {
+  background-color: rgb(218, 12, 218);
+}
+
+.swiper-slide:nth-child(10n) {
+  background-color: rgb(54, 94, 77);
+}
+
+
+
+
+/* ----------------------- */
+
+
+
+
+
+
+
+
+
+
+.swiper {
+  width: 800px;
+  height: 570px;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+
+/* border: solid black; */
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.product-card {
+  transition: background-color 0.3s ease;
+}
+
+.product-card:hover {
+  background-color: #26d6a1;
+}
+
+.spinner-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white; /* Hafif şeffaf arka plan */
+  z-index: 9999; /* Üstte görünmesi için yüksek z-index */
+}
+.mySwiper .swiper-slide  {
+  transition: background-color 0.3s ease;
+}
+
+.mySwiper .swiper-slide:hover {
+  background-color: #26d6a1;
+}
+
+.swiper-slide img {
+
+margin-left: 10px;
+
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+ margin-top: 10px;
+  border-radius: 20px;
+}
+
+
+@media screen and (max-width: 828px) {
+
+
+
+
+
+
+
+
+
+  .swiper {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+  
+  /* border: solid black; */
+    /* Center slide text vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+  }
+  
+  .product-card {
+    transition: background-color 0.3s ease;
+  }
+  
+  .product-card:hover {
+    background-color: #26d6a1;
+  }
+  
+  .spinner-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white; /* Hafif şeffaf arka plan */
+    z-index: 9999; /* Üstte görünmesi için yüksek z-index */
+  }
+  .mySwiper .swiper-slide  {
+    transition: background-color 0.3s ease;
+  }
+  
+  .mySwiper .swiper-slide:hover {
+    background-color: #26d6a1;
+  }
+  
+  .swiper-slide img {
+  
+  margin-left: 1px;
+  
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+   margin-top: 5px;
+    border-radius: 20px;
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+button {
+  cursor: pointer;
+}
+
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+.testimonial-content {
+  transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+}
+
+.slide-in {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.slide-out {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+.slide-in-enter {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+.slide-out-exit {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+
+
+
+
+
+/* ----------- */
+
+
