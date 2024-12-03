@@ -274,7 +274,7 @@ function InfoBoxOffer(props: Props) {
 </div>
                     <div className='' >
                         <div className=' mr-10'>
-                            <div className={style.oneTitlee}>
+                            <div className={style.oneTitle}>
                                 <h1>Dünyanın hər yerində</h1>
                                 <h1>məhsullarımız tanınır</h1>
                             </div>
@@ -375,15 +375,15 @@ function InfoBoxOffer(props: Props) {
                     <div className={style.excludeAllText}>
                         <div className={style.excludeText}>
                             <Image src={Exclude} alt="Icon" width={18} height={0} />
-                            <h1 className=' font-semibold'>Düzgün qidanlanma üçün qida məsləhətçimiz</h1>
+                            <h1 pt-5 font-semibold>Düzgün qidanlanma üçün qida məsləhətçimiz</h1>
                         </div>
                         <div className={style.excludeText}>
                             <Image src={Exclude} alt="Icon" width={18} height={0} />
-                            <h1 className=' font-semibold'>Pisxoloji gərginliklərdən qurtulmanın yolları</h1>
+                            <h1 pt-5 font-semibold>Pisxoloji gərginliklərdən qurtulmanın yolları</h1>
                         </div>
                         <div className={style.excludeText}>
                             <Image src={Exclude} alt="Icon" width={18} height={0} />
-                            <h1 className=' font-semibold'>Bütün suallarının cavabı hər zaman bizdə</h1>
+                            <h1 pt-5 font-semibold>Bütün suallarının cavabı hər zaman bizdə</h1>
                         </div>
                         <button
   onClick={() => push('/contact-us')}

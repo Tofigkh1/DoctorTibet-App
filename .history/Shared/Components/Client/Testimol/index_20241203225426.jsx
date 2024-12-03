@@ -46,7 +46,7 @@ function Testimonial() {
   return (
     <Box
       width="100%"
-      height="380px"
+      height="480px"
       overflow="hidden"
       p={6}
       backgroundColor="white"
@@ -74,7 +74,7 @@ function Testimonial() {
             w={2}
             bg={i === index ? "green.400" : "gray.400"}
             borderRadius="full"
-            className="mt-5"
+            className="mt-1"
           />
         ))}
       </Stack>

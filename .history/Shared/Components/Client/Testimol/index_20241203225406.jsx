@@ -46,7 +46,7 @@ function Testimonial() {
   return (
     <Box
       width="100%"
-      height="380px"
+      height="480px"
       overflow="hidden"
       p={6}
       backgroundColor="white"

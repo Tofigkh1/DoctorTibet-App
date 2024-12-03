@@ -46,7 +46,7 @@ function Testimonial() {
   return (
     <Box
       width="100%"
-      height="380px"
+      height="480px"
       overflow="hidden"
       p={6}
       backgroundColor="white"
@@ -62,7 +62,7 @@ function Testimonial() {
         className={`testimonial-content ${isSlidingOut ? "slide-out" : "slide-in"} `}
         ml={marginLeft} // Shift left by 30px on mobile only
       >
-        <Text  mb={4}>"{testimonials[index].text}"</Text>
+        <Text  mb={2}>"{testimonials[index].text}"</Text>
         <Text fontWeight="bold" className="text-comitColorText">- {testimonials[index].author}</Text>
       </Box>
 

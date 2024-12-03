@@ -46,7 +46,7 @@ function Testimonial() {
   return (
     <Box
       width="100%"
-      height="380px"
+      height="480px"
       overflow="hidden"
       p={6}
       backgroundColor="white"
@@ -66,7 +66,7 @@ function Testimonial() {
         <Text fontWeight="bold" className="text-comitColorText">- {testimonials[index].author}</Text>
       </Box>
 
-      <Stack direction="row" justify="center" mt={4} ml={indicatorMargin}>
+      <Stack direction="row" justify="center" mt={2} ml={indicatorMargin}>
         {testimonials.map((_, i) => (
           <Box
             key={i}

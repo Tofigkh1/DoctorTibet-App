@@ -175,14 +175,14 @@ background: #D63626;
       
   }
 
-  .oneTitlee{
+  .oneTitle{
     display: flex;
     flex-direction: column;
     margin-top: 130px;
     color: #043CAA;
     font-weight:700;
     font-size: 24px;
-    margin-left: 40px;
+    margin-left: 22px;
     
 }
   

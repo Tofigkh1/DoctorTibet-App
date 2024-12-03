@@ -69,7 +69,7 @@ function InfoBoxOffer(props: Props) {
              {mobile ? (
             // Mobil görünüm
             <div className={style.oneOfferDiv}>
-               <div className='-ml-1 mt-4'>
+               <div className='-ml-6 mt-4'>
 
 
 <Swiper
@@ -152,7 +152,7 @@ function InfoBoxOffer(props: Props) {
                         <button
                             onClick={() => push('/medicines')}
                             
-                            className={`bg-white bg- border border-clientButtonGreen rounded-full ml-14 px-4 py-2 flex items-center gap-5 justify-center w-60 transition-all duration-300 hover:bg-clientButtonGreen hover:text-white`}
+                            className={`bg-white bg- border border-clientButtonGreen rounded-full ml-16 px-4 py-2 flex items-center gap-5 justify-center w-60 transition-all duration-300 hover:bg-clientButtonGreen hover:text-white`}
                   
                         >
                             İndi əldə et
@@ -274,7 +274,7 @@ function InfoBoxOffer(props: Props) {
 </div>
                     <div className='' >
                         <div className=' mr-10'>
-                            <div className={style.oneTitlee}>
+                            <div className={style.oneTitle}>
                                 <h1>Dünyanın hər yerində</h1>
                                 <h1>məhsullarımız tanınır</h1>
                             </div>
@@ -282,19 +282,19 @@ function InfoBoxOffer(props: Props) {
                             <div className={style.excludeAllTextt}>
                                 <div className={style.excludeTextt}>
                                     <Image src={Exclude} alt="Icon" width={18} height={0} />
-                                    <h1 className=' pt-5 font-semibold'>Birbaşa qapınıza çatdırılma əldə edin</h1>
+                                    <h1 className=' font-semibold'>Birbaşa qapınıza çatdırılma əldə edin</h1>
                                 </div>
                                 <div className={style.excludeTextt}>
                                     <Image src={Exclude} alt="Icon" width={18} height={0} />
-                                    <h1 className='pt-5 font-semibold'>Sifarişlərinizi  24 saat ərzində çatdırırıq</h1>
+                                    <h1 className=' font-semibold'>Sifarişlərinizi  24 saat ərzində çatdırırıq</h1>
                                 </div>
                                 <div className={style.excludeTextt}>
                                     <Image src={Exclude} alt="Icon" width={18} height={0} />
-                                    <h1 className='pt-5 font-semibold'>Məhsullarımızın keyfiyyəti zəmanətlidir</h1>
+                                    <h1 className=' font-semibold'>Məhsullarımızın keyfiyyəti zəmanətlidir</h1>
                                 </div>
                                 <button
                                     onClick={() => push('/medicines')}
-                                    className="bg-white text- border border-clientButtonGreen ml-7 rounded-[50px] px-4 py-2 flex items-center gap-5 justify-center w-60 transition-all duration-300 hover:bg-clientButtonGreen hover:text-white"
+                                    className="bg-white text- border border-clientButtonGreen ml-9 rounded-[50px] px-4 py-2 flex items-center gap-5 justify-center w-60 transition-all duration-300 hover:bg-clientButtonGreen hover:text-white"
                                  // Shifts the button to the right by 100px on mobile
                                 >
                                     İndi əldə et
@@ -364,7 +364,7 @@ function InfoBoxOffer(props: Props) {
             // Mobil görünüm
             <div className={style.oneOfferDiv}>
                   <div className='' >
-                    <Image className={style.oneImage} src={groupHuman} alt="Icon" width={611} height={0} />
+                    <Image className={style.oneImage} src={groupHuman} alt="Icon" width={511} height={0} />
                 </div>
                 <div className='' >
                     <div className={style.oneTitle}>
@@ -375,19 +375,19 @@ function InfoBoxOffer(props: Props) {
                     <div className={style.excludeAllText}>
                         <div className={style.excludeText}>
                             <Image src={Exclude} alt="Icon" width={18} height={0} />
-                            <h1 className=' font-semibold'>Düzgün qidanlanma üçün qida məsləhətçimiz</h1>
+                            <h1>Düzgün qidanlanma üçün qida məsləhətçimiz</h1>
                         </div>
                         <div className={style.excludeText}>
                             <Image src={Exclude} alt="Icon" width={18} height={0} />
-                            <h1 className=' font-semibold'>Pisxoloji gərginliklərdən qurtulmanın yolları</h1>
+                            <h1>Pisxoloji gərginliklərdən qurtulmanın yolları</h1>
                         </div>
                         <div className={style.excludeText}>
                             <Image src={Exclude} alt="Icon" width={18} height={0} />
-                            <h1 className=' font-semibold'>Bütün suallarının cavabı hər zaman bizdə</h1>
+                            <h1>Bütün suallarının cavabı hər zaman bizdə</h1>
                         </div>
                         <button
   onClick={() => push('/contact-us')}
-  className="bg-white text- border border-clientButtonGreen rounded-[50px] ml-12 px-4 py-2 flex items-center gap-5 justify-center w-60 transition-all duration-300 hover:bg-clientButtonGreen hover:text-white"
+  className="bg-white text- border border-clientButtonGreen rounded-[50px] ml-9 px-4 py-2 flex items-center gap-5 justify-center w-60 transition-all duration-300 hover:bg-clientButtonGreen hover:text-white"
  
 >
   İndi qoşul
@@ -422,7 +422,7 @@ function InfoBoxOffer(props: Props) {
                         </div>
                         <button
   onClick={() => push('/contact-us')}
-  className="bg-white text- border border-clientButtonGreen rounded-[50px] ml-1 px-4 py-2 flex items-center gap-5 justify-center w-60 transition-all duration-300 hover:bg-clientButtonGreen hover:text-white"
+  className="bg-white text- border border-clientButtonGreen rounded-[50px] ml-9 px-4 py-2 flex items-center gap-5 justify-center w-60 transition-all duration-300 hover:bg-clientButtonGreen hover:text-white"
  
 >
   İndi qoşul
@@ -439,7 +439,7 @@ function InfoBoxOffer(props: Props) {
         )}
             </div>
 
-            <div className=' mt-28 justify-around'>
+            <div className=' mt-44 justify-around'>
                 <div className={style.oneOfferDiv}>
                     <div 
                       style={mobile ? { transform: 'translateX(-42px)' } : {}}
@@ -448,7 +448,7 @@ function InfoBoxOffer(props: Props) {
                     </div>
 
                     <div className=''>
-                        <div className=' mt-8 mr-10'>
+                        <div className=' mr-10'>
                             <Testimonial />
                         </div>
                     </div>

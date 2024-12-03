@@ -53,7 +53,10 @@ color: #828282;
    margin-right: 650px;
 } */
 
-
+/* .oneImage{
+  
+    
+} */
 .oneGroupTittle{
   margin-top: 62px;
 }
@@ -80,7 +83,6 @@ color: #828282;
 .excludeTextt{
   display: flex;
  gap: 20px;
-
 }
 .twoCard{
     margin-top: 50px;
@@ -94,13 +96,7 @@ color: #828282;
     margin-left: 110px;
 }
 
-.excludeAllTextt{
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  margin-top: 40px;
-  margin-left: 110px;
-}
+
 .bgDiv1{
     width: 421.31px;
 height: 556.74px;
@@ -171,20 +167,9 @@ background: #D63626;
       color: #043CAA;
       font-weight:700;
       font-size: 24px;
-      margin-left: 22px;
+      margin-left: 5px;
       
   }
-
-  .oneTitlee{
-    display: flex;
-    flex-direction: column;
-    margin-top: 130px;
-    color: #043CAA;
-    font-weight:700;
-    font-size: 24px;
-    margin-left: 40px;
-    
-}
   
     .oneImage2 {
       width: 287px;
@@ -198,17 +183,9 @@ background: #D63626;
       flex-direction: column;
       gap: 30px;
       margin-top: 40px;
-      margin-left: 50px;
+      margin-left: 30px;
   }
   
-
-  .excludeAllTextt{
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    margin-top: 40px;
-    margin-left: 70px;
-}
   
     /* .oneTitle h1 {
 
@@ -221,8 +198,7 @@ background: #D63626;
 
     .excludeTextt{
       font-size: 1rem;
-      margin-right: 40px;
- 
+      margin-right: 40px
     }
   
     .button {

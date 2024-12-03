@@ -9,7 +9,7 @@ const testimonials = [
     author: "Nadilə Əliyeva",
   },
   {
-    text: "Onların çatdırılmasının nə qədər sürətli və etibarlı olduğuna inana bilmədim. Çox tövsiyə edirəm!",
+    text: "Sizlərin çatdırılmasının nə qədər sürətli və etibarlı olduğuna inana bilmədim. Çox tövsiyə edirəm!",
     author: "Nüyvər Şərifova",
   },
   {
@@ -46,7 +46,7 @@ function Testimonial() {
   return (
     <Box
       width="100%"
-      height="380px"
+      height="480px"
       overflow="hidden"
       p={6}
       backgroundColor="white"

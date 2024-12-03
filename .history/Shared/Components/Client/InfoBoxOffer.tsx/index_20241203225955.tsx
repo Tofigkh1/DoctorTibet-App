@@ -274,7 +274,7 @@ function InfoBoxOffer(props: Props) {
 </div>
                     <div className='' >
                         <div className=' mr-10'>
-                            <div className={style.oneTitlee}>
+                            <div className={style.oneTitle}>
                                 <h1>Dünyanın hər yerində</h1>
                                 <h1>məhsullarımız tanınır</h1>
                             </div>
