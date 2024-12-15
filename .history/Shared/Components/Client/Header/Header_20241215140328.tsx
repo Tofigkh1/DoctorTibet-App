@@ -37,8 +37,7 @@ import { logEvent } from 'firebase/analytics';
 import TiensBackground1 from '../../../../public/home_swiper2 (1).jpg';
 import TiensBackground2 from '../../../../public/Tiensbackground2.jpg';
 import home3 from '../../../../public/home_3.png';
-import Product2 from '../../../../public/home_2.png';
-
+import Product2 from '../../../../public/product_2.jpg';
 
 const Curve = styled.div`
   position: absolute;
@@ -121,8 +120,6 @@ export default function Header() {
           site_name: 'doctor-tibet.com',
         }}
       />
-{!isMobile &&
-      <div>
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
@@ -160,7 +157,7 @@ export default function Header() {
     }}
   >
     <Image
-   
+    style={ { transform: 'scale(1.1)', objectPosition: 'bottom', borderRadius: '100px' }} 
       objectFit="cover" // Resmin tamamını göstermesi için
       layout="fill" // Alanı kaplama için
       src={TiensBackground1} 
@@ -217,108 +214,6 @@ export default function Header() {
           <span ref={progressContent}></span>
         </div>
       </Swiper>
-      </div>
-     }
-
-
-{isMobile &&
-      <div>
-      <Swiper
-        spaceBetween={30}
-        centeredSlides={true}
-        autoplay={{
-          delay: 2500,
-          disableOnInteraction: false,
-        }}
-        pagination={{
-          clickable: true,
-        }}
-        modules={[Autoplay, Pagination, Navigation]}
-        onAutoplayTimeLeft={onAutoplayTimeLeft}
-        className={`${styles.mySwiper} ${styles.background}`}
-      >
-        <SwiperSlide style={{ height: isMobile ? '600px' : '500px', position: 'relative' }}>
-          <div style={{ height: '670px', width: '100%', position: 'relative' }}>
-            <Image 
-              src={DoctorPhoto} 
-              alt="Doctor" 
-         
-              objectFit="cover"  
-              style={isMobile ? { transform: 'scale(1.1)', objectPosition: 'bottom' } : {}} 
-            />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-  <div
-    style={{
-      height: '100vh',
-      width: '100vw',
-      display: 'flex', // Görüntüyü merkezlemek için
-      justifyContent: 'center',
-      alignItems: 'center',
-      overflow: 'hidden', // Taşmayı önlemek için
-    }}
-  >
-    <Image
-   
-      objectFit="cover" // Resmin tamamını göstermesi için
-      layout="fill" // Alanı kaplama için
-      src={TiensBackground2} 
-      alt="Image 1" 
-    />
-  </div>
-</SwiperSlide>
-<SwiperSlide>
-  <div
-    style={{
-      height: '100vh',
-      width: '100vw',
-      display: 'flex', // Görüntüyü merkezlemek için
-      justifyContent: 'center',
-      alignItems: 'center',
-      overflow: 'hidden', // Taşmayı önlemek için
-    }}
-  >
-    <Image
-  
-      objectFit="cover" // Resmin tamamını göstermesi için
-      // Alanı kaplama için
-      src={Product2} 
-      alt="Image 2" 
-    />
-  </div>
-</SwiperSlide>
-
-     
-        <SwiperSlide>
-  <div
-    style={{
-      height: '100vh',
-      width: '100vw',
-      display: 'flex', // Görüntüyü merkezlemek için
-      justifyContent: 'center',
-      alignItems: 'center',
-      overflow: 'hidden', // Taşmayı önlemek için
-    }}
-  >
-    <Image
-      objectFit="cover" // Resmin tamamını göstermesi için
-      layout="fill" // Alanı kaplama için
-      src={home3} 
-      alt="Image 1" 
-    />
-  </div>
-</SwiperSlide>
-
-        <div className="autoplay-progress" slot="container-end">
-          <svg viewBox="0 0 48 48" ref={progressCircle}>
-            <circle cx="24" cy="24" r="20"></circle>
-          </svg>
-          <span ref={progressContent}></span>
-        </div>
-      </Swiper>
-      </div>
-     }
 
       <div>
   

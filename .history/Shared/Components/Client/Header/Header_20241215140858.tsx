@@ -37,7 +37,7 @@ import { logEvent } from 'firebase/analytics';
 import TiensBackground1 from '../../../../public/home_swiper2 (1).jpg';
 import TiensBackground2 from '../../../../public/Tiensbackground2.jpg';
 import home3 from '../../../../public/home_3.png';
-import Product2 from '../../../../public/home_2.png';
+import Product2 from '../../../../public/home_1.png';
 
 
 const Curve = styled.div`
@@ -263,7 +263,7 @@ export default function Header() {
    
       objectFit="cover" // Resmin tamamını göstermesi için
       layout="fill" // Alanı kaplama için
-      src={TiensBackground2} 
+      src={pr} 
       alt="Image 1" 
     />
   </div>
@@ -283,7 +283,7 @@ export default function Header() {
   
       objectFit="cover" // Resmin tamamını göstermesi için
       // Alanı kaplama için
-      src={Product2} 
+      src={TiensBackground2} 
       alt="Image 2" 
     />
   </div>

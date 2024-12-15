@@ -263,7 +263,7 @@ export default function Header() {
    
       objectFit="cover" // Resmin tamamını göstermesi için
       layout="fill" // Alanı kaplama için
-      src={TiensBackground2} 
+      src={Product2} 
       alt="Image 1" 
     />
   </div>
@@ -283,7 +283,7 @@ export default function Header() {
   
       objectFit="cover" // Resmin tamamını göstermesi için
       // Alanı kaplama için
-      src={Product2} 
+      src={TiensBackground2} 
       alt="Image 2" 
     />
   </div>

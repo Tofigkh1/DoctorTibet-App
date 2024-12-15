@@ -283,7 +283,7 @@ export default function Header() {
   
       objectFit="cover" // Resmin tamamını göstermesi için
       // Alanı kaplama için
-      src={Product2} 
+      src={} Product2
       alt="Image 2" 
     />
   </div>
