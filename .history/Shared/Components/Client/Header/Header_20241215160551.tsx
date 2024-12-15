@@ -321,8 +321,6 @@ kecid
 {isMobile &&
 <div>
 <div>
-
-  
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
@@ -462,25 +460,10 @@ kecid
 
 
 
-    <div>
+   
 
 
-  
-      <div className={styles.headerText}>
-        <h1 className=''>Doctor Tibet ilə</h1>
-        <h1>Sağlam gələcək.</h1>
-      </div>
-
-      <div className={styles.headerSmallText}>
-        <h1 className=''>Həkiminizin sağlamlığınız üçün təyin etdiyi bütün Tibet məhsulları bizdə</h1>
-        <h1>biz bunu sizə çatdıra bilərik.</h1>
-      </div>
-    </div>
-
-
-    <div>
-<Search />
-</div>
+   
 
     {!accessToken && (
       <button onClick={goAuthGetStarted} className={styles.getStartedButton}>
@@ -492,7 +475,9 @@ kecid
     )}
 
 
-
+<div className=''>
+<Search />
+</div>
 
 
   </div>

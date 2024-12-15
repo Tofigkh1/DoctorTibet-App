@@ -478,9 +478,7 @@ kecid
     </div>
 
 
-    <div>
-<Search />
-</div>
+   
 
     {!accessToken && (
       <button onClick={goAuthGetStarted} className={styles.getStartedButton}>

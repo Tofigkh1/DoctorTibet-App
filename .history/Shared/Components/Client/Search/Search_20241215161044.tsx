@@ -211,7 +211,7 @@ export default function Search() {
 
 
 {isMobile &&
-            <div className="">
+            <div>
                 <div className={styles.search_container}>
                     <input
                         type="text"

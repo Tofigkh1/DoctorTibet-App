@@ -121,8 +121,6 @@ export default function Header() {
           site_name: 'doctor-tibet.com',
         }}
       />
-
-
 {!isMobile &&
 
 <div>
@@ -319,10 +317,7 @@ kecid
 
 
 {isMobile &&
-<div>
-<div>
-
-  
+      <div>
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
@@ -418,87 +413,6 @@ kecid
         </div>
       </Swiper>
       </div>
-
-      <div>
-  
-
-   
-
-    <div className={styles.hambrBtn}>
-      <HamburgerBtn />
-    </div>
-
-
-  <div className={styles.bgimage}>
-    <section className={`${styles.header_box}  ${isOpen ? styles.shadow : ''}`}>
-      <div className={`${styles.logo_box} flex gap-3 items-center`}>
-        <button className={styles.button}></button>
-        <div className={styles.cursor}>
-          <img onClick={() => push('/')} style={{ width: '90px', height: '90px' }} className={styles.logo} src="/Logo.png" alt="Logo" />
-        </div>
-      </div>
-
-  
-
-     
-
-      <div className='flex flex-row gap-4 items-center'>
-      <div>
-      <BasketMenu/>
-      </div>
-      
-        <div className={styles.mobile_hide}>
-          <Auth />
-        </div>
-        
-      </div>
-      
-    </section>
-
-  
-
-
-
-
-
-
-    <div>
-
-
-  
-      <div className={styles.headerText}>
-        <h1 className=''>Doctor Tibet ilə</h1>
-        <h1>Sağlam gələcək.</h1>
-      </div>
-
-      <div className={styles.headerSmallText}>
-        <h1 className=''>Həkiminizin sağlamlığınız üçün təyin etdiyi bütün Tibet məhsulları bizdə</h1>
-        <h1>biz bunu sizə çatdıra bilərik.</h1>
-      </div>
-    </div>
-
-
-    <div>
-<Search />
-</div>
-
-    {!accessToken && (
-      <button onClick={goAuthGetStarted} className={styles.getStartedButton}>
-        <div className={styles.textContainer}>{t("Sağlam həyata Başla")}</div>
-        <div className={styles.arrowContainer}>
-          <Image alt="Next arrow icon" src={ArrovRight2} width={30} height={30} className={styles.arrowImage} />
-        </div>
-      </button>
-    )}
-
-
-
-
-
-  </div>
-</div>
-</div>
-     
       
      }
 

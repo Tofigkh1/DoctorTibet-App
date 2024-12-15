@@ -418,7 +418,9 @@ kecid
         </div>
       </Swiper>
       </div>
-
+      <div>
+<Search />
+</div>
       <div>
   
 
@@ -478,9 +480,7 @@ kecid
     </div>
 
 
-    <div>
-<Search />
-</div>
+   
 
     {!accessToken && (
       <button onClick={goAuthGetStarted} className={styles.getStartedButton}>

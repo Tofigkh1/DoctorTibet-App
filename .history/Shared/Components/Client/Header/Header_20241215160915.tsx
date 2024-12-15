@@ -318,7 +318,7 @@ kecid
      }
 
 
-{isMobile &&
+{!isMobile &&
 <div>
 <div>
 
@@ -478,9 +478,7 @@ kecid
     </div>
 
 
-    <div>
-<Search />
-</div>
+   
 
     {!accessToken && (
       <button onClick={goAuthGetStarted} className={styles.getStartedButton}>
@@ -501,7 +499,9 @@ kecid
      
       
      }
-
+<div>
+<Search />
+</div>
     
     </div>
   );

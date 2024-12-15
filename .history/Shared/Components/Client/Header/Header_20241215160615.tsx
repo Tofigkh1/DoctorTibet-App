@@ -321,8 +321,6 @@ kecid
 {isMobile &&
 <div>
 <div>
-
-  
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
@@ -478,9 +476,7 @@ kecid
     </div>
 
 
-    <div>
-<Search />
-</div>
+   
 
     {!accessToken && (
       <button onClick={goAuthGetStarted} className={styles.getStartedButton}>
@@ -492,7 +488,9 @@ kecid
     )}
 
 
-
+<div className=''>
+<Search />
+</div>
 
 
   </div>

@@ -121,12 +121,8 @@ export default function Header() {
           site_name: 'doctor-tibet.com',
         }}
       />
-
-
 {!isMobile &&
-
-<div>
-<div>
+      <div>
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
@@ -222,107 +218,13 @@ export default function Header() {
         </div>
       </Swiper>
       </div>
-<div>
-  
-
-   
-  {isMobile && (
-    <div className={styles.hambrBtn}>
-      <HamburgerBtn />
-    </div>
-  )}
-
-  <div className={styles.bgimage}>
-    <section className={`${styles.header_box}  ${isOpen ? styles.shadow : ''}`}>
-      <div className={`${styles.logo_box} flex gap-3 items-center`}>
-        <button className={styles.button}></button>
-        <div className={styles.cursor}>
-          <img onClick={() => push('/')} style={{ width: '90px', height: '90px' }} className={styles.logo} src="/Logo.png" alt="Logo" />
-        </div>
-      </div>
-
-      <div className={`${styles.menu_box} ${isMobile ? (isOpen ? styles.show : styles.hide) : styles.show}`}>
-        <Nav />
-      </div>
-
-     
-
-      <div className='flex flex-row gap-4 items-center'>
-      <div>
-      <BasketMenu/>
-      </div>
-      
-        <div className={styles.mobile_hide}>
-          <Auth />
-        </div>
-        
-      </div>
-      
-    </section>
-
-  
-
-
-
-
-    {/* {infoUser && 
-<div className='flex'>
-<Alert fontWeight='bold' roundedLeft={20} marginLeft={20} width={800} height={10} status="info" title="Invalid Fields">
-Məlumatlarınız tam doldurulmayıb xaiş olunur profile səhifəsine keçərək məlumatlarinizi doldurun!
-</Alert>
-<button 
-onClick={() => push('/user/profile')}
-className="bg-slate-500 rounded-e-2xl w-20 h-10 font-bold transition-all hover:bg-emerald-300 ">
-kecid
-</button>
-</div>
-
-} */}
-    <div>
-
-
-  
-      <div className={styles.headerText}>
-        <h1 className=''>Doctor Tibet ilə</h1>
-        <h1>Sağlam gələcək.</h1>
-      </div>
-
-      <div className={styles.headerSmallText}>
-        <h1 className=''>Həkiminizin sağlamlığınız üçün təyin etdiyi bütün Tibet məhsulları bizdə</h1>
-        <h1>biz bunu sizə çatdıra bilərik.</h1>
-      </div>
-    </div>
-
-
-   
-
-    {!accessToken && (
-      <button onClick={goAuthGetStarted} className={styles.getStartedButton}>
-        <div className={styles.textContainer}>{t("Sağlam həyata Başla")}</div>
-        <div className={styles.arrowContainer}>
-          <Image alt="Next arrow icon" src={ArrovRight2} width={30} height={30} className={styles.arrowImage} />
-        </div>
-      </button>
-    )}
-
-
-<div className=''>
-<Search />
-</div>
-  </div>
-</div>
-</div>
-      
 
 
      }
 
 
 {isMobile &&
-<div>
-<div>
-
-  
+      <div>
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
@@ -418,87 +320,6 @@ kecid
         </div>
       </Swiper>
       </div>
-
-      <div>
-  
-
-   
-
-    <div className={styles.hambrBtn}>
-      <HamburgerBtn />
-    </div>
-
-
-  <div className={styles.bgimage}>
-    <section className={`${styles.header_box}  ${isOpen ? styles.shadow : ''}`}>
-      <div className={`${styles.logo_box} flex gap-3 items-center`}>
-        <button className={styles.button}></button>
-        <div className={styles.cursor}>
-          <img onClick={() => push('/')} style={{ width: '90px', height: '90px' }} className={styles.logo} src="/Logo.png" alt="Logo" />
-        </div>
-      </div>
-
-  
-
-     
-
-      <div className='flex flex-row gap-4 items-center'>
-      <div>
-      <BasketMenu/>
-      </div>
-      
-        <div className={styles.mobile_hide}>
-          <Auth />
-        </div>
-        
-      </div>
-      
-    </section>
-
-  
-
-
-
-
-
-
-    <div>
-
-
-  
-      <div className={styles.headerText}>
-        <h1 className=''>Doctor Tibet ilə</h1>
-        <h1>Sağlam gələcək.</h1>
-      </div>
-
-      <div className={styles.headerSmallText}>
-        <h1 className=''>Həkiminizin sağlamlığınız üçün təyin etdiyi bütün Tibet məhsulları bizdə</h1>
-        <h1>biz bunu sizə çatdıra bilərik.</h1>
-      </div>
-    </div>
-
-
-    <div>
-<Search />
-</div>
-
-    {!accessToken && (
-      <button onClick={goAuthGetStarted} className={styles.getStartedButton}>
-        <div className={styles.textContainer}>{t("Sağlam həyata Başla")}</div>
-        <div className={styles.arrowContainer}>
-          <Image alt="Next arrow icon" src={ArrovRight2} width={30} height={30} className={styles.arrowImage} />
-        </div>
-      </button>
-    )}
-
-
-
-
-
-  </div>
-</div>
-</div>
-     
       
      }
 

@@ -321,8 +321,6 @@ kecid
 {isMobile &&
 <div>
 <div>
-
-  
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
@@ -460,6 +458,19 @@ kecid
 
 
 
+    {/* {infoUser && 
+<div className='flex'>
+<Alert fontWeight='bold' roundedLeft={20} marginLeft={20} width={800} height={10} status="info" title="Invalid Fields">
+Məlumatlarınız tam doldurulmayıb xaiş olunur profile səhifəsine keçərək məlumatlarinizi doldurun!
+</Alert>
+<button 
+onClick={() => push('/user/profile')}
+className="bg-slate-500 rounded-e-2xl w-20 h-10 font-bold transition-all hover:bg-emerald-300 ">
+kecid
+</button>
+</div>
+
+} */}
 
 
     <div>
@@ -478,9 +489,7 @@ kecid
     </div>
 
 
-    <div>
-<Search />
-</div>
+   
 
     {!accessToken && (
       <button onClick={goAuthGetStarted} className={styles.getStartedButton}>
@@ -492,7 +501,9 @@ kecid
     )}
 
 
-
+<div className=''>
+<Search />
+</div>
 
 
   </div>

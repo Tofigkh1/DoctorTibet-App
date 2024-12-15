@@ -121,8 +121,6 @@ export default function Header() {
           site_name: 'doctor-tibet.com',
         }}
       />
-
-
 {!isMobile &&
 
 <div>
@@ -320,114 +318,17 @@ kecid
 
 {isMobile &&
 <div>
-<div>
 
-  
-      <Swiper
-        spaceBetween={30}
-        centeredSlides={true}
-        autoplay={{
-          delay: 2500,
-          disableOnInteraction: false,
-        }}
-        pagination={{
-          clickable: true,
-        }}
-        modules={[Autoplay, Pagination, Navigation]}
-        onAutoplayTimeLeft={onAutoplayTimeLeft}
-        className={`${styles.mySwiper} ${styles.background}`}
-      >
-        <SwiperSlide style={{ height: isMobile ? '600px' : '500px', position: 'relative' }}>
-          <div style={{ height: '670px', width: '100%', position: 'relative' }}>
-            <Image 
-              src={DoctorPhoto} 
-              alt="Doctor" 
-         
-              objectFit="cover"  
-              style={isMobile ? { transform: 'scale(1.1)', objectPosition: 'bottom' } : {}} 
-            />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-  <div
-    style={{
-      height: '100vh',
-      width: '100vw',
-      display: 'flex', // Görüntüyü merkezlemek için
-      justifyContent: 'center',
-      alignItems: 'center',
-      overflow: 'hidden', // Taşmayı önlemek için
-    }}
-  >
-    <Image
-   
-      objectFit="cover" // Resmin tamamını göstermesi için
-      layout="fill" // Alanı kaplama için
-      src={TiensBackground2} 
-      alt="Image 1" 
-    />
-  </div>
-</SwiperSlide>
-<SwiperSlide>
-  <div
-    style={{
-      height: '100vh',
-      width: '100vw',
-      display: 'flex', // Görüntüyü merkezlemek için
-      justifyContent: 'center',
-      alignItems: 'center',
-      overflow: 'hidden', // Taşmayı önlemek için
-    }}
-  >
-    <Image
-  
-      objectFit="cover" // Resmin tamamını göstermesi için
-      // Alanı kaplama için
-      src={Product2} 
-      alt="Image 2" 
-    />
-  </div>
-</SwiperSlide>
-
-     
-        <SwiperSlide>
-  <div
-    style={{
-      height: '100vh',
-      width: '100vw',
-      display: 'flex', // Görüntüyü merkezlemek için
-      justifyContent: 'center',
-      alignItems: 'center',
-      overflow: 'hidden', // Taşmayı önlemek için
-    }}
-  >
-    <Image
-      objectFit="cover" // Resmin tamamını göstermesi için
-      layout="fill" // Alanı kaplama için
-      src={home3} 
-      alt="Image 1" 
-    />
-  </div>
-</SwiperSlide>
-
-        <div className="autoplay-progress" slot="container-end">
-          <svg viewBox="0 0 48 48" ref={progressCircle}>
-            <circle cx="24" cy="24" r="20"></circle>
-          </svg>
-          <span ref={progressContent}></span>
-        </div>
-      </Swiper>
-      </div>
 
       <div>
   
 
    
-
+  {isMobile && (
     <div className={styles.hambrBtn}>
       <HamburgerBtn />
     </div>
-
+  )}
 
   <div className={styles.bgimage}>
     <section className={`${styles.header_box}  ${isOpen ? styles.shadow : ''}`}>
@@ -438,7 +339,9 @@ kecid
         </div>
       </div>
 
-  
+      <div className={`${styles.menu_box} ${isMobile ? (isOpen ? styles.show : styles.hide) : styles.show}`}>
+        <Nav />
+      </div>
 
      
 
@@ -460,6 +363,19 @@ kecid
 
 
 
+    {/* {infoUser && 
+<div className='flex'>
+<Alert fontWeight='bold' roundedLeft={20} marginLeft={20} width={800} height={10} status="info" title="Invalid Fields">
+Məlumatlarınız tam doldurulmayıb xaiş olunur profile səhifəsine keçərək məlumatlarinizi doldurun!
+</Alert>
+<button 
+onClick={() => push('/user/profile')}
+className="bg-slate-500 rounded-e-2xl w-20 h-10 font-bold transition-all hover:bg-emerald-300 ">
+kecid
+</button>
+</div>
+
+} */}
 
 
     <div>
@@ -478,9 +394,7 @@ kecid
     </div>
 
 
-    <div>
-<Search />
-</div>
+   
 
     {!accessToken && (
       <button onClick={goAuthGetStarted} className={styles.getStartedButton}>
@@ -492,7 +406,9 @@ kecid
     )}
 
 
-
+<div className=''>
+<Search />
+</div>
 
 
   </div>
