@@ -1,0 +1,436 @@
+.getStartedButton {
+    margin-left: 100px;
+    margin-top: 40px;
+    width: 250px;
+    height: 58px;
+    background-color: #26d6a1;
+    border: none;
+    border-radius: 25px;
+    color: white;
+    font-size: 16px;
+    display: flex;
+    justify-content: flex-start; /* Yazıyı sola hizalar */
+    align-items: center;
+    padding-left: 60px; /* Yazı ve sol kenar arasında boşluk bırakır */
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    transition: background-color 0.3s ease;
+  }
+  
+  .getStartedButton:hover {
+    background-color: #adfcef;
+  }
+  
+  .arrowContainer {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 40px;
+    transition: transform 0.3s ease;
+  }
+  
+  .getStartedButton:hover .arrowContainer {
+    transform: translateX(50px); /* Sağ tarafa doğru kaydır */
+  }
+  
+  .arrowImage {
+    transition: opacity 0.3s ease;
+  }
+  
+  .getStartedButton:hover .arrowImage {
+    opacity: 0; /* Sağ tarafa kayarken sol tarafta kaybolur */
+  }
+  
+  .getStartedButton::before {
+    content: '';
+    position: absolute;
+    left: 15px; /* Okun sol tarafta belirmesi için konum ayarlaması */
+    width: 30px;
+    height: 30px;
+    background-image: url('/right.png'); /* Sol tarafta beliren ok */
+    background-size: cover;
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  
+  .getStartedButton:hover::before {
+    opacity: 1;
+    transform: translateX(20px); /* Sol tarafta belirme hareketi */
+  }
+  
+  .textContainer {
+    color: white;
+    font-weight:700;
+    font-size:larger;
+    transition: transform 0.4s ease; /* Animasyonlu kayma için transition ekledik */
+    transform: translateX(-40px); /* Başlangıçta yazıyı sola hizalar */
+  }
+  
+  .getStartedButton:hover .textContainer {
+    color: black;
+    transform: translateX(30px); /* Yazıyı hover durumunda sağa kaydır */
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  .cursor {
+    cursor: pointer;
+  }
+  
+  
+  .headerText{
+    color: #FFFFFF;
+    font-size: 43px;
+    font-weight: 900;
+    margin-left: 100px;
+    margin-top: 55px;
+    
+  }
+  
+  .logo{
+    width: 200px;
+    height: 200px;
+  }
+  
+  .logotext{
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  
+  .headerSmallText{
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 18px;
+    margin-left: 100px;
+    margin-top: 20px;
+  
+  }
+  
+  .header_box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 18px;
+  
+    position: relative;
+    
+  
+  }
+  
+  
+  
+  
+  .container {
+    position: relative;
+  
+  }
+  
+  .mySwiper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; 
+  }
+  
+  .content {
+    position: relative;
+    z-index: 1; 
+  }
+  
+  
+  
+  
+  
+  #app {
+    height: 100%;
+  }
+  
+  
+  
+  
+  .swiper {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+  
+    /* Center slide text vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }
+  
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    
+  }
+  
+  
+  
+  
+  .autoplay-progress {
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+    z-index: 10;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: var(--swiper-theme-color);
+    
+  }
+  
+  .autoplay-progress svg {
+    --progress: 0;
+    position: absolute;
+    left: 0;
+    top: 0px;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    stroke-width: 4px;
+    stroke: var(--swiper-theme-color);
+    fill: none;
+    stroke-dashoffset: calc(125.6px * (1 - var(--progress)));
+    stroke-dasharray: 125.6;
+    transform: rotate(-90deg);
+   
+  }
+  
+  /* .swiper-button-next,
+  .swiper-button-prev {
+    display: none;
+  } */
+  
+  .bgimage{
+  margin-top: -15px;
+    width: 100%;
+  height: 5px;
+  top: 0;
+  position: absolute;
+  z-index: 99;
+  
+  }
+
+
+  .bgimagemob{
+    margin-top: 15px;
+      width: 100%;
+    height: 5px;
+    top: 0;
+    position: fixed;
+    z-index: 99;
+    
+    }
+  
+  .mobile_show {
+    display: none;
+  }
+  
+  .mobile_show {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+  }
+  
+  .menu_box svg {
+    width: 16px;
+    height: 16px;
+    display: none;
+    position: absolute;
+    top: 24px;
+    left: 24px;
+  }
+  
+  .menu_box svg path {
+    fill: #4F4F4F;
+  }
+  
+  .mobile_svg {
+    display: none;
+  }
+  
+  .menu_box.show {
+    display: flex !important;
+  }
+  
+  .menu_box.hide {
+    display: none !important;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    position: relative;
+  }
+  
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 25px;
+    cursor: pointer;
+    margin-left: 15px;
+  }
+  
+  .hamburger .bar {
+    width: 100%;
+    height: 3px;
+    background-color: #000;
+    transition: opacity 0.3s, transform 0.3s;
+  }
+  
+  .hamburger.open .bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  
+  .hamburger.open .bar:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .hamburger.open .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+  
+  .menu {
+    opacity: 0;
+    transform: translateX(-100%);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    width: 200px;
+    height: 400px;
+    z-index: 10;
+    transition: opacity 0.3s, transform 0.3s;
+    pointer-events: none; /* Menü kapalıyken tıklanmasını engellemek için */
+  }
+  
+  .menu.show {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto; /* Menü açıldığında tıklanabilir hale getirmek için */
+  }
+  
+  
+  
+  .hambrBtn{
+    z-index: 9999999999999999999999999999999;
+  }
+  
+  
+  
+  
+  
+  
+  /* Navbar.module.css */
+  @media screen and (max-width: 828px) {
+  
+    .header_box {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0px 18px;
+    z-index: 999999999999999999999;
+      position: relative;
+      
+    
+    }
+    
+    .getStartedButton {
+      margin-left: 35px; /* Butonu sola kaydırmak için */
+      margin-top: 50px;
+  
+    }
+  
+    .headerSmallText{
+      color: #FFFFFF;
+      font-weight: 700;
+      font-size: 20px;
+      margin-left: 40px;
+      margin-top: 20px;
+    
+    }
+  
+    .container {
+      display: flex;
+  width: 100%;
+    }
+    
+  
+    
+  
+  
+    .arrowContainer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    .textContainer {
+      font-size: 14px; /* Daha küçük ekran için yazı boyutunu küçült */
+    }
+  
+    .headerText h1, .headerSmallText h1 {
+   
+    }
+  
+    .headerText h1{
+      margin-left: -65px;
+    }
+  
+    .headerSmallText h1 {
+      
+    }
+  
+    /* Navbar.module.css */
+  
+  
+  .arrowContainer {
+    margin-left: 10px; /* Sağdaki ikonu metin ile aralıklı hale getirebilirsin */
+  }
+  
+  }
+  
