@@ -469,8 +469,7 @@ const VideoPlayer = () => {
      display: 'flex',
      justifyContent: 'center',
      alignItems: 'center',
-     height: '80vh',
-     marginLeft: "150px"
+     height: '80vh'
    }}>
      <DotLoader color="#28e4c5" speedMultiplier={1.6} size={90} />
    </div>

@@ -57,6 +57,9 @@ const VideoPlayer = () => {
     }
   };
 
+  if (isLoading) {
+    return <div>Loading...</div>; // İlk veri yükleme ekranı
+  }
 
   interface Media {
     covers: { coverImageUrl: string }[];
@@ -84,8 +87,8 @@ const VideoPlayer = () => {
    </div>
    ) : (
 <div>
-
-
+    
+</div>
     <div>
     <Swiper
     spaceBetween={30}
@@ -451,7 +454,7 @@ const VideoPlayer = () => {
   ))}
 </Swiper>
 </div>
-</div>
+
 )}
 </div>
 
@@ -464,21 +467,9 @@ const VideoPlayer = () => {
 
 {isMobile &&
 <div>
-{isLoading ? (
-    <div style={{
-     display: 'flex',
-     justifyContent: 'center',
-     alignItems: 'center',
-     height: '80vh',
-     marginLeft: "150px"
-   }}>
-     <DotLoader color="#28e4c5" speedMultiplier={1.6} size={90} />
-   </div>
-   ) : (
 
-    <div>
 
-   
+    
 <div
 
 >
@@ -912,8 +903,8 @@ const VideoPlayer = () => {
 
 
 
-</div>
-)}
+
+
 </div>
 
 

@@ -22,7 +22,6 @@ import { useRouter } from "next/router";
 import { RootState } from "../../../Redux/Store/store";
 import { useSelector } from "react-redux";
 import HamburgerBtn from "../hamburgerButton";
-import { DotLoader } from "react-spinners";
 const fetchMedia = async () => {
   const response = await axios.get("/api/uploads?folder=videos&all=true");
   console.log("response",response);
@@ -57,6 +56,9 @@ const VideoPlayer = () => {
     }
   };
 
+  if (isLoading) {
+    return <div>Loading...</div>; // İlk veri yükleme ekranı
+  }
 
   interface Media {
     covers: { coverImageUrl: string }[];
@@ -69,20 +71,7 @@ const VideoPlayer = () => {
 
     {!isMobile &&
 
-
-  
- 
-<div>
-{isLoading ? (
-    <div style={{
-     display: 'flex',
-     justifyContent: 'center',
-     alignItems: 'center',
-     height: '80vh'
-   }}>
-     <DotLoader color="#28e4c5" speedMultiplier={1.6} size={90} />
-   </div>
-   ) : (
+    
 <div>
 
 
@@ -451,10 +440,9 @@ const VideoPlayer = () => {
   ))}
 </Swiper>
 </div>
-</div>
-)}
-</div>
 
+
+</div>
 }
 
 
@@ -464,21 +452,9 @@ const VideoPlayer = () => {
 
 {isMobile &&
 <div>
-{isLoading ? (
-    <div style={{
-     display: 'flex',
-     justifyContent: 'center',
-     alignItems: 'center',
-     height: '80vh',
-     marginLeft: "150px"
-   }}>
-     <DotLoader color="#28e4c5" speedMultiplier={1.6} size={90} />
-   </div>
-   ) : (
 
-    <div>
 
-   
+    
 <div
 
 >
@@ -912,8 +888,8 @@ const VideoPlayer = () => {
 
 
 
-</div>
-)}
+
+
 </div>
 
 

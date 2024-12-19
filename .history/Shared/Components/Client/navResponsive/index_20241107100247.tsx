@@ -38,7 +38,7 @@ export default function NavRes() {
 
                     
                     <li onClick={() => push('/medicines')} className={styless[`${isActive("/medicines")}`]}>Tibet məhsulları</li>
-                    <li onClick={() => push('/contact-us')} className={styless[`${isActive("/contact-us")}`]}>Seanslar</li>
+                    <li onClick={() => push('/contact-us')} className={styless[`${isActive("/contact-us")}`]}>Həkim ilə əlaqə</li>
                     <li onClick={() => push('/about-us')} className={styless[`${isActive("/about-us")}`]}>Haqqında</li>
                     <li onClick={() => push('/faq')} className={styless[`${isActive("/faq")}`]}>F.A.Q</li>
                     <li className={styless[`${isActive("/user/checkout")}`]} onClick={() => {
