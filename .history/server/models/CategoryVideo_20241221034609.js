@@ -1,0 +1,14 @@
+export class CategoryVideo {
+    constructor(name) {
+      this.name = name;
+      this.slug = name?.split(" ")?.join("-").toLowerCase();
+    }
+  
+    toPlainObject() {
+      return {
+        name: this.name,
+        slug: this.slug,
+      };
+    }
+  }
+  

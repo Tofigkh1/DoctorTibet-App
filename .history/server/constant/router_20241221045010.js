@@ -1,0 +1,15 @@
+export const ROUTER = {
+  PRODUCTS: "/products",
+  CARD: "/basket",
+  ORDER: "/order",
+  ORDER_HISTORY: "/order-history",
+  UPLOADS: "/uploads",
+  RESTUARANTS: "/restuarants",
+  RESTUARANTS_ID: (rest_id) => `/restuarants/${rest_id}`,
+  CATEGORY: "/category",
+  CategoryVideo: "/category",
+  OFFER: "/offer",
+  USERS_HASH_PASSWORD: "/users-hash-password",
+  RECORDS: "/records",
+  RECORDS_HISTORY: "/records-history", 
+};
