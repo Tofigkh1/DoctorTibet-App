@@ -23,7 +23,7 @@ function LoginRegister() {
     }
   }, [mobile]);
 
-  useLayoutEffect(() => {
+  useLayoutEffect(():()=>void => {
     const checkUser = () => {
       const user = localStorage.getItem('user_info');
       if (user) {
