@@ -42,9 +42,9 @@ async function handler(req, res) {
       const queryValue = email || phoneNumber;
 
       const userInfo = await getQueryData(
-        ROUTER.USERS_HASH_PASSWORD,
-        queryField,
-        queryValue
+          ROUTER.USERS_HASH_PASSWORD,
+          queryField,
+          queryValue
       );
 
       if (!userInfo || userInfo.length === 0) {
@@ -52,23 +52,23 @@ async function handler(req, res) {
       }
 
       const isPasswordCorrect = await comparePasswords(
-        password,
-        userInfo[0].password
+          password,
+          userInfo[0].password
       );
 
       if (!isPasswordCorrect) {
         return res
-          .status(404)
-          .json({ error: "Password or email/phone is not correct" });
+            .status(404)
+            .json({ error: "Password or email/phone is not correct" });
       }
 
       const access_token = generateJWT(userCredentials.uid);
       const refresh_token = generateRefreshToken(userCredentials.uid);
 
       const card = await getQueryData(
-        ROUTER.CARD,
-        "user_id",
-        userCredentials.uid
+          ROUTER.CARD,
+          "user_id",
+          userCredentials.uid
       );
 
       const userCard = card?.[0];

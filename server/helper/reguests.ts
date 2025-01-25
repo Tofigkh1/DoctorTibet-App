@@ -6,9 +6,9 @@ const instance = axios.create({
     baseURL: '/api/',
   
   });
- 
+
 export async function Post(body:object,api: string){
-    
+
     try {
         const response = await instance.post(api, body);
         // Handle success
@@ -19,8 +19,10 @@ export async function Post(body:object,api: string){
         // Handle error
         console.error('Error making POST request:', error);
         throw error; // Throw error to be caught by caller
-    } 
+    }
 }
+
+
 export async function Get(api: string) {
     try {
         const response = await instance.get(api);

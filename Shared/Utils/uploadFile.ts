@@ -10,11 +10,11 @@ interface IUploadFile {
 }
 
 export const uploadFile = async ({
-    file,
-    documentId,
-    collectionId,
-    metadata
-}: IUploadFile): Promise<string | null> => {
+                                     file,
+                                     documentId,
+                                     collectionId,
+                                     metadata
+                                 }: IUploadFile): Promise<string | null> => {
     if (!file) {
         throw new Error('Please select a file');
     }
@@ -58,7 +58,7 @@ export const uploadFile = async ({
                 }
             }
         );
-        
+
     });
 };
 

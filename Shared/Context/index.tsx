@@ -24,7 +24,7 @@ export const AuthContextProvider: React.FC<AuthContextProviderProps> = ({ childr
         const result = await signInWithPopup(auth, provider);
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const accessToken = credential?.accessToken;
-        
+
         if (accessToken) {
             localStorage.setItem('access_token', accessToken); // access_token'ı kaydet
         }

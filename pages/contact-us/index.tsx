@@ -42,122 +42,120 @@ import VideoPlayer from '../../Shared/Components/Client/videosPlayer';
 
 
 const Curve = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 50%;
-  background: #7f00ff;
-  clip-path: ellipse(80% 50% at 50% 0%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: #7f00ff;
+    clip-path: ellipse(80% 50% at 50% 0%);
 `;
 
 export default function Header() {
 
-  const { t} = useTranslation('common');
+    const { t} = useTranslation('common');
 
 
-  let user = useSelector((state: RootState) => state.user);
-  const [infoUser, setInfoUser] = useState(false)
-  let { isOpen, onOpen, onClose } = useModalOpen();
-  const [accessToken, setAccessToken] = useState<string | null>(null);
-  let { isMobile } = useResize();
-  let { push } = useRouter();
+    let user = useSelector((state: RootState) => state.user);
+    const [infoUser, setInfoUser] = useState(false)
+    let { isOpen, onOpen, onClose } = useModalOpen();
+    const [accessToken, setAccessToken] = useState<string | null>(null);
+    let { isMobile } = useResize();
+    let { push } = useRouter();
 
-  useEffect(() => {
-    const token = localStorage.getItem('user_info');
-    setAccessToken(token);
-  }, [user]);
+    useEffect(() => {
+        const token = localStorage.getItem('user_info');
+        setAccessToken(token);
+    }, [user]);
 
-  function goAuthGetStarted() {
-    push('/login-register?form=register');
+    function goAuthGetStarted() {
+        push('/login-register?form=register');
 
-    if (analytics) {
-      logEvent(analytics, "button_click", { label: "Test Button", value: 1 });
-      console.log("Event logged: button_click");
+        if (analytics) {
+            logEvent(analytics, "button_click", { label: "Test Button", value: 1 });
+            console.log("Event logged: button_click");
+        }
     }
-  }
 
-  const progressCircle = useRef<SVGSVGElement | null>(null);
-  const progressContent = useRef<HTMLSpanElement | null>(null);
+    const progressCircle = useRef<SVGSVGElement | null>(null);
+    const progressContent = useRef<HTMLSpanElement | null>(null);
 
-  const onAutoplayTimeLeft = (s: SwiperType, time: number, progress: number) => {
-    if (progressCircle.current) {
-      progressCircle.current.style.setProperty('--progress', `${1 - progress}`);
-    }
-    if (progressContent.current) {
-      progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
-    }
-  };
-
-
-  useEffect(() => {
-    if (
-      user.id && // Kullanıcının giriş yaptığını kontrol etmek için
-      (
-        !user.phoneNumber || user.phoneNumber.length <= 0 || 
-        !user.email || user.email.length <= 0 || 
-        !user.username || user.username.length <= 0 || 
-        !user.fullname || user.fullname.length <= 0 || 
-        !user.address || user.address.length <= 0
-      )
-    ) {
-      setInfoUser(true);
-    } else {
-      setInfoUser(false);
-    }
-  }, [user]);
-  
-
-  return (
-    <div className={styles.container}>
-             <NextSeo
-        title="doctor-tibet.com"
-        description="Həkiminizin sağlamlığınız üçün təyin etdiyi bütün Tibet məhsulları bizdə."
-        canonical="https://www.doctor-tibet.com"
-        openGraph={{
-          url: 'https://www.doctor-tibet.com',
-          title: 'doctor-tibet.com',
-          description: 'Həkiminizin sağlamlığınız üçün təyin etdiyi bütün Tibet məhsulları bizdə.',
-          images: [{ url: 'https://www.doctor-tibet.com' }],
-          site_name: 'doctor-tibet.com',
-        }}
-      />
+    const onAutoplayTimeLeft = (s: SwiperType, time: number, progress: number) => {
+        if (progressCircle.current) {
+            progressCircle.current.style.setProperty('--progress', `${1 - progress}`);
+        }
+        if (progressContent.current) {
+            progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
+        }
+    };
 
 
-{!isMobile &&
+    useEffect(() => {
+        if (
+            user.id && // Kullanıcının giriş yaptığını kontrol etmek için
+            (
+                !user.phoneNumber || user.phoneNumber.length <= 0 ||
+                !user.email || user.email.length <= 0 ||
+                !user.username || user.username.length <= 0 ||
+                !user.fullname || user.fullname.length <= 0 ||
+                !user.address || user.address.length <= 0
+            )
+        ) {
+            setInfoUser(true);
+        } else {
+            setInfoUser(false);
+        }
+    }, [user]);
 
-<div>
+
+    return (
+        <div className={styles.container}>
+            <NextSeo
+                title="doctor-tibet.com"
+                description="Həkiminizin sağlamlığınız üçün təyin etdiyi bütün Tibet məhsulları bizdə."
+                canonical="https://www.doctor-tibet.com"
+                openGraph={{
+                    url: 'https://www.doctor-tibet.com',
+                    title: 'doctor-tibet.com',
+                    description: 'Həkiminizin sağlamlığınız üçün təyin etdiyi bütün Tibet məhsulları bizdə.',
+                    images: [{ url: 'https://www.doctor-tibet.com' }],
+                    site_name: 'doctor-tibet.com',
+                }}
+            />
 
 
+            {!isMobile &&
 
-  <div>
-    <VideoPlayer/>
-  </div>
-</div>
-
-      
-
-
-     }
-
-
-{isMobile &&
-
-<div>
+                <div>
 
 
 
-<div>
-  <VideoPlayer/>
-</div>
-</div>
+                    <div>
+                        <VideoPlayer/>
+                    </div>
+                </div>
 
-      
-     }
 
-    
-    </div>
-  );
+
+
+            }
+
+
+            {isMobile &&
+
+                <div>
+
+
+
+                    <div>
+                        <VideoPlayer/>
+                    </div>
+                </div>
+
+
+            }
+
+
+        </div>
+    );
 }
-
-

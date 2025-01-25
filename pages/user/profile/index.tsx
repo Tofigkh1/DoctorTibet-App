@@ -128,12 +128,12 @@ interface ImageType {
 
 
 const Profile: React.FC = ()=> {
-  
+
   const [activeIndex, setActiveIndex] = useState<number>(4);
- 
+
   const [IMG, setIMG] = useState<ImageType[]>([]);
-  const [downloadURL, setDownloadURL] = useState(''); 
-  const [loading, setLoading] = useState(false); 
+  const [downloadURL, setDownloadURL] = useState('');
+  const [loading, setLoading] = useState(false);
   let { isMobile } = useResize();
   const [mobile, setmobile] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -142,7 +142,7 @@ const Profile: React.FC = ()=> {
   const { pathname, push } = useRouter();
 
   useEffect(() => {
-  
+
 
     if (window.innerWidth < 800) {
       setmobile(true);
@@ -152,10 +152,10 @@ const Profile: React.FC = ()=> {
     const token = localStorage.getItem('access_token');
     const userInfo = localStorage.getItem('user_info');
     if (!token) {
-  
+
       push('/login-register');
     }
-    
+
 
     if (token && userInfo) {
       setIsLoggedIn(true);
@@ -163,12 +163,12 @@ const Profile: React.FC = ()=> {
   }, [mobile]);
 
 
-  
+
   // let IMG=img[0]?.data_url
 
 
 
-  
+
 
   useEffect(() => {
     fetchProfileImage();
@@ -181,7 +181,7 @@ const Profile: React.FC = ()=> {
     querySnapshot.forEach((doc) => {
       setDownloadURL(doc.data().url);
     });
-    setLoading(false); 
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -190,7 +190,7 @@ const Profile: React.FC = ()=> {
     }
   }, [IMG]);
 
-  
+
   const handleSignOut = () => {
     push('/');
     localStorage.removeItem('user_info');
@@ -198,190 +198,190 @@ const Profile: React.FC = ()=> {
     dispatch(clearUser());
   };
 
-  
+
   if (!isLoggedIn) {
     return null;
   }
 
-;
+  ;
   return (
-    <>
-    {!isMobile &&
+      <>
+        {!isMobile &&
 
-    <div>
-
-   
-      <Container>
-        <Header>
-          <div className={styles.cursor}>
-            <img
-              onClick={() => push('/')}
-              style={{ width: '90px', height: '90px' }}
-              className={styles.logo}
-              src="/Logo.png"
-              alt="Logo"
-            />
-          </div>
-          <Nav />
-
-          <div className="flex gap-10 z-50">
-                        <BasketMenu/>
-                        <Auth/>
-                        </div>
-        </Header>
+            <div>
 
 
-        
-      </Container>
+              <Container>
+                <Header>
+                  <div className={styles.cursor}>
+                    <img
+                        onClick={() => push('/')}
+                        style={{ width: '90px', height: '90px' }}
+                        className={styles.logo}
+                        src="/Logo.png"
+                        alt="Logo"
+                    />
+                  </div>
+                  <Nav />
 
-      <Categories/>
+                  <div className="flex gap-10 z-50">
+                    <BasketMenu/>
+                    <Auth/>
+                  </div>
+                </Header>
 
-      <div className="">
-       
 
-        <div className="flex gap-40 ">
-          
-          {/* <div className={mobile ? 'hidden' : ' w-80'}>
+
+              </Container>
+
+              <Categories/>
+
+              <div className="">
+
+
+                <div className="flex gap-40 ">
+
+                  {/* <div className={mobile ? 'hidden' : ' w-80'}>
             <Navbar active={1} />
           </div> */}
 
-       <div className=''>
-     
-    <Sidebar>
-      <SidebarItem
-        icon={<img src="/userProfileIcon.svg" alt="Profile" width={35} height={35} />}
-        text="Your Profile"
-        active={pathname === '/user/profile'} // Aktif sayfa kontrolü
-        onClick={() => push('/user/profile')}
-        style={pathname === '/user/profile' ? { color: 'green' } : {}} // Aktifse yeşil yap
-      />
-      <SidebarItem
-      
-        icon={<img src="/shopping-bag.png" alt="Basket" width={35} height={35} />}
-        text="Your Basket"
-        active={pathname === '/user/basket'}
-        onClick={() => push('/user/basket')}
-        style={pathname === '/user/basket' ? { color: 'green' } : {}}
-      />
-      <SidebarItem
-        icon={<img src="/fulfillment.png" alt="Orders" width={35} height={35} />}
-        text="Your Orders"
-        active={pathname === '/user/orders'}
-        onClick={() => push('/user/orders')}
-        style={pathname === '/user/orders' ? { color: 'green' } : {}}
-      />
-      <SidebarItem
-        icon={<img src="/ShoppingCheck3.png" alt="Checkout" width={35} height={35} />}
-        text="Checkout"
-        active={pathname === '/user/checkout'}
-        onClick={() => push('/user/checkout')}
-        style={pathname === '/user/checkout' ? { color: 'green' } : {}}
-      />
-      <SidebarItem
-        icon={<img src="/exit.png" alt="Logout" width={35} height={35} />}
-        text="Logout"
-        active={pathname === '/'}
-        onClick={handleSignOut}
-        style={pathname === '/' ? { color: 'green' } : {}}
-      />
-    </Sidebar>
+                  <div className=''>
 
-      </div>   
+                    <Sidebar>
+                      <SidebarItem
+                          icon={<img src="/userProfileIcon.svg" alt="Profile" width={35} height={35} />}
+                          text="Your Profile"
+                          active={pathname === '/user/profile'} // Aktif sayfa kontrolü
+                          onClick={() => push('/user/profile')}
+                          style={pathname === '/user/profile' ? { color: 'green' } : {}} // Aktifse yeşil yap
+                      />
+                      <SidebarItem
 
-    
+                          icon={<img src="/shopping-bag.png" alt="Basket" width={35} height={35} />}
+                          text="Your Basket"
+                          active={pathname === '/user/basket'}
+                          onClick={() => push('/user/basket')}
+                          style={pathname === '/user/basket' ? { color: 'green' } : {}}
+                      />
+                      <SidebarItem
+                          icon={<img src="/fulfillment.png" alt="Orders" width={35} height={35} />}
+                          text="Your Orders"
+                          active={pathname === '/user/orders'}
+                          onClick={() => push('/user/orders')}
+                          style={pathname === '/user/orders' ? { color: 'green' } : {}}
+                      />
+                      <SidebarItem
+                          icon={<img src="/ShoppingCheck3.png" alt="Checkout" width={35} height={35} />}
+                          text="Checkout"
+                          active={pathname === '/user/checkout'}
+                          onClick={() => push('/user/checkout')}
+                          style={pathname === '/user/checkout' ? { color: 'green' } : {}}
+                      />
+                      <SidebarItem
+                          icon={<img src="/exit.png" alt="Logout" width={35} height={35} />}
+                          text="Logout"
+                          active={pathname === '/'}
+                          onClick={handleSignOut}
+                          style={pathname === '/' ? { color: 'green' } : {}}
+                      />
+                    </Sidebar>
 
-    
+                  </div>
 
-          <div className=" w-9/12 h-60 mt rounded-2xl mr-5 absolute right-0">
 
-          <div className=' flex gap-3 mt-8'>
-          <h1 className=' font-bold text-2xl'>Profile &gt;</h1>
-          <h1 className='  text-fontcolorhow text-2xl'>Dashboard</h1>
-          </div>
-         
-            {loading ? (
-              <div style={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                height: '80vh'
-              }}>
-                <DotLoader color="#28e4c5" speedMultiplier={1.6} size={90} />
-              </div>
-            ) : downloadURL ? (
-              <div style={{ width: '1080px', height: '300px', position: 'relative'}}>
 
-                <Image
-                  src={downloadURL}
-                  alt="Uploaded Image"
-                  layout="fill"
-                  objectFit="cover"
-                  className="rounded-2xl -z-40 mt-12"
-                />
-          
-                <div className=" right-0 z-30 mt-72 mr-7 absolute">
-                      <UploadImage  setImageList={setIMG}  IMG={IMG[0]?.data_url || undefined} userPage={true} />
+
+
+                  <div className=" w-9/12 h-60 mt rounded-2xl mr-5 absolute right-0">
+
+                    <div className=' flex gap-3 mt-8'>
+                      <h1 className=' font-bold text-2xl'>Profile &gt;</h1>
+                      <h1 className='  text-fontcolorhow text-2xl'>Dashboard</h1>
+                    </div>
+
+                    {loading ? (
+                        <div style={{
+                          display: 'flex',
+                          justifyContent: 'center',
+                          alignItems: 'center',
+                          height: '80vh'
+                        }}>
+                          <DotLoader color="#28e4c5" speedMultiplier={1.6} size={90} />
+                        </div>
+                    ) : downloadURL ? (
+                        <div style={{ width: '1080px', height: '300px', position: 'relative'}}>
+
+                          <Image
+                              src={downloadURL}
+                              alt="Uploaded Image"
+                              layout="fill"
+                              objectFit="cover"
+                              className="rounded-2xl -z-40 mt-12"
+                          />
+
+                          <div className=" right-0 z-30 mt-72 mr-7 absolute">
+                            <UploadImage  setImageList={setIMG}  IMG={IMG[0]?.data_url || undefined} userPage={true} />
+                          </div>
+                        </div>
+                    ) : (
+                        <div className="w-9/12 h-60 mt-4 rounded-2xl mr-5" />
+                    )}
+
+                    <div className=" ml-28 bg-white rounded-full w-28 h-28 pl-1.5 pt-2">
+                      <ThemeProvider theme={theme}>
+                        <Stack direction="row" spacing={2}>
+                          {isLoggedIn ? (
+                              <StyledBadge
+                                  overlap="circular"
+                                  anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+                                  variant="dot"
+                              >
+                                <LargeAvatar alt="Remy Sharp" src="" />
+                              </StyledBadge>
+                          ) : (
+                              <StyledBadge2
+                                  overlap="circular"
+                                  anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+                                  variant="dot"
+                              >
+                                <LargeAvatar alt="Travis Howard" src="" />
+                              </StyledBadge2>
+                          )}
+                        </Stack>
+                      </ThemeProvider>
+
+                    </div>
+
+                    <div className=' w-9/12 mt-12 z-50 h-auto '>
+                      <UserForm img={IMG}/>
+                    </div>
+
+                  </div>
+
+
+
                 </div>
+
+
+
               </div>
-            ) : (
-              <div className="w-9/12 h-60 mt-4 rounded-2xl mr-5" />
-            )}
- 
-            <div className=" ml-28 bg-white rounded-full w-28 h-28 pl-1.5 pt-2">
-              <ThemeProvider theme={theme}>
-                <Stack direction="row" spacing={2}>
-                  {isLoggedIn ? (
-                    <StyledBadge
-                      overlap="circular"
-                      anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-                      variant="dot"
-                    >
-                      <LargeAvatar alt="Remy Sharp" src="" />
-                    </StyledBadge>
-                  ) : (
-                    <StyledBadge2
-                      overlap="circular"
-                      anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-                      variant="dot"
-                    >
-                      <LargeAvatar alt="Travis Howard" src="" />
-                    </StyledBadge2>
-                  )}
-                </Stack>
-              </ThemeProvider>
 
+              <div className=' mt-64'>
+
+              </div>
+
+              <Footer/>
             </div>
-            
-            <div className=' w-9/12 mt-12 z-50 h-auto '>
-        <UserForm img={IMG}/>
-        </div>
-           
-          </div>
-         
-          
-         
-        </div>
+        }
 
 
-      
-      </div>
-
-      <div className=' mt-64'>
-
-      </div>
-
-      <Footer/>
-      </div>
-}
+        {isMobile &&
+            <div className={styles.mainContent}>
 
 
-{isMobile &&
- <div className={styles.mainContent}>
+              <Container>
 
-   
- <Container>
-
-{/* 
+                {/*
  <div className='  absolute '>
           <TryInfoUser/>
           </div>
@@ -396,153 +396,153 @@ const Profile: React.FC = ()=> {
     </div> */}
 
 
-   <Header>
-     <div className={styles.cursor}>
-       <img
-         onClick={() => push('/')}
-         style={{ width: '90px', height: '90px' }}
-         className={styles.logo}
-         src="/Logo.png"
-         alt="Logo"
-       />
-     </div>
- 
-
-     <div className="flex gap-10 z-50">
-                   <BasketMenu/>
-                   <Auth/>
-                   </div>
-   </Header>
+                <Header>
+                  <div className={styles.cursor}>
+                    <img
+                        onClick={() => push('/')}
+                        style={{ width: '90px', height: '90px' }}
+                        className={styles.logo}
+                        src="/Logo.png"
+                        alt="Logo"
+                    />
+                  </div>
 
 
-   
- </Container>
+                  <div className="flex gap-10 z-50">
+                    <BasketMenu/>
+                    <Auth/>
+                  </div>
+                </Header>
 
- <Categories/>
 
- <div className="">
-  
 
-   <div className="flex gap-40 ">
-     
-     {/* <div className={mobile ? 'hidden' : ' w-80'}>
+              </Container>
+
+              <Categories/>
+
+              <div className="">
+
+
+                <div className="flex gap-40 ">
+
+                  {/* <div className={mobile ? 'hidden' : ' w-80'}>
        <Navbar active={1} />
      </div> */}
 
- 
 
 
 
 
 
-     <div className=" w-9/12 h-60  rounded-2xl mr-5  right-0">
 
-     <div className=' flex gap-3 mt-8 ml-5'>
-     <h1 className=' font-bold text-2xl'>Profilin &gt;</h1>
-     <h1 className='  text-fontcolorhow text-2xl'>İdarə paneli</h1>
-     </div>
-    
-       {loading ? (
-         <div style={{
-           display: 'flex',
-           justifyContent: 'center',
-           alignItems: 'center',
-           height: '80vh',
-           marginLeft: '100px',
-         }}>
-           <DotLoader color="#28e4c5" speedMultiplier={1.6} size={90} />
-         </div>
-       ) : downloadURL ? (
-         <div style={{ width: '410px', height: '100px', marginLeft:'2px' }}>
+                  <div className=" w-9/12 h-60  rounded-2xl mr-5  right-0">
 
-           <Image
-        width={500}
-        height={100}
-             src={downloadURL}
-             alt="Uploaded Image"
-            
-             objectFit="cover"
-             className="rounded-2xl -z-40 mt-12"
-           />
-     
-           <div className=" right-0  absolute  mr-5">
-                 <UploadImage  setImageList={setIMG}  IMG={IMG[0]?.data_url || undefined} userPage={true} />
-           </div>
-      
+                    <div className=' flex gap-3 mt-8 ml-5'>
+                      <h1 className=' font-bold text-2xl'>Profilin &gt;</h1>
+                      <h1 className='  text-fontcolorhow text-2xl'>İdarə paneli</h1>
+                    </div>
 
-      <div className=' mt-36 '>
+                    {loading ? (
+                        <div style={{
+                          display: 'flex',
+                          justifyContent: 'center',
+                          alignItems: 'center',
+                          height: '80vh',
+                          marginLeft: '100px',
+                        }}>
+                          <DotLoader color="#28e4c5" speedMultiplier={1.6} size={90} />
+                        </div>
+                    ) : downloadURL ? (
+                        <div style={{ width: '410px', height: '100px', marginLeft:'2px' }}>
 
-           <div className="   mt-[470px] top-0 bg-white absolute rounded-full w-28 h-28 pl-1.5 pt-1.5">
-         <ThemeProvider theme={theme}>
-           <Stack direction="row" spacing={2}>
-             {isLoggedIn ? (
-               <StyledBadge
-                 overlap="circular"
-                 anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-                 variant="dot"
-               >
-                 <LargeAvatar alt="Remy Sharp" src="" />
-               </StyledBadge>
-             ) : (
-               <StyledBadge2
-                 overlap="circular"
-                 anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-                 variant="dot"
-               >
-                 <LargeAvatar alt="Travis Howard" src="" />
-               </StyledBadge2>
-             )}
-           </Stack>
-         </ThemeProvider>
-       </div>
-       </div>
+                          <Image
+                              width={500}
+                              height={100}
+                              src={downloadURL}
+                              alt="Uploaded Image"
+
+                              objectFit="cover"
+                              className="rounded-2xl -z-40 mt-12"
+                          />
+
+                          <div className=" right-0  absolute  mr-5">
+                            <UploadImage  setImageList={setIMG}  IMG={IMG[0]?.data_url || undefined} userPage={true} />
+                          </div>
 
 
-           <div className=' z-50 mt-10 '>
-   <UserForm img={IMG}/>
-   </div>
+                          <div className=' mt-36 '>
+
+                            <div className="   mt-[470px] top-0 bg-white absolute rounded-full w-28 h-28 pl-1.5 pt-1.5">
+                              <ThemeProvider theme={theme}>
+                                <Stack direction="row" spacing={2}>
+                                  {isLoggedIn ? (
+                                      <StyledBadge
+                                          overlap="circular"
+                                          anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+                                          variant="dot"
+                                      >
+                                        <LargeAvatar alt="Remy Sharp" src="" />
+                                      </StyledBadge>
+                                  ) : (
+                                      <StyledBadge2
+                                          overlap="circular"
+                                          anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+                                          variant="dot"
+                                      >
+                                        <LargeAvatar alt="Travis Howard" src="" />
+                                      </StyledBadge2>
+                                  )}
+                                </Stack>
+                              </ThemeProvider>
+                            </div>
+                          </div>
 
 
-   
-         </div>
-       ) : (
-         <div className="w-9/12 h-60 mt-4 rounded-2xl mr-5" />
-       )}
-
-     
-       
- 
-      
-     </div>
-    
-     
-    
-   </div>
-
-
- 
- </div>
-
- <div className='mt-96'>
-
-</div>
-
-
-<div className='mt-96'>
-
-</div>
-
-
-<div className='mt-36'>
-
-</div>
+                          <div className=' z-50 mt-10 '>
+                            <UserForm img={IMG}/>
+                          </div>
 
 
 
- <Footer/>
- </div>
-}
-    </>
+                        </div>
+                    ) : (
+                        <div className="w-9/12 h-60 mt-4 rounded-2xl mr-5" />
+                    )}
+
+
+
+
+
+                  </div>
+
+
+
+                </div>
+
+
+
+              </div>
+
+              <div className='mt-96'>
+
+              </div>
+
+
+              <div className='mt-96'>
+
+              </div>
+
+
+              <div className='mt-36'>
+
+              </div>
+
+
+
+              <Footer/>
+            </div>
+        }
+      </>
   );
 }
 

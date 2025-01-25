@@ -12,7 +12,7 @@ const withAuth = (WrappedComponent: React.ComponentType) => {
     useEffect(() => {
       const unsubscribe = onAuthStateChanged(auth, (user) => {
         if (!user) {
-          router.replace('/admin/login'); 
+          router.replace('/admin/login');
         } else {
           setLoading(false);
         }

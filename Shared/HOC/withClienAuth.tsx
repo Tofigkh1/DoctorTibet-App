@@ -18,7 +18,7 @@ const withClientAuth = (WrappedComponent: React.ComponentType) => {
 
       let { email } = user;
       console.log(email, user);
-      
+
       if (email.length === 0) {
         router.replace('/login-register');
       } else {

@@ -4,7 +4,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { ChakraProvider } from "@chakra-ui/react";
 import type { AppProps } from "next/app";
-import themes from "../Theme/index"; 
+import themes from "../Theme/index";
 import CssBaseline from '@mui/material/CssBaseline';
 import '../styles/globals.css';
 import { ThemeProvider } from "../@/components/my-components/theme/theme-provider/index";
@@ -72,37 +72,37 @@ function MyApp({ Component, pageProps }: AppProps) {
 
 
   return (
-    <Provider store={store}>
-      <AuthContextProvider>
-        <CssBaseline />
-        <ChakraProvider theme={themes}>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            {loading && (
-              <div className="spinner-overlay">
-                <DotLoader color="#28e4c5" speedMultiplier={1.6} size={90} />
-              </div>
-            )}
-                 <Head>
-              <title>Doctor-Tibet.com</title>
-              <link rel="icon" href="/favicon.ico" />
-            </Head>
-            {loading && (
-              <div className="spinner-overlay">
-                <DotLoader color="#28e4c5" speedMultiplier={1.6} size={90} />
-              </div>
-            )}
-            <QueryClientProvider client={queryClient}>
-            <Component {...props.pageProps} />
-            </QueryClientProvider>
-          </ThemeProvider>
-        </ChakraProvider>
-      </AuthContextProvider>
-    </Provider>
+      <Provider store={store}>
+        <AuthContextProvider>
+          <CssBaseline />
+          <ChakraProvider theme={themes}>
+            <ThemeProvider
+                attribute="class"
+                defaultTheme="system"
+                enableSystem
+                disableTransitionOnChange
+            >
+              {loading && (
+                  <div className="spinner-overlay">
+                    <DotLoader color="#28e4c5" speedMultiplier={1.6} size={90} />
+                  </div>
+              )}
+              <Head>
+                <title>Doctor-Tibet.com</title>
+                <link rel="icon" href="/favicon.ico" />
+              </Head>
+              {loading && (
+                  <div className="spinner-overlay">
+                    <DotLoader color="#28e4c5" speedMultiplier={1.6} size={90} />
+                  </div>
+              )}
+              <QueryClientProvider client={queryClient}>
+                <Component {...props.pageProps} />
+              </QueryClientProvider>
+            </ThemeProvider>
+          </ChakraProvider>
+        </AuthContextProvider>
+      </Provider>
   );
 }
 

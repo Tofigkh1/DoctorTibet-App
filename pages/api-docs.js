@@ -11,19 +11,19 @@ const SwaggerUI = dynamic(() => import("swagger-ui-react"), {
 
 function ApiDoc({ spec }) {
   return (
-    <>
-      <Head>
-        <title>Swanger | Foody App</title>
-        <meta name="description" content="REST API for Foody APP" />
-        <link
-          rel="icon"
-          href="https://w7.pngwing.com/pngs/713/936/png-transparent-online-shopping-shopping-cart-logo-e-commerce-market-blue-angle-company-thumbnail.png"
-        />
-      </Head>
-      <div style={{ margin: "40px 0" }}>
-        <SwaggerUI spec={spec} />
-      </div>
-    </>
+      <>
+        <Head>
+          <title>Swanger | Foody App</title>
+          <meta name="description" content="REST API for Foody APP" />
+          <link
+              rel="icon"
+              href="https://w7.pngwing.com/pngs/713/936/png-transparent-online-shopping-shopping-cart-logo-e-commerce-market-blue-angle-company-thumbnail.png"
+          />
+        </Head>
+        <div style={{ margin: "40px 0" }}>
+          <SwaggerUI spec={spec} />
+        </div>
+      </>
   );
 }
 
