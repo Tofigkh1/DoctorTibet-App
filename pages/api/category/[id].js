@@ -5,7 +5,7 @@ import {
   handlerCategoryDELETE,
   handlerCategoryGETID,
   handlerCategoryPUT,
-} from "../../../server/routes/categoryVideo";
+} from "../../../server/routes/category";
 
 export default async function handler(req, res) {
   // Set CORS headers to allow requests from any origin

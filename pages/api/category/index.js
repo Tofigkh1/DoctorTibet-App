@@ -4,7 +4,7 @@ import { ROUTER } from "../../../server/constant/router";
 import {
   handlerCategoryGET,
   handlerCategoryPOST,
-} from "../../../server/routes/categoryVideo";
+} from "../../../server/routes/category";
 
 export default async function handler(req, res) {
   // Set CORS headers to allow requests from any origin
@@ -16,10 +16,10 @@ export default async function handler(req, res) {
 
   switch (req.method) {
     case METHOD.GET:
-      await handlerCategoryGET(req, res, ROUTER.CATEGORYVIDEO);
+      await handlerCategoryGET(req, res, ROUTER.CATEGORY);
       return;
     case METHOD.POST:
-      await handlerCategoryPOST(req, res, ROUTER.CATEGORYVIDEO);
+      await handlerCategoryPOST(req, res, ROUTER.CATEGORY);
       return;
 
     default:

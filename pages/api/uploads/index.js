@@ -34,8 +34,8 @@ export default async function handler(req, res) {
           await handlerUploadPOST(req, res, ROUTER.UPLOADS);
         } else {
           res
-              .status(500)
-              .json({ error: "handlerUploadPOST function is not defined" });
+            .status(500)
+            .json({ error: "handlerUploadPOST function is not defined" });
         }
         break;
 
@@ -48,8 +48,8 @@ export default async function handler(req, res) {
             await handlerGetVideosCollection(req, res);
           } else {
             res
-                .status(500)
-                .json({ error: "handlerGetVideosCollection function is not defined" });
+              .status(500)
+              .json({ error: "handlerGetVideosCollection function is not defined" });
           }
         } else if (all === "true") {
           // Tüm dosyaların listesi isteniyor
@@ -57,8 +57,8 @@ export default async function handler(req, res) {
             await handlerGetAllVideos(req, res, folder);
           } else {
             res
-                .status(500)
-                .json({ error: "handlerGetAllVideos function is not defined" });
+              .status(500)
+              .json({ error: "handlerGetAllVideos function is not defined" });
           }
         } else if (folder && fileName) {
           // Tek bir dosyanın URL'si isteniyor
@@ -66,13 +66,13 @@ export default async function handler(req, res) {
             await handlerGetFileURL(req, res, folder, fileName);
           } else {
             res
-                .status(500)
-                .json({ error: "handlerGetFileURL function is not defined" });
+              .status(500)
+              .json({ error: "handlerGetFileURL function is not defined" });
           }
         } else {
           res.status(400).json({
             error:
-                "Missing required parameters: folder and fileName, or set all=true, or set fromCollection=true",
+              "Missing required parameters: folder and fileName, or set all=true, or set fromCollection=true",
           });
         }
         break;

@@ -28,7 +28,7 @@ async function handler(req, res) {
       };
 
       const customClaims = {
-        username,
+        username,            
         fullname,
       };
 
