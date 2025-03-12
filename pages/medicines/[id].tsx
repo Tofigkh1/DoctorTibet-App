@@ -260,7 +260,7 @@ export default function ProductsDetail() {
                       
 
                         <h1 className="mr-28 pt-2 text-5xl text-white font-medium ">
-                        {products?.price}₼
+                        {/* {products?.price}₼ */}
                         </h1>
 
                         <div className="flex gap-10">

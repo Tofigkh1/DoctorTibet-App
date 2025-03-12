@@ -53,7 +53,7 @@ export default function ProductCard(products: ProductsCardProps) {
         <h4 className=' text-xl'>{shortText(products.name, 12)}</h4>
         <p>{shortText(products.description, 20)}</p>
         <div className={styles.restaurant_bottom}>
-            <div className=' font-semibold text-2xl ml-28'>{`${products.price}₼ `}</div>
+            {/* <div className=' font-semibold text-2xl ml-28'>{`${products.price}₼ `}</div> */}
             {/* <p>{timeAgo}</p> */}
         </div>
     </div>
