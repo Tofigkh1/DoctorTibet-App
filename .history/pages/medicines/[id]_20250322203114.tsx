@@ -457,9 +457,7 @@ export default function ProductsDetail() {
                             </div> */}
                           
     
-                            {/* <h1 className="ml-4  text-5xl text-black font-bold  ">
-                            {products?.price}₼
-                            </h1> */}
+                            
     
                             <div className="">
                                 <ul className=" mt-2">
